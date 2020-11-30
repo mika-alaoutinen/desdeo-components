@@ -1,0 +1,27 @@
+# Workflow that is run when a push is made to any branch except master or release.
+# Runs linter and unit tests.
+
+name: Feature branch workflow
+
+on:
+  push:
+    branches-ignore:
+     - master
+     - release*
+
+jobs:
+  lint-test:
+    name: Runs linter and unit tests
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout code from repository
+      uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run test:unit
+      env:
+        CI: true
