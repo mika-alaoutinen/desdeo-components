@@ -4,14 +4,12 @@ import BarChart from './components/barChart/BarChart'
 import { data } from './components/barChart/data'
 
 const App: React.FC = () => {
-
-  return (
-    <div>
-      <BarChart props={{
-        data
-      }}/>
-    </div>
-  )
+  
+  const onClick = () => {
+    console.log(data)
+  }
+  
+  return <BarChart props={{ data, onClick }}/>
 }
 
 export default App

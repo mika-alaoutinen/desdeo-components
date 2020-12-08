@@ -4,7 +4,7 @@ import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from 'victory'
 import { Props } from './types'
 
 const BarChart: React.FC<{ props: Props }> = ({ props }) => {
-  const { data } = props
+  const { data, onClick } = props
 
   const createTickValues = (): number[] => {
     const numbersFromZero = [...Array(data.length).keys()]
@@ -31,6 +31,10 @@ const BarChart: React.FC<{ props: Props }> = ({ props }) => {
           y='earnings'
         />
       </VictoryChart>
+
+      <p>
+        <button onClick={onClick}>Update</button>
+      </p>
     </div>
   )
 }
