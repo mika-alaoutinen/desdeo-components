@@ -1,16 +1,24 @@
 import React from 'react'
-import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from 'victory'
+import {
+  VictoryAxis, VictoryBar, VictoryChart, VictoryStack, VictoryTheme
+} from 'victory'
 
 import { Props } from './types'
+import { createTickValues } from './utils'
 
 const BarChart: React.FC<{ props: Props }> = ({ props }) => {
   const { data, onClick } = props
 
-  const createTickValues = (): number[] => {
-    const numbersFromZero = [...Array(data.length).keys()]
-    return numbersFromZero.map(n => n + 1)
-  }
-  
+  const mapBarCharts = (): JSX.Element[] =>
+    data.map(row =>
+      <VictoryBar
+        key={row.year}
+        data={row.data}
+        x='quarter'
+        y='earnings'
+      />
+    )
+
   return (
     <div>
       <VictoryChart
@@ -19,17 +27,16 @@ const BarChart: React.FC<{ props: Props }> = ({ props }) => {
       >
         <VictoryAxis
           tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
-          tickValues={createTickValues()}
+          tickValues={createTickValues(data)}
         />
         <VictoryAxis
           dependentAxis
           tickFormat={x => `$${x / 1000}k`}
         />
-        <VictoryBar
-          data={data}
-          x='quarter'
-          y='earnings'
-        />
+
+        <VictoryStack>
+          {mapBarCharts()}
+        </VictoryStack>
       </VictoryChart>
 
       <p>

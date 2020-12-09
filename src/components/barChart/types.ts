@@ -4,6 +4,11 @@ export interface Props {
 }
 
 export interface TestData {
+  year: number,
+  data: DataRow[]
+}
+
+interface DataRow {
   quarter: number,
   earnings: number
 }
