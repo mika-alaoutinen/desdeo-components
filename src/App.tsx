@@ -9,7 +9,10 @@ const App: React.FC = () => {
     console.log(data)
   }
   
-  return <BarChart props={{ data, onClick }}/>
+  return <BarChart
+    data={data}
+    onClick={onClick}
+  />
 }
 
 export default App

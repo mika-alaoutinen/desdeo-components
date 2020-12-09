@@ -6,8 +6,7 @@ import {
 import { Props } from './types'
 import { createTickValues } from './utils'
 
-const BarChart: React.FC<{ props: Props }> = ({ props }) => {
-  const { data, onClick } = props
+const BarChart: React.FC<Props> = ({ data, onClick }) => {
 
   const mapBarCharts = (): JSX.Element[] =>
     data.map(row =>
