@@ -8,7 +8,7 @@ interface DataRow {
   earnings: number
 }
 
-export const data: TestData[] = [
+export const barData: TestData[] = [
   {
     year: 2019,
     data: [
