@@ -1,12 +1,18 @@
 import React from 'react'
 
-const App: React.FC = () => {
+import BarChart from './components/barChart/BarChart'
+import { data } from './components/barChart/data'
 
-  return (
-    <div>
-      <a>Hello</a>
-    </div>
-  )
+const App: React.FC = () => {
+  
+  const onClick = () => {
+    console.log(data)
+  }
+  
+  return <BarChart
+    data={data}
+    onClick={onClick}
+  />
 }
 
 export default App
