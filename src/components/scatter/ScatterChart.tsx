@@ -1,6 +1,7 @@
 import React from 'react'
-import { VictoryChart, VictoryScatter, VictoryTheme } from 'victory'
+import { VictoryScatter } from 'victory'
 
+import ChartContainer from '../../containers/ChartContainer'
 import { TestData } from './data'
 
 interface Props {
@@ -15,9 +16,9 @@ const style = {
 
 const ScatterChart: React.FC<Props> = ({ data }) => {
   return (
-    <VictoryChart
-      domain={{ x: [0, 5], y: [0, 7] }}
-      theme={VictoryTheme.material}
+    <ChartContainer
+      x={[ 0, 5 ]}
+      y={[ 0, 7 ]}
     >
       <VictoryScatter
         data={data}
@@ -26,7 +27,7 @@ const ScatterChart: React.FC<Props> = ({ data }) => {
         x='x'
         y='y'
       />        
-    </VictoryChart>
+    </ChartContainer>
   )
 }
 
