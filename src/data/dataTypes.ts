@@ -1,4 +1,5 @@
-// The shape of valid input data. These are placeholders.
+// Add interfaces for different optimization methods here.
+
 export interface Variable {
   name: string,
   value: number
