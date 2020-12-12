@@ -3,9 +3,8 @@ import React from 'react'
 import BarChart from './components/barChart/BarChart'
 import EventfulBarChart from './components/barChart/EventfulBarChart'
 import ScatterChart from './components/scatter/ScatterChart'
-import { barData, eventData } from './components/barChart/data'
+import { barData, eventData, EventTestData } from './components/barChart/data'
 import { scatterData } from './components/scatter/data'
-import { clickHandler } from './events/BarChartEvents'
 
 const style = {
   height: '50%',
@@ -17,7 +16,7 @@ const App: React.FC = () => {
     <div className='App' style={style}>
       <EventfulBarChart
         data={eventData}
-        clickHandler={clickHandler}
+        clickHandler={( { x, y }: EventTestData) => console.log('x', x, 'y', y) }
       />
 
       <ScatterChart data={scatterData} />
