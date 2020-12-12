@@ -13,12 +13,26 @@ interface Props {
 
 const EventfulBarChart: React.FC<Props> = ({ data, clickHandler }) => {
 
-  const onClick = (): Mutation[] => [{
+  const onClick = (): Mutation[] => {
+    const external = onClickExternal()
+    return external
+      ? [onClickDefault(), external]
+      : [onClickDefault()]
+  }
+
+  const onClickDefault = (): Mutation => ({
     target: 'data',
-    mutation: ({ datum }) => clickHandler
-      ? clickHandler(datum)
-      : defaultClickHandler(datum)
-  }]
+    mutation: ({ datum }) => defaultClickHandler(datum)
+  })
+
+  const onClickExternal = (): Mutation | void => {
+    if (clickHandler) {
+      return {
+        target: 'data',
+        mutation: ({ datum }) => clickHandler(datum)
+      }
+    }
+  }
   
   return (
     <ChartContainer>
