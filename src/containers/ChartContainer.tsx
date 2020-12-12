@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryChart, VictoryTheme } from 'victory'
 
-import { Domain } from './types'
+import { Domain } from './victoryTypes'
 
 interface Props {
   component?: React.ReactElement,

@@ -1,9 +1,6 @@
-export interface TestData {
-  x: number,
-  y: number
-}
+import { Coordinate } from '../../data/dataTypes'
 
-export const scatterData: TestData[] = [
+export const scatterData: Coordinate[] = [
   { x: 10, y: 20 },
   { x: 20, y: 30 },
   { x: 30, y: 50 },
