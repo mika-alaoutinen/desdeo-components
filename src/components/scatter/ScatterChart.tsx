@@ -3,6 +3,7 @@ import { VictoryScatter } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { TestData } from './data'
+import { style } from './style'
 import { Domain } from '../../containers/types'
 
 interface Props {
@@ -14,26 +15,18 @@ const domain: Domain = {
   y: [0, 10]
 }
 
-const style = {
-  data: {
-    fill: '#c43a31'
-  }
-}
-
-const ScatterChart: React.FC<Props> = ({ data }) => {
-  return (
-    <ChartContainer
-      domain={domain}
-    >
-      <VictoryScatter
-        data={data}
-        size={7}
-        style={style}
-        x='x'
-        y='y'
-      />        
-    </ChartContainer>
-  )
-}
+const ScatterChart: React.FC<Props> = ({ data }) => (
+  <ChartContainer
+    domain={domain}
+  >
+    <VictoryScatter
+      data={data}
+      size={7}
+      style={style}
+      x='x'
+      y='y'
+    />        
+  </ChartContainer>
+)
 
 export default ScatterChart
