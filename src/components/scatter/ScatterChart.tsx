@@ -3,7 +3,7 @@ import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
 import { Coordinate } from '../../data/dataTypes'
-// import { createStyle } from './style'
+import { mapFillStyle, mapOpacityStyle } from './style'
 import { Domain } from '../../containers/victoryTypes'
 
 interface Props {
@@ -15,26 +15,21 @@ const domain: Domain = {
   y: [0, 100]
 }
 
-const ScatterChart: React.FC<Props> = ({ data }) => {
-
-  const mapFillStyle = (coordinate: Coordinate): string =>
-    coordinate.y % 2 === 0 ? 'black' : 'tomato'
-  
-  return ( 
-    <ZoomContainer domain={domain}>
-      <VictoryScatter
-        data={data}
-        size={7}
-        style={{
-          data: {
-            fill: data => mapFillStyle(data.datum)
-          }
-        }}
-        x='x'
-        y='y'
-      />        
-    </ZoomContainer>
-  )
-}
+const ScatterChart: React.FC<Props> = ({ data }) => ( 
+  <ZoomContainer domain={domain}>
+    <VictoryScatter
+      data={data}
+      size={7}
+      style={{
+        data: {
+          fill: data => mapFillStyle(data.datum),
+          opacity: data => mapOpacityStyle(data.datum)
+        }
+      }}
+      x='x'
+      y='y'
+    />        
+  </ZoomContainer>
+)
 
 export default ScatterChart
