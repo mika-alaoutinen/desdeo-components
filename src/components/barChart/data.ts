@@ -28,3 +28,17 @@ export const barData: TestData[] = [
     ]
   },
 ]
+
+export interface EventTestData {
+  x: number,
+  y: number,
+  label: string
+}
+
+export const eventData: EventTestData[] = [
+  { x: 1, y: 2, label: 'A' },
+  { x: 2, y: 4, label: 'B' },
+  { x: 3, y: 7, label: 'C' },
+  { x: 4, y: 3, label: 'D' },
+  { x: 5, y: 5, label: 'E' },
+]
