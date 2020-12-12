@@ -15,16 +15,8 @@ const domain: Domain = {
   y: [0, 100]
 }
 
-const zoomDomain: Domain = {
-  x: [0, 100],
-  y: [0, 100]
-}
-
 const ScatterChart: React.FC<Props> = ({ data }) => (
-  <ZoomContainer
-    domain={domain}
-    zoomDomain={zoomDomain}
-  >
+  <ZoomContainer domain={domain}>
     <VictoryScatter
       data={data}
       size={7}

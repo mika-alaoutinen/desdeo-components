@@ -5,9 +5,14 @@ import ScatterChart from './components/scatter/ScatterChart'
 import { barData } from './components/barChart/data'
 import { scatterData } from './components/scatter/data'
 
+const style = {
+  height: '50%',
+  width: '50%'
+}
+
 const App: React.FC = () => {
   return (
-    <div className='App'>
+    <div className='App' style={style}>
       <ScatterChart
         data={scatterData}
       />

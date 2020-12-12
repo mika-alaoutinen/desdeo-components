@@ -6,7 +6,7 @@ import { Domain } from './types'
 
 interface Props {
   domain: Domain,
-  zoomDomain: Domain
+  zoomDomain?: Domain
 }
 
 const ZoomContainer: React.FC<Props> = ({ domain, zoomDomain, ...props }) => {
