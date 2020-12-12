@@ -4,20 +4,20 @@ import { VictoryZoomContainer } from 'victory'
 import ChartContainer from './ChartContainer'
 import { Domain } from './types'
 
-const domain: Domain = {
-  x: [0, 10],
-  y: [0, 10]
+interface Props {
+  domain: Domain
 }
 
-const ZoomContainer: React.FC<Domain> = ({ x, y }) => {
+const ZoomContainer: React.FC<Props> = ({ domain, ...props }) => {
 
   const zoomComponent = (): JSX.Element =>
     <VictoryZoomContainer
-      zoomDomain={{ x, y }}
+      zoomDomain={domain}
     />
 
   return (
     <ChartContainer
+      { ...props }
       component={zoomComponent()}
       domain={domain}
     >

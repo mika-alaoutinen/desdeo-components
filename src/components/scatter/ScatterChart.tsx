@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryScatter } from 'victory'
 
-import ChartContainer from '../../containers/ChartContainer'
+import ZoomContainer from '../../containers/ZoomContainer'
 import { TestData } from './data'
 import { style } from './style'
 import { Domain } from '../../containers/types'
@@ -16,9 +16,7 @@ const domain: Domain = {
 }
 
 const ScatterChart: React.FC<Props> = ({ data }) => (
-  <ChartContainer
-    domain={domain}
-  >
+  <ZoomContainer domain={domain}>
     <VictoryScatter
       data={data}
       size={7}
@@ -26,7 +24,7 @@ const ScatterChart: React.FC<Props> = ({ data }) => (
       x='x'
       y='y'
     />        
-  </ChartContainer>
+  </ZoomContainer>
 )
 
 export default ScatterChart
