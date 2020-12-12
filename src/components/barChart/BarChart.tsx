@@ -3,8 +3,13 @@ import {
   VictoryAxis, VictoryBar, VictoryChart, VictoryStack, VictoryTheme
 } from 'victory'
 
-import { Props } from './types'
+import { TestData } from './data'
 import { createTickValues } from './utils'
+
+interface Props {
+  data: TestData[],
+  onClick?: () => void
+}
 
 const BarChart: React.FC<Props> = ({ data, onClick }) => {
 

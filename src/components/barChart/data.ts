@@ -1,6 +1,14 @@
-import { TestData } from './types'
+export interface TestData {
+  year: number,
+  data: DataRow[]
+}
 
-export const data: TestData[] = [
+interface DataRow {
+  quarter: number,
+  earnings: number
+}
+
+export const barData: TestData[] = [
   {
     year: 2019,
     data: [

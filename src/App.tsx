@@ -1,18 +1,28 @@
 import React from 'react'
 
 import BarChart from './components/barChart/BarChart'
-import { data } from './components/barChart/data'
+import ScatterChart from './components/scatter/ScatterChart'
+import { barData } from './components/barChart/data'
+import { scatterData } from './components/scatter/data'
+
+const style = {
+  height: '50%',
+  width: '50%'
+}
 
 const App: React.FC = () => {
-  
-  const onClick = () => {
-    console.log(data)
-  }
-  
-  return <BarChart
-    data={data}
-    onClick={onClick}
-  />
+  return (
+    <div className='App' style={style}>
+      <ScatterChart
+        data={scatterData}
+      />
+      
+      <BarChart
+        data={barData}
+        onClick={() => console.log('bar chart data', barData)}
+      />
+    </div>
+  )
 }
 
 export default App
