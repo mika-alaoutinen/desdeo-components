@@ -15,11 +15,15 @@ interface Mutation {
 
 const EventfulBarChart: React.FC<Props> = ({ data }) => {
   
-  const clickHandler = (): Mutation[] => [{
+  const onClick = (): Mutation[] => [{
     target: 'data',
-    mutation: (props: BarProps) => console.log('datum', props.datum)
+    mutation: ({ datum }) => handleClick(datum)
   }]
   
+  const handleClick = ({ x, y, label }: EventTestData): void => {
+    console.log('x', x, 'y', y, 'label', label)
+  }
+
   return (
     <ChartContainer>
       <VictoryBar
@@ -28,14 +32,12 @@ const EventfulBarChart: React.FC<Props> = ({ data }) => {
           {
             target: 'data',
             eventHandlers: {
-              onClick: () => {
-                return clickHandler()
+              onClick
                 // return [{
                 //   target: 'data',
                 //   mutation: (props: BarProps) => console.log('data', props.datum)
                   // mutation: (props) => props.text === 'clicked' ? null : { text: 'clicked' }
                 // }]
-              }
             }
           }
         ]}
