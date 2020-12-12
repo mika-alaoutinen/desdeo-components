@@ -1,8 +1,7 @@
 import React from 'react'
-import {
-  VictoryAxis, VictoryBar, VictoryChart, VictoryStack, VictoryTheme
-} from 'victory'
+import { VictoryAxis, VictoryBar, VictoryStack } from 'victory'
 
+import ChartContainer from '../../containers/ChartContainer'
 import { TestData } from './data'
 import { createTickValues } from './utils'
 
@@ -25,10 +24,7 @@ const BarChart: React.FC<Props> = ({ data, onClick }) => {
 
   return (
     <div>
-      <VictoryChart
-        domainPadding={20}
-        theme={VictoryTheme.material}
-      >
+      <ChartContainer>
         <VictoryAxis
           tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
           tickValues={createTickValues(data)}
@@ -41,7 +37,7 @@ const BarChart: React.FC<Props> = ({ data, onClick }) => {
         <VictoryStack>
           {mapBarCharts()}
         </VictoryStack>
-      </VictoryChart>
+      </ChartContainer>
 
       <p>
         <button onClick={onClick}>Update</button>

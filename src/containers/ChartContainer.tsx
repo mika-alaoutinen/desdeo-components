@@ -5,7 +5,7 @@ import { Domain } from './victoryTypes'
 
 interface Props {
   component?: React.ReactElement,
-  domain: Domain
+  domain?: Domain
 }
 
 const ChartContainer: React.FC<Props> = ({ component, domain, ...props }) => (
