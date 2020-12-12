@@ -11,12 +11,20 @@ interface Props {
 }
 
 const domain: Domain = {
-  x: [0, 10],
-  y: [0, 10]
+  x: [0, 100],
+  y: [0, 100]
+}
+
+const zoomDomain: Domain = {
+  x: [0, 100],
+  y: [0, 100]
 }
 
 const ScatterChart: React.FC<Props> = ({ data }) => (
-  <ZoomContainer domain={domain}>
+  <ZoomContainer
+    domain={domain}
+    zoomDomain={zoomDomain}
+  >
     <VictoryScatter
       data={data}
       size={7}

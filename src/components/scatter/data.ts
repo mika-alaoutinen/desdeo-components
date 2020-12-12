@@ -4,9 +4,9 @@ export interface TestData {
 }
 
 export const scatterData: TestData[] = [
-  { x: 1, y: 2 },
-  { x: 2, y: 3 },
-  { x: 3, y: 5 },
-  { x: 4, y: 4 },
-  { x: 5, y: 7 },
+  { x: 10, y: 20 },
+  { x: 20, y: 30 },
+  { x: 30, y: 50 },
+  { x: 40, y: 40 },
+  { x: 50, y: 70 },
 ]
