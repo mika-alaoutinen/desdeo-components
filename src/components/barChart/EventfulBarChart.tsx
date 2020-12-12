@@ -2,10 +2,12 @@ import React from 'react'
 import { BarProps, VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
+import { defaultClickHandler } from '../../events/BarChartEvents'
 import { EventTestData } from './data'
 
 interface Props {
-  data: EventTestData[]
+  data: EventTestData[],
+  clickHandler?: (event: EventTestData) => void
 }
 
 interface Mutation {
@@ -13,17 +15,15 @@ interface Mutation {
   mutation: (props: BarProps) => void
 }
 
-const EventfulBarChart: React.FC<Props> = ({ data }) => {
-  
+const EventfulBarChart: React.FC<Props> = ({ data, clickHandler }) => {
+
   const onClick = (): Mutation[] => [{
     target: 'data',
-    mutation: ({ datum }) => handleClick(datum)
+    mutation: ({ datum }) => clickHandler
+      ? clickHandler(datum)
+      : defaultClickHandler(datum)
   }]
   
-  const handleClick = ({ x, y, label }: EventTestData): void => {
-    console.log('x', x, 'y', y, 'label', label)
-  }
-
   return (
     <ChartContainer>
       <VictoryBar
@@ -31,14 +31,7 @@ const EventfulBarChart: React.FC<Props> = ({ data }) => {
         events={[
           {
             target: 'data',
-            eventHandlers: {
-              onClick
-                // return [{
-                //   target: 'data',
-                //   mutation: (props: BarProps) => console.log('data', props.datum)
-                  // mutation: (props) => props.text === 'clicked' ? null : { text: 'clicked' }
-                // }]
-            }
+            eventHandlers: { onClick }
           }
         ]}
       />
