@@ -1,8 +1,8 @@
 import React from 'react'
 
 import BarChart from './components/barChart/BarChart'
-import EventfulBarChart from './components/barChart/EventfulBarChart'
 import ScatterChart from './components/scatter/ScatterChart'
+import StackedBarChart from './components/barChart/StackedBarChart'
 import { barData, eventData, EventTestData } from './components/barChart/data'
 import { scatterData } from './components/scatter/data'
 
@@ -14,14 +14,14 @@ const style = {
 const App: React.FC = () => {
   return (
     <div className='App' style={style}>
-      <EventfulBarChart
+      <BarChart
         data={eventData}
         onClick={( { x, y }: EventTestData) => console.log('x', x, 'y', y) }
       />
 
       <ScatterChart data={scatterData} />
       
-      <BarChart
+      <StackedBarChart
         data={barData}
         onClick={() => console.log('bar chart data', barData)}
       />
