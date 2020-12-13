@@ -1,12 +1,8 @@
-import { BarProps } from 'victory'
+import { BarPropsExt } from '../victoryTypes/extendedTypes'
 
-import { EventTestData } from '../components/barChart/data'
+const highlightColor = 'tomato'
 
-export interface Mutation {
-  target?: 'data' | 'labels' | 'parent',
-  mutation: (props: BarProps) => void
-}
-
-export const defaultClickHandler = ({ x, y, label }: EventTestData): void => {
-  console.log('x', x, 'y', y, 'label', label)
-}
+export const changeDatumColor = (props: BarPropsExt): BarPropsExt | null =>
+  props.style.fill === highlightColor
+    ? null
+    : { style: { fill: highlightColor } }

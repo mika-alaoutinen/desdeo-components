@@ -3,6 +3,7 @@ import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { BarPropsExt } from '../../victoryTypes/extendedTypes'
+import { changeDatumColor } from '../../events/BarChartEvents'
 import { EventTestData } from './data'
 
 interface Props {
@@ -14,10 +15,7 @@ const EventfulBarChart: React.FC<Props> = ({ data, onClick }) => {
   
   const clickHandler = (props: BarPropsExt) => {
     onClick(props.datum)
-    
-    return props.style.fill === 'tomato'
-      ? null
-      : { style: { fill: 'tomato' } }
+    return changeDatumColor(props)
   }
   
   return (
