@@ -1,37 +1,23 @@
 import React from 'react'
-import { VictoryBar } from 'victory'
+import { BarProps, VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { defaultClickHandler } from '../../events/BarChartEvents'
 import { EventTestData } from './data'
-import { Mutation } from '../../events/BarChartEvents'
 
 interface Props {
   data: EventTestData[],
-  clickHandler?: (event: EventTestData) => void
+  onClick: (event: EventTestData) => void
 }
 
-const EventfulBarChart: React.FC<Props> = ({ data, clickHandler }) => {
-
-  const onClick = (): Mutation[] => {
-    const external = onClickExternal()
-    return external
-      ? [onClickDefault(), external]
-      : [onClickDefault()]
-  }
-
-  const onClickDefault = (): Mutation => ({
-    target: 'data',
-    mutation: ({ datum }) => defaultClickHandler(datum)
-  })
-
-  const onClickExternal = (): Mutation | void => {
-    if (clickHandler) {
-      return {
-        target: 'data',
-        mutation: ({ datum }) => clickHandler(datum)
-      }
-    }
+const EventfulBarChart: React.FC<Props> = ({ data, onClick }) => {
+  
+  const clickHandler = (props: BarProps) => {
+    onClick(props.datum)
+    
+    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+    return props.style.fill === 'tomato'
+      ? null
+      : { style: { fill: 'tomato' } }
   }
   
   return (
@@ -41,8 +27,12 @@ const EventfulBarChart: React.FC<Props> = ({ data, clickHandler }) => {
         events={[
           {
             target: 'data',
-            eventHandlers: { onClick }
-          }
+            eventHandlers: {
+              onClick: () => [{
+                mutation: (props: BarProps) => clickHandler(props)
+              }]
+            }
+          },
         ]}
       />
     </ChartContainer>

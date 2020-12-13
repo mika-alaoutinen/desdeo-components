@@ -16,7 +16,7 @@ const App: React.FC = () => {
     <div className='App' style={style}>
       <EventfulBarChart
         data={eventData}
-        clickHandler={( { x, y }: EventTestData) => console.log('x', x, 'y', y) }
+        onClick={( { x, y }: EventTestData) => console.log('x', x, 'y', y) }
       />
 
       <ScatterChart data={scatterData} />
