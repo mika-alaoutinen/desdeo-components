@@ -1,7 +1,8 @@
 import React from 'react'
-import { BarProps, VictoryBar } from 'victory'
+import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
+import { BarPropsExt } from '../../victoryTypes/extendedTypes'
 import { EventTestData } from './data'
 
 interface Props {
@@ -11,10 +12,9 @@ interface Props {
 
 const EventfulBarChart: React.FC<Props> = ({ data, onClick }) => {
   
-  const clickHandler = (props: BarProps) => {
+  const clickHandler = (props: BarPropsExt) => {
     onClick(props.datum)
     
-    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     return props.style.fill === 'tomato'
       ? null
       : { style: { fill: 'tomato' } }
@@ -29,7 +29,7 @@ const EventfulBarChart: React.FC<Props> = ({ data, onClick }) => {
             target: 'data',
             eventHandlers: {
               onClick: () => [{
-                mutation: (props: BarProps) => clickHandler(props)
+                mutation: (props: BarPropsExt) => clickHandler(props)
               }]
             }
           },

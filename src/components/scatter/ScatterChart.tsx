@@ -3,8 +3,8 @@ import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
 import { Coordinate } from '../../data/dataTypes'
+import { Domain } from '../../victoryTypes/containerTypes'
 import { mapFillStyle, mapOpacityStyle } from './style'
-import { Domain } from '../../containers/victoryTypes'
 
 interface Props {
   data: Coordinate[]
