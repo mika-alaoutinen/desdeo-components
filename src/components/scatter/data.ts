@@ -1,4 +1,4 @@
-import { Coordinate } from '../../data/dataTypes'
+import { Coordinate } from '../../types/dataTypes'
 
 export const scatterData: Coordinate[] = [
   { x: 10, y: 20 },

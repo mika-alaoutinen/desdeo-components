@@ -13,3 +13,4 @@ const getMaxLengthOfData = (data: TestData[]): number => {
 
   return Math.max.apply(0, lengthsOfData)
 }
+

@@ -1,3 +1,5 @@
+import { Datum } from '../../types/dataTypes'
+
 export interface TestData {
   year: number,
   data: DataRow[]
@@ -29,13 +31,7 @@ export const barData: TestData[] = [
   },
 ]
 
-export interface EventTestData {
-  x: number,
-  y: number,
-  label: string
-}
-
-export const eventData: EventTestData[] = [
+export const eventData: Datum[] = [
   { x: 1, y: 2, label: 'A' },
   { x: 2, y: 4, label: 'B' },
   { x: 3, y: 7, label: 'C' },

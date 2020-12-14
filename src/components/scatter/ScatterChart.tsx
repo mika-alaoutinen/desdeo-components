@@ -2,8 +2,8 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
-import { Coordinate } from '../../data/dataTypes'
-import { Domain } from '../../victoryTypes/containerTypes'
+import { Coordinate } from '../../types/dataTypes'
+import { Domain } from '../../types/containerTypes'
 import { mapFillStyle, mapOpacityStyle } from './style'
 
 interface Props {

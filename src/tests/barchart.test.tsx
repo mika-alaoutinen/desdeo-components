@@ -1,7 +1,7 @@
-import BarChart from '../components/barChart/BarChart'
+import StackedBarChart from '../components/barChart/StackedBarChart'
 
 describe('BarChart component', () => {
   it('is truthy', () => {
-    expect(BarChart).toBeTruthy()
+    expect(StackedBarChart).toBeTruthy()
   })
 })

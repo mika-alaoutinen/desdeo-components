@@ -1,8 +1,32 @@
-import { BarPropsExt } from '../victoryTypes/extendedTypes'
+import { Datum } from '../types/dataTypes'
+import { BarPropsExt } from '../types/extendedTypes'
 
-const highlightColor = 'tomato'
+const HIGHLIGH_COLOR = 'tomato'
 
 export const changeDatumColor = (props: BarPropsExt): BarPropsExt | null =>
-  props.style.fill === highlightColor
+  props.style.fill === HIGHLIGH_COLOR
     ? null
-    : { style: { fill: highlightColor } }
+    : modifyStyle(props)
+
+export const updateSelected = (props: BarPropsExt): BarPropsExt => ({
+  ...props,
+  datum: setIsSelected(props.datum)
+})
+
+const modifyStyle = (props: BarPropsExt): BarPropsExt => ({
+  ...props,
+  style: {
+    fill: HIGHLIGH_COLOR
+  }
+})
+
+const setIsSelected = (datum: Datum): Datum =>
+  datum.isSelected === undefined
+    ? {
+      ...datum,
+      isSelected: true
+    }
+    : {
+      ...datum,
+      isSelected: !datum.isSelected
+    }
