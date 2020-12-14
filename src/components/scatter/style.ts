@@ -1,4 +1,4 @@
-import { Coordinate } from '../../data/dataTypes'
+import { Coordinate } from '../../victoryTypes/dataTypes'
 
 // Examples for how to style individual data points in a chart
 export const mapFillStyle = (coordinate: Coordinate): string =>
