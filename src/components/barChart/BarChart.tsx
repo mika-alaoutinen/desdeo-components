@@ -5,6 +5,7 @@ import ChartContainer from '../../containers/ChartContainer'
 import { BarPropsExt } from '../../types/extendedTypes'
 import { changeDatumColor } from '../../events/BarChartEvents'
 import { Datum } from '../../types/dataTypes'
+import { updateSelected } from './utils'
 
 interface Props {
   data: Datum[],
@@ -14,28 +15,11 @@ interface Props {
 const BarChart: React.FC<Props> = ({ data, onClick }) => {
   
   const clickHandler = (props: BarPropsExt) => {
-    const editedProps = createProps(props)
+    const editedProps = updateSelected(props)
     if (onClick) {
       onClick(editedProps.datum)
     }
     return changeDatumColor(editedProps)
-  }
-
-  const createProps = (props: BarPropsExt): BarPropsExt => ({
-    ...props,
-    datum: setIsSelected(props.datum)
-  })
-
-  const setIsSelected = (datum: Datum): Datum => {
-    return datum.isSelected === undefined
-      ? {
-        ...datum,
-        isSelected: true
-      }
-      : {
-        ...datum,
-        isSelected: !datum.isSelected
-      }
   }
   
   return (
