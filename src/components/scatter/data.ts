@@ -1,4 +1,4 @@
-import { Coordinate } from '../../victoryTypes/dataTypes'
+import { Coordinate } from '../../types/dataTypes'
 
 export const scatterData: Coordinate[] = [
   { x: 10, y: 20 },

@@ -1,4 +1,4 @@
-import { BarPropsExt } from '../victoryTypes/extendedTypes'
+import { BarPropsExt } from '../types/extendedTypes'
 
 const highlightColor = 'tomato'
 

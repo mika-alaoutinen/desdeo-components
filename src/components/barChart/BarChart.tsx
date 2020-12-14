@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { BarPropsExt } from '../../victoryTypes/extendedTypes'
+import { BarPropsExt } from '../../types/extendedTypes'
 import { changeDatumColor } from '../../events/BarChartEvents'
 import { EventTestData } from './data'
 
