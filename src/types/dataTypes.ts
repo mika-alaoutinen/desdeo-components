@@ -1,5 +1,10 @@
 // Add interfaces for different optimization methods here.
 
+export interface Datum extends Coordinate {
+  label?: string,
+  isSelected?: boolean
+}
+
 export interface Coordinate {
   x: number,
   y: number
