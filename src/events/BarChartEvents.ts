@@ -1,8 +1,15 @@
 import { BarPropsExt } from '../types/extendedTypes'
 
-const highlightColor = 'tomato'
+const HIGHLIGH_COLOR = 'tomato'
 
 export const changeDatumColor = (props: BarPropsExt): BarPropsExt | null =>
-  props.style.fill === highlightColor
+  props.style.fill === HIGHLIGH_COLOR
     ? null
-    : { style: { fill: highlightColor } }
+    : modifyStyle(props)
+
+const modifyStyle = (props: BarPropsExt): BarPropsExt => ({
+  ...props,
+  style: {
+    fill: HIGHLIGH_COLOR
+  }
+})

@@ -4,20 +4,36 @@ import { VictoryBar } from 'victory'
 import ChartContainer from '../../containers/ChartContainer'
 import { BarPropsExt } from '../../types/extendedTypes'
 import { changeDatumColor } from '../../events/BarChartEvents'
-import { EventTestData } from './data'
+import { Datum } from '../../types/dataTypes'
 
 interface Props {
-  data: EventTestData[],
-  onClick?: (event: EventTestData) => void
+  data: Datum[],
+  onClick?: (event: Datum) => void
 }
 
 const BarChart: React.FC<Props> = ({ data, onClick }) => {
   
   const clickHandler = (props: BarPropsExt) => {
+    console.log('props', props)
+    
     if (onClick) {
-      onClick(props.datum)
+      const datum = setIsSelected(props.datum)
+      props.datum = datum
+      onClick(datum)
     }
     return changeDatumColor(props)
+  }
+
+  const setIsSelected = (datum: Datum): Datum => {
+    return datum.isSelected === undefined
+      ? {
+        ...datum,
+        isSelected: true
+      }
+      : {
+        ...datum,
+        isSelected: !datum.isSelected
+      }
   }
   
   return (
