@@ -14,15 +14,17 @@ interface Props {
 const BarChart: React.FC<Props> = ({ data, onClick }) => {
   
   const clickHandler = (props: BarPropsExt) => {
-    console.log('props', props)
-    
+    const editedProps = createProps(props)
     if (onClick) {
-      const datum = setIsSelected(props.datum)
-      props.datum = datum
-      onClick(datum)
+      onClick(editedProps.datum)
     }
-    return changeDatumColor(props)
+    return changeDatumColor(editedProps)
   }
+
+  const createProps = (props: BarPropsExt): BarPropsExt => ({
+    ...props,
+    datum: setIsSelected(props.datum)
+  })
 
   const setIsSelected = (datum: Datum): Datum => {
     return datum.isSelected === undefined
