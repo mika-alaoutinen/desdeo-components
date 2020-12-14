@@ -3,9 +3,8 @@ import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { BarPropsExt } from '../../types/extendedTypes'
-import { changeDatumColor } from '../../events/BarChartEvents'
+import { changeDatumColor, updateSelected } from '../../events/BarChartEvents'
 import { Datum } from '../../types/dataTypes'
-import { updateSelected } from './utils'
 
 interface Props {
   data: Datum[],
