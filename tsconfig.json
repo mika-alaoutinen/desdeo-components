@@ -29,7 +29,10 @@
     "rollup.config.js"
   ],
   "exclude": [
+    "build",
     "node_modules",
-    "build"
+    "src/App.tsx",
+    "src/index.tsx",
+    "src/tests",
   ]
 }
