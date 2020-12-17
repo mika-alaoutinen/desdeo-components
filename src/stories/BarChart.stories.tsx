@@ -7,8 +7,8 @@ import { printData } from './utils'
 
 const Template: Story<Props> = (args) => <BarChart { ...args } />
 
-export const PrimaryBarChart = Template.bind({})
-PrimaryBarChart.args = {
+export const BarChartComponent = Template.bind({})
+BarChartComponent.args = {
   data,
   onClick: (printData)
 }
