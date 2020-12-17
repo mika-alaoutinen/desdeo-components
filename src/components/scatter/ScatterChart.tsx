@@ -4,7 +4,7 @@ import { VictoryScatter } from 'victory'
 import ZoomContainer from '../../containers/ZoomContainer'
 import { Datum } from '../../types/dataTypes'
 import { Domain } from '../../types/containerTypes'
-import { mapFillStyle, mapOpacityStyle } from './style'
+import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
 
 interface Props {
   data: Datum[]

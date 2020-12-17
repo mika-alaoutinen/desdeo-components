@@ -4,6 +4,7 @@ import { VictoryBar } from 'victory'
 import ChartContainer from '../../containers/ChartContainer'
 import { BarPropsExt } from '../../types/extendedTypes'
 import { changeDatumColor, updateSelected } from '../../events/BarChartEvents'
+import { mapFillStyle } from '../../styles/style'
 import { Datum } from '../../types/dataTypes'
 
 interface Props {
@@ -35,6 +36,11 @@ const BarChart: React.FC<Props> = ({ data, onClick }) => {
             }
           },
         ]}
+        style={{
+          data: {
+            fill: data => mapFillStyle(data.datum)
+          }
+        }}
       />
     </ChartContainer>
   )
