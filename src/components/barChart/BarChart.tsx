@@ -7,7 +7,7 @@ import { updateSelected } from '../../events/BarChartEvents'
 import { mapFillStyle } from '../../styles/style'
 import { Datum } from '../../types/dataTypes'
 
-interface Props {
+export interface Props {
   data: Datum[],
   onClick?: (event: Datum) => void
 }
