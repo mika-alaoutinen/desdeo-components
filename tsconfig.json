@@ -25,7 +25,9 @@
     "strict": true
   },
   "include": [
-    "src",
+    "src/components",
+    "src/containers",
+    "src/events",
     "rollup.config.js"
   ],
   "exclude": [
