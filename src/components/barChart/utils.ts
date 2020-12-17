@@ -1,4 +1,4 @@
-import { TestData } from './data'
+import { TestData } from '../../data'
 
 export const createTickValues = (data: TestData[]): number[] => {
   const maxLength = getMaxLengthOfData(data)

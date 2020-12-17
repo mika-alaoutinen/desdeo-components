@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { TestData } from './data'
+import { TestData } from '../../data'
 import { createTickValues } from './utils'
 
 interface Props {

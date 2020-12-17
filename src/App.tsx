@@ -3,8 +3,7 @@ import React from 'react'
 import BarChart from './components/barChart/BarChart'
 import ScatterChart from './components/scatter/ScatterChart'
 import StackedBarChart from './components/barChart/StackedBarChart'
-import { barData, eventData } from './components/barChart/data'
-import { scatterData } from './components/scatter/data'
+import { barData, data } from './data'
 import { Datum } from './types/dataTypes'
 
 const style = {
@@ -16,11 +15,11 @@ const App: React.FC = () => {
   return (
     <div className='App' style={style}>
       <BarChart
-        data={eventData}
+        data={data}
         onClick={( { x, y, isSelected }: Datum) => console.log('x', x, 'y', y, 'isSelected', isSelected) }
       />
 
-      <ScatterChart data={scatterData} />
+      <ScatterChart data={data} />
       
       <StackedBarChart
         data={barData}
