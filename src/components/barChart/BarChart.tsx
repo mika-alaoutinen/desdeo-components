@@ -3,7 +3,7 @@ import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { BarPropsExt } from '../../types/extendedTypes'
-import { changeDatumColor, updateSelected } from '../../events/BarChartEvents'
+import { updateSelected } from '../../events/BarChartEvents'
 import { mapFillStyle } from '../../styles/style'
 import { Datum } from '../../types/dataTypes'
 
@@ -14,12 +14,12 @@ interface Props {
 
 const BarChart: React.FC<Props> = ({ data, onClick }) => {
   
-  const clickHandler = (props: BarPropsExt) => {
+  const clickHandler = (props: BarPropsExt): BarPropsExt => {
     const editedProps = updateSelected(props)
     if (onClick) {
       onClick(editedProps.datum)
     }
-    return changeDatumColor(editedProps)
+    return editedProps
   }
   
   return (
