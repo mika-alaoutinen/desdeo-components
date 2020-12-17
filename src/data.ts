@@ -1,4 +1,4 @@
-import { Datum } from '../../types/dataTypes'
+import { Datum } from './types/dataTypes'
 
 export interface TestData {
   year: number,
@@ -31,10 +31,10 @@ export const barData: TestData[] = [
   },
 ]
 
-export const eventData: Datum[] = [
-  { x: 1, y: 2, label: 'A' },
-  { x: 2, y: 4, label: 'B' },
-  { x: 3, y: 7, label: 'C' },
-  { x: 4, y: 3, label: 'D' },
-  { x: 5, y: 5, label: 'E' },
+export const data: Datum[] = [
+  { x: 10, y: 20, label: 'A', isSelected: true },
+  { x: 20, y: 40, label: 'B' },
+  { x: 30, y: 70, label: 'C' },
+  { x: 40, y: 30, label: 'D', isSelected: true },
+  { x: 50, y: 50, label: 'E' },
 ]
