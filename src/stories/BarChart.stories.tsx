@@ -13,6 +13,6 @@ PrimaryBarChart.args = {
 }
 
 export default {
-  title: 'Bar chart',
+  title: 'DESDEO/Bar chart',
   component: BarChart
 } as Meta
