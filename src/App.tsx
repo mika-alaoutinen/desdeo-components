@@ -12,11 +12,16 @@ const style = {
 }
 
 const App: React.FC = () => {
+
+  const printData = ({ x, y, isSelected }: Datum) => {
+    console.log('x', x, 'y', y, 'isSelected', isSelected)
+  }
+
   return (
     <div className='App' style={style}>
       <BarChart
         data={data}
-        onClick={( { x, y, isSelected }: Datum) => console.log('x', x, 'y', y, 'isSelected', isSelected) }
+        onClick={printData}
       />
 
       <ScatterChart data={data} />
