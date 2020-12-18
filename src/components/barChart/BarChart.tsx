@@ -2,17 +2,12 @@ import React from 'react'
 import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { BarPropsExt } from '../../types/extendedTypes'
 import { updateSelected } from '../../events/BarChartEvents'
 import { mapFillStyle } from '../../styles/style'
-import { Datum } from '../../types/dataTypes'
+import { DataProps } from '../../types/dataTypes'
+import { BarPropsExt } from '../../types/extendedTypes'
 
-export interface Props {
-  data: Datum[],
-  onClick?: (event: Datum) => void
-}
-
-const BarChart: React.FC<Props> = ({ data, onClick }) => {
+const BarChart: React.FC<DataProps> = ({ data, onClick }) => {
   
   const clickHandler = (props: BarPropsExt): BarPropsExt => {
     const editedProps = updateSelected(props)

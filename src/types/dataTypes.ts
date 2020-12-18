@@ -1,5 +1,10 @@
 // Add interfaces for different optimization methods here.
 
+export interface DataProps {
+  data: Datum[],
+  onClick?: (event: Datum) => void
+}
+
 export interface Datum extends Coordinate {
   label?: string,
   isSelected?: boolean
