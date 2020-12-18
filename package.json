@@ -36,7 +36,7 @@
     "@types/react-dom": "^16.9.10",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "8.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -50,12 +50,10 @@
     "react-dom": "^17.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "rimraf build && rollup -c",
-    "eject": "react-scripts eject",
+    "lint": "eslint --ext ts,tsx . --fix",
     "test": "npm run test:unit",
     "test:unit": "react-scripts test",
-    "lint": "eslint --ext ts,tsx . --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
