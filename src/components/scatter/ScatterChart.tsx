@@ -2,20 +2,16 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
-import { Datum } from '../../types/dataTypes'
 import { Domain } from '../../types/containerTypes'
+import { DataProps } from '../../types/dataTypes'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
-
-interface Props {
-  data: Datum[]
-}
 
 const domain: Domain = {
   x: [0, 100],
   y: [0, 100]
 }
 
-const ScatterChart: React.FC<Props> = ({ data }) => ( 
+const ScatterChart: React.FC<DataProps> = ({ data }) => ( 
   <ZoomContainer domain={domain}>
     <VictoryScatter
       data={data}
