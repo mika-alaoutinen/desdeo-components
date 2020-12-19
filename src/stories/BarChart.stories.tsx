@@ -6,12 +6,12 @@ import { data } from '../data'
 import { DataProps } from '../types/dataTypes'
 import { printData } from './storyUtils'
 
-const Template: Story<DataProps> = (args) => <BarChart { ...args } />
+const Template: Story<DataProps> = args => <BarChart { ...args } />
 
 export const BarChartComponent = Template.bind({})
 BarChartComponent.args = {
   data,
-  onClick: (printData)
+  onClick: printData
 }
 
 export default {
