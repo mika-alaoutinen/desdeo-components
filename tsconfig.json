@@ -24,15 +24,12 @@
     "sourceMap": true,
     "strict": true
   },
-  "include": [
-    "src",
-    "rollup.config.js"
-  ],
+  "include": [ "src" ],
   "exclude": [
     "build",
     "node_modules",
-    "src/App.tsx",
-    "src/index.tsx",
+    "src/stories",
+    "src/style",
     "src/tests",
   ]
 }

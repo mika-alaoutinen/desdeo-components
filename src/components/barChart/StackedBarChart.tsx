@@ -5,7 +5,8 @@ import ChartContainer from '../../containers/ChartContainer'
 import { TestData } from '../../data'
 import { createTickValues } from './utils'
 
-interface Props {
+// TODO: probably want to use the same test data for all components
+export interface Props {
   data: TestData[],
   onClick?: () => void
 }
