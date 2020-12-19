@@ -8,14 +8,21 @@ interface Props {
   domain?: Domain
 }
 
+const style = {
+  height: '50%',
+  width: '50%',
+}
+
 const ChartContainer: React.FC<Props> = ({ component, domain, ...props }) => (
-  <VictoryChart
-    { ...props }
-    containerComponent={component}
-    domain={domain}
-    domainPadding={20}
-    theme={VictoryTheme.material}
-  />
+  <div className='VictoryChartWrapper' style={style}>
+    <VictoryChart
+      { ...props }
+      containerComponent={component}
+      domain={domain}
+      domainPadding={20}
+      theme={VictoryTheme.material}
+    />
+  </div>
 )
 
 export default ChartContainer
