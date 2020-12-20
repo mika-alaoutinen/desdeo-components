@@ -1,5 +1,5 @@
 import { Datum } from '../types/dataTypes'
-import { BarPropsExt } from '../types/extendedTypes'
+import { BarPropsExt, DatumProps } from '../types/extendedTypes'
 
 const HIGHLIGH_COLOR = 'tomato'
 
@@ -9,7 +9,7 @@ export const changeDatumColor = (props: BarPropsExt): BarPropsExt | null =>
     ? null
     : modifyStyle(props)
 
-export const updateSelected = (props: BarPropsExt): BarPropsExt => ({
+export const updateSelected = (props: DatumProps): DatumProps => ({
   ...props,
   datum: setIsSelected(props.datum)
 })

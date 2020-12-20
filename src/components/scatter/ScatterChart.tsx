@@ -3,11 +3,10 @@ import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
 import { Domain } from '../../types/containerTypes'
-import { DataProps } from '../../types/dataTypes'
-import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
-
-import { BarPropsExt } from '../../types/extendedTypes'
 import { updateSelected } from '../../events/BarChartEvents'
+import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
+import { DataProps } from '../../types/dataTypes'
+import { DatumProps } from '../../types/extendedTypes'
 
 const domain: Domain = {
   x: [0, 100],
@@ -15,7 +14,7 @@ const domain: Domain = {
 }
 
 const ScatterChart: React.FC<DataProps> = ({ data, onClick }) => {
-  const clickHandler = (props: BarPropsExt): BarPropsExt => {
+  const clickHandler = (props: DatumProps): DatumProps => {
     const editedProps = updateSelected(props)
     if (onClick) {
       onClick(editedProps.datum)
@@ -32,7 +31,7 @@ const ScatterChart: React.FC<DataProps> = ({ data, onClick }) => {
             target: 'data',
             eventHandlers: {
               onClick: () => [{
-                mutation: (props: BarPropsExt) => clickHandler(props)
+                mutation: (props: DatumProps) => clickHandler(props)
               }]
             }
           }
