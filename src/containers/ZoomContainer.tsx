@@ -21,8 +21,7 @@ const ZoomContainer: React.FC<Props> = ({ domain, zoomDomain, ...props }) => {
       { ...props }
       component={zoomComponent()}
       domain={domain}
-    >
-    </ChartContainer>
+    />
   )
 }
 

@@ -2,14 +2,14 @@ import React from 'react'
 import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { updateSelected } from '../../events/BarChartEvents'
+import { updateSelected } from '../../events/onClick'
 import { mapFillStyle } from '../../styles/style'
 import { DataProps } from '../../types/dataTypes'
-import { BarPropsExt } from '../../types/extendedTypes'
+import { DatumProps } from '../../types/extendedTypes'
 
 const BarChart: React.FC<DataProps> = ({ data, onClick }) => {
   
-  const clickHandler = (props: BarPropsExt): BarPropsExt => {
+  const clickHandler = (props: DatumProps): DatumProps => {
     const editedProps = updateSelected(props)
     if (onClick) {
       onClick(editedProps.datum)
@@ -26,7 +26,7 @@ const BarChart: React.FC<DataProps> = ({ data, onClick }) => {
             target: 'data',
             eventHandlers: {
               onClick: () => [{
-                mutation: (props: BarPropsExt) => clickHandler(props)
+                mutation: (props: DatumProps) => clickHandler(props)
               }]
             }
           },
