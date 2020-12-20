@@ -5,6 +5,10 @@ export interface DataProps {
   onClick?: (event: Datum) => void
 }
 
+export interface DatumProps {
+  datum: Datum
+}
+
 export interface Datum extends Coordinate {
   label?: string,
   isSelected?: boolean

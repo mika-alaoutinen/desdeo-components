@@ -5,8 +5,7 @@ import ZoomContainer from '../../containers/ZoomContainer'
 import { Domain } from '../../types/containerTypes'
 import { updateSelected } from '../../events/onClick'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
-import { DataProps } from '../../types/dataTypes'
-import { DatumProps } from '../../types/extendedTypes'
+import { DataProps, DatumProps } from '../../types/dataTypes'
 
 const domain: Domain = {
   x: [0, 100],

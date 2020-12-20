@@ -1,5 +1,4 @@
-import { Datum } from '../types/dataTypes'
-import { DatumProps } from '../types/extendedTypes'
+import { Datum, DatumProps } from '../types/dataTypes'
 
 export const updateSelected = (props: DatumProps): DatumProps => ({
   ...props,
