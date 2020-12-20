@@ -2,9 +2,9 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
-import { Domain } from '../../types/containerTypes'
-import { updateSelected } from '../../events/onClick'
+import { clickHandler } from '../../events/onClick'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
+import { Domain } from '../../types/containerTypes'
 import { DataProps, DatumProps } from '../../types/dataTypes'
 
 const domain: Domain = {
@@ -12,39 +12,29 @@ const domain: Domain = {
   y: [0, 100]
 }
 
-const ScatterChart: React.FC<DataProps> = ({ data, onClick }) => {
-  const clickHandler = (props: DatumProps): DatumProps => {
-    const editedProps = updateSelected(props)
-    if (onClick) {
-      onClick(editedProps.datum)
-    }
-    return editedProps
-  }
-  
-  return (
-    <ZoomContainer domain={domain}>
-      <VictoryScatter
-        data={data}
-        events={[
-          {
-            target: 'data',
-            eventHandlers: {
-              onClick: () => [{
-                mutation: (props: DatumProps) => clickHandler(props)
-              }]
-            }
+const ScatterChart: React.FC<DataProps> = ({ data, onClick }) => (
+  <ZoomContainer domain={domain}>
+    <VictoryScatter
+      data={data}
+      events={[
+        {
+          target: 'data',
+          eventHandlers: {
+            onClick: () => [{
+              mutation: ({ datum }: DatumProps) => clickHandler(datum, onClick)
+            }]
           }
-        ]}
-        size={7}
-        style={{
-          data: {
-            fill: data => mapFillStyle(data.datum),
-            opacity: data => mapOpacityStyle(data.datum)
-          }
-        }}
-      />        
-    </ZoomContainer>
-  )
-}
+        }
+      ]}
+      size={7}
+      style={{
+        data: {
+          fill: ({ datum }) => mapFillStyle(datum),
+          opacity: ({ datum }) => mapOpacityStyle(datum)
+        }
+      }}
+    />        
+  </ZoomContainer>
+)
 
 export default ScatterChart

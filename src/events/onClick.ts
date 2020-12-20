@@ -1,12 +1,19 @@
 import { Datum, DatumProps } from '../types/dataTypes'
 
-export const updateSelected = (props: DatumProps): DatumProps => ({
-  ...props,
-  datum: setIsSelected(props.datum)
-})
+export const clickHandler = (
+  datum: Datum,
+  onClickCallback?: (event: Datum) => void
+): DatumProps => {
 
-const setIsSelected = (datum: Datum): Datum =>
-  datum.isSelected === undefined
+  const editedProps = editSelected(datum)
+  if (onClickCallback) {
+    onClickCallback(editedProps.datum)
+  }
+  return editedProps
+}
+
+export const editSelected = (datum: Datum): DatumProps => ({
+  datum: datum.isSelected === undefined
     ? {
       ...datum,
       isSelected: true
@@ -15,3 +22,4 @@ const setIsSelected = (datum: Datum): Datum =>
       ...datum,
       isSelected: !datum.isSelected
     }
+})
