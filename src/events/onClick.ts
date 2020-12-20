@@ -12,7 +12,7 @@ export const clickHandler = (
   return editedProps
 }
 
-export const editSelected = (datum: Datum): DatumProps => ({
+const editSelected = (datum: Datum): DatumProps => ({
   datum: datum.isSelected === undefined
     ? {
       ...datum,
