@@ -14,8 +14,6 @@ const ScatterChart: React.FC<DataProps> = ({ data }) => (
           fill: ({ active }) => active ? 'tomato' : 'gray'
         }
       }}
-      x='x'
-      y='y'
     />        
   </SelectionContainer>
 )
