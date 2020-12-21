@@ -1,26 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 // This error is a bug with Victory
 import { VictorySelectionContainer } from 'victory'
-import { selectionHandler } from '../events/onSelection'
-import { Datum } from '../types/dataTypes'
 
 import ChartContainer from './ChartContainer'
+import { selectionClearedHandler, selectionHandler } from '../events/onSelection'
+import { Points } from '../types/containerTypes'
+import { SelectionContainerProps } from '../types/containerTypes'
+import { EventCallback } from '../types/dataTypes'
 
-// The points argument in onSelection is always an array with a length of one.
-type Points = [ Point ]
-
-interface Point {
-  childName: string,
-  data: Datum[],
-  eventKey: number[]
+interface Props {
+  onSelect?: EventCallback
 }
 
-const SelectionContainer: React.FC = ({ ...props }) => {
+const SelectionContainer: React.FC<Props> = ({ onSelect, ...props }) => {
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
-      onSelection={(points: Points) => selectionHandler(points[0].data)}
+      onSelection={(points: Points) => selectionHandler(points[0].data, onSelect)}
+      onSelectionCleared={(props: SelectionContainerProps) => selectionClearedHandler(props) }
     />
   
   return (
