@@ -2,7 +2,7 @@
 
 export interface DataProps {
   data: Datum[],
-  onClick?: (event: Datum) => void
+  callback?: EventCallback
 }
 
 export interface DatumProps {
@@ -18,6 +18,9 @@ export interface Coordinate {
   x: number,
   y: number
 }
+
+// Function types
+export type EventCallback = (event: Datum) => void
 
 // Example interfaces
 export interface Iteration {
