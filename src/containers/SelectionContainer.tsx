@@ -14,14 +14,17 @@ interface Props {
 }
 
 const SelectionContainer: React.FC<Props> = ({ onSelect, ...props }) => {
+
+  const onSelection = (points: SelectedData) =>
+    selectionHandler(points[0].data, onSelect)
+  
+  const onSelectionCleared = ({ selectedData }: SelectionContainerProps) =>
+    selectionClearedHandler(selectedData[0].data)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
-      onSelection={(points: SelectedData) =>
-        selectionHandler(points[0].data, onSelect)}
-
-      onSelectionCleared={( { selectedData }: SelectionContainerProps) =>
-        selectionClearedHandler(selectedData[0].data) }
+      onSelection={onSelection}
+      onSelectionCleared={onSelectionCleared}
     />
   
   return (
