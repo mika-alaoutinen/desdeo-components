@@ -6,7 +6,7 @@ export interface Domain {
   y: [ number, number ]
 }
 
-export interface Point {
+export interface SelectedDatum {
   childName: string,
   data: Datum[],
   eventKey: number[]
@@ -16,12 +16,12 @@ export interface Point {
 export interface SelectionContainerProps {
   activateSelectedData: boolean,
   allowSelection: boolean,
-  // dataSets: todo
+  dataSets: DataSet,
   domain: Domain,
   height: number,
   responsive: boolean,
   select: boolean,
-  // selectedData: todo
+  selectedData: SelectedData,
   width: number,
   x1: number,
   x2: number,
@@ -29,7 +29,14 @@ export interface SelectionContainerProps {
   y2: number
 }
 
-// --- Types for Victory's container classes ---
+// --- Private interfaces ---
+interface DataSets {
+  childName: string,
+  data: Datum[]
+}
 
-// The points argument in onSelection is always an array with a length of one.
-export type Points = [ Point ]
+// --- Types for Victory's container classes ---
+export type SelectedData = [ SelectedDatum ] // The points argument in onSelection is an array with one item.
+
+// --- Private types ---
+type DataSet = [ DataSets ] // dataSets is an array with one item

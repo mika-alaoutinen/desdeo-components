@@ -1,4 +1,3 @@
-import { SelectionContainerProps } from '../types/containerTypes'
 import { Datum, EventCallback } from '../types/dataTypes'
 
 export const selectionHandler = (data: Datum[], callback?: EventCallback): Datum[] => {
@@ -14,7 +13,7 @@ const editSelected = (datum: Datum): Datum => ({
   isSelected: true
 })
 
-export const selectionClearedHandler = (props: SelectionContainerProps): void => {
-  console.log('cleared props', props)
+export const selectionClearedHandler = (unselected: Datum[]): void => {
+  console.log('cleared props', unselected)
   // TODO: set isSelected to false for all data
 }
