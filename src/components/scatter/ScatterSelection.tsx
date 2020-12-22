@@ -5,7 +5,10 @@ import SelectionContainer from '../../containers/SelectionContainer'
 import { DataProps } from '../../types/dataTypes'
 
 const ScatterChart: React.FC<DataProps> = ({ data, callback }) => ( 
-  <SelectionContainer onSelect={callback} >
+  <SelectionContainer
+    onSelect={callback}
+    onUnselect={callback}
+  >
     <VictoryScatter
       data={data}
       size={7}

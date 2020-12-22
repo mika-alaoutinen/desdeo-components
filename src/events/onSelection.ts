@@ -1,19 +1,22 @@
 import { Datum, EventCallback } from '../types/dataTypes'
 
 export const selectionHandler = (data: Datum[], callback?: EventCallback): Datum[] => {
-  const editedData = data.map(datum => editSelected(datum))
+  const editedData = data.map(datum => editSelected(datum, true))
   if (callback) {
     editedData.forEach(datum => callback(datum))
   }
   return editedData
 }
 
-const editSelected = (datum: Datum): Datum => ({
-  ...datum,
-  isSelected: true
-})
-
-export const selectionClearedHandler = (unselected: Datum[]): void => {
-  console.log('cleared props', unselected)
-  // TODO: set isSelected to false for all data
+export const selectionClearedHandler = (unselected: Datum[], callback?: EventCallback): Datum[] => {
+  const editedData = unselected.map(datum => editSelected(datum, false))
+  if (callback) {
+    editedData.forEach(datum => callback(datum))
+  }
+  return editedData
 }
+
+const editSelected = (datum: Datum, isSelected: boolean): Datum => ({
+  ...datum,
+  isSelected
+})

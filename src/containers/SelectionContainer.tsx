@@ -10,16 +10,17 @@ import { SelectionContainerProps } from '../types/containerTypes'
 import { EventCallback } from '../types/dataTypes'
 
 interface Props {
-  onSelect?: EventCallback
+  onSelect?: EventCallback,
+  onUnselect?: EventCallback
 }
 
-const SelectionContainer: React.FC<Props> = ({ onSelect, ...props }) => {
+const SelectionContainer: React.FC<Props> = ({ onSelect, onUnselect, ...props }) => {
 
   const onSelection = (points: SelectedData) =>
     selectionHandler(points[0].data, onSelect)
   
   const onSelectionCleared = ({ selectedData }: SelectionContainerProps) =>
-    selectionClearedHandler(selectedData[0].data)
+    selectionClearedHandler(selectedData[0].data, onUnselect)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
