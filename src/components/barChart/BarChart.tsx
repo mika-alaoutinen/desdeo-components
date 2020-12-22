@@ -2,43 +2,31 @@ import React from 'react'
 import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { updateSelected } from '../../events/BarChartEvents'
+import { clickHandler } from '../../events/onClick'
 import { mapFillStyle } from '../../styles/style'
-import { DataProps } from '../../types/dataTypes'
-import { BarPropsExt } from '../../types/extendedTypes'
+import { DataProps, DatumProps } from '../../types/dataTypes'
 
-const BarChart: React.FC<DataProps> = ({ data, onClick }) => {
-  
-  const clickHandler = (props: BarPropsExt): BarPropsExt => {
-    const editedProps = updateSelected(props)
-    if (onClick) {
-      onClick(editedProps.datum)
-    }
-    return editedProps
-  }
-  
-  return (
-    <ChartContainer>
-      <VictoryBar
-        data={data}
-        events={[
-          {
-            target: 'data',
-            eventHandlers: {
-              onClick: () => [{
-                mutation: (props: BarPropsExt) => clickHandler(props)
-              }]
-            }
-          },
-        ]}
-        style={{
-          data: {
-            fill: data => mapFillStyle(data.datum)
+const BarChart: React.FC<DataProps> = ({ data, callback }) => (
+  <ChartContainer>
+    <VictoryBar
+      data={data}
+      events={[
+        {
+          target: 'data',
+          eventHandlers: {
+            onClick: () => [{
+              mutation: ({ datum }: DatumProps) => clickHandler(datum, callback)
+            }]
           }
-        }}
-      />
-    </ChartContainer>
-  )
-}
+        },
+      ]}
+      style={{
+        data: {
+          fill: ({ datum }) => mapFillStyle(datum)
+        }
+      }}
+    />
+  </ChartContainer>
+)
 
 export default BarChart
