@@ -1,15 +1,19 @@
 import { Datum, EventCallback } from '../types/dataTypes'
 
 export const selectionHandler = (data: Datum[], callback?: EventCallback): Datum[] => {
-  const editedData = data.map(datum => editSelected(datum, true))
-  if (callback) {
-    editedData.forEach(datum => callback(datum))
-  }
-  return editedData
+  return editSelectionAndDoCallback(data, true, callback)
 }
 
 export const selectionClearedHandler = (unselected: Datum[], callback?: EventCallback): Datum[] => {
-  const editedData = unselected.map(datum => editSelected(datum, false))
+  return editSelectionAndDoCallback(unselected, false, callback)
+}
+
+const editSelectionAndDoCallback = (
+  data: Datum[],
+  isSelected: boolean,
+  callback?: EventCallback
+): Datum[] => {
+  const editedData = data.map(datum => editSelected(datum, isSelected))
   if (callback) {
     editedData.forEach(datum => callback(datum))
   }
