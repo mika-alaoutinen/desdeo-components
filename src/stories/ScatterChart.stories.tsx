@@ -11,7 +11,7 @@ const Template: Story<DataProps> = args => <ScatterChart { ...args } />
 export const ScatterChartComponent = Template.bind({})
 ScatterChartComponent.args = {
   data,
-  onClick: printData
+  callback: printData
 }
 
 export default {
