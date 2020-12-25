@@ -1,17 +1,17 @@
-import { Datum, EventCallback } from '../types/dataTypes'
+import { Datum, ReduxAction } from '../types/dataTypes'
 
-export const selectionHandler = (data: Datum[], callback?: EventCallback): Datum[] => {
+export const selectionHandler = (data: Datum[], callback?: ReduxAction): Datum[] => {
   return editSelectionAndDoCallback(data, true, callback)
 }
 
-export const selectionClearedHandler = (unselected: Datum[], callback?: EventCallback): Datum[] => {
+export const selectionClearedHandler = (unselected: Datum[], callback?: ReduxAction): Datum[] => {
   return editSelectionAndDoCallback(unselected, false, callback)
 }
 
 const editSelectionAndDoCallback = (
   data: Datum[],
   isSelected: boolean,
-  callback?: EventCallback
+  callback?: ReduxAction
 ): Datum[] => {
   const editedData = data.map(datum => editSelected(datum, isSelected))
   if (callback) {

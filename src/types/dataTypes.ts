@@ -2,7 +2,7 @@
 
 export interface DataProps {
   data: Datum[],
-  callback?: EventCallback
+  reduxAction?: ReduxAction
 }
 
 export interface DatumProps {
@@ -20,7 +20,7 @@ export interface Coordinate {
 }
 
 // Function types
-export type EventCallback = (event: Datum) => void
+export type ReduxAction = (event: Datum) => void
 
 // Example interfaces
 export interface Iteration {

@@ -6,11 +6,11 @@ import ChartContainer from './ChartContainer'
 import { selectionClearedHandler, selectionHandler } from '../events/onSelection'
 import { SelectedData } from '../types/containerTypes'
 import { SelectionContainerProps } from '../types/containerTypes'
-import { EventCallback } from '../types/dataTypes'
+import { ReduxAction } from '../types/dataTypes'
 
 interface Props {
-  onSelect?: EventCallback,
-  onUnselect?: EventCallback
+  onSelect?: ReduxAction,
+  onUnselect?: ReduxAction
 }
 
 const SelectionContainer: React.FC<Props> = ({ onSelect, onUnselect, ...props }) => {
