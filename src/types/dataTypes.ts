@@ -1,7 +1,10 @@
 // Add interfaces for different optimization methods here.
 
+// The idea is to use either setData or reduxAction 
+// to maintain the state of the components.
 export interface DataProps {
   data: Datum[],
+  setData?: SetData,
   reduxAction?: ReduxAction
 }
 
@@ -20,7 +23,9 @@ export interface Coordinate {
 }
 
 // Function types
+export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
 export type ReduxAction = (event: Datum) => void
+export type DataCallback = SetData | ReduxAction | undefined // not needed?
 
 // Example interfaces
 export interface Iteration {
