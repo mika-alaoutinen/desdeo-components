@@ -2,12 +2,13 @@ import React from 'react'
 import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { clickHandler } from '../../events/onClick'
+import { eventHandler } from '../../events/eventHandler'
 import { mapFillStyle } from '../../styles/style'
 import { DataProps, DatumProps } from '../../types/dataTypes'
 
-const BarChart: React.FC<DataProps> = ({ data, reduxAction }) => (
+const BarChart: React.FC<DataProps> = ({ data, setData, reduxAction }) => (
   <ChartContainer>
+    
     <VictoryBar
       data={data}
       events={[
@@ -15,7 +16,7 @@ const BarChart: React.FC<DataProps> = ({ data, reduxAction }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }: DatumProps) => clickHandler(datum, reduxAction)
+              mutation: ({ datum }: DatumProps) => eventHandler(datum, setData, reduxAction)
             }]
           }
         },
@@ -26,6 +27,7 @@ const BarChart: React.FC<DataProps> = ({ data, reduxAction }) => (
         }
       }}
     />
+    
   </ChartContainer>
 )
 
