@@ -1,31 +1,30 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 // This error is a bug with Victory
 import { VictorySelectionContainer } from 'victory'
 
 import ChartContainer from './ChartContainer'
-import { selectionClearedHandler, selectionHandler } from '../events/onSelection'
+import { selectionClearedHandler, onSelectionHandler } from '../events/onSelection'
 import { SelectedData } from '../types/containerTypes'
-import { SelectionContainerProps } from '../types/containerTypes'
-import { EventCallback } from '../types/dataTypes'
+import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
 interface Props {
-  onSelect?: EventCallback,
-  onUnselect?: EventCallback
+  data: Datum[],
+  setData?: SetData,
+  onSelect?: ReduxAction
 }
 
-const SelectionContainer: React.FC<Props> = ({ onSelect, onUnselect, ...props }) => {
+const SelectionContainer: React.FC<Props> = ({ data, setData, onSelect, ...props }) => {
 
-  const onSelection = (points: SelectedData) =>
-    selectionHandler(points[0].data, onSelect)
+  const onSelection = (points: SelectedData): Datum[] =>
+    onSelectionHandler(points[0].data, data, setData, onSelect)
   
-  const onSelectionCleared = ({ selectedData }: SelectionContainerProps) =>
-    selectionClearedHandler(selectedData[0].data, onUnselect)
+  const selectionCleared = (): Datum[] =>
+    selectionClearedHandler(data, setData, onSelect)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
       onSelection={onSelection}
-      onSelectionCleared={onSelectionCleared}
+      onSelectionCleared={selectionCleared}
     />
   
   return (

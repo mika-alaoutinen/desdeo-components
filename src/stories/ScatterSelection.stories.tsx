@@ -1,17 +1,28 @@
-import React from 'react'
-import { Story, Meta } from '@storybook/react'
+import React, { useState } from 'react'
+import { Meta, Story } from '@storybook/react'
 
 import ScatterSelection from '../components/scatter/ScatterSelection'
-import { data } from '../data'
-import { DataProps } from '../types/dataTypes'
+import { testdata } from '../data'
 import { printData } from './storyUtils'
+import { DataProps } from '../types/dataTypes'
 
-const Template: Story<DataProps> = args => <ScatterSelection { ...args } />
+// Have to declare useState here for it to work correctly
+const Template: Story<DataProps> = args => {
+  const [ data, setData ] = useState(testdata)
+  return (
+    <ScatterSelection
+      { ...args }
+      data={data}
+      setData={setData}
+    />
+  )
+}
 
-export const ScatterChartWithSelection = Template.bind({})
-ScatterChartWithSelection.args = {
-  data,
-  callback: printData
+export const ScatterChartWithUseState = Template.bind({})
+
+export const ScatterChartWithRedux = Template.bind({})
+ScatterChartWithRedux.args = {
+  reduxAction: printData
 }
 
 export default {
