@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
-import { eventHandler } from '../../events/eventHandler'
+import { eventHandler } from '../../events/onClick'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
 import { Domain } from '../../types/containerTypes'
 import { DataProps, DatumProps } from '../../types/dataTypes'

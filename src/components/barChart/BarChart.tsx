@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { eventHandler } from '../../events/eventHandler'
+import { eventHandler } from '../../events/onClick'
 import { mapFillStyle } from '../../styles/style'
 import { DataProps, DatumProps } from '../../types/dataTypes'
 
