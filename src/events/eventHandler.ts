@@ -3,12 +3,13 @@ import { setDataHandler, reduxActionHandler } from './onClick'
 
 export const eventHandler = (
   datum: Datum,
+  data?: Datum[],
   setData?: SetData,
   reduxAction?: ReduxAction
 ): DatumProps => {
   
   if (setData) {
-    return setDataHandler(datum, setData)
+    return setDataHandler(datum, setData, data)
   }
 
   if (reduxAction) {

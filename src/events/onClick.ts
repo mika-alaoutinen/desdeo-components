@@ -1,8 +1,13 @@
 import { Datum, DatumProps, ReduxAction, SetData } from '../types/dataTypes'
 
-export const setDataHandler = (datum: Datum, setData: SetData): DatumProps => {
+export const setDataHandler = (datum: Datum, setData: SetData, data?: Datum[]): DatumProps => {
   const editedDatum = editSelected(datum)
-  setData([editedDatum])
+  
+  if (data) {
+    setData(data.concat(editedDatum))
+    console.log('new data', data)
+  }
+  
   return { datum: editedDatum }
 }
 
