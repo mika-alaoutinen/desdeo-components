@@ -19,21 +19,16 @@ const SelectionContainer: React.FC<Props> = ({
   data, setData, onSelect, onUnselect, ...props
 }) => {
 
-  // const onSelection = (points: SelectedData): Datum[] => {
-  //   console.log(data)
-  //   return selectionHandler(points[0].data, onSelect)
-  // }
-  
   const onSelection = (points: SelectedData): Datum[] =>
     onSelectionHandler(points[0].data, data, setData, onSelect)
   
-  const onSelectionCleared = ({ selectedData }: SelectionContainerProps): Datum[] =>
-    selectionClearedHandler(selectedData[0].data, onUnselect)
+  const selectionCleared = ({ selectedData }: SelectionContainerProps): Datum[] =>
+    selectionClearedHandler(selectedData[0].data, setData, onUnselect)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
       onSelection={onSelection}
-      onSelectionCleared={onSelectionCleared}
+      onSelectionCleared={selectionCleared}
     />
   
   return (
