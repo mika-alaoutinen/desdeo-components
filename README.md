@@ -21,12 +21,7 @@ Launches Storybook for local development.
 Builds the application as a static Storybook application. Probably not a very useful feature.
 
 ## TODO
-- [ ] Provide option of managing component state with both useState hooks and Redux actions.
 - [ ] Probably need to setup Redux with storybook.
   - Components should never directly mutate data, but instead dispatch Redux actions.
-  An action triggers updating the data.
-  - May have to rethink the onClick behavior in ScatterChart, because it directly mutates data.
-- [ ] Update ScatterSelection component so that it works correctly with data selection.
+  - May have to rethink the onClick behavior in BarChart and ScatterChart, because they directly mutate data.
 - [ ] Try to move event handling away from chart components to container components.
-  - Event handling should probably be done on container level to reduce repetition and hide away
-  implementation details from the chart components.
