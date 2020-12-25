@@ -31,7 +31,7 @@ export const barData: TestData[] = [
   },
 ]
 
-export const data: Datum[] = [
+export const testdata: Datum[] = [
   { id: 'a', x: 10, y: 20, label: 'A', isSelected: true },
   { id: 'b', x: 20, y: 40, label: 'B' },
   { id: 'c', x: 30, y: 70, label: 'C' },

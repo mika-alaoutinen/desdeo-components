@@ -5,7 +5,6 @@ export const setDataHandler = (
   data: Datum[],
   setData: SetData
 ): DatumProps => {
-
   const editedDatum = editSelected(datum)
   setData(replaceDatum(editedDatum, data))
   return { datum: editedDatum }
