@@ -13,6 +13,7 @@ export interface DatumProps {
 }
 
 export interface Datum extends Coordinate {
+  id: string, // unique identifier
   label?: string,
   isSelected?: boolean
 }
