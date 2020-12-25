@@ -2,9 +2,10 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import SelectionContainer from '../../containers/SelectionContainer'
+import { mapFillStyle } from '../../styles/style'
 import { DataProps } from '../../types/dataTypes'
 
-const ScatterChart: React.FC<DataProps> = ({ data, callback }) => ( 
+const ScatterChart: React.FC<DataProps> = ({ data, callback }) => (
   <SelectionContainer
     onSelect={callback}
     onUnselect={callback}
@@ -14,7 +15,7 @@ const ScatterChart: React.FC<DataProps> = ({ data, callback }) => (
       size={7}
       style={{
         data: {
-          fill: ({ active }) => active ? 'tomato' : 'gray'
+          fill: ({ datum }) => mapFillStyle(datum)
         }
       }}
     />        
