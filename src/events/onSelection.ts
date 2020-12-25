@@ -1,29 +1,34 @@
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
-export const selectionHandler2 = (
+export const selectionHandler = (
   selected: Datum[],
   data: Datum[],
   setData?: SetData,
   reduxAction?: ReduxAction
 ): Datum[] => {
   
-  const edited = editSelected(selected, true)
   if (reduxAction) {
-    edited.forEach(datum => reduxAction(datum))
-    return edited
+    return reduxActionHandler(selected, reduxAction)
   }
 
-  const newData = updateData(edited, data)
   if (setData) {
-    setData(newData)
-    return newData
+    return setDataHandler(selected, data, setData)
   }
 
-  return newData
+  return data
 }
 
-export const selectionHandler = (data: Datum[], callback?: ReduxAction): Datum[] => {
-  return editSelectionAndDoCallback(data, true, callback)
+const reduxActionHandler = (selected: Datum[], action: ReduxAction): Datum[] => {
+  const edited = editSelected(selected, true)
+  action(edited)
+  return edited
+}
+
+const setDataHandler = (selected: Datum[], data: Datum[], setData: SetData): Datum[] => {
+  const edited = editSelected(selected, true)
+  const newData = updateData(edited, data)
+  setData(newData)
+  return newData
 }
 
 export const selectionClearedHandler = (unselected: Datum[], callback?: ReduxAction): Datum[] => {
