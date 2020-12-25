@@ -22,7 +22,8 @@ const ScatterChart: React.FC<DataProps> = ({ data, setData, reduxAction }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }: DatumProps) => eventHandler(datum, setData, reduxAction)
+              mutation: ({ datum }: DatumProps) =>
+                eventHandler(datum, data, setData, reduxAction)
             }]
           }
         }

@@ -21,5 +21,5 @@ export const ScatterChartComponent = Template.bind({})
 
 export default {
   title: 'DESDEO/ScatterChart',
-  component: ScatterChart
+  component: ScatterChartComponent
 } as Meta

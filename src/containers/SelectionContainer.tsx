@@ -8,6 +8,7 @@ import { SelectedData } from '../types/containerTypes'
 import { SelectionContainerProps } from '../types/containerTypes'
 import { ReduxAction } from '../types/dataTypes'
 
+// Add data and setData to props?
 interface Props {
   onSelect?: ReduxAction,
   onUnselect?: ReduxAction
