@@ -8,7 +8,6 @@ import { SelectedData } from '../types/containerTypes'
 import { SelectionContainerProps } from '../types/containerTypes'
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
-// Add data and setData to props?
 interface Props {
   data: Datum[],
   setData?: SetData,

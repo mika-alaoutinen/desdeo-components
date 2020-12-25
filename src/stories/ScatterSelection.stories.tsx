@@ -3,9 +3,10 @@ import { Meta, Story } from '@storybook/react'
 
 import ScatterSelection from '../components/scatter/ScatterSelection'
 import { testdata } from '../data'
-import { DataProps } from '../types/dataTypes'
 import { printData } from './storyUtils'
+import { DataProps } from '../types/dataTypes'
 
+// Have to declare useState here for it to work correctly
 const Template: Story<DataProps> = args => {
   const [ data, setData ] = useState(testdata)
   return (
@@ -13,13 +14,16 @@ const Template: Story<DataProps> = args => {
       { ...args }
       data={data}
       setData={setData}
-      reduxAction={printData}
     />
   )
 }
 
-export const ScatterChartWithSelection = Template.bind({})
-// ScatterChartWithSelection.args = {}
+export const ScatterChartWithUseState = Template.bind({})
+
+export const ScatterChartWithRedux = Template.bind({})
+ScatterChartWithRedux.args = {
+  reduxAction: printData
+}
 
 export default {
   title: 'DESDEO/ScatterSelection',

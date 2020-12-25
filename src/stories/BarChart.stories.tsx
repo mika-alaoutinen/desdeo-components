@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
 import { testdata } from '../data'
+import { printData } from './storyUtils'
 import { DataProps } from '../types/dataTypes'
 
 const Template: Story<DataProps> = args => {
@@ -16,10 +17,14 @@ const Template: Story<DataProps> = args => {
   )
 } 
 
-export const BarChartComponent = Template.bind({})
-// BarChartComponent.args = {}
+export const BarChartWithUseState = Template.bind({})
+
+export const BarChartWithRedux = Template.bind({})
+BarChartWithRedux.args = {
+  reduxAction: printData
+}
 
 export default {
   title: 'DESDEO/BarChart',
-  component: BarChartComponent
+  component: BarChart
 } as Meta
