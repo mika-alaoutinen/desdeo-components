@@ -1,25 +1,19 @@
 import { Datum, DatumProps, ReduxAction, SetData } from '../types/dataTypes'
 
-/**
- * Used to direct the function callback to either a
- * React useState handler or a Redux action handler.
- * If neither callback function is defined, returns
+/*
+ * Used to direct the function callback to either a React useState handler
+ * or a Redux action handler. If neither callback function is defined, returns
  * the given data back as is.
- * @param datum @type {Datum}
- * @param data @type {Datum[]}
- * @param setData @type {SetData}
- * @param reduxAction @type {ReduxAction}
- * @returns datumProps @type {DatumProps}
  */
 export const onClickHandler = (
   datum: Datum,
   data: Datum[],
   setData?: SetData,
-  reduxAction?: ReduxAction
+  action?: ReduxAction
 ): DatumProps => {
   
-  if (reduxAction) {
-    return reduxActionHandler(datum, reduxAction)
+  if (action) {
+    return reduxActionHandler(datum, action)
   }
   
   if (setData) {

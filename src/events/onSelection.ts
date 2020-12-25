@@ -1,5 +1,10 @@
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
+/*
+ * Used to direct the function callback to either a React useState handler
+ * or a Redux action handler. If neither callback function is defined, returns
+ * the given data back as is.
+ */
 export const onSelectionHandler = (
   selected: Datum[],
   data: Datum[],
@@ -15,6 +20,11 @@ export const onSelectionHandler = (
   return data
 }
 
+/*
+ * Used to direct the function callback to either a React useState handler
+ * or a Redux action handler. If neither callback function is defined, returns
+ * the given data back as is.
+ */
 export const selectionClearedHandler = (
   data: Datum[],
   setData?: SetData,
