@@ -20,7 +20,7 @@ export const eventHandler = (
 ): DatumProps => {
   
   if (setData) {
-    return setDataHandler(datum, setData, data)
+    return setDataHandler(datum, data, setData)
   }
 
   if (reduxAction) {
