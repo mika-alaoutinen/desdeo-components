@@ -11,7 +11,7 @@ import { Datum, DatumProps, ReduxAction, SetData } from '../types/dataTypes'
  * @param reduxAction @type {ReduxAction}
  * @returns datumProps @type {DatumProps}
  */
-export const eventHandler = (
+export const onClickHandler = (
   datum: Datum,
   data: Datum[],
   setData?: SetData,
