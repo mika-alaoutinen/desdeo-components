@@ -1,19 +1,19 @@
-import { Datum, DatumProps } from '../types/dataTypes'
+import { Datum, DatumProps, ReduxAction, SetData } from '../types/dataTypes'
 
-export const clickHandler = (
-  datum: Datum,
-  onClickCallback?: (event: Datum) => void
-): DatumProps => {
-
-  const editedProps = editSelected(datum)
-  if (onClickCallback) {
-    onClickCallback(editedProps.datum)
-  }
-  return editedProps
+export const setDataHandler = (datum: Datum, setData: SetData): DatumProps => {
+  const editedDatum = editSelected(datum)
+  setData([editedDatum])
+  return { datum: editedDatum }
 }
 
-const editSelected = (datum: Datum): DatumProps => ({
-  datum: datum.isSelected === undefined
+export const reduxActionHandler = (datum: Datum, action: ReduxAction): DatumProps => {
+  const editedDatum = editSelected(datum)
+  action(editedDatum)
+  return { datum: editedDatum }
+}
+
+const editSelected = (datum: Datum): Datum =>
+  datum.isSelected === undefined
     ? {
       ...datum,
       isSelected: true
@@ -22,4 +22,3 @@ const editSelected = (datum: Datum): DatumProps => ({
       ...datum,
       isSelected: !datum.isSelected
     }
-})
