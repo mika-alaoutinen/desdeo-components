@@ -25,9 +25,8 @@ const SelectionContainer: React.FC<Props> = ({
   //   return selectionHandler(points[0].data, onSelect)
   // }
   
-  const onSelection = (points: SelectedData): Datum[] => {
-    return selectionHandler2(points[0].data, data, setData, onSelect)
-  }
+  const onSelection = (points: SelectedData): Datum[] =>
+    selectionHandler2(points[0].data, data, setData, onSelect)
   
   const onSelectionCleared = ({ selectedData }: SelectionContainerProps): Datum[] =>
     selectionClearedHandler(selectedData[0].data, onUnselect)

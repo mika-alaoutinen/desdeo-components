@@ -1,21 +1,5 @@
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
-// export const eventHandler = (
-//   data: Datum[],
-//   setData?: SetData,
-//   reduxAction?: ReduxAction
-// ): Datum[] => {
-//   if (setData) {
-//     return data
-//   }
-
-//   if (reduxAction) {
-//     return data
-//   }
-
-//   return data
-// }
-
 export const selectionHandler2 = (
   selected: Datum[],
   data: Datum[],
@@ -24,16 +8,12 @@ export const selectionHandler2 = (
 ): Datum[] => {
   
   const edited = editSelected(selected, true)
-
   if (reduxAction) {
     edited.forEach(datum => reduxAction(datum))
     return edited
   }
 
-  const editedIDs = edited.map(datum => datum.id)
-  const dataWithoutEdited = data.filter(datum => !editedIDs.includes(datum.id))
-  const newData = dataWithoutEdited.concat(edited)
-
+  const newData = updateData(edited, data)
   if (setData) {
     setData(newData)
     return newData
@@ -71,3 +51,10 @@ const editSelected = (data: Datum[], isSelected: boolean): Datum[] =>
     ...datum,
     isSelected
   }))
+
+const updateData = (edited: Datum[], data: Datum[]): Datum[] => {
+  const editedIDs = edited.map(datum => datum.id)
+  return data
+    .filter(datum => !editedIDs.includes(datum.id))
+    .concat(edited)
+}

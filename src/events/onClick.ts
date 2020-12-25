@@ -6,7 +6,7 @@ export const setDataHandler = (
   setData: SetData
 ): DatumProps => {
   const editedDatum = editSelected(datum)
-  setData(replaceDatum(editedDatum, data))
+  setData(updateData(editedDatum, data))
   return { datum: editedDatum }
 }
 
@@ -27,5 +27,5 @@ const editSelected = (datum: Datum): Datum =>
       isSelected: !datum.isSelected
     }
 
-const replaceDatum = (edited: Datum, data: Datum[]): Datum[] =>
+const updateData = (edited: Datum, data: Datum[]): Datum[] =>
   data.map(datum => datum.id === edited.id ? edited : datum)
