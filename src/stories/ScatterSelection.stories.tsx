@@ -4,6 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import ScatterSelection from '../components/scatter/ScatterSelection'
 import { testdata } from '../data'
 import { DataProps } from '../types/dataTypes'
+import { printData } from './storyUtils'
 
 const Template: Story<DataProps> = args => {
   const [ data, setData ] = useState(testdata)
@@ -12,6 +13,7 @@ const Template: Story<DataProps> = args => {
       { ...args }
       data={data}
       setData={setData}
+      reduxAction={printData}
     />
   )
 }
