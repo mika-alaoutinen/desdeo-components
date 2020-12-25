@@ -10,7 +10,6 @@ const ScatterChart: React.FC<DataProps> = ({ data, setData, reduxAction }) => (
     data={data}
     setData={setData}
     onSelect={reduxAction}
-    onUnselect={reduxAction}
   >
     
     <VictoryScatter

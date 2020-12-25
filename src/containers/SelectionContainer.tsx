@@ -10,19 +10,16 @@ import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 interface Props {
   data: Datum[],
   setData?: SetData,
-  onSelect?: ReduxAction,
-  onUnselect?: ReduxAction
+  onSelect?: ReduxAction
 }
 
-const SelectionContainer: React.FC<Props> = ({
-  data, setData, onSelect, onUnselect, ...props
-}) => {
+const SelectionContainer: React.FC<Props> = ({ data, setData, onSelect, ...props }) => {
 
   const onSelection = (points: SelectedData): Datum[] =>
     onSelectionHandler(points[0].data, data, setData, onSelect)
   
   const selectionCleared = (): Datum[] =>
-    selectionClearedHandler(data, setData, onUnselect)
+    selectionClearedHandler(data, setData, onSelect)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
