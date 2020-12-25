@@ -4,6 +4,7 @@ export const setDataHandler = (datum: Datum, setData: SetData, data?: Datum[]): 
   const editedDatum = editSelected(datum)
   
   if (data) {
+    // TODO: have to replace the old datum with the edited one
     setData(data.concat(editedDatum))
     console.log('new data', data)
   }
