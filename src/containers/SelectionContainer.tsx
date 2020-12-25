@@ -3,7 +3,7 @@ import React from 'react'
 import { VictorySelectionContainer } from 'victory'
 
 import ChartContainer from './ChartContainer'
-import { selectionClearedHandler, selectionHandler } from '../events/onSelection'
+import { selectionClearedHandler, onSelectionHandler } from '../events/onSelection'
 import { SelectedData } from '../types/containerTypes'
 import { SelectionContainerProps } from '../types/containerTypes'
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
@@ -25,7 +25,7 @@ const SelectionContainer: React.FC<Props> = ({
   // }
   
   const onSelection = (points: SelectedData): Datum[] =>
-    selectionHandler(points[0].data, data, setData, onSelect)
+    onSelectionHandler(points[0].data, data, setData, onSelect)
   
   const onSelectionCleared = ({ selectedData }: SelectionContainerProps): Datum[] =>
     selectionClearedHandler(selectedData[0].data, onUnselect)

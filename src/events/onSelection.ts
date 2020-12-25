@@ -1,6 +1,6 @@
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
-export const selectionHandler = (
+export const onSelectionHandler = (
   selected: Datum[],
   data: Datum[],
   setData?: SetData,
