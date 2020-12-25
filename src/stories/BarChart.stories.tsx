@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
 import { testdata } from '../data'
-import { printData } from './storyUtils'
+import { printDatum } from './storyUtils'
 import { DataProps } from '../types/dataTypes'
 
 const Template: Story<DataProps> = args => {
@@ -21,7 +21,7 @@ export const BarChartWithUseState = Template.bind({})
 
 export const BarChartWithRedux = Template.bind({})
 BarChartWithRedux.args = {
-  reduxAction: printData
+  reduxAction: printDatum
 }
 
 export default {

@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react'
 
 import ScatterChart from '../components/scatter/ScatterChart'
 import { testdata } from '../data'
-import { printData } from './storyUtils'
+import { printDatum } from './storyUtils'
 import { DataProps } from '../types/dataTypes'
 
 const Template: Story<DataProps> = args => {
@@ -21,7 +21,7 @@ export const ScatterChartWithUseState = Template.bind({})
 
 export const ScatterChartWithRedux = Template.bind({})
 ScatterChartWithRedux.args = {
-  reduxAction: printData
+  reduxAction: printDatum
 }
 
 export default {
