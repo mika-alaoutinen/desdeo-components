@@ -1,7 +1,7 @@
 {
   "name": "desdeo-components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "main": "build/index.js",
   "module": "build/index.es.js",
   "types": "build/components/index.d.ts",
