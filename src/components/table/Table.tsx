@@ -1,8 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
+
 import { onClickHandler } from '../../events/onClick'
 import { DataProps } from '../../types/dataTypes'
-import { tableRowStyles } from '../../styles/styles'
+import { tableRowStyle } from '../../styles/styles'
+
+import '../../styles/Table.css'
 
 const Table: React.FC<DataProps> = ({ data, setData }) => {
 
@@ -13,7 +15,7 @@ const Table: React.FC<DataProps> = ({ data, setData }) => {
         <tr
           key={id}
           onClick={() => onClickHandler(datum, data, setData)}
-          style={tableRowStyles(isSelected)}
+          style={tableRowStyle(isSelected)}
         >
           <td>{label ? label : 'no label'}</td>
           <td>{x}</td>
