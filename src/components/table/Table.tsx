@@ -1,17 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
-import { DataProps, Datum } from '../../types/dataTypes'
+import { onClickHandler } from '../../events/onClick'
+import { DataProps } from '../../types/dataTypes'
 
-const Table: React.FC<DataProps> = ({ data }) => {
+const Table: React.FC<DataProps> = ({ data, setData }) => {
 
   const renderRows = (): JSX.Element[] =>
-    data.map(({ id, isSelected, label, x, y }: Datum) =>
-      <tr key={id}>
-        <td>{label ? label : 'no label'}</td>
-        <td>{x}</td>
-        <td>{y}</td>
-        <td>{isSelected ? 'yes' : 'no'}</td>
-      </tr>
-    )
+    data.map(datum => {
+      const { id, isSelected, label, x, y } = datum
+      return (
+        <tr key={id} onClick={() => onClickHandler(datum, data, setData)}>
+          <td>{label ? label : 'no label'}</td>
+          <td>{x}</td>
+          <td>{y}</td>
+          <td>{isSelected ? 'yes' : 'no'}</td>
+        </tr>
+      )
+    })
 
   return (
     <table>
