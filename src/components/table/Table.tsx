@@ -2,6 +2,7 @@
 import React from 'react'
 import { onClickHandler } from '../../events/onClick'
 import { DataProps } from '../../types/dataTypes'
+import { tableRowStyles } from '../../styles/styles'
 
 const Table: React.FC<DataProps> = ({ data, setData }) => {
 
@@ -9,7 +10,11 @@ const Table: React.FC<DataProps> = ({ data, setData }) => {
     data.map(datum => {
       const { id, isSelected, label, x, y } = datum
       return (
-        <tr key={id} onClick={() => onClickHandler(datum, data, setData)}>
+        <tr
+          key={id}
+          onClick={() => onClickHandler(datum, data, setData)}
+          style={tableRowStyles(isSelected)}
+        >
           <td>{label ? label : 'no label'}</td>
           <td>{x}</td>
           <td>{y}</td>
