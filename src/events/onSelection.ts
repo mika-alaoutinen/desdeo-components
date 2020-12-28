@@ -47,7 +47,7 @@ const reduxActionHandler = (
   action: ReduxAction
 ): Datum[] => {
   const edited = editSelected(selected, isSelected)
-  action(edited)
+  edited.forEach(datum => action(datum))
   return edited
 }
 

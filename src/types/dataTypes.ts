@@ -1,7 +1,5 @@
 // Add interfaces for different optimization methods here.
 
-// The idea is to use either setData or reduxAction 
-// to maintain the state of the components.
 export interface DataProps {
   data: Datum[],
   eventHandler: EventHandler
@@ -32,11 +30,8 @@ interface UseStateCallback {
 
 interface ReduxActionCallback {
   type: 'REDUX',
-  callback: ReduxActionData|ReduxActionDatum
+  callback: ReduxAction
 }
 
 export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
-export type ReduxAction = (event: Datum|Datum[]) => void
-
-type ReduxActionData = (data: Datum[]) => void
-type ReduxActionDatum = (data: Datum) => void
+export type ReduxAction = (data: Datum) => void
