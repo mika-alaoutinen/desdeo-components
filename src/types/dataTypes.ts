@@ -1,4 +1,4 @@
-// Add interfaces for different optimization methods here.
+import { EventHandler } from './eventTypes'
 
 export interface DataProps {
   data: Datum[],
@@ -19,19 +19,3 @@ export interface Coordinate {
   x: number,
   y: number
 }
-
-// Event handling. TODO: Move to eventTypes.ts
-export type EventHandler = UseStateCallback | ReduxActionCallback
-
-interface UseStateCallback {
-  type: 'USE_STATE',
-  callback: SetData
-}
-
-interface ReduxActionCallback {
-  type: 'REDUX',
-  callback: ReduxAction
-}
-
-export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
-export type ReduxAction = (data: Datum) => void
