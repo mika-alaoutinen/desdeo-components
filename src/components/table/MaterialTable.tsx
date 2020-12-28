@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow'
 import { onClickHandler } from '../../events/onClick'
 import { DataProps } from '../../types/dataTypes'
 
-const MaterialTable: React.FC<DataProps> = ({ data, setData }) => {
+const MaterialTable: React.FC<DataProps> = ({ data, setData, reduxAction }) => {
   
   const renderHeadings = (headings: string[]): JSX.Element[] =>
     headings.map(heading =>
@@ -24,7 +24,7 @@ const MaterialTable: React.FC<DataProps> = ({ data, setData }) => {
       <TableRow
         key={datum.id}
         hover
-        onClick={() => onClickHandler(datum, data, setData)}
+        onClick={() => onClickHandler(datum, data, setData, reduxAction)}
         selected={datum.isSelected}
       >
         <TableCell align='right' component='th' scope='row'>{datum.label ? datum.label : 'no label'}</TableCell>
@@ -35,7 +35,7 @@ const MaterialTable: React.FC<DataProps> = ({ data, setData }) => {
     )
   
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ width: '50%' }}>
       <Table aria-label='material ui table'>
 
         <TableHead>
