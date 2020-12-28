@@ -26,19 +26,3 @@ export interface Coordinate {
 // Function types
 export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
 export type ReduxAction = (event: Datum|Datum[]) => void
-
-// Example interfaces
-export interface Iteration {
-  variables: Variable[],
-  parameters: Parameter[],
-  iteration: number
-}
-
-export interface Parameter {
-  parameter: number
-}
-
-export interface Variable {
-  name: string,
-  value: number
-}
