@@ -2,12 +2,10 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import ScatterSelection from '../components/scatter/ScatterSelection'
-import { testdata } from '../data'
-import { printDatum, TestEventHandler, useEventHandler } from './storyUtils'
-import { EventHandler } from '../types/eventTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
 export const ScatterSeletionWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useEventHandler()
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
   
   return (
     <ScatterSelection
@@ -18,14 +16,11 @@ export const ScatterSeletionWithUseState = (): JSX.Element => {
 }
 
 export const ScatterSelectionWithRedux = (): JSX.Element => {
-  const eventHandler: EventHandler = {
-    type: 'REDUX',
-    callback: printDatum
-  }
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
 
   return (
     <ScatterSelection
-      data={testdata}
+      data={data}
       eventHandler={eventHandler}
     />
   )

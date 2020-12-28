@@ -2,12 +2,10 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
-import { testdata } from '../data'
-import { printDatum, TestEventHandler, useEventHandler } from './storyUtils'
-import { EventHandler } from '../types/eventTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
 export const BarChartWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useEventHandler()
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
   
   return (
     <BarChart
@@ -18,14 +16,11 @@ export const BarChartWithUseState = (): JSX.Element => {
 }
 
 export const BarChartWithRedux = (): JSX.Element => {
-  const eventHandler: EventHandler = {
-    type: 'REDUX',
-    callback: printDatum
-  }
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
 
   return (
     <BarChart
-      data={testdata}
+      data={data}
       eventHandler={eventHandler}
     />
   )

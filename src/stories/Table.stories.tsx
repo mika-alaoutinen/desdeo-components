@@ -2,12 +2,10 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import Table from '../components/table/Table'
-import { testdata } from '../data'
-import { printDatum, TestEventHandler, useEventHandler } from './storyUtils'
-import { EventHandler } from '../types/eventTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
 export const TableWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useEventHandler()
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
   
   return (
     <Table
@@ -18,14 +16,11 @@ export const TableWithUseState = (): JSX.Element => {
 }
 
 export const TableWithRedux = (): JSX.Element => {
-  const eventHandler: EventHandler = {
-    type: 'REDUX',
-    callback: printDatum
-  }
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
 
   return (
     <Table
-      data={testdata}
+      data={data}
       eventHandler={eventHandler}
     />
   )

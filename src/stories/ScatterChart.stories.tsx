@@ -2,12 +2,10 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import ScatterChart from '../components/scatter/ScatterChart'
-import { testdata } from '../data'
-import { printDatum, TestEventHandler, useEventHandler } from './storyUtils'
-import { EventHandler } from '../types/eventTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
 export const ScatterChartWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useEventHandler()
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
 
   return (
     <ScatterChart
@@ -18,14 +16,11 @@ export const ScatterChartWithUseState = (): JSX.Element => {
 }
 
 export const ScatterChartWithRedux = (): JSX.Element => {
-  const eventHandler: EventHandler = {
-    type: 'REDUX',
-    callback: printDatum
-  }
-
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
+  
   return (
     <ScatterChart
-      data={testdata}
+      data={data}
       eventHandler={eventHandler}
     />
   )
