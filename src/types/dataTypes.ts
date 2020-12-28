@@ -32,8 +32,11 @@ interface UseStateCallback {
 
 interface ReduxActionCallback {
   type: 'REDUX',
-  callback: ReduxAction
+  callback: ReduxActionData|ReduxActionDatum
 }
 
 export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
 export type ReduxAction = (event: Datum|Datum[]) => void
+
+type ReduxActionData = (data: Datum[]) => void
+type ReduxActionDatum = (data: Datum) => void

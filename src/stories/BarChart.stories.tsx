@@ -1,27 +1,39 @@
 import React, { useState } from 'react'
-import { Meta, Story } from '@storybook/react'
+import { Meta } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
 import { testdata } from '../data'
 import { printDatum } from './storyUtils'
-import { DataProps } from '../types/dataTypes'
+import { EventHandler } from '../types/dataTypes'
 
-const Template: Story<DataProps> = args => {
+// TODO: could useState code be moved to a hook?
+export const BarChartWithUseState = (): JSX.Element => {
   const [ data, setData ] = useState(testdata)
+  const eventHandler: EventHandler = {
+    type: 'USE_STATE',
+    callback: setData
+  }
+
   return (
     <BarChart
-      { ...args }
       data={data}
-      setData={setData}
+      eventHandler={eventHandler}
     />
   )
-} 
+}
 
-export const BarChartWithUseState = Template.bind({})
+export const BarChartWithRedux = (): JSX.Element => {
+  const eventHandler: EventHandler = {
+    type: 'REDUX',
+    callback: printDatum
+  }
 
-export const BarChartWithRedux = Template.bind({})
-BarChartWithRedux.args = {
-  reduxAction: printDatum
+  return (
+    <BarChart
+      data={testdata}
+      eventHandler={eventHandler}
+    />
+  )
 }
 
 export default {
