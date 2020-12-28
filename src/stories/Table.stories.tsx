@@ -1,18 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Meta } from '@storybook/react'
 
 import Table from '../components/table/Table'
 import { testdata } from '../data'
-import { printDatum } from './storyUtils'
+import { printDatum, TestEventHandler, useEventHandler } from './storyUtils'
 import { EventHandler } from '../types/eventTypes'
 
 export const TableWithUseState = (): JSX.Element => {
-  const [ data, setData ] = useState(testdata)
-  const eventHandler: EventHandler = {
-    type: 'USE_STATE',
-    callback: setData
-  }
-
+  const { data, eventHandler }: TestEventHandler = useEventHandler()
+  
   return (
     <Table
       data={data}

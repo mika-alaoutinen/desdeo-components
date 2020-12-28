@@ -1,19 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Meta } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
 import { testdata } from '../data'
-import { printDatum } from './storyUtils'
+import { printDatum, TestEventHandler, useEventHandler } from './storyUtils'
 import { EventHandler } from '../types/eventTypes'
 
-// TODO: could useState code be moved to a hook?
 export const BarChartWithUseState = (): JSX.Element => {
-  const [ data, setData ] = useState(testdata)
-  const eventHandler: EventHandler = {
-    type: 'USE_STATE',
-    callback: setData
-  }
-
+  const { data, eventHandler }: TestEventHandler = useEventHandler()
+  
   return (
     <BarChart
       data={data}
