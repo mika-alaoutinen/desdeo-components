@@ -1,44 +1,55 @@
 import React from 'react'
+// Note: Material UI dependencies must be imported like this to work with Storybook.
+// Importing like this breaks stuff: import { Table } from @material-ui/core.
+import Paper from '@material-ui/core/Paper'
+import MaterialTable from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
 
 import { onClickHandler } from '../../events/onClick'
 import { DataProps } from '../../types/dataTypes'
-import { tableRowStyle } from '../../styles/styles'
 
-import '../../styles/Table.css'
-
-const Table: React.FC<DataProps> = ({ data, setData }) => {
-
+const Table: React.FC<DataProps> = ({ data, setData, reduxAction }) => {
+  
+  const renderHeadings = (headings: string[]): JSX.Element[] =>
+    headings.map(heading =>
+      <TableCell key={heading} align='right'>{heading}</TableCell>
+    )
+  
   const renderRows = (): JSX.Element[] =>
-    data.map(datum => {
-      const { id, isSelected, label, x, y } = datum
-      return (
-        <tr
-          key={id}
-          onClick={() => onClickHandler(datum, data, setData)}
-          style={tableRowStyle(isSelected)}
-        >
-          <td>{label ? label : 'no label'}</td>
-          <td>{x}</td>
-          <td>{y}</td>
-          <td>{isSelected ? 'yes' : 'no'}</td>
-        </tr>
-      )
-    })
-
+    data.map(datum =>
+      <TableRow
+        key={datum.id}
+        hover
+        onClick={() => onClickHandler(datum, data, setData, reduxAction)}
+        selected={datum.isSelected}
+      >
+        <TableCell align='right' component='th' scope='row'>{datum.label ? datum.label : 'no label'}</TableCell>
+        <TableCell align='right' component='th' scope='row'>{datum.x}</TableCell>
+        <TableCell align='right' component='th' scope='row'>{datum.y}</TableCell>
+        <TableCell align='right' component='th' scope='row'>{datum.isSelected ? 'yes' : 'no'}</TableCell>
+      </TableRow>
+    )
+  
   return (
-    <table>
-      <thead className='thead'>
-        <tr>
-          <th>Label</th>
-          <th>X</th>
-          <th>Y</th>
-          <th>selected</th>
-        </tr>
-      </thead>
-      <tbody className='tbody'>
-        {renderRows()}
-      </tbody>
-    </table>
+    <TableContainer component={Paper} style={{ width: '50%' }}>
+      <MaterialTable aria-label='material ui table'>
+
+        <TableHead>
+          <TableRow>
+            {renderHeadings([ 'Label', 'X', 'Y', 'Selected' ])}
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {renderRows()}
+        </TableBody>
+        
+      </MaterialTable>
+    </TableContainer>
   )
 }
 
