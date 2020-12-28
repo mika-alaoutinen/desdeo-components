@@ -5,11 +5,10 @@ import SelectionContainer from '../../containers/SelectionContainer'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { DataProps } from '../../types/dataTypes'
 
-const ScatterChart: React.FC<DataProps> = ({ data, setData, reduxAction }) => (
+const ScatterChart: React.FC<DataProps> = ({ data, eventHandler }) => (
   <SelectionContainer
     data={data}
-    setData={setData}
-    onSelect={reduxAction}
+    eventHandler={eventHandler}
   >
     
     <VictoryScatter

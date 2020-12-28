@@ -1,27 +1,29 @@
-import React, { useState } from 'react'
-import { Meta, Story } from '@storybook/react'
+import React from 'react'
+import { Meta } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
-import { testdata } from '../data'
-import { printDatum } from './storyUtils'
-import { DataProps } from '../types/dataTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
-const Template: Story<DataProps> = args => {
-  const [ data, setData ] = useState(testdata)
+export const BarChartWithUseState = (): JSX.Element => {
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
+  
   return (
     <BarChart
-      { ...args }
       data={data}
-      setData={setData}
+      eventHandler={eventHandler}
     />
   )
-} 
+}
 
-export const BarChartWithUseState = Template.bind({})
+export const BarChartWithRedux = (): JSX.Element => {
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
 
-export const BarChartWithRedux = Template.bind({})
-BarChartWithRedux.args = {
-  reduxAction: printDatum
+  return (
+    <BarChart
+      data={data}
+      eventHandler={eventHandler}
+    />
+  )
 }
 
 export default {

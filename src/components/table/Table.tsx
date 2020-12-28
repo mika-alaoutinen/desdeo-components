@@ -12,7 +12,7 @@ import TableRow from '@material-ui/core/TableRow'
 import { onClickHandler } from '../../events/onClick'
 import { DataProps } from '../../types/dataTypes'
 
-const Table: React.FC<DataProps> = ({ data, setData, reduxAction }) => {
+const Table: React.FC<DataProps> = ({ data, eventHandler }) => {
   
   const renderHeadings = (headings: string[]): JSX.Element[] =>
     headings.map(heading =>
@@ -24,7 +24,7 @@ const Table: React.FC<DataProps> = ({ data, setData, reduxAction }) => {
       <TableRow
         key={datum.id}
         hover
-        onClick={() => onClickHandler(datum, data, setData, reduxAction)}
+        onClick={() => onClickHandler(datum, data, eventHandler)}
         selected={datum.isSelected}
       >
         <TableCell align='right' component='th' scope='row'>{datum.label ? datum.label : 'no label'}</TableCell>

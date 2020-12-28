@@ -1,11 +1,8 @@
-// Add interfaces for different optimization methods here.
+import { EventHandler } from './eventTypes'
 
-// The idea is to use either setData or reduxAction 
-// to maintain the state of the components.
 export interface DataProps {
   data: Datum[],
-  setData?: SetData,
-  reduxAction?: ReduxAction
+  eventHandler: EventHandler
 }
 
 export interface DatumProps {
@@ -22,7 +19,3 @@ export interface Coordinate {
   x: number,
   y: number
 }
-
-// Function types
-export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
-export type ReduxAction = (event: Datum|Datum[]) => void

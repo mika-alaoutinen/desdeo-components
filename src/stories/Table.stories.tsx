@@ -1,27 +1,29 @@
-import React, { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
+import React from 'react'
+import { Meta } from '@storybook/react'
 
 import Table from '../components/table/Table'
-import { testdata } from '../data'
-import { printDatum } from './storyUtils'
-import { DataProps } from '../types/dataTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
-const Template: Story<DataProps> = args => {
-  const [ data, setData ] = useState(testdata)
+export const TableWithUseState = (): JSX.Element => {
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
+  
   return (
     <Table
-      { ...args }
       data={data}
-      setData={setData}
+      eventHandler={eventHandler}
     />
   )
 }
 
-export const TableWithUseState = Template.bind({})
+export const TableWithRedux = (): JSX.Element => {
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
 
-export const TableWithRedux = Template.bind({})
-TableWithRedux.args = {
-  reduxAction: printDatum
+  return (
+    <Table
+      data={data}
+      eventHandler={eventHandler}
+    />
+  )
 }
 
 export default {

@@ -1,27 +1,29 @@
-import React, { useState } from 'react'
-import { Meta, Story } from '@storybook/react'
+import React from 'react'
+import { Meta } from '@storybook/react'
 
 import ScatterChart from '../components/scatter/ScatterChart'
-import { testdata } from '../data'
-import { printDatum } from './storyUtils'
-import { DataProps } from '../types/dataTypes'
+import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
-const Template: Story<DataProps> = args => {
-  const [ data, setData ] = useState(testdata)
+export const ScatterChartWithUseState = (): JSX.Element => {
+  const { data, eventHandler }: TestEventHandler = useReactHandler()
+
   return (
     <ScatterChart
-      { ...args }
       data={data}
-      setData={setData}
+      eventHandler={eventHandler}
     />
   )
 }
 
-export const ScatterChartWithUseState = Template.bind({})
-
-export const ScatterChartWithRedux = Template.bind({})
-ScatterChartWithRedux.args = {
-  reduxAction: printDatum
+export const ScatterChartWithRedux = (): JSX.Element => {
+  const { data, eventHandler }: TestEventHandler = useReduxHandler()
+  
+  return (
+    <ScatterChart
+      data={data}
+      eventHandler={eventHandler}
+    />
+  )
 }
 
 export default {
