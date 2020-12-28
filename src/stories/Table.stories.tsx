@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react'
 import Table from '../components/table/Table'
 import { testdata } from '../data'
 import { printDatum } from './storyUtils'
-import { EventHandler } from '../types/dataTypes'
+import { EventHandler } from '../types/eventTypes'
 
 export const TableWithUseState = (): JSX.Element => {
   const [ data, setData ] = useState(testdata)

@@ -6,7 +6,8 @@ import { VictorySelectionContainer } from 'victory-selection-container'
 
 import ChartContainer from './ChartContainer'
 import { onSelectionHandler, selectionClearedHandler } from '../events/onSelection'
-import { Datum, EventHandler } from '../types/dataTypes'
+import { Datum } from '../types/dataTypes'
+import { EventHandler } from '../types/eventTypes'
 
 interface Props {
   data: Datum[],

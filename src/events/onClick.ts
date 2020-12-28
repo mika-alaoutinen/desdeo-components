@@ -1,4 +1,5 @@
-import { Datum, DatumProps, EventHandler, ReduxAction, SetData } from '../types/dataTypes'
+import { Datum, DatumProps } from '../types/dataTypes'
+import { EventHandler, ReduxAction, SetData } from '../types/eventTypes'
 
 /*
  * Used to direct the function callback to either a React useState handler
