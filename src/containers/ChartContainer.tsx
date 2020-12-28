@@ -8,7 +8,7 @@ interface Props {
   domain?: Domain
 }
 
-const style = {
+const style: React.CSSProperties = {
   height: '50%',
   width: '50%',
 }

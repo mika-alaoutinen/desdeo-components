@@ -1,10 +1,11 @@
 import React from 'react'
-// This error is a bug with Victory
-import { VictorySelectionContainer } from 'victory'
+import { PointProps } from 'victory'
+// The selection container export in victory is broken.
+// Let's import it from the separate victory-selection-container npm package instead...
+import { VictorySelectionContainer } from 'victory-selection-container'
 
 import ChartContainer from './ChartContainer'
-import { selectionClearedHandler, onSelectionHandler } from '../events/onSelection'
-import { SelectedData } from '../types/containerTypes'
+import { onSelectionHandler, selectionClearedHandler } from '../events/onSelection'
 import { Datum, ReduxAction, SetData } from '../types/dataTypes'
 
 interface Props {
@@ -15,16 +16,16 @@ interface Props {
 
 const SelectionContainer: React.FC<Props> = ({ data, setData, onSelect, ...props }) => {
 
-  const onSelection = (points: SelectedData): Datum[] =>
+  const onSelection = (points: PointProps[]): Datum[] =>
     onSelectionHandler(points[0].data, data, setData, onSelect)
   
-  const selectionCleared = (): Datum[] =>
+  const onSelectionCleared = (): Datum[] =>
     selectionClearedHandler(data, setData, onSelect)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer
       onSelection={onSelection}
-      onSelectionCleared={selectionCleared}
+      onSelectionCleared={onSelectionCleared}
     />
   
   return (

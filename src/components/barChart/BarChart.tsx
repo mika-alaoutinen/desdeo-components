@@ -3,7 +3,7 @@ import { VictoryBar } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { onClickHandler } from '../../events/onClick'
-import { mapFillStyle } from '../../styles/style'
+import { mapFillStyle } from '../../styles/victoryStyles'
 import { DataProps, DatumProps } from '../../types/dataTypes'
 
 const BarChart: React.FC<DataProps> = ({ data, setData, reduxAction }) => (

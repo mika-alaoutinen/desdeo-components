@@ -3,7 +3,7 @@ import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
 import { onClickHandler } from '../../events/onClick'
-import { mapFillStyle, mapOpacityStyle } from '../../styles/style'
+import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
 import { Domain } from '../../types/containerTypes'
 import { DataProps, DatumProps } from '../../types/dataTypes'
 
