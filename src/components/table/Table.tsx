@@ -1,5 +1,5 @@
 import React from 'react'
-// Note: Material UI dependencies must be imported like this to work with Storybook.
+// Material UI dependencies must be imported like this to work with Storybook.
 // Importing like this breaks stuff: import { Table } from @material-ui/core.
 import Paper from '@material-ui/core/Paper'
 import MaterialTable from '@material-ui/core/Table'
@@ -27,12 +27,21 @@ const Table: React.FC<DataProps> = ({ data, eventHandler }) => {
         onClick={() => onClickHandler(datum, data, eventHandler)}
         selected={datum.isSelected}
       >
-        <TableCell align='right' component='th' scope='row'>{datum.label ? datum.label : 'no label'}</TableCell>
-        <TableCell align='right' component='th' scope='row'>{datum.x}</TableCell>
-        <TableCell align='right' component='th' scope='row'>{datum.y}</TableCell>
-        <TableCell align='right' component='th' scope='row'>{datum.isSelected ? 'yes' : 'no'}</TableCell>
+        {renderCell(datum.label, 'no label')}
+        {renderCell(datum.x)}
+        {renderCell(datum.y)}
+        {datum.isSelected ? renderCell('yes') : renderCell('no')}
       </TableRow>
     )
+  
+  const renderCell = (text?: string|number, altText?: string): JSX.Element =>
+    <TableCell
+      align='right'
+      component='th'
+      scope='row'
+    >
+      {text ? text : altText}
+    </TableCell>
   
   return (
     <TableContainer component={Paper} style={{ width: '50%' }}>
