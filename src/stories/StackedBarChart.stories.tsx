@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import StackedBarChart, { Props } from '../components/barChart/StackedBarChart'
-import { barData } from '../data'
+import { barData } from './testdata'
 
 const Template: Story<Props> = args => <StackedBarChart { ...args } />
 

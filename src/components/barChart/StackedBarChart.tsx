@@ -2,12 +2,12 @@ import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { TestData } from '../../data'
+import { StackedBarData } from '../../stories/testdata'
 import { createTickValues } from './utils'
 
 // TODO: probably want to use the same test data for all components
 export interface Props {
-  data: TestData[],
+  data: StackedBarData[],
   onClick?: () => void
 }
 
