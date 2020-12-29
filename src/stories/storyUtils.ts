@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { testdata } from '../data'
+import { testdata } from './testdata'
 import { Datum } from '../types/dataTypes'
 import { EventHandler } from '../types/eventTypes'
 

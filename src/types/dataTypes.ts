@@ -19,3 +19,14 @@ export interface Coordinate {
   x: number,
   y: number
 }
+
+// Temporary interface for Stacked Bar Chart's test data
+export interface StackedBarData {
+  year: number,
+  data: DataRow[]
+}
+
+interface DataRow {
+  quarter: number,
+  earnings: number
+}
