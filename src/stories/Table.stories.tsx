@@ -5,23 +5,23 @@ import Table from '../components/table/Table'
 import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
 export const TableWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReactHandler()
+  const { data, onClick }: TestEventHandler = useReactHandler()
   
   return (
     <Table
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }
 
 export const TableWithRedux = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReduxHandler()
+  const { data, onClick }: TestEventHandler = useReduxHandler()
 
   return (
     <Table
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }

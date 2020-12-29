@@ -2,11 +2,11 @@ import { useState } from 'react'
 
 import { testdata } from './testdata'
 import { Datum } from '../types/dataTypes'
-import { EventHandler } from '../types/eventTypes'
+import { OnClickHandler } from '../types/eventTypes'
 
 export interface TestEventHandler {
   data: Datum[],
-  eventHandler: EventHandler
+  onClick: OnClickHandler
 }
 
 export const printDatum = ({ x, y, isSelected }: Datum): void => {
@@ -18,17 +18,17 @@ export const useReactHandler = (): TestEventHandler => {
 
   return {
     data,
-    eventHandler: {
+    onClick: {
       type: 'USE_STATE',
-      callback: setData
+      function: setData
     }
   }
 }
 
 export const useReduxHandler = (): TestEventHandler => ({
   data: testdata,
-  eventHandler: {
+  onClick: {
     type: 'REDUX',
-    callback: printDatum
+    function: printDatum
   }
 })

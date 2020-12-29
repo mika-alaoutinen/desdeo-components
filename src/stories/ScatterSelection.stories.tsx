@@ -5,23 +5,23 @@ import ScatterSelection from '../components/scatter/ScatterSelection'
 import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
 
 export const ScatterSeletionWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReactHandler()
+  const { data, onClick }: TestEventHandler = useReactHandler()
   
   return (
     <ScatterSelection
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }
 
 export const ScatterSelectionWithRedux = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReduxHandler()
+  const { data, onClick }: TestEventHandler = useReduxHandler()
 
   return (
     <ScatterSelection
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 

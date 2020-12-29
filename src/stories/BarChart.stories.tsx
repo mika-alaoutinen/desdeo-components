@@ -7,23 +7,23 @@ import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils
 import { barData } from './testdata'
 
 export const BarChartWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReactHandler()
+  const { data, onClick }: TestEventHandler = useReactHandler()
   
   return (
     <BarChart
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }
 
 export const BarChartWithRedux = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReduxHandler()
+  const { data, onClick }: TestEventHandler = useReduxHandler()
 
   return (
     <BarChart
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }
