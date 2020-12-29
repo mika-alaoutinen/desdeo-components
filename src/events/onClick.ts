@@ -1,5 +1,5 @@
 import { Datum, DatumProps } from '../types/dataTypes'
-import { EventHandler, ReduxAction, SetData } from '../types/eventTypes'
+import { Action, OnClickHandler, SetData } from '../types/eventTypes'
 
 /*
  * Used to direct the function callback to either a React useState handler
@@ -9,14 +9,14 @@ import { EventHandler, ReduxAction, SetData } from '../types/eventTypes'
 export const onClickHandler = (
   datum: Datum,
   data: Datum[],
-  eventHandler: EventHandler
+  onClick: OnClickHandler
 ): DatumProps => {
   
-  switch (eventHandler.type) {
+  switch (onClick.type) {
     case 'REDUX':
-      return reduxActionHandler(datum, eventHandler.callback)
+      return reduxActionHandler(datum, onClick.function)
     case 'USE_STATE':
-      return setDataHandler(datum, data, eventHandler.callback)
+      return setDataHandler(datum, data, onClick.function)
     default:
       return { datum }
   }
@@ -32,7 +32,7 @@ const setDataHandler = (
   return { datum: editedDatum }
 }
 
-const reduxActionHandler = (datum: Datum, action: ReduxAction): DatumProps => {
+const reduxActionHandler = (datum: Datum, action: Action): DatumProps => {
   const editedDatum = editSelected(datum)
   action(editedDatum)
   return { datum: editedDatum }

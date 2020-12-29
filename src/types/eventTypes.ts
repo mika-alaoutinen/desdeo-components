@@ -1,16 +1,16 @@
 import { Datum } from './dataTypes'
 
-export type EventHandler = UseStateCallback|ReduxActionCallback
+export type OnClickHandler = UseState|ReduxAction
 
-interface UseStateCallback {
+interface UseState {
   type: 'USE_STATE',
-  callback: SetData
+  function: SetData
 }
 
-interface ReduxActionCallback {
+interface ReduxAction {
   type: 'REDUX',
-  callback: ReduxAction
+  function: Action
 }
 
 export type SetData = React.Dispatch<React.SetStateAction<Datum[]>>
-export type ReduxAction = (data: Datum) => void
+export type Action = (data: Datum) => void

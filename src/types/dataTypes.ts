@@ -1,8 +1,8 @@
-import { EventHandler } from './eventTypes'
+import { OnClickHandler } from './eventTypes'
 
 export interface DataProps {
   data: Datum[],
-  eventHandler: EventHandler
+  onClick: OnClickHandler
 }
 
 export interface DatumProps {
