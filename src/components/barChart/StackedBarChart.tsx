@@ -6,11 +6,10 @@ import { StackedBarData } from '../../types/dataTypes'
 import { createTickValues } from './utils'
 
 export interface Props {
-  data: StackedBarData[],
-  onClick?: () => void
+  data: StackedBarData[]
 }
 
-const StackedBarChart: React.FC<Props> = ({ data, onClick }) => {
+const StackedBarChart: React.FC<Props> = ({ data }) => {
 
   const mapBarCharts = (): JSX.Element[] =>
     data.map(row =>
@@ -23,26 +22,22 @@ const StackedBarChart: React.FC<Props> = ({ data, onClick }) => {
     )
 
   return (
-    <div>
-      <ChartContainer>
-        <VictoryAxis
-          tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
-          tickValues={createTickValues(data)}
-        />
-        <VictoryAxis
-          dependentAxis
-          tickFormat={x => `$${x / 1000}k`}
-        />
+    <ChartContainer>
+      
+      <VictoryAxis
+        tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
+        tickValues={createTickValues(data)}
+      />
+      <VictoryAxis
+        dependentAxis
+        tickFormat={x => `$${x / 1000}k`}
+      />
 
-        <VictoryStack>
-          {mapBarCharts()}
-        </VictoryStack>
-      </ChartContainer>
+      <VictoryStack>
+        {mapBarCharts()}
+      </VictoryStack>
 
-      <p>
-        <button onClick={onClick}>Update</button>
-      </p>
-    </div>
+    </ChartContainer>
   )
 }
 

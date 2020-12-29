@@ -8,8 +8,7 @@ const Template: Story<Props> = args => <StackedBarChart { ...args } />
 
 export const StackedBarChartComponent = Template.bind({})
 StackedBarChartComponent.args = {
-  data: barData,
-  onClick: () => console.log(barData)
+  data: barData
 }
 
 export default {
