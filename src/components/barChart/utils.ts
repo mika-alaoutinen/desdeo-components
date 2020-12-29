@@ -1,4 +1,4 @@
-import { StackedBarData } from '../../stories/testdata'
+import { StackedBarData } from '../../types/dataTypes'
 
 export const createTickValues = (data: StackedBarData[]): number[] => {
   const maxLength = getMaxLengthOfData(data)

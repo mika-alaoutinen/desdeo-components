@@ -1,14 +1,4 @@
-import { Datum } from '../types/dataTypes'
-
-export interface StackedBarData {
-  year: number,
-  data: DataRow[]
-}
-
-interface DataRow {
-  quarter: number,
-  earnings: number
-}
+import { Datum, StackedBarData } from '../types/dataTypes'
 
 export const barData: StackedBarData[] = [
   {
