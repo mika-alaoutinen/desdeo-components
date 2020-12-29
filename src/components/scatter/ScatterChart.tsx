@@ -12,7 +12,7 @@ const domain: Domain = {
   y: [0, 100]
 }
 
-const ScatterChart: React.FC<DataProps> = ({ data, eventHandler }) => (
+const ScatterChart: React.FC<DataProps> = ({ data, onClick }) => (
   <ZoomContainer domain={domain}>
     
     <VictoryScatter
@@ -22,7 +22,7 @@ const ScatterChart: React.FC<DataProps> = ({ data, eventHandler }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }: DatumProps) => onClickHandler(datum, data, eventHandler)
+              mutation: ({ datum }: DatumProps) => onClickHandler(datum, data, onClick)
             }]
           }
         }

@@ -6,7 +6,7 @@ import { onClickHandler } from '../../events/onClick'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { DataProps, DatumProps } from '../../types/dataTypes'
 
-const BarChart: React.FC<DataProps> = ({ data, eventHandler }) => (
+const BarChart: React.FC<DataProps> = ({ data, onClick }) => (
   <ChartContainer>
     
     <VictoryBar
@@ -16,7 +16,7 @@ const BarChart: React.FC<DataProps> = ({ data, eventHandler }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }: DatumProps) => onClickHandler(datum, data, eventHandler)
+              mutation: ({ datum }: DatumProps) => onClickHandler(datum, data, onClick)
             }]
           }
         },
