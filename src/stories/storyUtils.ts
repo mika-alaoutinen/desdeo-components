@@ -32,7 +32,7 @@ export const useOnClickReactHandler = (): OnClickHandlerTest => {
     data,
     onClick: {
       type: 'USE_STATE',
-      function: setData
+      fn: setData
     }
   }
 }
@@ -41,7 +41,7 @@ export const useOnClickReduxHandler = (): OnClickHandlerTest => ({
   data: testdata,
   onClick: {
     type: 'REDUX',
-    function: printDatum
+    fn: printDatum
   }
 })
 
@@ -58,7 +58,7 @@ export const useOnSelectReactHandler = (): OnSelectHandlerTest => {
     data,
     onSelect: {
       type: 'USE_STATE',
-      function: setData
+      fn: setData
     }
   }
 }
@@ -67,6 +67,6 @@ export const useOnSelectReduxHandler = (): OnSelectHandlerTest => ({
   data: testdata,
   onSelect: {
     type: 'REDUX',
-    function: printData
+    fn: printData
   }
 })
