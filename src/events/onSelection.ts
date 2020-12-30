@@ -1,5 +1,7 @@
 import { Datum } from '../types/dataTypes'
-import { Action, OnClickHandler, SetData } from '../types/eventTypes'
+import {
+  OnSelectionAction, OnSelectionHandler, SetData
+} from '../types/eventTypes'
 
 /*
  * Used to direct the function callback to either a React useState handler
@@ -7,15 +9,15 @@ import { Action, OnClickHandler, SetData } from '../types/eventTypes'
  * the given data back as is.
  */
 export const onSelectionHandler = (
-  selected: Datum[], data: Datum[], onClick: OnClickHandler
+  selected: Datum[], data: Datum[], onSelection: OnSelectionHandler
 ): void => {
 
-  switch (onClick.type) {
+  switch (onSelection.type) {
     case 'REDUX':
-      reduxActionHandler(selected, true, onClick.function)
+      reduxActionHandler(selected, true, onSelection.function)
       break
     case 'USE_STATE':
-      setDataHandler(selected, data, onClick.function)
+      setDataHandler(selected, data, onSelection.function)
       break
     default:
       console.error('Invalid OnSelectionHandler given!')
@@ -28,7 +30,7 @@ export const onSelectionHandler = (
  * the given data back as is.
  */
 export const selectionClearedHandler = (
-  data: Datum[], onClick: OnClickHandler
+  data: Datum[], onClick: OnSelectionHandler
 ): void => {
   
   switch (onClick.type) {
@@ -43,12 +45,16 @@ export const selectionClearedHandler = (
   }
 }
 
-const reduxActionHandler = (selected: Datum[], isSelected: boolean, action: Action): void => {
+const reduxActionHandler = (
+  selected: Datum[], isSelected: boolean, action: OnSelectionAction
+): void => {
   const edited = editSelected(selected, isSelected)
-  edited.forEach(datum => action(datum))
+  action(edited)
 }
 
-const setDataHandler = (selected: Datum[], data: Datum[], setData: SetData): void => {
+const setDataHandler = (
+  selected: Datum[], data: Datum[], setData: SetData
+): void => {
   const edited = editSelected(selected, true)
   const newData = updateData(edited, data)
   setData(newData)

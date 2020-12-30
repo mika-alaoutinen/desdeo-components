@@ -1,5 +1,5 @@
 import { Datum } from '../types/dataTypes'
-import { Action, OnClickHandler, SetData } from '../types/eventTypes'
+import { OnClickAction, OnClickHandler, SetData } from '../types/eventTypes'
 
 /*
  * Used to direct the function callback to either a React useState handler
@@ -7,15 +7,15 @@ import { Action, OnClickHandler, SetData } from '../types/eventTypes'
  * the given data back as is.
  */
 export const onClickHandler = (
-  datum: Datum, data: Datum[], onClick: OnClickHandler
+  clicked: Datum, data: Datum[], onClick: OnClickHandler
 ): void => {
   
   switch (onClick.type) {
     case 'REDUX':
-      reduxActionHandler(datum, onClick.function)
+      reduxActionHandler(clicked, onClick.function)
       break
     case 'USE_STATE':
-      setDataHandler(datum, data, onClick.function)
+      setDataHandler(clicked, data, onClick.function)
       break
     default:
       console.error('Invalid OnClickHandler given!')
@@ -27,7 +27,7 @@ const setDataHandler = (datum: Datum, data: Datum[], setData: SetData): void => 
   setData(updateData(editedDatum, data))
 }
 
-const reduxActionHandler = (datum: Datum, action: Action): void => {
+const reduxActionHandler = (datum: Datum, action: OnClickAction): void => {
   const editedDatum = editSelected(datum)
   action(editedDatum)
 }
