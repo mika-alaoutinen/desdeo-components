@@ -3,12 +3,12 @@ import { VictoryScatter } from 'victory'
 
 import SelectionContainer from '../../containers/SelectionContainer'
 import { mapFillStyle } from '../../styles/victoryStyles'
-import { DataProps } from '../../types/dataTypes'
+import { OnSelectChart } from '../../types/chartTypes'
 
-const ScatterChart: React.FC<DataProps> = ({ data, eventHandler }) => (
+const ScatterChart: React.FC<OnSelectChart> = ({ data, onSelect }) => (
   <SelectionContainer
     data={data}
-    eventHandler={eventHandler}
+    onSelect={onSelect}
   >
     
     <VictoryScatter

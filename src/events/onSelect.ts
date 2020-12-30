@@ -1,24 +1,26 @@
 import { Datum } from '../types/dataTypes'
-import { EventHandler, ReduxAction, SetData } from '../types/eventTypes'
+import {
+  OnSelectAction, OnSelectHandler, SetData
+} from '../types/eventTypes'
 
 /*
  * Used to direct the function callback to either a React useState handler
  * or a Redux action handler. If neither callback function is defined, returns
  * the given data back as is.
  */
-export const onSelectionHandler = (
-  selected: Datum[],
-  data: Datum[],
-  eventHandler: EventHandler
-): Datum[] => {
+export const onSelectHandler = (
+  selected: Datum[], data: Datum[], onSelect: OnSelectHandler
+): void => {
 
-  switch (eventHandler.type) {
+  switch (onSelect.type) {
     case 'REDUX':
-      return reduxActionHandler(selected, true, eventHandler.callback)
+      reduxActionHandler(selected, true, onSelect.fn)
+      break
     case 'USE_STATE':
-      return setDataHandler(selected, data, eventHandler.callback)
+      setDataHandler(selected, data, onSelect.fn)
+      break
     default:
-      return data
+      console.error('Invalid OnSelectionHandler given!')
   }
 }
   
@@ -28,45 +30,39 @@ export const onSelectionHandler = (
  * the given data back as is.
  */
 export const selectionClearedHandler = (
-  data: Datum[],
-  eventHandler: EventHandler
-): Datum[] => {
-
-  switch (eventHandler.type) {
+  data: Datum[], onSelect: OnSelectHandler
+): void => {
+  
+  switch (onSelect.type) {
     case 'REDUX':
-      return reduxActionHandler(data, false, eventHandler.callback)
+      reduxActionHandler(data, false, onSelect.fn)
+      break
     case 'USE_STATE':
-      return clearSelectedData(data, eventHandler.callback)
+      clearSelectedData(data, onSelect.fn)
+      break
     default:
-      return data
+      console.error('Invalid SelectionClearedHandler given!')
   }
 }
 
 const reduxActionHandler = (
-  selected: Datum[],
-  isSelected: boolean,
-  action: ReduxAction
-): Datum[] => {
+  selected: Datum[], isSelected: boolean, action: OnSelectAction
+): void => {
   const edited = editSelected(selected, isSelected)
-  edited.forEach(datum => action(datum))
-  return edited
+  action(edited)
 }
 
 const setDataHandler = (
-  selected: Datum[],
-  data: Datum[],
-  setData: SetData
-): Datum[] => {
+  selected: Datum[], data: Datum[], setData: SetData
+): void => {
   const edited = editSelected(selected, true)
   const newData = updateData(edited, data)
   setData(newData)
-  return newData
 }
 
-const clearSelectedData = (data: Datum[], setData: SetData): Datum[] => {
+const clearSelectedData = (data: Datum[], setData: SetData): void => {
   const cleared = editSelected(data, false)
   setData(cleared)
-  return cleared
 }
 
 const editSelected = (data: Datum[], isSelected: boolean): Datum[] =>

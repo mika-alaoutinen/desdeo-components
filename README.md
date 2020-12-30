@@ -22,6 +22,3 @@ Builds the application as a static Storybook application. Probably not a very us
 
 ## TODO
 - [ ] Probably need to setup Redux with storybook.
-  - Components should never directly mutate data, but instead dispatch Redux actions.
-  - May have to rethink the onClick behavior in BarChart and ScatterChart, because they directly mutate data.
-- [ ] Try to move event handling away from chart components to container components.

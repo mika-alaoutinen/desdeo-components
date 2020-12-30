@@ -1,10 +1,3 @@
-import { EventHandler } from './eventTypes'
-
-export interface DataProps {
-  data: Datum[],
-  eventHandler: EventHandler
-}
-
 export interface DatumProps {
   datum: Datum
 }

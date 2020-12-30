@@ -2,33 +2,71 @@ import { useState } from 'react'
 
 import { testdata } from './testdata'
 import { Datum } from '../types/dataTypes'
-import { EventHandler } from '../types/eventTypes'
+import { OnClickHandler, OnSelectHandler } from '../types/eventTypes'
 
-export interface TestEventHandler {
-  data: Datum[],
-  eventHandler: EventHandler
+// Utility functions
+export const printData = (data: Datum[]): void => {
+  const dataStrings = data.map(({ label, x, y, isSelected }) => {
+    const labelStr = label ? label : 'unlabeled'
+    const selectedStr = isSelected ? 'yes' : 'no'
+    return `${labelStr} -> x: ${x} y: ${y} selected: ${selectedStr}`
+  })
+
+  console.log('selected data', dataStrings)
 }
 
 export const printDatum = ({ x, y, isSelected }: Datum): void => {
   console.log('x', x, 'y', y, 'isSelected', isSelected)
 }
 
-export const useReactHandler = (): TestEventHandler => {
+// Event handler for OnClick components
+interface OnClickHandlerTest {
+  data: Datum[],
+  onClick: OnClickHandler
+}
+
+export const useOnClickReactHandler = (): OnClickHandlerTest => {
   const [ data, setData ] = useState(testdata)
 
   return {
     data,
-    eventHandler: {
+    onClick: {
       type: 'USE_STATE',
-      callback: setData
+      fn: setData
     }
   }
 }
 
-export const useReduxHandler = (): TestEventHandler => ({
+export const useOnClickReduxHandler = (): OnClickHandlerTest => ({
   data: testdata,
-  eventHandler: {
+  onClick: {
     type: 'REDUX',
-    callback: printDatum
+    fn: printDatum
+  }
+})
+
+// Event handler for OnSelect components
+interface OnSelectHandlerTest {
+  data: Datum[],
+  onSelect: OnSelectHandler
+}
+
+export const useOnSelectReactHandler = (): OnSelectHandlerTest => {
+  const [ data, setData ] = useState(testdata)
+
+  return {
+    data,
+    onSelect: {
+      type: 'USE_STATE',
+      fn: setData
+    }
+  }
+}
+
+export const useOnSelectReduxHandler = (): OnSelectHandlerTest => ({
+  data: testdata,
+  onSelect: {
+    type: 'REDUX',
+    fn: printData
   }
 })

@@ -2,26 +2,26 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import Table from '../components/table/Table'
-import { TestEventHandler, useReactHandler, useReduxHandler } from './storyUtils'
+import { useOnClickReactHandler, useOnClickReduxHandler } from './storyUtils'
 
 export const TableWithUseState = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReactHandler()
+  const { data, onClick } = useOnClickReactHandler()
   
   return (
     <Table
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }
 
 export const TableWithRedux = (): JSX.Element => {
-  const { data, eventHandler }: TestEventHandler = useReduxHandler()
+  const { data, onClick } = useOnClickReduxHandler()
 
   return (
     <Table
       data={data}
-      eventHandler={eventHandler}
+      onClick={onClick}
     />
   )
 }
