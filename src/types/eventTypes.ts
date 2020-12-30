@@ -9,15 +9,15 @@ export type OnSelectAction = (data: Datum[]) => void
 
 interface UseState {
   type: 'USE_STATE',
-  function: SetData
+  fn: SetData
 }
 
 interface ReduxOnClick {
   type: 'REDUX',
-  function: OnClickAction
+  fn: OnClickAction
 }
 
 interface ReduxOnSelect {
   type: 'REDUX',
-  function: OnSelectAction
+  fn: OnSelectAction
 }

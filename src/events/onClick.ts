@@ -12,10 +12,10 @@ export const onClickHandler = (
   
   switch (onClick.type) {
     case 'REDUX':
-      reduxActionHandler(clicked, onClick.function)
+      reduxActionHandler(clicked, onClick.fn)
       break
     case 'USE_STATE':
-      setDataHandler(clicked, data, onClick.function)
+      setDataHandler(clicked, data, onClick.fn)
       break
     default:
       console.error('Invalid OnClickHandler given!')
