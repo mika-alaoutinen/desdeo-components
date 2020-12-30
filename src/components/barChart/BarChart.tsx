@@ -4,7 +4,8 @@ import { VictoryBar } from 'victory'
 import ChartContainer from '../../containers/ChartContainer'
 import { onClickHandler } from '../../events/onClick'
 import { mapFillStyle } from '../../styles/victoryStyles'
-import { OnClickChart, DatumProps } from '../../types/dataTypes'
+import { OnClickChart } from '../../types/chartTypes'
+import { DatumProps } from '../../types/dataTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
   <ChartContainer>

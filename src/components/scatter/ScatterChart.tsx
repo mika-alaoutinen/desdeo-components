@@ -4,8 +4,9 @@ import { VictoryScatter } from 'victory'
 import ZoomContainer from '../../containers/ZoomContainer'
 import { onClickHandler } from '../../events/onClick'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
+import { OnClickChart } from '../../types/chartTypes'
 import { Domain } from '../../types/containerTypes'
-import { OnClickChart, DatumProps } from '../../types/dataTypes'
+import { DatumProps } from '../../types/dataTypes'
 
 const domain: Domain = {
   x: [0, 100],

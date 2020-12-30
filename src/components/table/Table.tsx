@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
 import { onClickHandler } from '../../events/onClick'
-import { OnClickChart } from '../../types/dataTypes'
+import { OnClickChart } from '../../types/chartTypes'
 
 const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
   
