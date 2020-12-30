@@ -5,22 +5,22 @@ import { PointProps } from 'victory'
 import { VictorySelectionContainer } from 'victory-selection-container'
 
 import ChartContainer from './ChartContainer'
-import { onSelectionHandler, selectionClearedHandler } from '../events/onSelection'
+import { onSelectHandler, selectionClearedHandler } from '../events/onSelect'
 import { Datum } from '../types/dataTypes'
-import { OnSelectionHandler } from '../types/eventTypes'
+import { OnSelectHandler } from '../types/eventTypes'
 
 interface Props {
   data: Datum[],
-  onSelection: OnSelectionHandler
+  onSelect: OnSelectHandler
 }
 
-const SelectionContainer: React.FC<Props> = ({ data, onSelection, ...props }) => {
+const SelectionContainer: React.FC<Props> = ({ data, onSelect, ...props }) => {
 
   const selection = (points: PointProps[]): void =>
-    onSelectionHandler(points[0].data, data, onSelection)
+    onSelectHandler(points[0].data, data, onSelect)
   
   const selectionCleared = (): void =>
-    selectionClearedHandler(data, onSelection)
+    selectionClearedHandler(data, onSelect)
   
   const selectionContainer = (): JSX.Element =>
     <VictorySelectionContainer

@@ -1,12 +1,12 @@
 import { Datum } from './dataTypes'
-import { OnClickHandler, OnSelectionHandler } from './eventTypes'
+import { OnClickHandler, OnSelectHandler } from './eventTypes'
 
 export interface OnClickChart {
   data: Datum[],
   onClick: OnClickHandler
 }
 
-export interface OnSelectionChart {
+export interface OnSelectChart {
   data: Datum[],
-  onSelect: OnSelectionHandler
+  onSelect: OnSelectHandler
 }

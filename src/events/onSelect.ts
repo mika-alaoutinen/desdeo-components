@@ -1,6 +1,6 @@
 import { Datum } from '../types/dataTypes'
 import {
-  OnSelectionAction, OnSelectionHandler, SetData
+  OnSelectAction, OnSelectHandler, SetData
 } from '../types/eventTypes'
 
 /*
@@ -8,16 +8,16 @@ import {
  * or a Redux action handler. If neither callback function is defined, returns
  * the given data back as is.
  */
-export const onSelectionHandler = (
-  selected: Datum[], data: Datum[], onSelection: OnSelectionHandler
+export const onSelectHandler = (
+  selected: Datum[], data: Datum[], onSelect: OnSelectHandler
 ): void => {
 
-  switch (onSelection.type) {
+  switch (onSelect.type) {
     case 'REDUX':
-      reduxActionHandler(selected, true, onSelection.function)
+      reduxActionHandler(selected, true, onSelect.function)
       break
     case 'USE_STATE':
-      setDataHandler(selected, data, onSelection.function)
+      setDataHandler(selected, data, onSelect.function)
       break
     default:
       console.error('Invalid OnSelectionHandler given!')
@@ -30,15 +30,15 @@ export const onSelectionHandler = (
  * the given data back as is.
  */
 export const selectionClearedHandler = (
-  data: Datum[], onClick: OnSelectionHandler
+  data: Datum[], onSelect: OnSelectHandler
 ): void => {
   
-  switch (onClick.type) {
+  switch (onSelect.type) {
     case 'REDUX':
-      reduxActionHandler(data, false, onClick.function)
+      reduxActionHandler(data, false, onSelect.function)
       break
     case 'USE_STATE':
-      clearSelectedData(data, onClick.function)
+      clearSelectedData(data, onSelect.function)
       break
     default:
       console.error('Invalid SelectionClearedHandler given!')
@@ -46,7 +46,7 @@ export const selectionClearedHandler = (
 }
 
 const reduxActionHandler = (
-  selected: Datum[], isSelected: boolean, action: OnSelectionAction
+  selected: Datum[], isSelected: boolean, action: OnSelectAction
 ): void => {
   const edited = editSelected(selected, isSelected)
   action(edited)

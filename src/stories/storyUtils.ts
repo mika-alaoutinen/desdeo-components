@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { testdata } from './testdata'
 import { Datum } from '../types/dataTypes'
-import { OnClickHandler, OnSelectionHandler } from '../types/eventTypes'
+import { OnClickHandler, OnSelectHandler } from '../types/eventTypes'
 
 // Utility functions
 export const printData = (data: Datum[]): void => {
@@ -48,7 +48,7 @@ export const useOnClickReduxHandler = (): OnClickHandlerTest => ({
 // Event handler for OnSelect components
 interface OnSelectHandlerTest {
   data: Datum[],
-  onSelect: OnSelectionHandler
+  onSelect: OnSelectHandler
 }
 
 export const useOnSelectReactHandler = (): OnSelectHandlerTest => {
