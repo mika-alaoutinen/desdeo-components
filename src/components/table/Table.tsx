@@ -10,9 +10,9 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
 import { onClickHandler } from '../../events/onClick'
-import { DataProps } from '../../types/dataTypes'
+import { OnClickChart } from '../../types/dataTypes'
 
-const Table: React.FC<DataProps> = ({ data, onClick }) => {
+const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
   
   const renderHeadings = (headings: string[]): JSX.Element[] =>
     headings.map(heading =>

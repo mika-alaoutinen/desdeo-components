@@ -1,8 +1,14 @@
-import { OnClickHandler } from './eventTypes'
+import { OnClickHandler, OnSelectionHandler } from './eventTypes'
 
-export interface DataProps {
+// TODO: delete and use interfaces from chartTypes
+export interface OnClickChart {
   data: Datum[],
   onClick: OnClickHandler
+}
+
+export interface OnSelectionChart {
+  data: Datum[],
+  onSelect: OnSelectionHandler
 }
 
 export interface DatumProps {
