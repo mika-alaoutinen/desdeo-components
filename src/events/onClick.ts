@@ -1,4 +1,4 @@
-import { Datum, DatumProps } from '../types/dataTypes'
+import { Datum } from '../types/dataTypes'
 import { Action, OnClickHandler, SetData } from '../types/eventTypes'
 
 /*
@@ -7,35 +7,29 @@ import { Action, OnClickHandler, SetData } from '../types/eventTypes'
  * the given data back as is.
  */
 export const onClickHandler = (
-  datum: Datum,
-  data: Datum[],
-  onClick: OnClickHandler
-): DatumProps => {
+  datum: Datum, data: Datum[], onClick: OnClickHandler
+): void => {
   
   switch (onClick.type) {
     case 'REDUX':
-      return reduxActionHandler(datum, onClick.function)
+      reduxActionHandler(datum, onClick.function)
+      break
     case 'USE_STATE':
-      return setDataHandler(datum, data, onClick.function)
+      setDataHandler(datum, data, onClick.function)
+      break
     default:
-      return { datum }
+      console.error('Invalid OnClickHandler given!')
   }
 }
 
-const setDataHandler = (
-  datum: Datum,
-  data: Datum[],
-  setData: SetData
-): DatumProps => {
+const setDataHandler = (datum: Datum, data: Datum[], setData: SetData): void => {
   const editedDatum = editSelected(datum)
   setData(updateData(editedDatum, data))
-  return { datum: editedDatum }
 }
 
-const reduxActionHandler = (datum: Datum, action: Action): DatumProps => {
+const reduxActionHandler = (datum: Datum, action: Action): void => {
   const editedDatum = editSelected(datum)
   action(editedDatum)
-  return { datum: editedDatum }
 }
 
 const editSelected = (datum: Datum): Datum =>
