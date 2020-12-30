@@ -7,18 +7,18 @@ import { Action, OnClickHandler, SetData } from '../types/eventTypes'
  * the given data back as is.
  */
 export const onSelectionHandler = (
-  selected: Datum[],
-  data: Datum[],
-  onClick: OnClickHandler
-): Datum[] => {
+  selected: Datum[], data: Datum[], onClick: OnClickHandler
+): void => {
 
   switch (onClick.type) {
     case 'REDUX':
-      return reduxActionHandler(selected, true, onClick.function)
+      reduxActionHandler(selected, true, onClick.function)
+      break
     case 'USE_STATE':
-      return setDataHandler(selected, data, onClick.function)
+      setDataHandler(selected, data, onClick.function)
+      break
     default:
-      return data
+      console.error('Invalid OnSelectionHandler given!')
   }
 }
   
@@ -28,45 +28,35 @@ export const onSelectionHandler = (
  * the given data back as is.
  */
 export const selectionClearedHandler = (
-  data: Datum[],
-  onClick: OnClickHandler
-): Datum[] => {
-
+  data: Datum[], onClick: OnClickHandler
+): void => {
+  
   switch (onClick.type) {
     case 'REDUX':
-      return reduxActionHandler(data, false, onClick.function)
+      reduxActionHandler(data, false, onClick.function)
+      break
     case 'USE_STATE':
-      return clearSelectedData(data, onClick.function)
+      clearSelectedData(data, onClick.function)
+      break
     default:
-      return data
+      console.error('Invalid SelectionClearedHandler given!')
   }
 }
 
-const reduxActionHandler = (
-  selected: Datum[],
-  isSelected: boolean,
-  action: Action
-): Datum[] => {
+const reduxActionHandler = (selected: Datum[], isSelected: boolean, action: Action): void => {
   const edited = editSelected(selected, isSelected)
   edited.forEach(datum => action(datum))
-  return edited
 }
 
-const setDataHandler = (
-  selected: Datum[],
-  data: Datum[],
-  setData: SetData
-): Datum[] => {
+const setDataHandler = (selected: Datum[], data: Datum[], setData: SetData): void => {
   const edited = editSelected(selected, true)
   const newData = updateData(edited, data)
   setData(newData)
-  return newData
 }
 
-const clearSelectedData = (data: Datum[], setData: SetData): Datum[] => {
+const clearSelectedData = (data: Datum[], setData: SetData): void => {
   const cleared = editSelected(data, false)
   setData(cleared)
-  return cleared
 }
 
 const editSelected = (data: Datum[], isSelected: boolean): Datum[] =>
