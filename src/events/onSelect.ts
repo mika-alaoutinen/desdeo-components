@@ -54,32 +54,27 @@ const reduxUnselect = (data: Datum[], action: OnSelectAction): void =>
 const reduxActionHandler = (
   selected: Datum[], isSelected: boolean, action: OnSelectAction
 ): void => {
-  const edited = editSelected(selected, isSelected)
+  const edited = selected.map(datum => editSelected(datum, isSelected))
   action(edited)
 }
 
 const setSelectedData = (
   selected: Datum[], data: Datum[], setData: SetData
 ): void => {
-  const edited = editSelected(selected, true)
-  const newData = updateData(edited, data)
+  const selectedIDs = selected.map(datum => datum.id)
+  const newData = data.map(datum => selectedIDs.includes(datum.id)
+    ? editSelected(datum, true)
+    : datum
+  )
   setData(newData)
 }
 
 const clearSelectedData = (data: Datum[], setData: SetData): void => {
-  const cleared = editSelected(data, false)
-  setData(cleared)
+  const unselected = data.map(datum => editSelected(datum, false))
+  setData(unselected)
 }
 
-const editSelected = (data: Datum[], isSelected: boolean): Datum[] =>
-  data.map(datum => ({
-    ...datum,
-    isSelected
-  }))
-
-const updateData = (edited: Datum[], data: Datum[]): Datum[] => {
-  const editedIDs = edited.map(datum => datum.id)
-  return data
-    .filter(datum => !editedIDs.includes(datum.id))
-    .concat(edited)
-}
+const editSelected = (datum: Datum, isSelected: boolean): Datum => ({
+  ...datum,
+  isSelected
+})
