@@ -10,7 +10,7 @@ const ScatterChart: React.FC<OnSelectChart> = ({ data, onSelect }) => (
     data={data}
     onSelect={onSelect}
   >
-    
+
     <VictoryScatter
       data={data}
       size={7}
@@ -19,7 +19,7 @@ const ScatterChart: React.FC<OnSelectChart> = ({ data, onSelect }) => (
           fill: ({ datum }) => mapFillStyle(datum)
         }
       }}
-    />        
+    />
 
   </SelectionContainer>
 )

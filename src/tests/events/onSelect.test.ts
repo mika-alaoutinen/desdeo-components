@@ -51,7 +51,7 @@ describe('selectionClearedHandler calls functions depending on given event handl
   it('should call Redux action that is given as parameter', () => {
     callSelectionClearedHandlerOnce(createHandler('REDUX'))
   })
-  
+
   it('should call React useState function that is given as parameter', () => {
     callSelectionClearedHandlerOnce(createHandler('USE_STATE'))
   })
@@ -88,7 +88,7 @@ const callSelectionClearedHandlerOnce = (handler: OnSelectHandler): void => {
 const callUnselectOnce = (handler: OnSelectHandler): void => {
   const afterUnselect = updateSelected(testdata, false)
   selectionClearedHandler(testdata, handler)
-  expect(handler.fn).toHaveBeenCalledWith(afterUnselect)  
+  expect(handler.fn).toHaveBeenCalledWith(afterUnselect)
 }
 
 // Utilities

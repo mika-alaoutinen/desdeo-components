@@ -14,7 +14,7 @@ const SelectionContainer: React.FC<OnSelectChart> = ({ data, onSelect, ...props 
       onSelection={points => onSelectHandler(points[0].data, data, onSelect)}
       onSelectionCleared={() => selectionClearedHandler(data, onSelect)}
     />
-  
+
   return (
     <ChartContainer
       { ...props }

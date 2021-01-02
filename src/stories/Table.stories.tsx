@@ -6,7 +6,7 @@ import { useOnClickReactHandler, useOnClickReduxHandler } from './storyUtils'
 
 export const TableWithUseState = (): JSX.Element => {
   const { data, onClick } = useOnClickReactHandler()
-  
+
   return (
     <Table
       data={data}

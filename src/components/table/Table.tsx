@@ -13,12 +13,12 @@ import { onClickHandler } from '../../events/onClick'
 import { OnClickChart } from '../../types/chartTypes'
 
 const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
-  
+
   const renderHeadings = (headings: string[]): JSX.Element[] =>
     headings.map(heading =>
       <TableCell key={heading} align='right'>{heading}</TableCell>
     )
-  
+
   const renderRows = (): JSX.Element[] =>
     data.map(datum =>
       <TableRow
@@ -33,7 +33,7 @@ const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
         {datum.isSelected ? renderCell('yes') : renderCell('no')}
       </TableRow>
     )
-  
+
   const renderCell = (text?: string|number, altText?: string): JSX.Element =>
     <TableCell
       align='right'
@@ -42,7 +42,7 @@ const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
     >
       {text ? text : altText}
     </TableCell>
-  
+
   return (
     <TableContainer component={Paper} style={{ width: '50%' }}>
       <MaterialTable aria-label='material ui table'>
@@ -56,7 +56,7 @@ const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
         <TableBody>
           {renderRows()}
         </TableBody>
-        
+
       </MaterialTable>
     </TableContainer>
   )

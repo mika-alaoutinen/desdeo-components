@@ -34,6 +34,7 @@
     ],
     "@typescript-eslint/no-explicit-any": 1,
     "no-case-declarations": 0,
+    "no-trailing-spaces": [2, { "skipBlankLines": false }],
     "object-curly-spacing": [ "error", "always" ],
     "quotes": [ "error", "single" ],
     "semi": [ "error", "never" ],
