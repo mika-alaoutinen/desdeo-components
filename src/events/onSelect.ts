@@ -14,10 +14,10 @@ export const onSelectHandler = (
 
   switch (onSelect.type) {
     case 'REDUX':
-      reduxActionHandler(selected, true, onSelect.fn)
+      reduxSelect(selected, onSelect.fn)
       break
     case 'USE_STATE':
-      setDataHandler(selected, data, onSelect.fn)
+      setSelectedData(selected, data, onSelect.fn)
       break
     default:
       console.error('Invalid OnSelectionHandler given!')
@@ -35,7 +35,7 @@ export const selectionClearedHandler = (
   
   switch (onSelect.type) {
     case 'REDUX':
-      reduxActionHandler(data, false, onSelect.fn)
+      reduxUnselect(data, onSelect.fn)
       break
     case 'USE_STATE':
       clearSelectedData(data, onSelect.fn)
@@ -45,6 +45,12 @@ export const selectionClearedHandler = (
   }
 }
 
+const reduxSelect = (selected: Datum[], action: OnSelectAction): void =>
+  reduxActionHandler(selected, true, action)
+
+const reduxUnselect = (data: Datum[], action: OnSelectAction): void =>
+  reduxActionHandler(data, false, action)
+
 const reduxActionHandler = (
   selected: Datum[], isSelected: boolean, action: OnSelectAction
 ): void => {
@@ -52,7 +58,7 @@ const reduxActionHandler = (
   action(edited)
 }
 
-const setDataHandler = (
+const setSelectedData = (
   selected: Datum[], data: Datum[], setData: SetData
 ): void => {
   const edited = editSelected(selected, true)
