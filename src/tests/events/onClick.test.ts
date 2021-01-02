@@ -4,16 +4,16 @@ import { testdata } from '../testdata'
 import { OnClickHandler } from '../../types/eventTypes'
 import { Datum } from '../../types/dataTypes'
 
-describe('Calling event handlers that are given as parameter', () => {
-  test('Handler should call Redux action that is given as parameter', () => {
+describe('OnClickHandler calls functions depending on given event handler type', () => {
+  it('should call Redux action that is given as parameter', () => {
     callHandlerOnce(createHandler('REDUX'))
   })
 
-  test('Handler should call React useState function that is given as parameter', () => {
+  it('should call React useState function that is given as parameter', () => {
     callHandlerOnce(createHandler('USE_STATE'))
   })
 
-  test('Handler should have no interactions if its type is invalid', () => {
+  it('should have no interactions if its type is invalid', () => {
     const clicked = testdata[0]
     const invalidHandler = createHandler(undefined)
     onClickHandler(clicked, testdata, invalidHandler)
@@ -21,22 +21,22 @@ describe('Calling event handlers that are given as parameter', () => {
   })
 })
 
-describe('Editing selected datum with Redux action', () => {
-  test('If isSelected is true, set it to false', () => {
+describe('Editing selected datum with Redux action alters its isSelected property', () => {
+  it('should be false when it was true', () => {
     editSelectedWithRedux(0)
   })
 
-  test('If isSelected is false, set it to true', () => {
+  it('should be true when it was false', () => {
     editSelectedWithRedux(1)
   })
 
-  test('If isSelected is undefined, set it to true', () => {
+  it('should be true when it was undefined', () => {
     editSelectedWithRedux(2)
   })
 })
 
-describe('Editing selected datum with React useState function', () => {
-  test('Edited datum should be in the data set', () => {
+describe('Editing selected datum with React useState function updates data array', () => {
+  it('should be in the new data array', () => {
     const clicked = testdata[0]
     const afterClick = {
       ...clicked,
