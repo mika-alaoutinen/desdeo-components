@@ -21,37 +21,34 @@ describe('Calling event handlers that are given as parameter', () => {
   })
 })
 
-describe('Editing selected datum', () => {
-  test('If isSelected is undefined, set it to true', () => {
-    editSelected(undefined)
-  })
-
+describe('Editing selected datum with Redux action', () => {
   test('If isSelected is true, set it to false', () => {
-    editSelected(true)
+    editSelectedWithRedux(0)
   })
 
   test('If isSelected is false, set it to true', () => {
-    editSelected(false)
+    editSelectedWithRedux(1)
+  })
+
+  test('If isSelected is undefined, set it to true', () => {
+    editSelectedWithRedux(2)
   })
 })
 
-describe('Updating data when useState function is given', () => {
+describe('Editing selected datum with React useState function', () => {
   test('Edited datum should be in the data set', () => {
     const clicked = testdata[0]
     const afterClick = {
       ...clicked,
       isSelected: false
     }
-
     const updatedData: Datum[] = [
       afterClick,
       ...testdata.slice(1, testdata.length)
     ]
-
     const handler = createHandler('USE_STATE')
-    onClickHandler(clicked, testdata, handler)
 
-    
+    onClickHandler(clicked, testdata, handler)
     expect(handler.fn).toHaveBeenCalledWith(updatedData)
   })
 })
@@ -63,24 +60,18 @@ const callHandlerOnce = (handler: OnClickHandler): void => {
   expect(handler.fn).toHaveBeenCalledTimes(1)
 }
 
-const editSelected = (isSelected: boolean|undefined): void => {
-  const data = createData(isSelected)
-  const clicked = data[0]
+const editSelectedWithRedux = (testdataIndex: number): void => {
+  const clicked = testdata[testdataIndex]
   const afterClick = {
     ...clicked,
-    isSelected: !isSelected
+    isSelected: !clicked.isSelected
   }
   const handler = createHandler('REDUX')
-  
-  onClickHandler(clicked, data, handler)
+  onClickHandler(clicked, testdata, handler)
   expect(handler.fn).toHaveBeenCalledWith(afterClick)
 }
 
 // Utility functions:
-const createData = (isSelected: boolean|undefined): Datum[] => [{
-  id: 'a', label: 'A', isSelected, x: 1, y: 1
-}]
-
 const createHandler = (type: 'REDUX'|'USE_STATE'|undefined): OnClickHandler => ({
   type,
   fn: jest.fn()

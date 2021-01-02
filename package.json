@@ -54,11 +54,12 @@
   },
   "scripts": {
     "build": "rimraf build && rollup -c",
+    "build-storybook": "build-storybook",
     "lint": "eslint --ext ts,tsx . --fix",
     "test": "npm run test:unit",
+    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "test:unit": "react-scripts test",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006"
   },
   "eslintConfig": {
     "extends": [
