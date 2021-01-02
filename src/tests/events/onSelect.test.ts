@@ -64,11 +64,12 @@ describe('selectionClearedHandler calls functions depending on given event handl
 })
 
 describe('Unselect sets isSelected property to false for all data', () => {
-  it('it should all have isSelected set to false', () => {
-    const afterUnselect = updateSelected(testdata, false)
-    const handler = createHandler('REDUX')
-    selectionClearedHandler(testdata, handler)
-    expect(handler.fn).toHaveBeenCalledWith(afterUnselect)
+  it('should have isSelected set to false', () => {
+    callUnselectOnce(createHandler('REDUX'))
+  })
+
+  it('should have isSelected set to false', () => {
+    callUnselectOnce(createHandler('USE_STATE'))
   })
 })
 
@@ -82,6 +83,12 @@ const callOnSelectHandlerOnce = (handler: OnSelectHandler): void => {
 const callSelectionClearedHandlerOnce = (handler: OnSelectHandler): void => {
   selectionClearedHandler(testdata, handler)
   expect(handler.fn).toHaveBeenCalledTimes(1)
+}
+
+const callUnselectOnce = (handler: OnSelectHandler): void => {
+  const afterUnselect = updateSelected(testdata, false)
+  selectionClearedHandler(testdata, handler)
+  expect(handler.fn).toHaveBeenCalledWith(afterUnselect)  
 }
 
 // Utilities
