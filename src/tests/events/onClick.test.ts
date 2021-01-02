@@ -4,7 +4,7 @@ import { testdata } from '../testdata'
 import { OnClickHandler } from '../../types/eventTypes'
 import { Datum } from '../../types/dataTypes'
 
-describe('OnClickHandler calls functions depending on given event handler type', () => {
+describe('onClickHandler calls functions depending on given event handler type', () => {
   it('should call Redux action that is given as parameter', () => {
     callHandlerOnce(createHandler('REDUX'))
   })
