@@ -14,10 +14,10 @@ export const onSelectHandler = (
 
   switch (onSelect.type) {
     case 'REDUX':
-      reduxActionHandler(selected, true, onSelect.fn)
+      reduxSelect(selected, onSelect.fn)
       break
     case 'USE_STATE':
-      setDataHandler(selected, data, onSelect.fn)
+      setSelectedData(selected, data, onSelect.fn)
       break
     default:
       console.error('Invalid OnSelectionHandler given!')
@@ -35,7 +35,7 @@ export const selectionClearedHandler = (
   
   switch (onSelect.type) {
     case 'REDUX':
-      reduxActionHandler(data, false, onSelect.fn)
+      reduxUnselect(data, onSelect.fn)
       break
     case 'USE_STATE':
       clearSelectedData(data, onSelect.fn)
@@ -45,35 +45,36 @@ export const selectionClearedHandler = (
   }
 }
 
+const reduxSelect = (selected: Datum[], action: OnSelectAction): void =>
+  reduxActionHandler(selected, true, action)
+
+const reduxUnselect = (data: Datum[], action: OnSelectAction): void =>
+  reduxActionHandler(data, false, action)
+
 const reduxActionHandler = (
   selected: Datum[], isSelected: boolean, action: OnSelectAction
 ): void => {
-  const edited = editSelected(selected, isSelected)
+  const edited = selected.map(datum => editSelected(datum, isSelected))
   action(edited)
 }
 
-const setDataHandler = (
+const setSelectedData = (
   selected: Datum[], data: Datum[], setData: SetData
 ): void => {
-  const edited = editSelected(selected, true)
-  const newData = updateData(edited, data)
+  const selectedIDs = selected.map(datum => datum.id)
+  const newData = data.map(datum => selectedIDs.includes(datum.id)
+    ? editSelected(datum, true)
+    : datum
+  )
   setData(newData)
 }
 
 const clearSelectedData = (data: Datum[], setData: SetData): void => {
-  const cleared = editSelected(data, false)
-  setData(cleared)
+  const unselected = data.map(datum => editSelected(datum, false))
+  setData(unselected)
 }
 
-const editSelected = (data: Datum[], isSelected: boolean): Datum[] =>
-  data.map(datum => ({
-    ...datum,
-    isSelected
-  }))
-
-const updateData = (edited: Datum[], data: Datum[]): Datum[] => {
-  const editedIDs = edited.map(datum => datum.id)
-  return data
-    .filter(datum => !editedIDs.includes(datum.id))
-    .concat(edited)
-}
+const editSelected = (datum: Datum, isSelected: boolean): Datum => ({
+  ...datum,
+  isSelected
+})

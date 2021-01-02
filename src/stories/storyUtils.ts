@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { testdata } from './testdata'
+import { testdata } from '../tests/testdata'
 import { Datum } from '../types/dataTypes'
 import { OnClickHandler, OnSelectHandler } from '../types/eventTypes'
 

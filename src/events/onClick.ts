@@ -23,13 +23,13 @@ export const onClickHandler = (
 }
 
 const setDataHandler = (datum: Datum, data: Datum[], setData: SetData): void => {
-  const editedDatum = editSelected(datum)
-  setData(updateData(editedDatum, data))
+  const edited = editSelected(datum)
+  setData(updateData(edited, data))
 }
 
 const reduxActionHandler = (datum: Datum, action: OnClickAction): void => {
-  const editedDatum = editSelected(datum)
-  action(editedDatum)
+  const edited = editSelected(datum)
+  action(edited)
 }
 
 const editSelected = (datum: Datum): Datum =>

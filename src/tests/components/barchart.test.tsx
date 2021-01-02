@@ -1,4 +1,4 @@
-import StackedBarChart from '../components/barChart/StackedBarChart'
+import StackedBarChart from '../../components/barChart/StackedBarChart'
 
 describe('BarChart component', () => {
   it('is truthy', () => {
