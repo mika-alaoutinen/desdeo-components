@@ -35,9 +35,26 @@ describe('Editing selected datum', () => {
   })
 })
 
-// describe('Updating data when useState function is given', () => {
+describe('Updating data when useState function is given', () => {
+  test('Edited datum should be in the data set', () => {
+    const clicked = testdata[0]
+    const afterClick = {
+      ...clicked,
+      isSelected: false
+    }
 
-// })
+    const updatedData: Datum[] = [
+      afterClick,
+      ...testdata.slice(1, testdata.length)
+    ]
+
+    const handler = createHandler('USE_STATE')
+    onClickHandler(clicked, testdata, handler)
+
+    
+    expect(handler.fn).toHaveBeenCalledWith(updatedData)
+  })
+})
 
 // Tester functions:
 const callHandlerOnce = (handler: OnClickHandler): void => {
@@ -54,17 +71,14 @@ const editSelected = (isSelected: boolean|undefined): void => {
     isSelected: !isSelected
   }
   const handler = createHandler('REDUX')
+  
   onClickHandler(clicked, data, handler)
   expect(handler.fn).toHaveBeenCalledWith(afterClick)
 }
 
 // Utility functions:
-export const createData = (isSelected: boolean|undefined): Datum[] => [{
-  id: 'a',
-  label: 'A',
-  isSelected,
-  x: 1,
-  y: 1
+const createData = (isSelected: boolean|undefined): Datum[] => [{
+  id: 'a', label: 'A', isSelected, x: 1, y: 1
 }]
 
 const createHandler = (type: 'REDUX'|'USE_STATE'|undefined): OnClickHandler => ({
