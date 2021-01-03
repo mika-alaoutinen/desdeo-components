@@ -24,6 +24,13 @@ describe('Data is displayed correctly', () => {
   it('has data labels A-E', () => {
     renderDataLabels(component)
   })
+
+  it('has headings Label, X, Y and Selected', () => {
+    render(component)
+    const expectedHeadings = [ 'Label', 'X', 'Y', 'Selected' ]
+    expectedHeadings.forEach(heading =>
+      expect(heading).toBeTruthy())
+  })
 })
 
 describe('Rows should be clickable', () => {
