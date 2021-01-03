@@ -1,6 +1,7 @@
 import React from 'react'
 // Material UI dependencies must be imported like this to work with Storybook.
 // Importing like this breaks stuff: import { Table } from @material-ui/core.
+import Paper from '@material-ui/core/Paper'
 import MaterialTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -43,7 +44,7 @@ const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
     </TableCell>
 
   return (
-    <TableContainer style={{ width: '50%' }}>
+    <TableContainer component={Paper} style={{ width: '50%' }}>
       <MaterialTable aria-label='material ui table'>
 
         <TableHead>
