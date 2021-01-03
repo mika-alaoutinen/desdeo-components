@@ -1,21 +1,22 @@
 import { onClickHandler } from '../../events/onClick'
 
 import { testdata } from '../testdata'
+import { createOnClickHandler } from '../testUtils'
 import { OnClickHandler } from '../../types/eventTypes'
 import { Datum } from '../../types/dataTypes'
 
 describe('onClickHandler calls functions depending on given event handler type', () => {
   it('should call Redux action that is given as parameter', () => {
-    callHandlerOnce(createHandler('REDUX'))
+    callHandlerOnce(createOnClickHandler('REDUX'))
   })
 
   it('should call React useState function that is given as parameter', () => {
-    callHandlerOnce(createHandler('USE_STATE'))
+    callHandlerOnce(createOnClickHandler('USE_STATE'))
   })
 
   it('should have no interactions if its type is invalid', () => {
     const clicked = testdata[0]
-    const invalidHandler = createHandler(undefined)
+    const invalidHandler = createOnClickHandler(undefined)
     onClickHandler(clicked, testdata, invalidHandler)
     expect(invalidHandler.fn).not.toHaveBeenCalled()
   })
@@ -46,7 +47,7 @@ describe('Editing selected datum with React useState function updates data array
       afterClick,
       ...testdata.slice(1, testdata.length)
     ]
-    const handler = createHandler('USE_STATE')
+    const handler = createOnClickHandler('USE_STATE')
 
     onClickHandler(clicked, testdata, handler)
     expect(handler.fn).toHaveBeenCalledWith(updatedData)
@@ -66,13 +67,7 @@ const editSelectedWithRedux = (testdataIndex: number): void => {
     ...clicked,
     isSelected: !clicked.isSelected
   }
-  const handler = createHandler('REDUX')
+  const handler = createOnClickHandler('REDUX')
   onClickHandler(clicked, testdata, handler)
   expect(handler.fn).toHaveBeenCalledWith(afterClick)
 }
-
-// Utility functions:
-const createHandler = (type: 'REDUX'|'USE_STATE'|undefined): OnClickHandler => ({
-  type,
-  fn: jest.fn()
-})
