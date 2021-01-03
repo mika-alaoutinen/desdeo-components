@@ -17,7 +17,7 @@ module.exports = {
     '^(?!.*\\.(js|jsx|css|json)$)': '<rootDir>/config/jest/fileTransform.js'
   },
   transformIgnorePatterns: [
-    '/node_modules/(?!material-ui/core/Paper/index.js).+(js|jsx)$'
+    '/node_modules/(?!@material-ui/core/Paper/index.js).+(js|jsx)$'
   ],
   moduleFileExtensions: [
     'web.js',
