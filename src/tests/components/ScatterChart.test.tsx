@@ -9,7 +9,6 @@ import {
   renderFiveDatum,
   renderVictoryContainer
 } from './componentTests'
-
 import { createOnClickHandler } from '../testUtils'
 import { testdata } from '../testdata'
 
