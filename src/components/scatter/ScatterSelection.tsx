@@ -5,6 +5,8 @@ import SelectionContainer from '../../containers/SelectionContainer'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { OnSelectChart } from '../../types/chartTypes'
 
+// BUG: clicking on chart does nothing before the first selection has been made
+
 const ScatterChart: React.FC<OnSelectChart> = ({ data, onSelect }) => (
   <SelectionContainer
     data={data}
