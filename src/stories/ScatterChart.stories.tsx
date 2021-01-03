@@ -17,7 +17,7 @@ export const ScatterChartWithUseState = (): JSX.Element => {
 
 export const ScatterChartWithRedux = (): JSX.Element => {
   const { data, onClick } = useOnClickReduxHandler()
-  
+
   return (
     <ScatterChart
       data={data}

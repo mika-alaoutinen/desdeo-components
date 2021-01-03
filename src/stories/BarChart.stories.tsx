@@ -8,7 +8,7 @@ import { barData } from '../tests/testdata'
 
 export const BarChartWithUseState = (): JSX.Element => {
   const { data, onClick } = useOnClickReactHandler()
-  
+
   return (
     <BarChart
       data={data}

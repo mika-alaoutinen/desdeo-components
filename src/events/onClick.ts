@@ -9,7 +9,7 @@ import { OnClickAction, OnClickHandler, SetData } from '../types/eventTypes'
 export const onClickHandler = (
   clicked: Datum, data: Datum[], onClick: OnClickHandler
 ): void => {
-  
+
   switch (onClick.type) {
     case 'REDUX':
       reduxActionHandler(clicked, onClick.fn)

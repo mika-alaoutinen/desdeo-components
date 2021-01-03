@@ -23,7 +23,7 @@ const StackedBarChart: React.FC<Props> = ({ data }) => {
 
   return (
     <ChartContainer>
-      
+
       <VictoryAxis
         tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
         tickValues={createTickValues(data)}

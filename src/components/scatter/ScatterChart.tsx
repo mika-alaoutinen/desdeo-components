@@ -15,7 +15,7 @@ const domain: Domain = {
 
 const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
   <ZoomContainer domain={domain}>
-    
+
     <VictoryScatter
       data={data}
       events={[
@@ -35,8 +35,8 @@ const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
           opacity: ({ datum }) => mapOpacityStyle(datum)
         }
       }}
-    />        
-    
+    />
+
   </ZoomContainer>
 )
 

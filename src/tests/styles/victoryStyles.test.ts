@@ -9,7 +9,7 @@ describe('Fill is based on if datum is selected or not', () => {
     const fillColor = mapFillStyle(createDatumWithSelected(false))
     expect(fillColor).toBe(NOT_SELECTED_COLOR)
   })
-  
+
   it('should be tomato when selected', () => {
     const fillColor = mapFillStyle(createDatumWithSelected(true))
     expect(fillColor).toBe(SELECTED_COLOR)
@@ -45,4 +45,3 @@ const createDatumWithValues = (x: number, y: number): Datum => ({
   x,
   y
 })
-

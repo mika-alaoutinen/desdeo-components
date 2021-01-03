@@ -9,7 +9,7 @@ import { DatumProps } from '../../types/dataTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
   <ChartContainer>
-    
+
     <VictoryBar
       data={data}
       events={[

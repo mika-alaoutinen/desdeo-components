@@ -23,7 +23,7 @@ export const onSelectHandler = (
       console.error('Invalid OnSelectionHandler given!')
   }
 }
-  
+
 /*
  * Used to direct the function callback to either a React useState handler
  * or a Redux action handler. If neither callback function is defined, returns
@@ -32,7 +32,7 @@ export const onSelectHandler = (
 export const selectionClearedHandler = (
   data: Datum[], onSelect: OnSelectHandler
 ): void => {
-  
+
   switch (onSelect.type) {
     case 'REDUX':
       reduxUnselect(data, onSelect.fn)

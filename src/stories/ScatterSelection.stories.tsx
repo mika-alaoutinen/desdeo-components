@@ -6,7 +6,7 @@ import { useOnSelectReactHandler, useOnSelectReduxHandler } from './storyUtils'
 
 export const ScatterSeletionWithUseState = (): JSX.Element => {
   const { data, onSelect } = useOnSelectReactHandler()
-  
+
   return (
     <ScatterSelection
       data={data}
