@@ -1,4 +1,5 @@
 export type backgroundColor = 'white' | 'whitesmoke'
+export const ROW_SELECTED_COLOR = '#ffdfda'
 
 export const tableStyle: React.CSSProperties = {
   border: '1px solid lightgrey',
@@ -10,8 +11,3 @@ export const padding: React.CSSProperties = {
   padding: '1em',
   textAlign: 'right'
 }
-
-export const rowStyle = (isSelected: boolean|undefined): React.CSSProperties => ({
-  ...tableStyle,
-  color: isSelected ? 'tomato' : 'black'
-})

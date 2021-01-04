@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 
 import { Datum } from '../../types/dataTypes'
-import { backgroundColor, padding, rowStyle } from './tableStyles'
+import {
+  backgroundColor, padding, tableStyle, ROW_SELECTED_COLOR
+} from './tableStyles'
 
 interface Props {
   datum: Datum,
@@ -16,8 +18,8 @@ const TableRow: React.FC<Props> = ({ datum, onClick }) => {
   const selected = datum.isSelected ? 'true' : 'false'
 
   const style: React.CSSProperties = {
-    ...rowStyle(datum.isSelected),
-    background: color
+    ...tableStyle,
+    background: datum.isSelected ? ROW_SELECTED_COLOR : color
   }
 
   const renderCell = (text: string): JSX.Element =>
