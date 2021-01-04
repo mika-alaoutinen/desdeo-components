@@ -1,5 +1,6 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import Table from '../../components/table/Table'
 import { renderComponent, renderDataLabels } from './componentTests'
@@ -40,3 +41,28 @@ describe('Rows should be clickable', () => {
     expect(handler.fn).toHaveBeenCalled()
   })
 })
+
+describe('Background color of a row changes on mouse hover', () => {
+  it('selected row has color #ffdfda', () => {
+    const { container } = render(component)
+    const rows = getTableRows(container)
+    expect(rows[0]).toHaveStyle({ background: '#ffdfda' })
+  })
+
+  it('default row color is white', () => {
+    const { container } = render(component)
+    const rows = getTableRows(container)
+    expect(rows[1]).toHaveStyle({ background: 'white' })
+  })
+
+  it('row color is whitesmoke when mouse is hovered over it', () => {
+    const { container } = render(component)
+    const rows = getTableRows(container)
+    fireEvent.mouseEnter(rows[1])
+    expect(rows[1]).toHaveStyle({ background: 'whitesmoke' })
+  })
+})
+
+const getTableRows = (container: Element): NodeListOf<Element> => {
+  return container.querySelectorAll('tbody > tr')
+}
