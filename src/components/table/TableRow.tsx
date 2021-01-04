@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Datum } from '../../types/dataTypes'
-import { padding, rowStyle } from './tableStyles'
+import { backgroundColor, padding, rowStyle } from './tableStyles'
 
 interface Props {
   datum: Datum,
@@ -9,9 +9,16 @@ interface Props {
 }
 
 const TableRow: React.FC<Props> = ({ datum, onClick }) => {
+  const [ color, setColor ] = useState<backgroundColor>('white')
+
   const { id, x, y } = datum
   const label = datum.label ? datum.label : 'no label'
   const selected = datum.isSelected ? 'true' : 'false'
+
+  const style: React.CSSProperties = {
+    ...rowStyle(datum.isSelected),
+    background: color
+  }
 
   const renderCell = (text: string): JSX.Element =>
     <td style={padding}>{text}</td>
@@ -20,8 +27,9 @@ const TableRow: React.FC<Props> = ({ datum, onClick }) => {
     <tr
       key={id}
       onClick={() => onClick(datum)}
-      onMouseEnter={() => console.log('enter')}
-      style={rowStyle(datum.isSelected)}
+      onMouseEnter={() => setColor('whitesmoke')}
+      onMouseLeave={() => setColor('white')}
+      style={style}
     >
       {renderCell(label)}
       {renderCell(x.toString())}

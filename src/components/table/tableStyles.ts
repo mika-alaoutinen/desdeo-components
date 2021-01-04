@@ -1,3 +1,5 @@
+export type backgroundColor = 'white' | 'whitesmoke'
+
 export const tableStyle: React.CSSProperties = {
   border: '1px solid lightgrey',
   borderCollapse: 'collapse',
