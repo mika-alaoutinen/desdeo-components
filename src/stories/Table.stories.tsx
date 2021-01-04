@@ -2,6 +2,7 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import Table from '../components/table/Table'
+import TableNew from '../components/table/TableNew'
 import { useOnClickReactHandler, useOnClickReduxHandler } from './storyUtils'
 
 export const TableWithUseState = (): JSX.Element => {
@@ -20,6 +21,17 @@ export const TableWithRedux = (): JSX.Element => {
 
   return (
     <Table
+      data={data}
+      onClick={onClick}
+    />
+  )
+}
+
+export const SimpleTable = (): JSX.Element => {
+  const { data, onClick } = useOnClickReactHandler()
+
+  return (
+    <TableNew
       data={data}
       onClick={onClick}
     />
