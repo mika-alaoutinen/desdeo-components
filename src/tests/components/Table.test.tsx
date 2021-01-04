@@ -1,12 +1,10 @@
-import '@testing-library/jest-dom'
-
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import Table from '../../components/table/Table'
 import { renderComponent, renderDataLabels } from './componentTests'
-import { createOnClickHandler } from '../testUtils'
 import { testdata } from '../testdata'
+import { createOnClickHandler } from '../testUtils'
 
 // Constants
 const handler = createOnClickHandler('USE_STATE')
