@@ -1,9 +1,9 @@
 import React from 'react'
 
+import TableRow from './TableRow'
 import { onClickHandler } from '../../events/onClick'
 import { OnClickChart } from '../../types/chartTypes'
-import { padding, rowStyle, tableStyle } from './tableStyles'
-import { Datum } from '../../types/dataTypes'
+import { padding, tableStyle } from './tableStyles'
 
 const TableNew: React.FC<OnClickChart> = ({ data, onClick }) => {
 
@@ -15,26 +15,13 @@ const TableNew: React.FC<OnClickChart> = ({ data, onClick }) => {
     )
 
   const renderRows = (): JSX.Element[] =>
-    data.map(datum => renderRow(datum))
-
-  const renderRow = (datum: Datum): JSX.Element => {
-    const { id, label, x, y, isSelected } = datum
-    return (
-      <tr
-        key={id}
+    data.map(datum =>
+      <TableRow
+        key={datum.id}
+        datum={datum}
         onClick={() => onClickHandler(datum, data, onClick)}
-        style={rowStyle(isSelected)}
-      >
-        {label ? renderCell(label) : renderCell('no label')}
-        {renderCell(x.toString())}
-        {renderCell(y.toString())}
-        {isSelected ? renderCell('true') : renderCell('false')}
-      </tr>
+      />
     )
-  }
-
-  const renderCell = (text: string): JSX.Element =>
-    <td style={padding}>{text}</td>
 
   return (
     <table style={tableStyle}>
