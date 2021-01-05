@@ -18,7 +18,7 @@ const ScatterChart: React.FC<OnSelectChart> = ({ data, onSelect }) => (
       size={7}
       style={{
         data: {
-          fill: (data: { datum: Datum }) => mapFillStyle(data.datum)
+          fill: ({ datum }) => mapFillStyle(datum)
         }
       }}
     />
