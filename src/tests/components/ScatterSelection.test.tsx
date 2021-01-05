@@ -35,5 +35,3 @@ describe('Data is displayed correctly', () => {
     renderFiveDatum(component)
   })
 })
-
-// See if it's possible to do mouse selection events with React testing library
