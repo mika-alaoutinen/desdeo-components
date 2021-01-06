@@ -4,10 +4,9 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import Table from '../../components/table/Table'
 import { renderComponent, renderDataLabels } from './componentTests'
 import { testdata } from '../testdata'
-import { createOnClickHandler } from '../testUtils'
 
 // Constants
-const handler = createOnClickHandler('USE_STATE')
+const handler = jest.fn()
 const component = <Table data={testdata} onClick={handler} />
 
 describe('Table is rendered correctly', () => {
@@ -37,6 +36,6 @@ describe('Rows should be clickable', () => {
   it('registers a click event', () => {
     render(component)
     fireEvent.click(screen.getByText('A'))
-    expect(handler.fn).toHaveBeenCalled()
+    expect(handler).toHaveBeenCalled()
   })
 })

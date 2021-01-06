@@ -1,7 +1,3 @@
-export interface DatumProps {
-  datum: Datum
-}
-
 export interface Datum extends Coordinate {
   id: string, // unique identifier
   label?: string,

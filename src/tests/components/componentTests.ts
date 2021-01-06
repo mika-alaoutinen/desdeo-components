@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import { OnClickHandler } from '../../types/eventTypes'
+import { OnClickHandler } from '../../types/chartTypes'
 
 // A set of basic tests for all chart components. Used to reduce repeated test code.
 
@@ -33,7 +33,7 @@ export const dataShouldBeClickable = (
 ): void => {
   const paths = getPaths(component)
   fireEvent.click(paths[0])
-  expect(handler.fn).toHaveBeenCalled()
+  expect(handler).toHaveBeenCalled()
 }
 
 // The datum in a Victory chart are rendered as SVG path elements

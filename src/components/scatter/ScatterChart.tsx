@@ -2,11 +2,9 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
-import { onClickHandler } from '../../events/onClick'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
 import { Domain } from '../../types/containerTypes'
-import { DatumProps } from '../../types/dataTypes'
 
 const domain: Domain = {
   x: [0, 100],
@@ -23,7 +21,7 @@ const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }: DatumProps) => onClickHandler(datum, data, onClick)
+              mutation: ({ datum }) => onClick(datum)
             }]
           }
         }

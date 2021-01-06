@@ -3,22 +3,11 @@ import { Meta } from '@storybook/react'
 
 import BarChart from '../components/barChart/BarChart'
 import StackedBarChart from '../components/barChart/StackedBarChart'
-import { useOnClickReactHandler, useOnClickReduxHandler } from './storyUtils'
+import { useOnClickHandler } from './storyUtils'
 import { barData } from '../tests/testdata'
 
 export const BarChartWithUseState = (): JSX.Element => {
-  const { data, onClick } = useOnClickReactHandler()
-
-  return (
-    <BarChart
-      data={data}
-      onClick={onClick}
-    />
-  )
-}
-
-export const BarChartWithRedux = (): JSX.Element => {
-  const { data, onClick } = useOnClickReduxHandler()
+  const { data, onClick } = useOnClickHandler()
 
   return (
     <BarChart
