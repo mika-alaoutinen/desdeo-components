@@ -34,11 +34,6 @@ export const useOnClickReactHandler = (): OnClickChart => {
   return { data, onClick }
 }
 
-export const useOnClickReduxHandler = (): OnClickChart => ({
-  data: testdata,
-  onClick: printDatum
-})
-
 // Event handler for OnSelect components
 export const useOnSelectReactHandler = (): OnSelectChart => {
   const [ data, setData ] = useState(testdata)
@@ -71,12 +66,6 @@ export const useOnSelectReactHandler = (): OnSelectChart => {
     onSelectionCleared
   }
 }
-
-export const useOnSelectReduxHandler = (): OnSelectChart => ({
-  data: testdata,
-  onSelect: printData,
-  onSelectionCleared: () => console.log('selections cleared')
-})
 
 // Utility functions
 const editSelected = (datum: Datum): Datum =>
