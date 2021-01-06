@@ -5,7 +5,6 @@ import ZoomContainer from '../../containers/ZoomContainer'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
 import { Domain } from '../../types/containerTypes'
-import { DatumProps } from '../../types/dataTypes'
 
 const domain: Domain = {
   x: [0, 100],
@@ -22,7 +21,7 @@ const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }: DatumProps) => onClick(datum)
+              mutation: ({ datum }) => onClick(datum)
             }]
           }
         }
