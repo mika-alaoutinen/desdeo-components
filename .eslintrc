@@ -19,7 +19,7 @@
 
   "rules": {
     "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/member-delimiter-style": [ "error", {
+    "@typescript-eslint/member-delimiter-style": [ 1, {
       "multiline": {
         "delimiter": "comma",
         "requireLast": false
@@ -29,15 +29,13 @@
         "requireLast": false
       }
     }],
-    "@typescript-eslint/no-unused-vars": [
-        "error", { "argsIgnorePattern": "^_" }
-    ],
-    "@typescript-eslint/no-explicit-any": 1,
-    "no-case-declarations": 0,
-    "no-trailing-spaces": [2, { "skipBlankLines": false }],
-    "object-curly-spacing": [ "error", "always" ],
-    "quotes": [ "error", "single" ],
-    "semi": [ "error", "never" ],
+    "@typescript-eslint/no-unused-vars": [1, { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": 2,
+    "no-case-declarations": 2,
+    "no-trailing-spaces": [1, { "skipBlankLines": false }],
+    "object-curly-spacing": [ 1, "always" ],
+    "quotes": [ 1, "single" ],
+    "semi": [ 1, "never" ],
     "react/prop-types": 0
   },
 
