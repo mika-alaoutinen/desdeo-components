@@ -1,7 +1,6 @@
 import React from 'react'
 
 import TableRow from './TableRow'
-import { onClickHandler } from '../../events/onClick'
 import { OnClickChart } from '../../types/chartTypes'
 import { padding, tableStyle } from './tableStyles'
 
@@ -19,7 +18,7 @@ const TableNew: React.FC<OnClickChart> = ({ data, onClick }) => {
       <TableRow
         key={datum.id}
         datum={datum}
-        onClick={() => onClickHandler(datum, data, onClick)}
+        onClick={onClick}
       />
     )
 

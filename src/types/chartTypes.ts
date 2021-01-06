@@ -7,8 +7,10 @@ export interface OnClickChart {
 
 export interface OnSelectChart {
   data: Datum[],
-  onSelect: OnSelectHandler
+  onSelect: OnSelectHandler,
+  onSelectionCleared: OnSelectionClearedHandler
 }
 
 export type OnClickHandler = (clicked: Datum) => void
 export type OnSelectHandler = (selected: Datum[]) => void
+export type OnSelectionClearedHandler = () => void
