@@ -6,11 +6,17 @@ import {
   renderComponent, renderDataLabels, renderFiveDatum, renderVictoryContainer
 } from './componentTests'
 import { testdata } from '../testdata'
-import { createOnSelectHandler } from '../testUtils'
 
 // Constants
-const handler = createOnSelectHandler('USE_STATE')
-const component = <ScatterSelection data={testdata} onSelect={handler} />
+const onSelecthandler = jest.fn()
+const selectionClearedHandler = jest.fn()
+
+const component =
+  <ScatterSelection
+    data={testdata}
+    onSelect={onSelecthandler}
+    onSelectionCleared={selectionClearedHandler}
+  />
 
 describe('ScatterSelect is rendered correctly', () => {
   it('is truthy', () => {

@@ -9,11 +9,10 @@ import {
   renderFiveDatum,
   renderVictoryContainer
 } from './componentTests'
-import { createOnClickHandler } from '../testUtils'
 import { testdata } from '../testdata'
 
 // Constants
-const handler = createOnClickHandler('USE_STATE')
+const handler = jest.fn()
 const component = <BarChart data={testdata} onClick={handler} />
 
 describe('BarChart is rendered correctly', () => {
