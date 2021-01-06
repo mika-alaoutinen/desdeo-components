@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { testdata } from '../tests/testdata'
 import { Datum } from '../types/dataTypes'
-import { OnClickHandler, OnSelectHandler } from '../types/eventTypes'
+import { OnClickHandler, OnSelectHandler } from '../types/chartTypes'
 
 // Utility functions
 export const printData = (data: Datum[]): void => {
@@ -28,21 +28,17 @@ interface OnClickHandlerTest {
 export const useOnClickReactHandler = (): OnClickHandlerTest => {
   const [ data, setData ] = useState(testdata)
 
-  return {
-    data,
-    onClick: {
-      type: 'USE_STATE',
-      fn: setData
-    }
+  const onClick = (clicked: Datum): void => {
+    const edited = data.map(datum => datum.id === clicked.id ? clicked : datum)
+    setData(edited)
   }
+
+  return { data, onClick }
 }
 
 export const useOnClickReduxHandler = (): OnClickHandlerTest => ({
   data: testdata,
-  onClick: {
-    type: 'REDUX',
-    fn: printDatum
-  }
+  onClick: printDatum
 })
 
 // Event handler for OnSelect components
@@ -54,19 +50,24 @@ interface OnSelectHandlerTest {
 export const useOnSelectReactHandler = (): OnSelectHandlerTest => {
   const [ data, setData ] = useState(testdata)
 
-  return {
-    data,
-    onSelect: {
-      type: 'USE_STATE',
-      fn: setData
-    }
+  const onSelect = (selected: Datum[]): void => {
+    const selectedIDs = selected.map(datum => datum.id)
+    const edited = data.map(datum => mapSelected(selectedIDs, datum))
+    setData(edited)
   }
+
+  const mapSelected = (selectedIDs: string[], datum: Datum): Datum =>
+    selectedIDs.includes(datum.id)
+      ? {
+        ...datum,
+        isSelected: true
+      }
+      : datum
+
+  return { data, onSelect }
 }
 
 export const useOnSelectReduxHandler = (): OnSelectHandlerTest => ({
   data: testdata,
-  onSelect: {
-    type: 'REDUX',
-    fn: printData
-  }
+  onSelect: printData
 })
