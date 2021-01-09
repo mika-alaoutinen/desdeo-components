@@ -9,7 +9,15 @@ export interface Coordinate {
   y: number
 }
 
-// Temporary interface for Stacked Bar Chart's test data
+// Temporary interfaces for test data
+export interface ParallelAxesData {
+  name: string,
+  strength: number,
+  intelligence: number,
+  speed: number,
+  luck: number
+}
+
 export interface StackedBarData {
   year: number,
   data: DataRow[]
