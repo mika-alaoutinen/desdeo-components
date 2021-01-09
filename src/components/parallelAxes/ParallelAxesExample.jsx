@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -67,13 +66,14 @@ class ParallelAxesExample extends React.Component {
   getActiveDatasets(filters) {
     // Return the names from all datasets that have values within all filters
     const isActive = (dataset) => {
-      return _.keys(filters).reduce((memo, name) => {
+      return Object.keys(filters).reduce((memo, name) => {
         if (!memo || !Array.isArray(filters[name])) {
           return memo
         }
-        const point = _.find(dataset.data, (d) => d.x === name)
-        return point &&
-          Math.max(...filters[name]) >= point.y && Math.min(...filters[name]) <= point.y
+        const point = dataset.data.find(d => d.x === name)
+        return point
+          && Math.max(...filters[name]) >= point.y
+          && Math.min(...filters[name]) <= point.y
       }, true)
     }
 
@@ -84,14 +84,18 @@ class ParallelAxesExample extends React.Component {
 
   onDomainChange(domain, props) {
     const filters = this.addNewFilters(domain, props)
-    const isFiltered = !_.isEmpty(_.values(filters).filter(Boolean))
+    // TODO: does this actually even do anything?
+    // const isFiltered = !_.isEmpty(_.values(filters).filter(Boolean))
+    const isFiltered = Array.from(Object.values(filters)).length > 0
     const activeDatasets = isFiltered ? this.getActiveDatasets(filters) : this.state.datasets
     this.setState({ activeDatasets, filters, isFiltered })
   }
 
   isActive(dataset) {
     // Determine whether a given dataset is active
-    return !this.state.isFiltered ? true : _.includes(this.state.activeDatasets, dataset.name)
+    return !this.state.isFiltered
+      ? true
+      : this.state.activeDatasets.includes(dataset.name)
   }
 
   getAxisOffset(index) {
