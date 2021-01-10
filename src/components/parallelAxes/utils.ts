@@ -28,31 +28,62 @@ const getMaximumValues = (data: ParallelAxesData[]) => {
   })
 }
 
+export const getMaxAttributes1 = (data: ParallelAxesData[]): Attribute[] => {
+  const sanitizedData = sanitizeData(data)
+
+  const initialMaxAttribute: Attribute = {
+    name: '',
+    value: -1
+  }
+
+  const grouped = sanitizedData
+    .flatMap(datum => datum.attributes)
+    .reduce((r, a) => {
+      console.log('r', r)
+      console.log('a', a)
+
+      r[a.name] = [...r[a.name] || [], a]
+      return r
+    }, initialMaxAttribute)
+
+  // data
+  //   .flatMap(datum => datum.attributes)
+  //   .reduce((currentMax, attribute) => attribute.value > currentMax.value
+  //     ? attribute
+  //     : currentMax,
+  //     initialMaxAttribute
+  //   )
+}
+
 export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
-  const keys = getAttributeKeys(data)
-  const attributeMap = new Map<string, number>(keys.map(key => [key, -1]))
+  const sanitized = sanitizeData(data)
+  const keys = getAttributeKeys(sanitized)
+  const attributeMap = new Map<string, Attribute>(keys.map(key => [key, { name: key, value: -1 }]))
 
-  for (const datum of data) {
-    const attributes = datum.attributes.map(attribute => ({
-      ...attribute,
-      name: attribute.name.toLowerCase()
-    }))
-
-    for (const { name, value } of attributes) {
-      const existingValue = attributeMap.get(name)
-      if (existingValue && existingValue < value) {
-        attributeMap.set(name, value)
+  for (const datum of sanitized) {
+    for (const attribute of datum.attributes) {
+      const existingAttribute = attributeMap.get(attribute.name)
+      if (existingAttribute && existingAttribute.value < attribute.value) {
+        attributeMap.set(attribute.name, attribute)
       }
     }
   }
 
-  const maxAttributes: Attribute[] = []
-  for (const entry of attributeMap.entries()) {
-    maxAttributes.push({ name: entry[0], value: entry[1] })
-  }
-
-  return maxAttributes
+  return [...attributeMap.values()]
 }
+
+// Helper functions
+export const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
+  data.map(datum => ({
+      ...datum,
+      attributes: attributeNamesToLowerCase(datum.attributes)
+  }))
+
+const attributeNamesToLowerCase = (attributes: Attribute[]): Attribute[] =>
+  attributes.map(attribute => ({
+    ...attribute,
+    name: attribute.name.toLowerCase()
+  }))
 
 export const getAttributeKeys = (data: ParallelAxesData[]): string[] => {
   const attributes = data.map(datum => datum.attributes).flat()
