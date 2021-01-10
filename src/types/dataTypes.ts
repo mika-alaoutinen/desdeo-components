@@ -12,10 +12,12 @@ export interface Coordinate {
 // Temporary interfaces for test data
 export interface ParallelAxesData {
   name: string,
-  strength: number,
-  intelligence: number,
-  speed: number,
-  luck: number
+  attributes: Attribute[]
+}
+
+// For example Strength: 1
+export type Attribute = {
+  [ key: string ]: number
 }
 
 export interface StackedBarData {
