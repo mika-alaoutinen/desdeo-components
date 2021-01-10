@@ -28,7 +28,7 @@ const getMaximumValues = (data: ParallelAxesData[]) => {
   })
 }
 
-export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
+export const getMaxAttributes1 = (data: ParallelAxesData[]): Attribute[] => {
   const sanitized = sanitizeData(data)
   const keys = getAttributeKeys(sanitized)
   const attributeMap = new Map<string, Attribute>(keys.map(key => [key, { name: key, value: -1 }]))
@@ -43,6 +43,13 @@ export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
   }
 
   return [...attributeMap.values()]
+}
+
+export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
+  const sanitized = sanitizeData(data)
+  const attributes = sanitized.flatMap(datum => datum.attributes)
+  const grouped = groupByName(attributes)
+  return grouped.map(attributes => findByMaxValue(attributes))
 }
 
 // Helper functions
