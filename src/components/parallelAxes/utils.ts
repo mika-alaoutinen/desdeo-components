@@ -1,6 +1,6 @@
 import { Attribute, ParallelAxesData } from '../../types/dataTypes'
 
-interface NormalizedData {
+export interface NormalizedData {
   name: string,
   data: Data[]
 }
@@ -25,14 +25,6 @@ export const normalizeData = (rawData: ParallelAxesData[]): NormalizedData[] => 
       }))
     }
   })
-
-  // return data.map(datum => ({
-  //   name: datum.name,
-  //   data: attributes.map((attribute, i) => ({
-  //     x: attribute,
-  //     y: datum[attribute] / maxValues[i]
-  //   }))
-  // }))
 }
 
 // Helper functions
