@@ -8,6 +8,16 @@ export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
   return grouped.map(findByMaxValue)
 }
 
+// Find all unique attribute names from data.
+export const getAttributeNames = (data: ParallelAxesData[]): string[] => {
+  const names = data
+    .flatMap(datum => datum.attributes)
+    .map(attribute => attribute.name)
+
+  return [...new Set(names)]
+}
+
+// Utility functions
 export const groupByName = (attributes: Attribute[]): Attribute[][] => {
   const groups = new Map<string, Attribute[]>(
     attributes.map(attribute => [ attribute.name, [] ])
