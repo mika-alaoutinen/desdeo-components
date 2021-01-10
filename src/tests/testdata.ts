@@ -22,12 +22,28 @@ export const barData: StackedBarData[] = [
 ]
 
 export const parallelAxesData: ParallelAxesData[] = [
-  { name: 'Adrien', strength: 5, intelligence: 30, speed: 500, luck: 3 },
-  { name: 'Brice', strength: 1, intelligence: 13, speed: 550, luck: 2 },
-  { name: 'Casey', strength: 4, intelligence: 15, speed: 80, luck: 1 },
-  { name: 'Drew', strength: 3, intelligence: 25, speed: 600, luck: 5 },
-  { name: 'Erin', strength: 9, intelligence: 50, speed: 350, luck: 4 },
-  { name: 'Francis', strength: 2, intelligence: 40, speed: 200, luck: 2 }
+  {
+    name: 'Adrien',
+    attributes: [
+      { name: 'strength', value: 5 },
+      { name: 'intelligence', value: 30 },
+    ]
+  },
+  {
+    name: 'Brice',
+    attributes: [
+      { name: 'strength', value: 10 },
+      { name: 'intelligence', value: 25 },
+    ]
+  },
+  {
+    name: 'Casey',
+    attributes: [
+      { name: 'strength', value: 15 },
+      { name: 'intelligence', value: 20 },
+      { name: 'luck', value: 15 }
+    ]
+  },
 ]
 
 export const testdata: Datum[] = [

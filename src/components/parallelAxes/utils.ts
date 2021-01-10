@@ -1,32 +1,5 @@
 import { Attribute, ParallelAxesData } from '../../types/dataTypes'
 
-export interface NormalizedData {
-  name: string,
-  data: Data[]
-}
-
-interface Data {
-  x: string,
-  y: number
-}
-
-// construct normalized datasets by dividing the value for each attribute by the maximum value
-export const normalizeData = (rawData: ParallelAxesData[]): NormalizedData[] => {
-  const data = sanitizeData(rawData)
-  const maxAttributes = getMaxAttributes(data)
-  const maxValues = maxAttributes.map(attribute => attribute.value)
-
-  return data.map(datum => {
-    return {
-      name: datum.name,
-      data: datum.attributes.map((attribute, i) => ({
-        x: attribute.name,
-        y: attribute.value / maxValues[i]
-      }))
-    }
-  })
-}
-
 // Helper functions
 export const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
   data.map(datum => ({

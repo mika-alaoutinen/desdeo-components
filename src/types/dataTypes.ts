@@ -1,3 +1,4 @@
+// TOOD: Remove Datum type and use Coordinate instead
 export interface Datum extends Coordinate {
   id: string, // unique identifier
   label?: string,
@@ -6,6 +7,16 @@ export interface Datum extends Coordinate {
 
 export interface Coordinate {
   x: number,
+  y: number
+}
+
+export interface NormalizedData {
+  name: string, // TODO: rename to label?
+  data: TextualData[]
+}
+
+export interface TextualData {
+  x: string,
   y: number
 }
 
