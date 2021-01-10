@@ -1,12 +1,5 @@
 import { Attribute, ParallelAxesData } from '../../types/dataTypes'
 
-// Helper functions
-export const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
-  data.map(datum => ({
-    ...datum,
-    attributes: namesToLowerCase(datum.attributes)
-  }))
-
 // Find the maximum attribute values for each axis.
 // The max values will be used to normalize data and re-scale axis ticks.
 export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
@@ -39,9 +32,3 @@ export const findByMaxValue = (attributes: Attribute[]): Attribute => {
     , initial
   )
 }
-
-const namesToLowerCase = (attributes: Attribute[]): Attribute[] =>
-attributes.map(attribute => ({
-  ...attribute,
-  name: attribute.name.toLowerCase()
-}))

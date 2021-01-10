@@ -1,25 +1,11 @@
 import { parallelAxesData } from '../../testdata'
-import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
+import { Attribute } from '../../../types/dataTypes'
 
 import {
-  findByMaxValue, getMaxAttributes, groupByName, sanitizeData
+  findByMaxValue, getMaxAttributes, groupByName
 } from '../../../components/parallelAxes/utils'
 
 describe('testing', () => {
-  it('sanitizeData', () => {
-    const unsanitized: ParallelAxesData[] = [{
-      name: 'Adrien',
-      attributes: [{ name: 'sTrENGth', value: 5 }]
-    }]
-
-    const expected: ParallelAxesData[] = [{
-      name: 'Adrien',
-      attributes: [{ name: 'strength', value: 5 }]
-    }]
-
-    expect(sanitizeData(unsanitized)).toEqual(expected)
-  })
-
   it('getMaxAttributes', () => {
     const expected: Attribute[] = [
       { name: 'strength', value: 15 },
