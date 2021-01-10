@@ -1,7 +1,7 @@
 import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 
 import {
-  getAttributeKeys, getMaxAttributes, groupByName
+  findByMaxValue, getMaxAttributes, groupByName, sanitizeData
 } from '../../../components/parallelAxes/utils'
 
 const data: ParallelAxesData[] = [
@@ -22,20 +22,27 @@ const data: ParallelAxesData[] = [
   {
     name: 'Charlie',
     attributes: [
-      { name: 'Strength', value: 11 },
-      { name: 'Luck', value: 3 },
+      { name: 'strength', value: 11 },
+      { name: 'luck', value: 3 },
     ]
   },
 ]
 
-const attributes: Attribute[] = [
-  { name: 'strength', value: 5 },
-  { name: 'intelligence', value: 10 },
-  { name: 'strength', value: 10 },
-  { name: 'intelligence', value: 6 },
-]
-
 describe('testing', () => {
+  it('sanitizeData', () => {
+    const unsanitized: ParallelAxesData[] = [{
+      name: 'Adrien',
+      attributes: [{ name: 'sTrENGth', value: 10 }]
+    }]
+
+    const expected: ParallelAxesData[] = [{
+      name: 'Adrien',
+      attributes: [{ name: 'strength', value: 10 }]
+    }]
+
+    expect(sanitizeData(unsanitized)).toEqual(expected)
+  })
+
   it('getMaxAttributes', () => {
     const expected: Attribute[] = [
       { name: 'strength', value: 11 },
@@ -45,12 +52,14 @@ describe('testing', () => {
     expect(getMaxAttributes(data)).toEqual(expected)
   })
 
-  it('getAttributeKeys', () => {
-    const keys = getAttributeKeys(data)
-    expect(keys).toEqual([ 'strength', 'intelligence', 'luck' ])
-  })
-
   it('groupByName', () => {
+    const attributes: Attribute[] = [
+      { name: 'strength', value: 5 },
+      { name: 'intelligence', value: 10 },
+      { name: 'strength', value: 10 },
+      { name: 'intelligence', value: 6 },
+    ]
+
     const expected: Attribute[][] = [
       [
         { name: 'strength', value: 5 },
@@ -63,5 +72,14 @@ describe('testing', () => {
     ]
 
     expect(groupByName(attributes)).toEqual(expected)
+  })
+
+  it('findByMaxValue', () => {
+    const attributes: Attribute[] = [
+      { name: 'strength', value: 5 },
+      { name: 'strength', value: 10 }
+    ]
+
+     expect(findByMaxValue(attributes)).toEqual({ name: 'strength', value: 10 })
   })
 })
