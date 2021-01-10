@@ -10,7 +10,7 @@ import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
 // Interfaces
 export interface Filter {
   attribute: string,
-  range: [ number, number ]
+  range?: [ number, number ]
 }
 
 interface Props {
@@ -28,15 +28,10 @@ const initDatasets: NormalizedData[] = [{
   data: [{ x: '', y: -1 }]
 }]
 
-const initFilter: Filter = {
-  attribute: '',
-  range: [ -1, 99 ]
-}
-
 const ParallelAxes: React.FC<Props> = ({ data }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
   const [ datasets, setDatasets ] = useState<NormalizedData[]>(initDatasets)
-  const [ filter, setFilter ] = useState<Filter>(initFilter)
+  const [ filter, setFilter ] = useState<Filter>({ attribute: '' })
   const [ isFiltered, setIsFiltered ] = useState<boolean>(false)
 
   const attributeNames = getAttributeNames(data)
@@ -52,7 +47,8 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
       return
     }
 
-    const change = onDomainChange(domain, name, filter)
+    // DomainTuple is either a tuple of numbers or Dates. Cast as numbers.
+    const change = onDomainChange(domain as [ number, number], name, filter)
     setActiveDataSets(change.activeDatasets)
     setFilter(change.filter)
     setIsFiltered(change.isFiltered)
