@@ -15,9 +15,9 @@ export interface ParallelAxesData {
   attributes: Attribute[]
 }
 
-// For example Strength: 1
-export type Attribute = {
-  [ key: string ]: number
+export interface Attribute {
+  name: string,
+  value: number
 }
 
 export interface StackedBarData {

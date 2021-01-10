@@ -6,35 +6,35 @@ const data: ParallelAxesData[] = [
   {
     name: 'Adrien',
     attributes: [
-      { strength: 5 },
-      { intelligence: 10 },
+      { name: 'strength', value: 5 },
+      { name: 'intelligence', value: 10 },
     ]
   },
   {
     name: 'Brice',
     attributes: [
-      { strength: 10 },
-      { intelligence: 6 },
+      { name: 'strength', value: 10 },
+      { name: 'intelligence', value: 6 },
     ]
   },
   {
     name: 'Charlie',
     attributes: [
-      { Strength: 10 },
-      { Luck: 3 },
+      { name: 'Strength', value: 11 },
+      { name: 'Luck', value: 3 },
     ]
   },
 ]
 
 describe('testing', () => {
-  // it('does not work', () => {
-  //   const expected: Attribute[] = [
-  //     { strength: 10 },
-  //     { intelligence: 10 }
-  //   ]
-  //   const maxAttributes = getMaxAttributes(data)
-  //   expect(maxAttributes).toEqual(expected)
-  // })
+  it('getMaxAttributes', () => {
+    const expected: Attribute[] = [
+      { name: 'strength', value: 11 },
+      { name: 'intelligence', value: 10 },
+      { name: 'luck', value: 3 }
+    ]
+    expect(getMaxAttributes(data)).toEqual(expected)
+  })
 
   it('getAttributeKeys', () => {
     const keys = getAttributeKeys(data)

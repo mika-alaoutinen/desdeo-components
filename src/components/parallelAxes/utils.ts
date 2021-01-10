@@ -17,7 +17,9 @@ const normalizeData = (
 
 // Find the maximum value for each axis. This will be used to normalize data and re-scale axis ticks
 const getMaximumValues = (data: ParallelAxesData[]) => {
-  return attributes.map(attribute => {
+  const keys = getAttributeKeys(data)
+
+  return keys.map(attribute => {
     return data.reduce((memo, datum) => {
       return datum[attribute] > memo
         ? datum[attribute]
@@ -27,13 +29,29 @@ const getMaximumValues = (data: ParallelAxesData[]) => {
 }
 
 export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
+  const keys = getAttributeKeys(data)
+  const attributeMap = new Map<string, number>(keys.map(key => [key, -1]))
+
   for (const datum of data) {
-    for (const attribute of datum.attributes) {
-      console.log('attribute', attribute)
+    const attributes = datum.attributes.map(attribute => ({
+      ...attribute,
+      name: attribute.name.toLowerCase()
+    }))
+
+    for (const { name, value } of attributes) {
+      const existingValue = attributeMap.get(name)
+      if (existingValue && existingValue < value) {
+        attributeMap.set(name, value)
+      }
     }
   }
 
-  return []
+  const maxAttributes: Attribute[] = []
+  for (const entry of attributeMap.entries()) {
+    maxAttributes.push({ name: entry[0], value: entry[1] })
+  }
+
+  return maxAttributes
 }
 
 export const getAttributeKeys = (data: ParallelAxesData[]): string[] => {
@@ -42,11 +60,6 @@ export const getAttributeKeys = (data: ParallelAxesData[]): string[] => {
 }
 
 const getUniqueKeys = (attributes: Attribute[]): string[] => {
-  const keys = attributes.flatMap(keyToLowerCase)
+  const keys = attributes.flatMap(attribute => attribute.name.toLowerCase())
   return [...new Set(keys)]
 }
-
-const keyToLowerCase = (attribute: Attribute): string[] =>
-  Object
-    .keys(attribute)
-    .map(attribute => attribute.toLowerCase())
