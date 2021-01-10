@@ -28,33 +28,6 @@ const getMaximumValues = (data: ParallelAxesData[]) => {
   })
 }
 
-export const getMaxAttributes1 = (data: ParallelAxesData[]): Attribute[] => {
-  const sanitizedData = sanitizeData(data)
-
-  const initialMaxAttribute: Attribute = {
-    name: '',
-    value: -1
-  }
-
-  const grouped = sanitizedData
-    .flatMap(datum => datum.attributes)
-    .reduce((r, a) => {
-      console.log('r', r)
-      console.log('a', a)
-
-      r[a.name] = [...r[a.name] || [], a]
-      return r
-    }, initialMaxAttribute)
-
-  // data
-  //   .flatMap(datum => datum.attributes)
-  //   .reduce((currentMax, attribute) => attribute.value > currentMax.value
-  //     ? attribute
-  //     : currentMax,
-  //     initialMaxAttribute
-  //   )
-}
-
 export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
   const sanitized = sanitizeData(data)
   const keys = getAttributeKeys(sanitized)
@@ -75,15 +48,40 @@ export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
 // Helper functions
 export const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
   data.map(datum => ({
-      ...datum,
-      attributes: attributeNamesToLowerCase(datum.attributes)
+    ...datum,
+    attributes: namesToLowerCase(datum.attributes)
   }))
 
-const attributeNamesToLowerCase = (attributes: Attribute[]): Attribute[] =>
+const namesToLowerCase = (attributes: Attribute[]): Attribute[] =>
   attributes.map(attribute => ({
     ...attribute,
     name: attribute.name.toLowerCase()
   }))
+
+export const groupByName = (attributes: Attribute[]): Attribute[][] => {
+  const groups = new Map<string, Attribute[]>(
+    attributes.map(attribute => [ attribute.name, [] ])
+  )
+
+  attributes.forEach(attribute =>
+    groups.get(attribute.name)?.push(attribute))
+
+  return [...groups.values()]
+}
+
+const findByMaxValue = (attributes: Attribute[]): Attribute => {
+  const initial: Attribute = {
+    name: '',
+    value: -1
+  }
+
+  return attributes.reduce((currentMax, attribute) =>
+    attribute.value > currentMax.value
+      ? attribute
+      : currentMax
+    , initial
+  )
+}
 
 export const getAttributeKeys = (data: ParallelAxesData[]): string[] => {
   const attributes = data.map(datum => datum.attributes).flat()
