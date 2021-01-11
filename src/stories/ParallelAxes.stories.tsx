@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import ParallelAxesChart from '../components/parallelAxes/ParallelAxesChart'
+import ParallelAxes from '../components/parallelAxes/ParallelAxes'
 import ParallelAxesExample from '../components/parallelAxes/ParallelAxesExample'
 import { parallelAxesData } from '../tests/testdata'
 
@@ -11,8 +11,8 @@ export const ParallelAxesDemo = (): JSX.Element => (
   />
 )
 
-export const ParallelAxes = (): JSX.Element => (
-  <ParallelAxesChart
+export const ParallelAxesComponent = (): JSX.Element => (
+  <ParallelAxes
     data={parallelAxesData}
   />
 )

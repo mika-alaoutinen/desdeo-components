@@ -28,7 +28,7 @@ const initDatasets: NormalizedData[] = [{
   data: [{ x: '', y: -1 }]
 }]
 
-const ParallelAxesChart: React.FC<Props> = ({ data }) => {
+const ParallelAxes: React.FC<Props> = ({ data }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
   const [ datasets, setDatasets ] = useState<NormalizedData[]>(initDatasets)
   const [ filter, setFilter ] = useState<Filter>({ attribute: '' })
@@ -95,4 +95,4 @@ const ParallelAxesChart: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default ParallelAxesChart
+export default ParallelAxes
