@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { VictoryAxis, VictoryChart, VictoryLabel } from 'victory'
+import { VictoryChart } from 'victory'
 
+import AttributeLabels from './AttributeLabels'
 import BrushAxis from './BrushAxis'
 import Line from './Line'
 import { DomainTuple, onDomainChange } from './events'
 import { getAttributeNames, getMaxAttributes } from './utils'
 import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
-
 
 // Interfaces
 export interface Filter {
@@ -88,14 +88,7 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
       width={width}
     >
 
-      <VictoryAxis
-        style={{
-          axis: { stroke: 'none' },
-          tickLabels: { fontSize: 20 }
-        }}
-        tickLabelComponent={<VictoryLabel y={padding.top - 40} />}
-      />
-
+      <AttributeLabels paddingTop={padding.top - 40} />
       {drawLines()}
       {drawAxes()}
 
