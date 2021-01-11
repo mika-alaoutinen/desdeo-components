@@ -3,6 +3,7 @@ import {
   DomainTuple, VictoryAxis, VictoryBrushLine, VictoryChart, VictoryLabel, VictoryLine
 } from 'victory'
 
+import ParallelAxesLine from './ParallelAxesLine'
 import { onDomainChange } from './events'
 import { getAttributeNames, getMaxAttributes } from './utils'
 import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
@@ -83,17 +84,11 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
 
   const drawLines = (): JSX.Element[] =>
     datasets.map(({ name, data }) =>
-      <VictoryLine
+      <ParallelAxesLine
         key={name}
         data={data}
         name={name}
-        groupComponent={<g />}
-        style={{
-          data: {
-            opacity: setOpacity(name),
-            stroke: 'tomato'
-          }
-        }}
+        opacity={isFiltered || activeDatasets.includes(name) ? 1 : 0.2}
       />
     )
 
@@ -104,9 +99,6 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
 
   const getMaxAttributeValues = (data: ParallelAxesData[]) =>
     getMaxAttributes(data).map(attribute => attribute.value)
-
-  const setOpacity = (name: string): number =>
-    isFiltered || activeDatasets.includes(name) ? 1 : 0.2
 
   return (
     <VictoryChart
