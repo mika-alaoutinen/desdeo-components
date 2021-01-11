@@ -5,10 +5,9 @@ import AttributeLabels from './AttributeLabels'
 import BrushAxis from './BrushAxis'
 import Line from './Line'
 import { DomainTuple, onDomainChange } from './events'
-import { getAttributeNames, getMaxAttributes } from './utils'
 import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
+import { getAttributeNames, getMaxAttributes } from './utils'
 
-// Interfaces
 export interface Filter {
   attribute: string,
   range?: [ number, number ]
@@ -29,7 +28,7 @@ const initDatasets: NormalizedData[] = [{
   data: [{ x: '', y: -1 }]
 }]
 
-const ParallelAxes: React.FC<Props> = ({ data }) => {
+const ParallelAxesChart: React.FC<Props> = ({ data }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
   const [ datasets, setDatasets ] = useState<NormalizedData[]>(initDatasets)
   const [ filter, setFilter ] = useState<Filter>({ attribute: '' })
@@ -96,4 +95,4 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default ParallelAxes
+export default ParallelAxesChart
