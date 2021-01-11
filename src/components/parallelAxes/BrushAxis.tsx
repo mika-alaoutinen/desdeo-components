@@ -11,7 +11,7 @@ interface Props {
   offsetX?: number
 }
 
-const Axis: React.FC<Props> = ({ name, onChange, maxValue, offsetX }) => (
+const BrushAxis: React.FC<Props> = ({ name, onChange, maxValue, offsetX }) => (
   <VictoryAxis
     axisComponent={<BrushLine name={name} onChange={onChange} />}
     dependentAxis
@@ -28,4 +28,4 @@ const Axis: React.FC<Props> = ({ name, onChange, maxValue, offsetX }) => (
   />
 )
 
-export default Axis
+export default BrushAxis

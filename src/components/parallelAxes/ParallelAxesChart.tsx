@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { VictoryAxis, VictoryChart, VictoryLabel } from 'victory'
 
-import Axis from './Axis'
+import BrushAxis from './BrushAxis'
 import Line from './Line'
 import { DomainTuple, onDomainChange } from './events'
 import { getAttributeNames, getMaxAttributes } from './utils'
@@ -52,7 +52,7 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
   // Creating Victory components
   const drawAxes = (): JSX.Element[] =>
     attributeNames.map((name, i) =>
-      <Axis
+      <BrushAxis
         key={name}
         name={name}
         onChange={onChange}
@@ -71,6 +71,7 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
       />
     )
 
+  // Helper functions
   const getAxisOffset = (index: number): number => {
     const step = (width - padding.left - padding.right) / (attributeNames.length - 1)
     return step * index + padding.left
