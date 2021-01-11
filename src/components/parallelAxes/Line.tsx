@@ -9,7 +9,7 @@ interface Props {
   opacity: number
 }
 
-const ParallelAxesLine: React.FC<Props> = ({ data, name, opacity }) => (
+const Line: React.FC<Props> = ({ data, name, opacity }) => (
   <VictoryLine
     key={name}
     data={data}
@@ -24,4 +24,4 @@ const ParallelAxesLine: React.FC<Props> = ({ data, name, opacity }) => (
   />
 )
 
-export default ParallelAxesLine
+export default Line

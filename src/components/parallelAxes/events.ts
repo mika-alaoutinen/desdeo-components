@@ -1,4 +1,4 @@
-import { Filter } from './ParallelAxes'
+import { Filter } from './ParallelAxesChart'
 
 interface DomainChange {
   activeDatasets: string[],

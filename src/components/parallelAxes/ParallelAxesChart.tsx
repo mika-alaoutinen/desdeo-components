@@ -3,7 +3,7 @@ import {
   DomainTuple, VictoryAxis, VictoryBrushLine, VictoryChart, VictoryLabel, VictoryLine
 } from 'victory'
 
-import ParallelAxesLine from './ParallelAxesLine'
+import Line from './Line'
 import { onDomainChange } from './events'
 import { getAttributeNames, getMaxAttributes } from './utils'
 import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
@@ -84,7 +84,7 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
 
   const drawLines = (): JSX.Element[] =>
     datasets.map(({ name, data }) =>
-      <ParallelAxesLine
+      <Line
         key={name}
         data={data}
         name={name}
