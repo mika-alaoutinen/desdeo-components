@@ -1,3 +1,4 @@
+import { NormalizedData } from '../../types/dataTypes'
 import { Filter } from './ParallelAxes'
 
 export interface DomainChange {
@@ -9,11 +10,20 @@ export interface DomainChange {
 export type DomainTuple = [ number, number ]
 export type OnDomainChange = (domain: DomainTuple) => void
 
-export const onDomainChange = (domain: DomainTuple, filter: Filter): DomainChange => ({
-  activeDatasets: [],
-  filter: addNewFilters(domain, filter),
-  isFiltered: false
-})
+// Need to refactor this
+export const onDomainChange = (
+  domain: DomainTuple, filter: Filter, datasets: string[]
+): DomainChange => {
+  const filters = addNewFilters(domain, filter)
+  const isFiltered = Array.from(Object.values(filters)).length > 0
+  const activeDatasets = isFiltered ? getActiveDatasets(filters) : datasets
+
+  return {
+    activeDatasets,
+    filter: filters,
+    isFiltered
+  }
+}
 
 // Utility functions
 const addNewFilters = (domain: DomainTuple, filter: Filter): Filter => {
@@ -24,4 +34,10 @@ const addNewFilters = (domain: DomainTuple, filter: Filter): Filter => {
     ...filter,
     range: extent <= minVal ? undefined : domain
   }
+}
+
+// TODO
+const getActiveDatasets = (filter: Filter): string[] => {
+  console.log(filter)
+  return []
 }

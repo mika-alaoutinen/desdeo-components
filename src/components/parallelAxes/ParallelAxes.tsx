@@ -42,7 +42,8 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
 
   // Event handlers
   const onChange = (domain: DomainTuple): void => {
-    const change = onDomainChange(domain, filter)
+    const datasetNames = datasets.map(data => data.name)
+    const change = onDomainChange(domain, filter, datasetNames)
     setActiveDataSets(change.activeDatasets)
     setFilter(change.filter)
     setIsFiltered(change.isFiltered)
