@@ -7,6 +7,7 @@ import Line from './Line'
 import { onDomainChange } from './events'
 import { getAttributeNames, getMaxAttributes } from './utils'
 import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
+import BrushLine from './BrushLine'
 
 // Interfaces
 export interface Filter {
@@ -42,32 +43,20 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
   }, [])
 
   // Event handlers
-  const onChange = (domain: DomainTuple, name?: string): void => {
-    if (!name) {
-      console.log('no name in props')
-      return
-    }
-
+  const onChange = (domain: DomainTuple): void => {
     // DomainTuple is either a tuple of numbers or Dates. Cast as numbers.
-    const change = onDomainChange(domain as [ number, number], name, filter)
+    const change = onDomainChange(domain as [ number, number], filter)
     setActiveDataSets(change.activeDatasets)
     setFilter(change.filter)
     setIsFiltered(change.isFiltered)
   }
 
   // Creating Victory components
-  const createBrushLine = (): JSX.Element =>
-    <VictoryBrushLine
-      name={'placeholder'}
-      onBrushDomainChange={(domain, props) => onChange(domain, props?.name)}
-      width={20}
-    />
-
   const drawAxes = (): JSX.Element[] =>
     attributeNames.map((name, i) =>
       <VictoryAxis
         key={name}
-        axisComponent={createBrushLine()}
+        axisComponent={<BrushLine name={name} onChange={onChange} />}
         dependentAxis
         offsetX={getAxisOffset(i)}
         style={{
