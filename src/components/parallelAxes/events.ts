@@ -1,4 +1,3 @@
-import { Domain } from 'domain'
 import { Filter } from './ParallelAxesChart'
 
 export interface DomainChange {
@@ -7,16 +6,17 @@ export interface DomainChange {
   isFiltered: boolean
 }
 
-export type OnDomainChange = (domain: Domain) => void
+export type DomainTuple = [ number, number ]
+export type OnDomainChange = (domain: DomainTuple) => void
 
-export const onDomainChange = (domain: Domain, filter: Filter): DomainChange => ({
+export const onDomainChange = (domain: DomainTuple, filter: Filter): DomainChange => ({
   activeDatasets: [],
   filter: addNewFilters(domain, filter),
   isFiltered: false
 })
 
 // Utility functions
-const addNewFilters = (domain: Domain, filter: Filter): Filter => {
+const addNewFilters = (domain: DomainTuple, filter: Filter): Filter => {
   const extent = domain && Math.abs(domain[1] - domain[0])
   const minVal = 1 / Number.MAX_SAFE_INTEGER
   // filter[name] = extent <= minVal ? undefined : domain
@@ -25,6 +25,3 @@ const addNewFilters = (domain: Domain, filter: Filter): Filter => {
     range: extent <= minVal ? undefined : domain
   }
 }
-
-// Private types
-type Domain = [ number, number ]

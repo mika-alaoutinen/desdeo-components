@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {
-  DomainTuple, VictoryAxis, VictoryBrushLine, VictoryChart, VictoryLabel, VictoryLine
-} from 'victory'
+import { VictoryAxis, VictoryChart, VictoryLabel } from 'victory'
 
+import Axis from './Axis'
 import Line from './Line'
-import { onDomainChange } from './events'
+import { DomainTuple, onDomainChange } from './events'
 import { getAttributeNames, getMaxAttributes } from './utils'
 import { NormalizedData, ParallelAxesData } from '../../types/dataTypes'
-import BrushLine from './BrushLine'
+
 
 // Interfaces
 export interface Filter {
@@ -44,8 +43,7 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
 
   // Event handlers
   const onChange = (domain: DomainTuple): void => {
-    // DomainTuple is either a tuple of numbers or Dates. Cast as numbers.
-    const change = onDomainChange(domain as [ number, number], filter)
+    const change = onDomainChange(domain, filter)
     setActiveDataSets(change.activeDatasets)
     setFilter(change.filter)
     setIsFiltered(change.isFiltered)
@@ -54,20 +52,12 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
   // Creating Victory components
   const drawAxes = (): JSX.Element[] =>
     attributeNames.map((name, i) =>
-      <VictoryAxis
+      <Axis
         key={name}
-        axisComponent={<BrushLine name={name} onChange={onChange} />}
-        dependentAxis
+        name={name}
+        onChange={onChange}
+        maxValue={getMaxAttributeValues(data)[i]}
         offsetX={getAxisOffset(i)}
-        style={{
-          tickLabels: {
-            fontSize: 15,
-            padding: 15,
-            pointerEvents: 'none'
-          }
-        }}
-        tickFormat={(tick) => Math.round(tick * getMaxAttributeValues(data)[i])}
-        tickValues={[ 0.2, 0.4, 0.6, 0.8, 1 ]}
       />
     )
 
