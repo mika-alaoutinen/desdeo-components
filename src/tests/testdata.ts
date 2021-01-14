@@ -27,6 +27,7 @@ export const parallelAxesData: ParallelAxesData[] = [
     attributes: [
       { name: 'strength', value: 5 },
       { name: 'intelligence', value: 30 },
+      { name: 'luck', value: 17 }
     ]
   },
   {
@@ -34,6 +35,7 @@ export const parallelAxesData: ParallelAxesData[] = [
     attributes: [
       { name: 'strength', value: 10 },
       { name: 'intelligence', value: 25 },
+      { name: 'luck', value: 8 }
     ]
   },
   {

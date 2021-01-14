@@ -10,7 +10,7 @@ import { getAttributeNames, getMaxAttributes } from './utils'
 
 export interface Filter {
   attribute: string,
-  range?: [ number, number ]
+  range: [ number, number ] // change to min and max
 }
 
 interface Props {
@@ -28,10 +28,15 @@ const initDatasets: NormalizedData[] = [{
   data: [{ x: '', y: -1 }]
 }]
 
+const initFilter: Filter = {
+  attribute: '',
+  range: [ -1, 10 ]
+}
+
 const ParallelAxes: React.FC<Props> = ({ data }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
   const [ datasets, setDatasets ] = useState<NormalizedData[]>(initDatasets)
-  const [ filter, setFilter ] = useState<Filter>({ attribute: '' })
+  const [ filter, setFilter ] = useState<Filter>(initFilter)
   const [ isFiltered, setIsFiltered ] = useState<boolean>(false)
 
   const attributeNames = getAttributeNames(data)
