@@ -3,9 +3,10 @@ import '@testing-library/jest-dom'
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 
-import TableRow from '../../../components/table/TableRow'
 import { ROW_SELECTED_COLOR } from '../../../components/table/tableStyles'
 import { Datum } from '../../../types/dataTypes'
+
+import TableRow from '../../../components/table/TableRow'
 
 // Constants
 const handler = jest.fn()
