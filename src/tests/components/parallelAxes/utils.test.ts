@@ -1,7 +1,31 @@
 import { normalizedData } from './normalizedDatasets'
 import { Layout } from '../../../components/parallelAxes/layout'
-import { calculateAxisOffset, getActiveDatasets } from '../../../components/parallelAxes/utils'
 import { Filter } from '../../../types/dataTypes'
+
+import {
+  addNewFilters, calculateAxisOffset, getActiveDatasets
+} from '../../../components/parallelAxes/utils'
+
+describe('addNewFilters creates filters for datasets', () => {
+  const domain: [number, number] = [ 0, 1 ]
+  const attributeName = 'strength'
+  const expectedFilters: Filter[] = [{
+    attribute: attributeName,
+    range: domain
+  }]
+
+  it('if no filter exists with a given attribute, create a new filter', () => {
+    expect(addNewFilters([], domain, attributeName)).toEqual(expectedFilters)
+  })
+
+  it('if a filter exists with given attribute, update the filters with new data', () => {
+    const filters: Filter[] = [{
+      attribute: attributeName,
+      range: [ 0.5, 0.6 ]
+    }]
+    expect(addNewFilters(filters, domain, attributeName)).toEqual(expectedFilters)
+  })
+})
 
 describe('calculateAxisOffset calculates offset based on given layout', () => {
   const attributesLength = 3
