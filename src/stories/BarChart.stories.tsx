@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import BarChart from '../components/barChart/BarChart'
-import StackedBarChart from '../components/barChart/StackedBarChart'
+import BarChart from '../components/bar/BarChart'
+import StackedBarChart from '../components/bar/StackedBarChart'
 import { useOnClickHandler } from './storyUtils'
 import { barData } from '../tests/testdata'
 

@@ -1,15 +1,15 @@
 import React from 'react'
 
-import BarChart from '../../components/barChart/BarChart'
-
 import {
   dataShouldBeClickable,
   renderComponent,
   renderDataLabels,
   renderFiveDatum,
   renderVictoryContainer
-} from './componentTests'
-import { testdata } from '../testdata'
+} from '../componentTests'
+import { testdata } from '../../testdata'
+
+import BarChart from '../../../components/bar/BarChart'
 
 // Constants
 const handler = jest.fn()

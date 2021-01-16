@@ -1,15 +1,15 @@
 import React from 'react'
 
-import ScatterChart from '../../components/scatter/ScatterChart'
-
 import {
   dataShouldBeClickable,
   renderComponent,
   renderDataLabels,
   renderFiveDatum,
   renderVictoryContainer
-} from './componentTests'
-import { testdata } from '../testdata'
+} from '../componentTests'
+import { testdata } from '../../testdata'
+
+import ScatterChart from '../../../components/scatter/ScatterChart'
 
 // Constants
 const handler = jest.fn()
