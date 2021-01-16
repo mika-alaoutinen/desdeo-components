@@ -1,4 +1,4 @@
-import { getMaxAttributes } from './utils'
+import { getMaxAttributes } from './dataParser'
 import { Attribute, NormalizedData, ParallelAxesData, TextualData } from '../../types/dataTypes'
 
 // Construct normalized datasets by dividing the value for each attribute by the maximum value.
@@ -12,7 +12,8 @@ export const normalizeData = (rawData: ParallelAxesData[]): NormalizedData[] => 
   }))
 }
 
-export const normalizeAttributes = (
+// Utility functions
+const normalizeAttributes = (
   attributes: Attribute[], maxAttributes: Attribute[]
 ): TextualData[] => {
   const maxValues = maxAttributes.map(attribute => attribute.value)
@@ -23,7 +24,6 @@ export const normalizeAttributes = (
   }))
 }
 
-// Utility functions
 const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
   data.map(datum => ({
     ...datum,

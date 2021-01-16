@@ -11,7 +11,7 @@ export interface Coordinate {
 }
 
 export interface NormalizedData {
-  name: string, // TODO: rename to label?
+  name: string,
   data: TextualData[]
 }
 
@@ -29,6 +29,11 @@ export interface ParallelAxesData {
 export interface Attribute {
   name: string,
   value: number
+}
+
+export interface Filter {
+  attribute: string,
+  range: [ number, number ]
 }
 
 export interface StackedBarData {

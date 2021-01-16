@@ -1,44 +1,24 @@
-import { Attribute, ParallelAxesData } from '../../types/dataTypes'
+import { layout as defaultLayout, Layout } from './layout'
+import { Filter, NormalizedData } from '../../types/dataTypes'
 
-// Find the maximum attribute values for each axis.
-// The max values will be used to normalize data and re-scale axis ticks.
-export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
-  const attributes = data.flatMap(datum => datum.attributes)
-  const grouped = groupByName(attributes)
-  return grouped.map(findByMaxValue)
+export const calculateAxisOffset = (
+  index: number, attributesLength: number, layout?: Layout
+): number => {
+  const { width, padding } = layout ? layout : defaultLayout
+  const step = (width - padding.left - padding.right) / (attributesLength - 1)
+  return step * index + padding.left
 }
 
-// Find all unique attribute names from data.
-export const getAttributeNames = (data: ParallelAxesData[]): string[] => {
-  const names = data
-    .flatMap(datum => datum.attributes)
-    .map(attribute => attribute.name)
+export const getActiveDatasets = (datasets: NormalizedData[], filters: Filter[]): string[] =>
+  datasets
+    .map(dataset => isDatasetActive(dataset, filters) ? dataset.name : '')
+    .filter(Boolean)
 
-  return [...new Set(names)]
-}
+const isDatasetActive = (dataset: NormalizedData, filters: Filter[]): boolean =>
+  filters.every(({ attribute, range }) => {
+    const y = dataset.data.find(({ x }) => x === attribute)?.y
+    return y ? isNumberInRange(y, range) : false
+  })
 
-// Utility functions
-export const groupByName = (attributes: Attribute[]): Attribute[][] => {
-  const groups = new Map<string, Attribute[]>(
-    attributes.map(attribute => [ attribute.name, [] ])
-  )
-
-  attributes.forEach(attribute =>
-    groups.get(attribute.name)?.push(attribute))
-
-  return [...groups.values()]
-}
-
-export const findByMaxValue = (attributes: Attribute[]): Attribute => {
-  const initial: Attribute = {
-    name: '',
-    value: -1
-  }
-
-  return attributes.reduce((currentMax, attribute) =>
-    attribute.value > currentMax.value
-      ? attribute
-      : currentMax
-    , initial
-  )
-}
+const isNumberInRange = (n: number, range: [number, number]): boolean =>
+  n > range[0] && n < range[1]
