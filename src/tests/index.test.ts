@@ -1,5 +1,6 @@
 import {
   BarChartComponent,
+  ParallelAxesComponent,
   StackedBarChartComponent,
   ScatterChartComponent,
   ScatterSelectionComponent,
@@ -9,6 +10,10 @@ import {
 describe('Chart components are exported', () => {
   it('BarChartComponent is truthy', () => {
     expect(BarChartComponent).toBeTruthy()
+  })
+
+  it('ParallelAxesComponent is truthy', () => {
+    expect(ParallelAxesComponent).toBeTruthy()
   })
 
   it('StackedBarChartComponent is truthy', () => {
