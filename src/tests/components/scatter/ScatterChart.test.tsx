@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ScatterChart from '../../components/scatter/ScatterChart'
+import ScatterChart from '../../../components/scatter/ScatterChart'
 
 import {
   dataShouldBeClickable,
@@ -8,8 +8,8 @@ import {
   renderDataLabels,
   renderFiveDatum,
   renderVictoryContainer
-} from './componentTests'
-import { testdata } from '../testdata'
+} from '../componentTests'
+import { testdata } from '../../testdata'
 
 // Constants
 const handler = jest.fn()
