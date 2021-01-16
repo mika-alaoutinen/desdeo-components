@@ -85,8 +85,8 @@ const drawLines = (): JSX.Element[] =>
       padding={layout.padding}
     >
       <AttributeLabels paddingTop={layout.padding.top - 40} />
-      {drawLines()}
       {drawAxes()}
+      {drawLines()}
     </VictoryChart>
   )
 }
