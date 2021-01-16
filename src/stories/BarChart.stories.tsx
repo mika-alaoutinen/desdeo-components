@@ -6,7 +6,7 @@ import StackedBarChart from '../components/barChart/StackedBarChart'
 import { useOnClickHandler } from './storyUtils'
 import { barData } from '../tests/testdata'
 
-export const BarChartWithUseState = (): JSX.Element => {
+export const BarChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
 
   return (

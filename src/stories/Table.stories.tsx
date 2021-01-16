@@ -4,7 +4,7 @@ import { Meta } from '@storybook/react'
 import Table from '../components/table/Table'
 import { useOnClickHandler } from './storyUtils'
 
-export const TableWithUseState = (): JSX.Element => {
+export const TableComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
 
   return (

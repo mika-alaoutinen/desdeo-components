@@ -1,4 +1,4 @@
-import { Datum, StackedBarData } from '../types/dataTypes'
+import { Datum, ParallelAxesData, StackedBarData } from '../types/dataTypes'
 
 export const barData: StackedBarData[] = [
   {
@@ -17,6 +17,33 @@ export const barData: StackedBarData[] = [
       { quarter: 2, earnings: 11500 },
       { quarter: 3, earnings: 12250 },
       { quarter: 4, earnings: 10000 },
+    ]
+  },
+]
+
+export const parallelAxesData: ParallelAxesData[] = [
+  {
+    name: 'Adrien',
+    attributes: [
+      { name: 'strength', value: 5 },
+      { name: 'intelligence', value: 30 },
+      { name: 'luck', value: 17 }
+    ]
+  },
+  {
+    name: 'Brice',
+    attributes: [
+      { name: 'strength', value: 10 },
+      { name: 'intelligence', value: 25 },
+      { name: 'luck', value: 8 }
+    ]
+  },
+  {
+    name: 'Casey',
+    attributes: [
+      { name: 'strength', value: 15 },
+      { name: 'intelligence', value: 20 },
+      { name: 'luck', value: 15 }
     ]
   },
 ]

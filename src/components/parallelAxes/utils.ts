@@ -1,0 +1,24 @@
+import { layout as defaultLayout, Layout } from './layout'
+import { Filter, NormalizedData } from '../../types/dataTypes'
+
+export const calculateAxisOffset = (
+  index: number, attributesLength: number, layout?: Layout
+): number => {
+  const { width, padding } = layout ? layout : defaultLayout
+  const step = (width - padding.left - padding.right) / (attributesLength - 1)
+  return step * index + padding.left
+}
+
+export const getActiveDatasets = (datasets: NormalizedData[], filters: Filter[]): string[] =>
+  datasets
+    .map(dataset => isDatasetActive(dataset, filters) ? dataset.name : '')
+    .filter(Boolean)
+
+const isDatasetActive = (dataset: NormalizedData, filters: Filter[]): boolean =>
+  filters.every(({ attribute, range }) => {
+    const y = dataset.data.find(({ x }) => x === attribute)?.y
+    return y ? isNumberInRange(y, range) : false
+  })
+
+const isNumberInRange = (n: number, range: [number, number]): boolean =>
+  n > range[0] && n < range[1]

@@ -50,10 +50,7 @@ const editSelected = (datum: Datum): Datum =>
 
 const mapSelected = (selectedIDs: string[], datum: Datum): Datum =>
   selectedIDs.includes(datum.id)
-    ? {
-      ...datum,
-      isSelected: true
-    }
+    ? setSelected(datum, true)
     : datum
 
 const setSelected = (datum: Datum, isSelected: boolean): Datum => ({
