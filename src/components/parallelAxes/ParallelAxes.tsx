@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { VictoryAxis, VictoryBrushLine, VictoryChart, VictoryLine } from 'victory'
 
 import AttributeLabels from './AttributeLabels'
@@ -22,6 +22,11 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
   const datasets = normalizeData(data)
   const attributeNames = getAttributeNames(data)
   const maxAttributeValues = getMaxAttributeValues(data)
+
+  // All datasets are active on component load
+  useEffect(() => {
+    setActiveDataSets(datasets.map(dataset => dataset.name))
+  }, [])
 
   // Event handler for vertical brush filters
   const onDomainChange = (domainTuple: Domain, name?: string): void => {
@@ -85,8 +90,9 @@ const drawLines = (): JSX.Element[] =>
       padding={layout.padding}
     >
       <AttributeLabels paddingTop={layout.padding.top - 40} />
-      {drawAxes()}
+      {/* Lines MUST be drawn before axes, or the brush functionality breaks! */}
       {drawLines()}
+      {drawAxes()}
     </VictoryChart>
   )
 }
