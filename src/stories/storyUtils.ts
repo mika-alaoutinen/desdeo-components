@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import { testdata } from '../tests/testdata'
+import { coordinateData } from '../tests/testdata'
 import { Coordinate } from '../types/dataTypes'
 import { OnClickChart, OnSelectChart } from '../types/chartTypes'
 
 export const useOnClickHandler = (): OnClickChart => {
-  const [ data, setData ] = useState(testdata)
+  const [ data, setData ] = useState(coordinateData)
 
   const onClick = (clicked: Coordinate): void => {
     const edited = data.map(datum => datum.id === clicked.id
@@ -22,7 +22,7 @@ export const useOnClickHandler = (): OnClickChart => {
 }
 
 export const useOnSelectHandler = (): OnSelectChart => {
-  const [ data, setData ] = useState(testdata)
+  const [ data, setData ] = useState(coordinateData)
 
   const onSelect = (selected: Coordinate[]): void => {
     const selectedIDs = selected.map(datum => datum.id)

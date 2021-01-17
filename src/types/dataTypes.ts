@@ -6,6 +6,11 @@ export interface Coordinate {
   isSelected?: boolean
 }
 
+export interface CoordinateSet {
+  data: Coordinate[],
+  label?: string
+}
+
 export interface NormalizedData {
   name: string,
   data: TextualData[]

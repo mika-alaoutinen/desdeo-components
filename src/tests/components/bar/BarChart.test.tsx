@@ -7,13 +7,13 @@ import {
   renderFiveCoordinate,
   renderVictoryContainer
 } from '../componentTests'
-import { testdata } from '../../testdata'
+import { coordinateData } from '../../testdata'
 
 import BarChart from '../../../components/bar/BarChart'
 
 // Constants
 const handler = jest.fn()
-const component = <BarChart data={testdata} onClick={handler} />
+const component = <BarChart data={coordinateData} onClick={handler} />
 
 describe('BarChart is rendered correctly', () => {
   it('is truthy', () => {
