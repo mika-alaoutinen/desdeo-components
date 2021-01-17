@@ -5,7 +5,7 @@ import {
 
 import ChartContainer from '../../containers/ChartContainer'
 import { CoordinateSet } from '../../types/dataTypes'
-import { createAxisLabels, createTickValues } from './utils'
+import { createAxisLabels, createIntegerArray } from './utils'
 
 interface Props {
   datasets: CoordinateSet[]
@@ -29,7 +29,7 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
   const drawYAxis = (): JSX.Element =>
     <VictoryAxis
       tickFormat={createAxisLabels(datasets)}
-      tickValues={createTickValues(datasets.map(dataset => dataset.data).length)}
+      tickValues={createIntegerArray(datasets.map(dataset => dataset.data).length)}
     />
 
   const createTooltip = (): JSX.Element =>

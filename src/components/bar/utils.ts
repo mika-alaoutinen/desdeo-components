@@ -1,8 +1,5 @@
 import { CoordinateSet, StackedBarData } from '../../types/dataTypes'
 
-export const createTickValuesForStackedBars = (data: StackedBarData[]): number[] =>
-  createTickValues(getMaxLengthOfData(data))
-
 export const findMaxValue = (datasets: CoordinateSet[]): number => {
   const values = datasets
     .flatMap(dataset => dataset.data)
@@ -16,10 +13,13 @@ export const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
     .map(({ label }, i) => label ? label : `Label ${i}`)
     .map(label => label.replaceAll(' ', '\n'))
 
-export const createTickValues = (max: number): number[] => {
+export const createIntegerArray = (max: number): number[] => {
   const numbersFromZero = [...Array(max).keys()]
   return numbersFromZero.map(n => n + 1)
 }
+
+export const createTickValuesForStackedBars = (data: StackedBarData[]): number[] =>
+  createIntegerArray(getMaxLengthOfData(data))
 
 // Utility functions
 const getMaxLengthOfData = (data: StackedBarData[]): number => {
