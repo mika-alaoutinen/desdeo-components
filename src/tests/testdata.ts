@@ -62,28 +62,28 @@ export const coordinateData: Coordinate[] = [
 export const coordinateSets: CoordinateSet[] = [
   {
     data: [
-      { id: 'a', x: 10, y: 20, label: 'A', isSelected: true },
-      { id: 'b', x: 20, y: 40, label: 'B', isSelected: false },
-      { id: 'c', x: 30, y: 70, label: 'C' }
+      { id: 'G', x: 1, y: 80, label: 'C', isSelected: true },
+      { id: 'H', x: 2, y: 15, label: 'C', isSelected: true },
+      { id: 'I', x: 3, y: 60, label: 'C', isSelected: true }
     ],
-    label: 'dataset1'
+    label: 'dataset3'
   },
 
   {
     data: [
-      { id: 'd', x: 20, y: 10, label: 'D', isSelected: false },
-      { id: 'e', x: 5, y: 15, label: 'E', isSelected: false },
-      { id: 'f', x: 35, y: 60, label: 'F', isSelected: false }
+      { id: 'd', x: 1, y: 10, label: 'B', isSelected: false },
+      { id: 'e', x: 2, y: 15, label: 'B', isSelected: false },
+      { id: 'f', x: 3, y: 60, label: 'B', isSelected: false }
     ],
     label: 'dataset2'
   },
 
   {
     data: [
-      { id: 'G', x: 80, y: 80, label: 'G', isSelected: true },
-      { id: 'H', x: 75, y: 15, label: 'H', isSelected: true },
-      { id: 'I', x: 25, y: 60, label: 'I', isSelected: true }
+      { id: 'a', x: 1, y: 20, label: 'A', isSelected: true },
+      { id: 'b', x: 2, y: 40, label: 'A', isSelected: false },
+      { id: 'c', x: 3, y: 70, label: 'A' }
     ],
-    label: 'dataset3'
-  },
+    label: 'dataset1'
+  }
 ]

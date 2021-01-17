@@ -3,6 +3,7 @@ import { VictoryBar, VictoryGroup } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { CoordinateSet } from '../../types/dataTypes'
+import { createKey, findMaxValue } from './utils'
 
 interface Props {
   datasets: CoordinateSet[]
@@ -19,14 +20,11 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
       data ={data}
     />
 
-  const createKey = (label: string|undefined, index: number): string =>
-    label ? label : index.toString()
-
   return (
     <ChartContainer
       domain={{
-        x: [0, 100],
-        y: [0, 100]
+        x: [1, datasets.length],
+        y: [0, findMaxValue(datasets) + 10]
       }}
     >
 
