@@ -3,7 +3,7 @@ import { VictoryAxis, VictoryBar, VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { StackedBarData } from '../../types/dataTypes'
-import { createTickValues } from './utils'
+import { createTickValuesForStackedBars } from './utils'
 
 export interface Props {
   data: StackedBarData[]
@@ -26,7 +26,7 @@ const StackedBarChart: React.FC<Props> = ({ data }) => {
 
       <VictoryAxis
         tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
-        tickValues={createTickValues(data)}
+        tickValues={createTickValuesForStackedBars(data)}
       />
       <VictoryAxis
         dependentAxis

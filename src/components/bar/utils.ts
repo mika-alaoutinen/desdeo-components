@@ -1,21 +1,7 @@
 import { CoordinateSet, StackedBarData } from '../../types/dataTypes'
 
-export const createTickValues = (data: StackedBarData[]): number[] => {
-  const maxLength = getMaxLengthOfData(data)
-  const numbersFromZero = [...Array(maxLength).keys()]
-  return numbersFromZero.map(n => n + 1)
-}
-
-const getMaxLengthOfData = (data: StackedBarData[]): number => {
-  const lengthsOfData = data
-    .map(yearRow => yearRow.data)
-    .map(dataRow => dataRow.length)
-
-  return Math.max.apply(0, lengthsOfData)
-}
-
-export const createKey = (label: string|undefined, index: number): string =>
-  label ? label : index.toString()
+export const createTickValuesForStackedBars = (data: StackedBarData[]): number[] =>
+  createTickValues(getMaxLengthOfData(data))
 
 export const findMaxValue = (datasets: CoordinateSet[]): number => {
   const values = datasets
@@ -25,7 +11,16 @@ export const findMaxValue = (datasets: CoordinateSet[]): number => {
   return Math.max(...values)
 }
 
-export const tickValues = (max: number): number[] => {
+export const createTickValues = (max: number): number[] => {
   const numbersFromZero = [...Array(max).keys()]
   return numbersFromZero.map(n => n + 1)
+}
+
+// Utility functions
+const getMaxLengthOfData = (data: StackedBarData[]): number => {
+  const lengthsOfData = data
+    .map(yearRow => yearRow.data)
+    .map(dataRow => dataRow.length)
+
+  return Math.max.apply(0, lengthsOfData)
 }
