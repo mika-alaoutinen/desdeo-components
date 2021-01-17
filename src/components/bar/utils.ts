@@ -24,3 +24,8 @@ export const findMaxValue = (datasets: CoordinateSet[]): number => {
 
   return Math.max(...values)
 }
+
+export const tickValues = (max: number): number[] => {
+  const numbersFromZero = [...Array(max).keys()]
+  return numbersFromZero.map(n => n + 1)
+}

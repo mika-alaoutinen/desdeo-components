@@ -1,9 +1,9 @@
 import React from 'react'
-import { VictoryBar, VictoryGroup } from 'victory'
+import { VictoryAxis, VictoryBar, VictoryGroup } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { CoordinateSet } from '../../types/dataTypes'
-import { createKey, findMaxValue } from './utils'
+import { createKey, tickValues } from './utils'
 
 interface Props {
   datasets: CoordinateSet[]
@@ -20,13 +20,28 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
       data ={data}
     />
 
+  const drawXAxis = (): JSX.Element =>
+    <VictoryAxis dependentAxis />
+
+  const drawYAxis = (): JSX.Element =>
+    <VictoryAxis
+      tickFormat={createLabels()}
+      tickValues={createTickValues()}
+    />
+
+  const createLabels = (): string[] =>
+    datasets.map(({ label }, i) => label ? label : `Label ${i}`)
+
+  const createTickValues = (): number[] =>
+    tickValues(datasets.map(dataset => dataset.data).length)
+
   return (
     <ChartContainer
-      domain={{
-        x: [1, datasets.length],
-        y: [0, findMaxValue(datasets) + 10]
-      }}
+      padding={{ top: 50, left: 75, right: 50, bottom: 50 }}
     >
+
+      {drawXAxis()}
+      {drawYAxis()}
 
       <VictoryGroup
         colorScale={[ 'brown', 'tomato', 'gold' ]}
@@ -41,7 +56,7 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
         {drawBars()}
       </VictoryGroup>
 
-      </ChartContainer>
+    </ChartContainer>
   )
 }
 
