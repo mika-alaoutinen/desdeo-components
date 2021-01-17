@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 import { testdata } from '../tests/testdata'
-import { Datum } from '../types/dataTypes'
+import { Coordinate } from '../types/dataTypes'
 import { OnClickChart, OnSelectChart } from '../types/chartTypes'
 
 export const useOnClickHandler = (): OnClickChart => {
   const [ data, setData ] = useState(testdata)
 
-  const onClick = (clicked: Datum): void => {
+  const onClick = (clicked: Coordinate): void => {
     const edited = data.map(datum => datum.id === clicked.id
       ? editSelected(datum)
       : datum
@@ -24,7 +24,7 @@ export const useOnClickHandler = (): OnClickChart => {
 export const useOnSelectHandler = (): OnSelectChart => {
   const [ data, setData ] = useState(testdata)
 
-  const onSelect = (selected: Datum[]): void => {
+  const onSelect = (selected: Coordinate[]): void => {
     const selectedIDs = selected.map(datum => datum.id)
     const edited = data.map(datum => mapSelected(selectedIDs, datum))
     setData(edited)
@@ -43,17 +43,17 @@ export const useOnSelectHandler = (): OnSelectChart => {
 }
 
 // Utility functions
-const editSelected = (datum: Datum): Datum =>
+const editSelected = (datum: Coordinate): Coordinate =>
   datum.isSelected === undefined
     ? setSelected(datum, true)
     : setSelected(datum, !datum.isSelected)
 
-const mapSelected = (selectedIDs: string[], datum: Datum): Datum =>
+const mapSelected = (selectedIDs: string[], datum: Coordinate): Coordinate =>
   selectedIDs.includes(datum.id)
     ? setSelected(datum, true)
     : datum
 
-const setSelected = (datum: Datum, isSelected: boolean): Datum => ({
+const setSelected = (datum: Coordinate, isSelected: boolean): Coordinate => ({
   ...datum,
   isSelected
 })

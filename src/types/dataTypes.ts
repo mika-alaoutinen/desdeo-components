@@ -1,13 +1,9 @@
-// TOOD: Remove Datum type and use Coordinate instead
-export interface Datum extends Coordinate {
+export interface Coordinate {
   id: string, // unique identifier
+  x: number,
+  y: number,
   label?: string,
   isSelected?: boolean
-}
-
-export interface Coordinate {
-  x: number,
-  y: number
 }
 
 export interface NormalizedData {

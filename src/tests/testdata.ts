@@ -1,4 +1,4 @@
-import { Datum, ParallelAxesData, StackedBarData } from '../types/dataTypes'
+import { Coordinate, ParallelAxesData, StackedBarData } from '../types/dataTypes'
 
 export const barData: StackedBarData[] = [
   {
@@ -48,7 +48,7 @@ export const parallelAxesData: ParallelAxesData[] = [
   },
 ]
 
-export const testdata: Datum[] = [
+export const testdata: Coordinate[] = [
   { id: 'a', x: 10, y: 20, label: 'A', isSelected: true },
   { id: 'b', x: 20, y: 40, label: 'B', isSelected: false },
   { id: 'c', x: 30, y: 70, label: 'C' },

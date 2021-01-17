@@ -4,7 +4,7 @@ import {
   dataShouldBeClickable,
   renderComponent,
   renderDataLabels,
-  renderFiveDatum,
+  renderFiveCoordinate,
   renderVictoryContainer
 } from '../componentTests'
 import { testdata } from '../../testdata'
@@ -35,7 +35,7 @@ describe('Data is displayed correctly', () => {
   })
 
   it('has five path elements representing data points', () => {
-    renderFiveDatum(component)
+    renderFiveCoordinate(component)
   })
 })
 

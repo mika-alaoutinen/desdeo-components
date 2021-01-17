@@ -28,19 +28,3 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ## 4. Running the application for local development
 ### `npm run storybook`
 Launches Storybook for local development.
-
-## TODO
-- [ ] Change folder structure?
-  - charts
-    - barChart
-    - ...other charts
-  - components:
-    - victory
-      - axes
-      - containers
-      - lines
-      - etc.
-    - barChart
-    - scatter
-    - etc.
-    
