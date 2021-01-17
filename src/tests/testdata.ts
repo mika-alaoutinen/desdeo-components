@@ -1,5 +1,8 @@
-import { Coordinate, ParallelAxesData, StackedBarData } from '../types/dataTypes'
+import {
+  Coordinate, CoordinateSet, ParallelAxesData, StackedBarData
+} from '../types/dataTypes'
 
+// TODO: use coordinateSets in StackedBarChart
 export const barData: StackedBarData[] = [
   {
     year: 2019,
@@ -54,4 +57,33 @@ export const coordinateData: Coordinate[] = [
   { id: 'c', x: 30, y: 70, label: 'C' },
   { id: 'd', x: 40, y: 30, label: 'D', isSelected: true },
   { id: 'e', x: 50, y: 50, label: 'E' },
+]
+
+export const coordinateSets: CoordinateSet[] = [
+  {
+    data: [
+      { id: 'a', x: 10, y: 20, label: 'A', isSelected: true },
+      { id: 'b', x: 20, y: 40, label: 'B', isSelected: false },
+      { id: 'c', x: 30, y: 70, label: 'C' }
+    ],
+    label: 'dataset1'
+  },
+
+  {
+    data: [
+      { id: 'd', x: 20, y: 10, label: 'D', isSelected: false },
+      { id: 'e', x: 5, y: 15, label: 'E', isSelected: false },
+      { id: 'f', x: 35, y: 60, label: 'F', isSelected: false }
+    ],
+    label: 'dataset2'
+  },
+
+  {
+    data: [
+      { id: 'G', x: 80, y: 80, label: 'G', isSelected: true },
+      { id: 'H', x: 75, y: 15, label: 'H', isSelected: true },
+      { id: 'I', x: 25, y: 60, label: 'I', isSelected: true }
+    ],
+    label: 'dataset3'
+  },
 ]
