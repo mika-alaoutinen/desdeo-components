@@ -1,5 +1,7 @@
 import React from 'react'
-import { VictoryAxis, VictoryBar, VictoryGroup } from 'victory'
+import {
+  VictoryAxis, VictoryBar, VictoryGroup, VictoryLabel, VictoryTooltip
+} from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
 import { CoordinateSet } from '../../types/dataTypes'
@@ -30,6 +32,12 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
       tickValues={createTickValues(datasets.map(dataset => dataset.data).length)}
     />
 
+  const createTooltip = (): JSX.Element =>
+    <VictoryTooltip
+      flyoutComponent={<VictoryLabel />}
+      style={{ fontSize: 10 }}
+    />
+
   return (
     <ChartContainer
       padding={{ top: 50, left: 75, right: 50, bottom: 50 }}
@@ -41,6 +49,7 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
       <VictoryGroup
         colorScale={[ 'brown', 'tomato', 'gold' ]}
         horizontal
+        labelComponent={createTooltip()}
         offset={10}
         style={{
           data: {

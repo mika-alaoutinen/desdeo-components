@@ -59,6 +59,12 @@ export const coordinateData: Coordinate[] = [
   { id: 'e', x: 50, y: 50, label: 'E' },
 ]
 
+/*
+  Note: If the datasets contain a label property, it is used as the
+  label in charts by default.
+  => A simple option for displaying labels might be to transform the
+  data so that all data points have a label.
+*/
 export const coordinateSets: CoordinateSet[] = [
   {
     data: [
