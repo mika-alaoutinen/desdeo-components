@@ -4,14 +4,16 @@ import {
 } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
+import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
 import { createAxisLabels, createIntegerArray } from './utils'
 
 interface Props {
-  datasets: CoordinateSet[]
+  datasets: CoordinateSet[],
+  onClick: OnClickHandler
 }
 
-const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
+const GroupedBarChart: React.FC<Props> = ({ datasets, onClick }) => {
 
   const drawBars = (): JSX.Element[] =>
     datasets.map((dataset, i) =>
@@ -21,6 +23,16 @@ const GroupedBarChart: React.FC<Props> = ({ datasets }) => {
     <VictoryBar
       key={key}
       data ={data}
+      events={[
+        {
+          target: 'data',
+          eventHandlers: {
+            onClick: () => [{
+              mutation: ({ datum }) => onClick(datum)
+            }]
+          }
+        },
+      ]}
     />
 
   const drawXAxis = (): JSX.Element =>

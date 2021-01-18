@@ -19,7 +19,10 @@ export const BarChartComponent = (): JSX.Element => {
 }
 
 export const HorizontalGroupedBarChart = (): JSX.Element => (
-  <GroupedBarChart datasets={coordinateSets} />
+  <GroupedBarChart
+    datasets={coordinateSets}
+    onClick={(coordinate) => console.log('coordinate', coordinate)}
+  />
 )
 
 export const UninteractiveStackedBarChart = (): JSX.Element => (
