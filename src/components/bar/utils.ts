@@ -1,27 +1,23 @@
 import { CoordinateSet, StackedBarData } from '../../types/dataTypes'
 
-export const findMaxValue = (datasets: CoordinateSet[]): number => {
-  const values = datasets
-    .flatMap(dataset => dataset.data)
-    .map(data => data.y)
-
-  return Math.max(...values)
-}
-
+// Need to use regex with replace because Node.js has no implementation for replaceAll...
 export const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
   datasets
-    .map(({ label }, i) => label ? label : `Label ${i}`)
-    .map(label => label.replace(' ', '\n'))
+    .map(({ label }, i) => label ? label : `Label ${i + 1}`)
+    .map(label => label.replace(/ /g, '\n'))
 
-export const createIntegerArray = (max: number): number[] => {
-  const numbersFromZero = [...Array(max).keys()]
-  return numbersFromZero.map(n => n + 1)
-}
+export const createIntegerArray = (max: number): number[] =>
+  max < 0 ? [] : createRange(max)
 
 export const createTickValuesForStackedBars = (data: StackedBarData[]): number[] =>
   createIntegerArray(getMaxLengthOfData(data))
 
 // Utility functions
+const createRange = (max: number): number[] => {
+  const numbersFromZero = [...Array(max).keys()]
+  return numbersFromZero.map(n => n + 1)
+}
+
 const getMaxLengthOfData = (data: StackedBarData[]): number => {
   const lengthsOfData = data
     .map(yearRow => yearRow.data)
