@@ -23,7 +23,7 @@ export const renderDataLabels = (component: React.ReactElement): void => {
     expect(screen.getAllByText(label)).toHaveLength(1))
 }
 
-export const renderFiveCoordinate = (component: React.ReactElement): void => {
+export const renderFiveDatum = (component: React.ReactElement): void => {
   const paths = getPaths(component)
   expect(paths).toHaveLength(5)
 }

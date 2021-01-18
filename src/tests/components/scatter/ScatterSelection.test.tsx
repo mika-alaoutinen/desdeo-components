@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  renderComponent, renderDataLabels, renderFiveCoordinate, renderVictoryContainer
+  renderComponent, renderDataLabels, renderFiveDatum, renderVictoryContainer
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
@@ -34,6 +34,6 @@ describe('Data is displayed correctly', () => {
   })
 
   it('has five path elements representing data points', () => {
-    renderFiveCoordinate(component)
+    renderFiveDatum(component)
   })
 })
