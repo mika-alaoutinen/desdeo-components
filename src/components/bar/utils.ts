@@ -11,7 +11,7 @@ export const findMaxValue = (datasets: CoordinateSet[]): number => {
 export const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
   datasets
     .map(({ label }, i) => label ? label : `Label ${i}`)
-    .map(label => label.replaceAll(' ', '\n'))
+    .map(label => label.replace(' ', '\n'))
 
 export const createIntegerArray = (max: number): number[] => {
   const numbersFromZero = [...Array(max).keys()]
