@@ -10,10 +10,11 @@ import { createAxisLabels, createIntegerArray } from './utils'
 
 interface Props {
   datasets: CoordinateSet[],
-  onClick: OnClickHandler
+  onClick: OnClickHandler,
+  horizontal?: boolean
 }
 
-const GroupedBarChart: React.FC<Props> = ({ datasets, onClick }) => {
+const GroupedBarChart: React.FC<Props> = ({ datasets, onClick, horizontal }) => {
 
   const drawBars = (): JSX.Element[] =>
     datasets.map((dataset, i) =>
@@ -60,7 +61,7 @@ const GroupedBarChart: React.FC<Props> = ({ datasets, onClick }) => {
 
       <VictoryGroup
         colorScale={[ 'brown', 'tomato', 'gold' ]}
-        horizontal
+        horizontal={horizontal}
         labelComponent={createTooltip()}
         offset={10}
         style={{

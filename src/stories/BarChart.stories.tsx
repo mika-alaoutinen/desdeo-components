@@ -22,6 +22,14 @@ export const HorizontalGroupedBarChart = (): JSX.Element => (
   <GroupedBarChart
     datasets={coordinateSets}
     onClick={(coordinate) => console.log('coordinate', coordinate)}
+    horizontal={true}
+  />
+)
+
+export const VerticalGroupedBarChart = (): JSX.Element => (
+  <GroupedBarChart
+    datasets={coordinateSets}
+    onClick={(coordinate) => console.log('coordinate', coordinate)}
   />
 )
 
