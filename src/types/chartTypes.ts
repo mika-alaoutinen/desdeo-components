@@ -1,16 +1,16 @@
-import { Datum } from './dataTypes'
+import { Coordinate } from './dataTypes'
 
 export interface OnClickChart {
-  data: Datum[],
+  data: Coordinate[],
   onClick: OnClickHandler
 }
 
 export interface OnSelectChart {
-  data: Datum[],
+  data: Coordinate[],
   onSelect: OnSelectHandler,
   onSelectionCleared: OnSelectionClearedHandler
 }
 
-export type OnClickHandler = (clicked: Datum) => void
-export type OnSelectHandler = (selected: Datum[]) => void
+export type OnClickHandler = (clicked: Coordinate) => void
+export type OnSelectHandler = (selected: Coordinate[]) => void
 export type OnSelectionClearedHandler = () => void

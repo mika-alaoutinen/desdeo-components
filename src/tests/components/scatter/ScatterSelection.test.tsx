@@ -3,7 +3,7 @@ import React from 'react'
 import {
   renderComponent, renderDataLabels, renderFiveDatum, renderVictoryContainer
 } from '../componentTests'
-import { testdata } from '../../testdata'
+import { coordinateData } from '../../testdata'
 
 import ScatterSelection from '../../../components/scatter/ScatterSelection'
 
@@ -13,16 +13,12 @@ const selectionClearedHandler = jest.fn()
 
 const component =
   <ScatterSelection
-    data={testdata}
+    data={coordinateData}
     onSelect={onSelecthandler}
     onSelectionCleared={selectionClearedHandler}
   />
 
 describe('ScatterSelect is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(ScatterSelection).toBeTruthy()
-  })
-
   it('component is rendered', () => {
     renderComponent(component)
   })

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-import { Datum } from '../../types/dataTypes'
+import { Coordinate } from '../../types/dataTypes'
 import {
   backgroundColor, padding, tableStyle, ROW_SELECTED_COLOR
 } from './tableStyles'
 
 interface Props {
-  datum: Datum,
-  onClick: (datum: Datum) => void
+  datum: Coordinate,
+  onClick: (datum: Coordinate) => void
 }
 
 const TableRow: React.FC<Props> = ({ datum, onClick }) => {

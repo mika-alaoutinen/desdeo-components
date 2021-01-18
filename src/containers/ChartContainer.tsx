@@ -3,17 +3,28 @@ import { VictoryChart, VictoryTheme } from 'victory'
 
 import { Domain } from '../types/containerTypes'
 
-interface Props {
-  component?: React.ReactElement,
-  domain?: Domain
+interface Padding {
+  top?: number,
+  left?: number,
+  right?: number,
+  bottom?: number
 }
 
-const ChartContainer: React.FC<Props> = ({ component, domain, ...props }) => (
+interface Props {
+  component?: React.ReactElement,
+  domain?: Domain,
+  padding?: Padding
+}
+
+const ChartContainer: React.FC<Props> = ({
+  component, domain, padding, ...props
+}) => (
   <VictoryChart
     { ...props }
     containerComponent={component}
     domain={domain}
     domainPadding={20}
+    padding={padding}
     theme={VictoryTheme.material}
   />
 )

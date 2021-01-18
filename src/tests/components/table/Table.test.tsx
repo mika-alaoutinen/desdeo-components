@@ -2,19 +2,15 @@ import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import { renderComponent, renderDataLabels } from '../componentTests'
-import { testdata } from '../../testdata'
+import { coordinateData } from '../../testdata'
 
 import Table from '../../../components/table/Table'
 
 // Constants
 const handler = jest.fn()
-const component = <Table data={testdata} onClick={handler} />
+const component = <Table data={coordinateData} onClick={handler} />
 
 describe('Table is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(Table).toBeTruthy()
-  })
-
   it('component is rendered', () => {
     renderComponent(component)
   })

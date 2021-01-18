@@ -7,19 +7,15 @@ import {
   renderFiveDatum,
   renderVictoryContainer
 } from '../componentTests'
-import { testdata } from '../../testdata'
+import { coordinateData } from '../../testdata'
 
 import ScatterChart from '../../../components/scatter/ScatterChart'
 
 // Constants
 const handler = jest.fn()
-const component = <ScatterChart data={testdata} onClick={handler} />
+const component = <ScatterChart data={coordinateData} onClick={handler} />
 
 describe('ScatterChart is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(ScatterChart).toBeTruthy()
-  })
-
   it('component is rendered', () => {
     renderComponent(component)
   })
