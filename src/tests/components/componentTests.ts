@@ -37,7 +37,7 @@ export const dataShouldBeClickable = (
 }
 
 // The datum in a Victory chart are rendered as SVG path elements
-const getPaths = (component: React.ReactElement): NodeListOf<SVGPathElement> => {
+export const getPaths = (component: React.ReactElement): NodeListOf<SVGPathElement> => {
   const { container } = render(component)
   return container.querySelectorAll('path')
 }

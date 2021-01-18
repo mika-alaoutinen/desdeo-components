@@ -30,12 +30,12 @@ describe('Data is displayed correctly', () => {
   it('has three vertical brush bars', () => {
     const { container } = render(component)
     const brushBars = container.querySelectorAll('rect[role="presentation"]')
-    expect(brushBars.length).toBe(3)
+    expect(brushBars).toHaveLength(3)
   })
 
   it('has three lines representing datasets', () => {
     const { container } = render(component)
     const lines = container.querySelectorAll('path[role="presentation"]')
-    expect(lines.length).toBe(3)
+    expect(lines).toHaveLength(3)
   })
 })
