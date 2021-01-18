@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import {
   dataShouldBeClickable, getPaths, renderComponent, renderVictoryContainer
@@ -34,8 +34,14 @@ describe('Axes are displayed correctly', () => {
   })
 })
 
-describe('Bars should be clickable', () => {
-  it('registers a click event', () => {
+describe('Bars should be interactive', () => {
+  it('bar registers a click event', () => {
     dataShouldBeClickable(component, handler)
+  })
+
+  it('bar displays label on mouse over', () => {
+    const paths = getPaths(component)
+    fireEvent.mouseOver(paths[0])
+    expect(screen.getByText('C')).toBeTruthy()
   })
 })
