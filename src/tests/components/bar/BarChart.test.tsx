@@ -16,10 +16,6 @@ const handler = jest.fn()
 const component = <BarChart data={coordinateData} onClick={handler} />
 
 describe('BarChart is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(BarChart).toBeTruthy()
-  })
-
   it('chart is rendered', () => {
     renderComponent(component)
   })

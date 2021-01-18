@@ -19,10 +19,6 @@ const component =
   />
 
 describe('ScatterSelect is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(ScatterSelection).toBeTruthy()
-  })
-
   it('component is rendered', () => {
     renderComponent(component)
   })

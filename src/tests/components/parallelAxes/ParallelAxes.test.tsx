@@ -10,10 +10,6 @@ import ParallelAxes from '../../../components/parallelAxes/ParallelAxes'
 const component = <ParallelAxes data={parallelAxesData} />
 
 describe('ParallelAxes is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(ParallelAxes).toBeTruthy()
-  })
-
   it('chart is rendered', () => {
     renderComponent(component)
   })

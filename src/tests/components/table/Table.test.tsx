@@ -11,10 +11,6 @@ const handler = jest.fn()
 const component = <Table data={coordinateData} onClick={handler} />
 
 describe('Table is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(Table).toBeTruthy()
-  })
-
   it('component is rendered', () => {
     renderComponent(component)
   })

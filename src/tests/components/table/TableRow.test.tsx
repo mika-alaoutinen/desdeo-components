@@ -12,10 +12,6 @@ import TableRow from '../../../components/table/TableRow'
 const handler = jest.fn()
 
 describe('TableRow is rendered correctly', () => {
-  it('is truthy', () => {
-    expect(TableRow).toBeTruthy()
-  })
-
   it('component is rendered', () => {
     expect(renderComponent(createCoordinate())).toBeTruthy()
   })
