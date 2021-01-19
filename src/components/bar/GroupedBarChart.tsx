@@ -4,6 +4,7 @@ import { VictoryGroup, VictoryLabel, VictoryTooltip } from 'victory'
 import ChartContainer from '../../containers/ChartContainer'
 import { drawBar, drawMainAxis, drawDependentAxis } from './renderingFunctions'
 import { BarChartProps } from '../../types/chartTypes'
+import { padding } from './layout'
 
 const GroupedBarChart: React.FC<BarChartProps> = ({
   datasets, onClick, horizontal
@@ -20,7 +21,7 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
 
   return (
     <ChartContainer
-      padding={{ top: 50, left: 75, right: 50, bottom: 50 }}
+      padding={horizontal ? padding : undefined}
     >
 
       {drawMainAxis(datasets)}
