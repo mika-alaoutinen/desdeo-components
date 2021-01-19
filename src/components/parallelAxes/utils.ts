@@ -1,5 +1,6 @@
-import { layout as defaultLayout, Layout } from './layout'
+import { layout as defaultLayout } from './layout'
 import { Filter, NormalizedData } from '../../types/dataTypes'
+import { Layout } from '../../types/layoutTypes'
 
 export const addNewFilters = (
   filters: Filter[], domain: [number, number], name: string
