@@ -56,7 +56,7 @@
     "build-storybook": "build-storybook",
     "lint": "eslint --ext ts,tsx . --fix",
     "test": "npm run test:unit",
-    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage --collectCoverageFrom=!src/stories/*",
+    "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage --collectCoverageFrom=!src/stories/**",
     "test:unit": "react-scripts test",
     "storybook": "start-storybook -p 6006"
   },
