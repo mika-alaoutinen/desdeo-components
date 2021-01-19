@@ -1,4 +1,10 @@
-import { Coordinate } from './dataTypes'
+import { Coordinate, CoordinateSet } from './dataTypes'
+
+export interface BarChartProps {
+  datasets: CoordinateSet[],
+  onClick: OnClickHandler,
+  horizontal?: boolean
+}
 
 export interface OnClickChart {
   data: Coordinate[],

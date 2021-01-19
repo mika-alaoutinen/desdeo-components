@@ -13,8 +13,11 @@ const drawMainAxis = (datasets: CoordinateSet[], labels?: string[]): JSX.Element
     tickValues={createIntegerArray(getDatasetLength(datasets))}
   />
 
-const drawDependentAxis = (): JSX.Element =>
-  <VictoryAxis dependentAxis />
+const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =>
+  <VictoryAxis
+    dependentAxis
+    tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
+  />
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string

@@ -2,15 +2,8 @@ import React from 'react'
 import { VictoryGroup, VictoryLabel, VictoryTooltip } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { OnClickHandler } from '../../types/chartTypes'
-import { CoordinateSet } from '../../types/dataTypes'
 import { drawBar, drawMainAxis, drawDependentAxis } from './renderingFunctions'
-
-interface BarChartProps {
-  datasets: CoordinateSet[],
-  onClick: OnClickHandler,
-  horizontal?: boolean
-}
+import { BarChartProps } from '../../types/chartTypes'
 
 const GroupedBarChart: React.FC<BarChartProps> = ({
   datasets, onClick, horizontal
