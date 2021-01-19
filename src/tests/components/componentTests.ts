@@ -36,6 +36,14 @@ export const dataShouldBeClickable = (
   expect(handler).toHaveBeenCalled()
 }
 
+export const shouldDisplayLabelOnMouseOver = (
+  component: React.ReactElement, label: string
+): void => {
+  const paths = getPaths(component)
+  fireEvent.mouseOver(paths[0])
+  expect(screen.getByText(label)).toBeTruthy()
+}
+
 // The datum in a Victory chart are rendered as SVG path elements
 export const getPaths = (component: React.ReactElement): NodeListOf<SVGPathElement> => {
   const { container } = render(component)
