@@ -37,6 +37,14 @@ export const VerticalGroupedBarChart = (): JSX.Element => (
   />
 )
 
+export const HorizontalStackedBarChart = (): JSX.Element => (
+  <StackedBarChart
+    datasets={coordinateSets}
+    onClick={clickHandler}
+    horizontal={true}
+  />
+)
+
 export const VerticalStackedBarChart = (): JSX.Element => (
   <StackedBarChart
     datasets={coordinateSets}

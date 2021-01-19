@@ -1,35 +1,26 @@
 import React from 'react'
-import { VictoryAxis, VictoryStack } from 'victory'
+import { VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { OnClickHandler } from '../../types/chartTypes'
-import { CoordinateSet } from '../../types/dataTypes'
-import { drawBar } from './renderingFunctions'
-import { createIntegerArray, getDatasetLength } from './utils'
+import { drawBar, drawMainAxis, drawDependentAxis } from './renderingFunctions'
+import { BarChartProps } from '../../types/chartTypes'
 
-export interface Props {
-  datasets: CoordinateSet[],
-  onClick: OnClickHandler
-}
-
-const StackedBarChart: React.FC<Props> = ({ datasets, onClick }) => {
+const StackedBarChart: React.FC<BarChartProps> = ({
+  datasets, onClick, horizontal
+}) => {
 
   const drawBars = (): JSX.Element[] =>
-    datasets.map((row, i) => drawBar(row, onClick, i))
+    datasets.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
     <ChartContainer>
 
-      <VictoryAxis
-        tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
-        tickValues={createIntegerArray(getDatasetLength(datasets))}
-      />
-      <VictoryAxis
-        dependentAxis
-        tickFormat={x => `$${x / 1000}k`}
-      />
+      {drawMainAxis(datasets)}
+      {drawDependentAxis((x: number) => `$${x}k`)}
 
-      <VictoryStack>
+      <VictoryStack
+        horizontal={horizontal}
+      >
         {drawBars()}
       </VictoryStack>
 
