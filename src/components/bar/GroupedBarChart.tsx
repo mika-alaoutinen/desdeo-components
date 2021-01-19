@@ -6,7 +6,7 @@ import {
 import ChartContainer from '../../containers/ChartContainer'
 import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
-import { createAxisLabels, createIntegerArray } from './utils'
+import { createAxisLabels, createIntegerArray, getDatasetLength } from './utils'
 
 interface Props {
   datasets: CoordinateSet[],
@@ -42,7 +42,7 @@ const GroupedBarChart: React.FC<Props> = ({ datasets, onClick, horizontal }) => 
   const drawYAxis = (): JSX.Element =>
     <VictoryAxis
       tickFormat={createAxisLabels(datasets)}
-      tickValues={createIntegerArray(datasets.map(dataset => dataset.data).length)}
+      tickValues={createIntegerArray(getDatasetLength(datasets))}
     />
 
   const createTooltip = (): JSX.Element =>

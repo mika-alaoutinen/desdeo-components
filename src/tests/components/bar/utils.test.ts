@@ -1,8 +1,7 @@
-// import { coordinateSets } from '../../testdata'
 import { CoordinateSet } from '../../../types/dataTypes'
 
 import {
-  createAxisLabels, createIntegerArray
+  createAxisLabels, createIntegerArray, getDatasetLength
 } from '../../../components/bar/utils'
 
 describe('createAxisLabels maps labels from a CoordinateSet', () => {
@@ -42,5 +41,21 @@ describe('createIntegerArray creates an array of [1..n] numbers', () => {
 
   it('max < 0 returns an empty array', () => {
     expect(createIntegerArray(-1)).toEqual([])
+  })
+})
+
+describe('getDatasetLength calculates the length of a CoordinateSet array', () => {
+  it('calculates the length of dataset', () => {
+    const datasets: CoordinateSet[] = [
+      { data: [] },
+      { data: [] },
+      { data: [] },
+    ]
+    expect(getDatasetLength(datasets)).toBe(3)
+  })
+
+  it('the length of an empty dataset is 0', () => {
+    const datasets: CoordinateSet[] = []
+    expect(getDatasetLength(datasets)).toBe(0)
   })
 })
