@@ -1,32 +1,28 @@
 import React from 'react'
-import { VictoryAxis, VictoryBar, VictoryStack } from 'victory'
+import { VictoryAxis, VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { StackedBarData } from '../../types/dataTypes'
-import { createTickValuesForStackedBars } from './utils'
+import { OnClickHandler } from '../../types/chartTypes'
+import { CoordinateSet } from '../../types/dataTypes'
+import { drawBar } from './renderingFunctions'
+import { createIntegerArray, getDatasetLength } from './utils'
 
 export interface Props {
-  data: StackedBarData[]
+  datasets: CoordinateSet[],
+  onClick: OnClickHandler
 }
 
-const StackedBarChart: React.FC<Props> = ({ data }) => {
+const StackedBarChart: React.FC<Props> = ({ datasets, onClick }) => {
 
-  const mapBarCharts = (): JSX.Element[] =>
-    data.map(row =>
-      <VictoryBar
-        key={row.year}
-        data={row.data}
-        x='quarter'
-        y='earnings'
-      />
-    )
+  const drawBars = (): JSX.Element[] =>
+    datasets.map((row, i) => drawBar(row, onClick, i))
 
   return (
     <ChartContainer>
 
       <VictoryAxis
         tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
-        tickValues={createTickValuesForStackedBars(data)}
+        tickValues={createIntegerArray(getDatasetLength(datasets))}
       />
       <VictoryAxis
         dependentAxis
@@ -34,7 +30,7 @@ const StackedBarChart: React.FC<Props> = ({ data }) => {
       />
 
       <VictoryStack>
-        {mapBarCharts()}
+        {drawBars()}
       </VictoryStack>
 
     </ChartContainer>

@@ -36,13 +36,3 @@ export interface Filter {
   attribute: string,
   range: [ number, number ]
 }
-
-export interface StackedBarData {
-  year: number,
-  data: DataRow[]
-}
-
-interface DataRow {
-  quarter: number,
-  earnings: number
-}
