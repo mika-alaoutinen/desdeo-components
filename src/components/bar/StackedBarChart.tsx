@@ -1,40 +1,35 @@
 import React from 'react'
-import { VictoryAxis, VictoryBar, VictoryStack } from 'victory'
+import { VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { StackedBarData } from '../../types/dataTypes'
-import { createTickValuesForStackedBars } from './utils'
+import { BarChartProps } from '../../types/chartTypes'
+import { padding } from './layout'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
 
-export interface Props {
-  data: StackedBarData[]
-}
+const StackedBarChart: React.FC<BarChartProps> = ({
+  datasets, onClick, horizontal
+}) => {
 
-const StackedBarChart: React.FC<Props> = ({ data }) => {
-
-  const mapBarCharts = (): JSX.Element[] =>
-    data.map(row =>
-      <VictoryBar
-        key={row.year}
-        data={row.data}
-        x='quarter'
-        y='earnings'
-      />
-    )
+  const drawBars = (): JSX.Element[] =>
+    datasets.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
-    <ChartContainer>
+    <ChartContainer padding={horizontal ? padding : undefined}>
 
-      <VictoryAxis
-        tickFormat={[ 'Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4' ]}
-        tickValues={createTickValuesForStackedBars(data)}
-      />
-      <VictoryAxis
-        dependentAxis
-        tickFormat={x => `$${x / 1000}k`}
-      />
+      {drawMainAxis(datasets)}
+      {drawDependentAxis((x: number) => `$${x}k`)}
 
-      <VictoryStack>
-        {mapBarCharts()}
+      <VictoryStack
+        colorScale={[ 'brown', 'tomato', 'gold' ]}
+        horizontal={horizontal}
+        labelComponent={drawTooltip(horizontal)}
+        style={{
+          data: {
+            width: 20
+          }
+        }}
+      >
+        {drawBars()}
       </VictoryStack>
 
     </ChartContainer>

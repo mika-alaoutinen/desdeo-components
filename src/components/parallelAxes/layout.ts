@@ -1,15 +1,4 @@
-export interface Layout {
-  height: number,
-  width: number,
-  padding: Padding
-}
-
-interface Padding {
-  top: number,
-  left: number,
-  right: number,
-  bottom: number
-}
+import { Layout } from '../../types/layoutTypes'
 
 export const layout: Layout = {
   height: 500,

@@ -10,13 +10,13 @@ import {
 } from '../componentTests'
 import { coordinateSets } from '../../testdata'
 
-import GroupedBarChart from '../../../components/bar/GroupedBarChart'
+import StackedBarChart from '../../../components/bar/StackedBarChart'
 
 // Constants
 const handler = jest.fn()
-const component = <GroupedBarChart datasets={coordinateSets} onClick={handler} />
+const component = <StackedBarChart datasets={coordinateSets} onClick={handler} />
 
-describe('GroupedBarChart is rendered correctly', () => {
+describe('StackedBarChart is rendered correctly', () => {
   it('chart is rendered', () => {
     renderComponent(component)
   })
@@ -44,6 +44,6 @@ describe('Bars should be interactive', () => {
   })
 
   it('bar displays label on mouse over', () => {
-    shouldDisplayLabelOnMouseOver(component, 'C')
+    shouldDisplayLabelOnMouseOver(component, 'A')
   })
 })

@@ -1,72 +1,36 @@
 import React from 'react'
-import {
-  VictoryAxis, VictoryBar, VictoryGroup, VictoryLabel, VictoryTooltip
-} from 'victory'
+import { VictoryGroup } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { OnClickHandler } from '../../types/chartTypes'
-import { CoordinateSet } from '../../types/dataTypes'
-import { createAxisLabels, createIntegerArray } from './utils'
+import { BarChartProps } from '../../types/chartTypes'
+import { padding } from './layout'
+import {
+  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
+} from './renderingFunctions'
 
-interface Props {
-  datasets: CoordinateSet[],
-  onClick: OnClickHandler,
-  horizontal?: boolean
-}
-
-const GroupedBarChart: React.FC<Props> = ({ datasets, onClick, horizontal }) => {
+const GroupedBarChart: React.FC<BarChartProps> = ({
+  datasets, onClick, horizontal
+}) => {
 
   const drawBars = (): JSX.Element[] =>
-    datasets.map((dataset, i) =>
-      drawBar(dataset, dataset.label ? dataset.label : i.toString()))
-
-  const drawBar = ({ data }: CoordinateSet, key: string): JSX.Element =>
-    <VictoryBar
-      key={key}
-      data ={data}
-      events={[
-        {
-          target: 'data',
-          eventHandlers: {
-            onClick: () => [{
-              mutation: ({ datum }) => onClick(datum)
-            }]
-          }
-        },
-      ]}
-    />
-
-  const drawXAxis = (): JSX.Element =>
-    <VictoryAxis dependentAxis />
-
-  const drawYAxis = (): JSX.Element =>
-    <VictoryAxis
-      tickFormat={createAxisLabels(datasets)}
-      tickValues={createIntegerArray(datasets.map(dataset => dataset.data).length)}
-    />
-
-  const createTooltip = (): JSX.Element =>
-    <VictoryTooltip
-      flyoutComponent={<VictoryLabel />}
-      style={{ fontSize: 10 }}
-    />
+    datasets.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
     <ChartContainer
-      padding={{ top: 50, left: 75, right: 50, bottom: 50 }}
+      padding={horizontal ? padding : undefined}
     >
 
-      {drawXAxis()}
-      {drawYAxis()}
+      {drawMainAxis(datasets)}
+      {drawDependentAxis()}
 
       <VictoryGroup
         colorScale={[ 'brown', 'tomato', 'gold' ]}
         horizontal={horizontal}
-        labelComponent={createTooltip()}
+        labelComponent={drawTooltip(horizontal)}
         offset={10}
         style={{
           data: {
-            width: 6
+            width: 10
           }
         }}
       >
