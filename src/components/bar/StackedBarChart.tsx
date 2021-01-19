@@ -2,9 +2,9 @@ import React from 'react'
 import { VictoryStack } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { drawBar, drawMainAxis, drawDependentAxis } from './renderingFunctions'
 import { BarChartProps } from '../../types/chartTypes'
 import { padding } from './layout'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
   datasets, onClick, horizontal
@@ -22,6 +22,7 @@ const StackedBarChart: React.FC<BarChartProps> = ({
       <VictoryStack
         colorScale={[ 'brown', 'tomato', 'gold' ]}
         horizontal={horizontal}
+        labelComponent={drawTooltip(horizontal)}
         style={{
           data: {
             width: 20

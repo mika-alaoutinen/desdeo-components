@@ -26,11 +26,11 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
       <VictoryGroup
         colorScale={[ 'brown', 'tomato', 'gold' ]}
         horizontal={horizontal}
-        labelComponent={drawTooltip()}
+        labelComponent={drawTooltip(horizontal)}
         offset={10}
         style={{
           data: {
-            width: 6
+            width: 10
           }
         }}
       >

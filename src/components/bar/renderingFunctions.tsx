@@ -37,11 +37,19 @@ const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =
     tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
   />
 
-const drawTooltip = (): JSX.Element =>
-  <VictoryTooltip
-    flyoutComponent={<VictoryLabel />}
-    style={{ fontSize: 10 }}
-  />
+const drawTooltip = (horizontal?: boolean): JSX.Element => {
+  const offset = horizontal
+    ? { x: -25 }
+    : { y: 25 }
+
+  return (
+    <VictoryTooltip
+      centerOffset={offset}
+      flyoutComponent={<VictoryLabel />}
+      style={{ fontSize: 10 }}
+    />
+  )
+}
 
 export {
   drawBar, drawMainAxis, drawDependentAxis, drawTooltip
