@@ -1,28 +1,6 @@
 import {
-  Coordinate, CoordinateSet, ParallelAxesData, StackedBarData
+  Coordinate, CoordinateSet, ParallelAxesData
 } from '../types/dataTypes'
-
-// TODO: use coordinateSets in StackedBarChart
-export const barData: StackedBarData[] = [
-  {
-    year: 2019,
-    data: [
-      { quarter: 1, earnings: 13000 },
-      { quarter: 2, earnings: 16500 },
-      { quarter: 3, earnings: 14250 },
-      { quarter: 4, earnings: 19000 },
-    ]
-  },
-  {
-    year: 2020,
-    data: [
-      { quarter: 1, earnings: 12000 },
-      { quarter: 2, earnings: 11500 },
-      { quarter: 3, earnings: 12250 },
-      { quarter: 4, earnings: 10000 },
-    ]
-  },
-]
 
 export const parallelAxesData: ParallelAxesData[] = [
   {
