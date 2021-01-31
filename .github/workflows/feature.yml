@@ -25,3 +25,17 @@ jobs:
     - run: npm run test:unit
       env:
         CI: true
+
+  release:
+    name: Releases a new version of the library
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code from repository
+      uses: actions/checkout@v2
+    - name: Update semantic version
+      uses: cycjimmy/semantic-release-action
+      with:
+        dry_run: true # for testing
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
