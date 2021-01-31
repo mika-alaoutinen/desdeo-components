@@ -43,6 +43,7 @@ jobs:
       uses: cycjimmy/semantic-release-action@v2
       with:
         branch: dev
+        debug: true
         dry_run: true # for testing
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
