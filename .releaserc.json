@@ -3,8 +3,8 @@
 
     ["@semantic-release/commit-analyzer", {
       "releaseRules": [
-        { "subject": "#PATCH", "release": "patch" },
-        { "subject": "#MINOR", "release": "minor" },
+        { "message": "*#PATCH*", "release": "patch" },
+        { "message": "*#MINOR*", "release": "minor" },
         { "release": false }
       ]
     }],
