@@ -27,25 +27,3 @@ jobs:
     - run: npm run test:unit
       env:
         CI: true
-
-  release:
-    name: Releases a new version of the library
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code from repository
-      uses: actions/checkout@v2
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - run: npm ci
-    - name: Update semantic version
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        branch: dev
-        dry_run: true # for testing
-        extra_plugins: |
-          @semantic-release/git
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
