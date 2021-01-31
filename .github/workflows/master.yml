@@ -4,7 +4,7 @@
 #   1) Builds the application.
 #
 # Potential workflows:
-# - Do npm patch release, unless commit message contains #skip-publish.
+# - Do new semver release, if commit message has #patch, #minor or #major.
 # - Generate a report of outdated dependencies.
 
 name: Master branch workflow
@@ -17,7 +17,7 @@ on:
 jobs:
   build:
     name: Builds the application
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code from repository
       uses: actions/checkout@v2

@@ -12,7 +12,7 @@ on:
 jobs:
   lint-test:
     name: Runs linter and unit tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code from repository
       uses: actions/checkout@v2
