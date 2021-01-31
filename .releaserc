@@ -1,18 +1,21 @@
 {
   "plugins": [
+
     ["@semantic-release/commit-analyzer", {
       "preset": "eslint",
       "releaseRules": [
         {"tag": "Docs", "message":"*README*", "release": "patch"},
         {"tag": "New", "release": "patch"}
-      ]
+      ],
       "parserOpts": {
         "noteKeywords": ["RELEASE PATCH", "RELEASE MINOR"]
       }
     }],
+
     ["@semantic-release/git", {
-      "assets": "package.json"],
+      "assets": ["package.json"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }]
+
   ]
 }
