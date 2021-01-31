@@ -5,7 +5,7 @@
       "releaseRules": [
         { "message": "*#PATCH*", "release": "patch" },
         { "message": "*#MINOR*", "release": "minor" },
-        { "release": false }
+        { "message": "*", "release": false }
       ]
     }],
 
