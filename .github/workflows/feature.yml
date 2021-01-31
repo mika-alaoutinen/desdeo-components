@@ -33,7 +33,7 @@ jobs:
     - name: Checkout code from repository
       uses: actions/checkout@v2
     - name: Update semantic version
-      uses: cycjimmy/semantic-release-action
+      uses: cycjimmy/semantic-release-action@v2
       with:
         dry_run: true # for testing
       env:
