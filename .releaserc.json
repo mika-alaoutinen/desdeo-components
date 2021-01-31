@@ -3,12 +3,10 @@
 
     ["@semantic-release/commit-analyzer", {
       "releaseRules": [
-        {"release": "patch"},
-        {"release": "minor"}
-      ],
-      "parserOpts": {
-        "noteKeywords": ["RELEASE PATCH", "RELEASE MINOR"]
-      }
+        { "publish": "patch", "release": "patch" },
+        { "publish": "minor", "release": "minor" },
+        { "release": false }
+      ]
     }],
 
     ["@semantic-release/git", {
