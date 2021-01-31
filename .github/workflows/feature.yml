@@ -34,6 +34,11 @@ jobs:
     steps:
     - name: Checkout code from repository
       uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm ci
     - name: Update semantic version
       uses: cycjimmy/semantic-release-action@v2
       with:
