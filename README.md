@@ -30,7 +30,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Launches Storybook for local development.
 
 ## TODO
-- [ ] Add [dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) config
 - [ ] Add npm version and publish to CI pipeline.
   - Always publish patch on push to master?
   - Publish different semver based on commit message?
