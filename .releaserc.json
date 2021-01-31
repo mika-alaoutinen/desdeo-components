@@ -2,10 +2,9 @@
   "plugins": [
 
     ["@semantic-release/commit-analyzer", {
-      "preset": "eslint",
       "releaseRules": [
-        { "message": "*#PATCH*", "release": "patch" },
-        { "message": "*#MINOR*", "release": "minor" },
+        { "tag": "Patch", "release": "patch" },
+        { "tag": "Minor", "release": "minor" },
         { "release": false }
       ]
     }],
