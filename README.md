@@ -28,3 +28,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ## 4. Running the application for local development
 ### `npm run storybook`
 Launches Storybook for local development.
+
+## TODO
+- [ ] Add npm version and publish to CI pipeline.
+  - Always publish patch on push to master?
+  - Publish different semver based on commit message?
