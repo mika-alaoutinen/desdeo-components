@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  storybook:
+    build: .
+    container_name: storybook
+    image: desdeo-components-storybook
+    ports:
+      - 6006:6007
+    working_dir: /app
+    volumes:
+      - .:/app:delegated
+      - /app/node_modules
+    environment:
+      PORT: 6006
+    

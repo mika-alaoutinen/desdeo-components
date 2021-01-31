@@ -58,7 +58,7 @@
     "test": "npm run test:unit",
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage --collectCoverageFrom=!src/stories/**",
     "test:unit": "react-scripts test",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006 --quiet"
   },
   "eslintConfig": {
     "extends": [

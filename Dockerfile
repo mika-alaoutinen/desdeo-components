@@ -6,5 +6,4 @@ COPY package*.json ./
 RUN npm install --silent
 COPY . .
 
-EXPOSE 8081
 CMD ["npm", "run", "storybook"]
