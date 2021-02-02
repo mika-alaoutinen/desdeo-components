@@ -4,9 +4,9 @@ import { Meta } from '@storybook/react'
 import GroupedBarChart from '../../components/bar/GroupedBarChart'
 import { coordinateSets, testdata } from '../../tests/testdata'
 import { Coordinate } from '../../types/dataTypes'
-import { convert } from '../../components/bar/dataTransformations'
+import { convertToCoordinates } from '../../data/dataTransformations'
 
-const data = convert(testdata)
+const data = convertToCoordinates(testdata)
 
 // Click handler
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
