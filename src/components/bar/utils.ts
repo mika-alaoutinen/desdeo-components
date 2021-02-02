@@ -1,12 +1,4 @@
-import { CoordinateSet, DataSet } from '../../types/dataTypes'
-
-const getDatasetLengthCSV = (dataset: DataSet): number =>
-  dataset.map(dataset => dataset.data).length
-
-const createAxisLabelsCSV = (dataset: DataSet): string[] =>
-  dataset
-    .map(({ label }, i) => label ? label : `Label ${i + 1}`)
-    .map(label => label.replace(/ /g, '\n'))
+import { CoordinateSet } from '../../types/dataTypes'
 
 const getDatasetLength = (datasets: CoordinateSet[]): number =>
   datasets.map(dataset => dataset.data).length
@@ -27,6 +19,5 @@ const createRange = (max: number): number[] => {
 }
 
 export {
-  getDatasetLengthCSV, createAxisLabelsCSV,
   getDatasetLength, createAxisLabels, createIntegerArray
 }

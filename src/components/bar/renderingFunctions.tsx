@@ -2,37 +2,10 @@ import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from '../../types/chartTypes'
-import { CoordinateSet, DataColumn, DataSet } from '../../types/dataTypes'
-import {
-  createAxisLabelsCSV, getDatasetLengthCSV,
-  createAxisLabels, createIntegerArray, getDatasetLength
-} from './utils'
+import { CoordinateSet } from '../../types/dataTypes'
+import { createAxisLabels, createIntegerArray, getDatasetLength } from './utils'
 
 // Reusable functions for rendering Victory components
-
-const drawBarCSV = (
-  column: DataColumn, onClick: OnClickHandler, key: number|string
-): JSX.Element =>
-  <VictoryBar
-    key={key}
-    data ={column.data}
-    events={[
-      {
-        target: 'data',
-        eventHandlers: {
-          onClick: () => [{
-            mutation: ({ datum }) => onClick(datum)
-          }]
-        }
-      },
-    ]}
-  />
-
-const drawMainAxisCSV = (dataset: DataSet, labels?: string[]): JSX.Element =>
-  <VictoryAxis
-    tickFormat={labels ? labels : createAxisLabelsCSV(dataset)}
-    tickValues={createIntegerArray(getDatasetLengthCSV(dataset))}
-  />
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
@@ -79,6 +52,5 @@ const drawTooltip = (horizontal?: boolean): JSX.Element => {
 }
 
 export {
-  drawBarCSV, drawMainAxisCSV,
   drawBar, drawMainAxis, drawDependentAxis, drawTooltip
 }
