@@ -1,5 +1,5 @@
 {
-  "extends": [ ":preserveSemverRanges", "config:base" ],
+  "extends": [ "config:base" ],
   "automerge": false,
   "groupName": "all dependencies",
   "groupSlug": "all",
@@ -11,10 +11,10 @@
       "groupName": "all dependencies",
       "groupSlug": "all",
       "matchDepTypes": [ "dependencies" ],
-      "matchPackagePatterns": [ "*" ],
-      "rangeStrategy": "replace"
+      "matchPackagePatterns": [ "*" ]
     }
   ],
   "prCreation": "status-success",
+  "rangeStrategy": "replace",
   "separateMajorMinor": true
 }
