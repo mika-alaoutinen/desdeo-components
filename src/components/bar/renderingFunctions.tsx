@@ -3,7 +3,8 @@ import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
-import { createAxisLabels, createIntegerArray, getDatasetLength } from './utils'
+import { createAxisLabels, getDatasetLength } from './utils'
+import { createIntegerArray } from '../../utils/utilityFunctions'
 
 // Reusable functions for rendering Victory components
 
