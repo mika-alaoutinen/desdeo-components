@@ -6,28 +6,17 @@ import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
 import { padding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
-import { createAlternativesLabels, createCriterialabels, } from '../../utils/dataTransformations'
 
 interface Props {
   datasets: CoordinateSet[],
-  grouping: 'alternatives' | 'criteria',
+  labels: string[],
   onClick: OnClickHandler,
   horizontal?: boolean
 }
 
 const GroupedBarChart: React.FC<Props> = ({
-  datasets, grouping, onClick, horizontal
+  datasets, labels, onClick, horizontal
 }) => {
-
-  const createLabels = (): string[] => {
-    if (grouping === 'alternatives') {
-      // Expecting all datasets to have equal number of items
-      return createAlternativesLabels(datasets[0].data.length)
-    } else if (grouping === 'criteria') {
-      return createCriterialabels(datasets)
-    }
-    return []
-  }
 
   const drawBars = (): JSX.Element[] =>
     datasets.map((dataset, i) => drawBar(dataset, onClick, i))
@@ -37,7 +26,7 @@ const GroupedBarChart: React.FC<Props> = ({
       padding={horizontal ? padding : undefined}
     >
 
-      {drawMainAxis(datasets, createLabels())}
+      {drawMainAxis(datasets, labels)}
       {drawDependentAxis()}
 
       <VictoryGroup
