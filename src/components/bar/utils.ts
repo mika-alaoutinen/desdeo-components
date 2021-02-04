@@ -9,15 +9,4 @@ const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
     .map(({ label }, i) => label ? label : `Label ${i + 1}`)
     .map(label => label.replace(/ /g, '\n'))
 
-const createIntegerArray = (max: number): number[] =>
-  max < 0 ? [] : createRange(max)
-
-// Utility functions
-const createRange = (max: number): number[] => {
-  const numbersFromZero = [...Array(max).keys()]
-  return numbersFromZero.map(n => n + 1)
-}
-
-export {
-  getDatasetLength, createAxisLabels, createIntegerArray
-}
+export { getDatasetLength, createAxisLabels }
