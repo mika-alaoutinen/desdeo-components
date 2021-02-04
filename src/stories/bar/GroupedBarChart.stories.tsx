@@ -11,6 +11,7 @@ const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coord
 export const HorizontalGroupedBarChart = (): JSX.Element => (
   <GroupedBarChart
     datasets={groupedByAlternatives}
+    grouping='alternatives'
     onClick={clickHandler}
     horizontal={true}
   />
@@ -19,6 +20,7 @@ export const HorizontalGroupedBarChart = (): JSX.Element => (
 export const VerticalGroupedBarChart = (): JSX.Element => (
   <GroupedBarChart
     datasets={groupedByCriteria}
+    grouping='criteria'
     onClick={clickHandler}
   />
 )
