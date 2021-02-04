@@ -2,14 +2,20 @@ import React from 'react'
 import { VictoryGroup } from 'victory'
 
 import ChartContainer from '../../containers/ChartContainer'
-import { BarChartProps } from '../../types/chartTypes'
+import { OnClickHandler } from '../../types/chartTypes'
+import { CoordinateSet } from '../../types/dataTypes'
 import { padding } from './layout'
-import {
-  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
-} from './renderingFunctions'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
 
-const GroupedBarChart: React.FC<BarChartProps> = ({
-  datasets, onClick, horizontal
+interface Props {
+  datasets: CoordinateSet[],
+  labels: string[],
+  onClick: OnClickHandler,
+  horizontal?: boolean
+}
+
+const GroupedBarChart: React.FC<Props> = ({
+  datasets, labels, onClick, horizontal
 }) => {
 
   const drawBars = (): JSX.Element[] =>
@@ -20,17 +26,17 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
       padding={horizontal ? padding : undefined}
     >
 
-      {drawMainAxis(datasets)}
+      {drawMainAxis(datasets, labels)}
       {drawDependentAxis()}
 
       <VictoryGroup
-        colorScale={[ 'brown', 'tomato', 'gold' ]}
+        // colorScale={[ 'brown', 'tomato', 'gold' ]}
         horizontal={horizontal}
         labelComponent={drawTooltip(horizontal)}
-        offset={10}
+        offset={8}
         style={{
           data: {
-            width: 10
+            width: 6
           }
         }}
       >
