@@ -3,7 +3,7 @@ import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
-import { createAxisLabels, getDatasetLength } from './utils'
+import { createAxisLabels } from './utils'
 import { createIntegerArray } from '../../utils/utilityFunctions'
 
 // Reusable functions for rendering Victory components
@@ -29,7 +29,7 @@ const drawBar = (
 const drawMainAxis = (datasets: CoordinateSet[], labels?: string[]): JSX.Element =>
   <VictoryAxis
     tickFormat={labels ? labels : createAxisLabels(datasets)}
-    tickValues={createIntegerArray(getDatasetLength(datasets))}
+    tickValues={createIntegerArray(datasets[0].data.length)}
   />
 
 const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =>
