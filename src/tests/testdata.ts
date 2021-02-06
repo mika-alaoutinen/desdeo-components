@@ -1,8 +1,9 @@
 import {
   Coordinate, CoordinateSet, DataSet, ParallelAxesData
 } from 'types/dataTypes'
+import { createAlternativeSets, createCriteriaSets } from 'utils/dataTransformations'
 
-export const testdata: DataSet = [
+const testdata: DataSet = [
   {
     label: 'WQ Fishery',
     data: [ 6.042483, 5.758127, 6.287081, 6.134672, 5.610188, 5.231501, 6.34, 6.291364, 5.407513, 6.019503 ]
@@ -25,66 +26,8 @@ export const testdata: DataSet = [
   }
 ]
 
-// 3 bar groups with 5 bars each
-export const groupedByAlternatives: CoordinateSet[] = [
-  {
-    data: [
-      { id: 'wq-fishery-1', x: 1, y: 6.042483 },
-      { id: 'wq-fishery-2', x: 2, y: 5.758127 },
-      { id: 'wq-fishery-3', x: 3, y: 6.287081 },
-    ]
-  },
-  {
-    data: [
-      { id: 'wq-city-1', x: 1, y: 3.17527 },
-      { id: 'wq-city-2', x: 2, y: 3.410843 },
-      { id: 'wq-city-3', x: 3, y: 3.207926 },
-    ]
-  },
-  {
-    data: [
-      { id: 'roi-1', x: 1, y: 6.090291 },
-      { id: 'roi-2', x: 2, y: 6.887735 },
-      { id: 'roi-3', x: 3, y: 2.992514 },
-    ]
-  },
-  {
-    data: [
-      { id: 'city-tax-1', x: 1, y: 2.444406 },
-      { id: 'city-tax-2', x: 2, y: 8.989781 },
-      { id: 'city-tax-3', x: 3, y: 2.758216 },
-    ]
-  },
-  {
-    data: [
-      { id: 'plant-resources-1', x: 1, y: 0.248895 },
-      { id: 'plant-resources-2', x: 2, y: 0.346752 },
-      { id: 'plant-resources-3', x: 3, y: 0.326688 },
-    ]
-  },
-]
-
-// 5 bar groups with 2 two bars each
-export const groupedByCriteria: CoordinateSet[] = [
-  {
-    data: [
-      { id: 'wq-fishery-1', x: 1, y: 6.042483 },
-      { id: 'wq-city-1', x: 2, y: 3.17527 },
-      { id: 'roi-1', x: 3, y: 6.090291 },
-      { id: 'city-tax-1', x: 4, y: 2.444406 },
-      { id: 'plant-resources-1', x: 5, y: 0.248895 },
-    ]
-  },
-  {
-    data: [
-      { id: 'wq-fishery-2', x: 1, y: 5.758127 },
-      { id: 'wq-city-2', x: 2, y: 3.410843 },
-      { id: 'roi-2', x: 3, y: 6.887735 },
-      { id: 'city-tax-2', x: 4, y: 8.989781 },
-      { id: 'plant-resources-2', x: 5, y: 0.346752 },
-    ]
-  },
-]
+const groupedByAlternatives: CoordinateSet[] = createAlternativeSets(testdata)
+const groupedByCriteria: CoordinateSet[] = createCriteriaSets(testdata)
 
 // Should work to get rid of these datasets in favor of a universal data shape
 export const parallelAxesData: ParallelAxesData[] = [
@@ -114,7 +57,7 @@ export const parallelAxesData: ParallelAxesData[] = [
   },
 ]
 
-export const coordinateData: Coordinate[] = [
+const coordinateData: Coordinate[] = [
   { id: 'a', x: 10, y: 20, label: 'A', isSelected: true },
   { id: 'b', x: 20, y: 40, label: 'B', isSelected: false },
   { id: 'c', x: 30, y: 70, label: 'C' },
@@ -128,7 +71,7 @@ export const coordinateData: Coordinate[] = [
   => A simple option for displaying labels might be to transform the
   data so that all data points have a label.
 */
-export const coordinateSets: CoordinateSet[] = [
+const coordinateSets: CoordinateSet[] = [
   {
     data: [
       { id: 'G', x: 1, y: 80, label: 'C', isSelected: true },
@@ -156,3 +99,7 @@ export const coordinateSets: CoordinateSet[] = [
     label: 'dataset 1'
   }
 ]
+
+export {
+  coordinateData, coordinateSets, groupedByAlternatives, groupedByCriteria
+}
