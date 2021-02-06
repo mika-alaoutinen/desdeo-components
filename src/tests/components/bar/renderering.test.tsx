@@ -1,5 +1,5 @@
+import { createAxisLabels } from 'components/bar/rendering'
 import { CoordinateSet } from 'types/dataTypes'
-import { createAxisLabels } from 'components/bar/utils'
 
 describe('createAxisLabels maps labels from a CoordinateSet', () => {
   it('replaces spaces with line breaks', () => {

@@ -5,9 +5,7 @@ import { calculateHeight, calculateWidth } from 'containers/containerUtils'
 import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
 import { horizontalPadding, verticalPadding } from './layout'
-import {
-  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
-} from './renderingFunctions'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
 
 interface Props {
   datasets: CoordinateSet[],

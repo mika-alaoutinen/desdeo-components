@@ -3,7 +3,7 @@ import { VictoryChart, VictoryStack, VictoryTheme } from 'victory'
 
 import { BarChartProps } from 'types/chartTypes'
 import { horizontalPadding } from './layout'
-import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
   datasets, onClick, horizontal

@@ -3,9 +3,13 @@ import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
-import { createAxisLabels } from './utils'
 
 // Reusable functions for rendering Victory components
+
+const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
+  datasets
+    .map(({ label }, i) => label ? label : `Label ${i + 1}`)
+    .map(label => label.replace(/ /g, '\n'))
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
@@ -56,5 +60,5 @@ const drawTooltip = (horizontal?: boolean): JSX.Element => {
 }
 
 export {
-  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
+  createAxisLabels, drawBar, drawMainAxis, drawDependentAxis, drawTooltip
 }
