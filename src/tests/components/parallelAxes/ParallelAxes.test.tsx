@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { renderComponent, renderVictoryContainer } from '../componentTests'
-import { parallelAxesData } from '../../testdata'
+import { renderComponent, renderVictoryContainer } from 'tests/components/componentTests'
+import { parallelAxesData } from 'tests/testdata'
 
-import ParallelAxes from '../../../components/parallelAxes/ParallelAxes'
+import ParallelAxes from 'components/parallelAxes/ParallelAxes'
 
 // Constants
 const component = <ParallelAxes data={parallelAxesData} />

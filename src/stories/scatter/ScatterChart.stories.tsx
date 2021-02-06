@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import ScatterChart from '../../components/scatter/ScatterChart'
-import { useOnClickHandler } from '../storyUtils'
+import ScatterChart from 'components/scatter/ScatterChart'
+import { useOnClickHandler } from 'stories/storyUtils'
 
 export const ScatterChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()

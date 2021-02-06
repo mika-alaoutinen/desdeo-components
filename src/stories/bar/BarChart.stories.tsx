@@ -1,8 +1,8 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import BarChart from '../../components/bar/BarChart'
-import { useOnClickHandler } from '../storyUtils'
+import BarChart from 'components/bar/BarChart'
+import { useOnClickHandler } from 'stories/storyUtils'
 
 export const BarChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()

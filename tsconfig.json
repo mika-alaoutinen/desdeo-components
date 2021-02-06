@@ -8,6 +8,7 @@
     ],
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
     "declaration": true,
     "declarationDir": "build",
     "downlevelIteration": true,
@@ -28,8 +29,6 @@
   "exclude": [
     "build",
     "node_modules",
-    "src/stories",
     "src/style",
-    "src/tests",
   ]
 }

@@ -1,9 +1,9 @@
-import { parallelAxesData } from '../../testdata'
-import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
+import { parallelAxesData } from 'tests/testdata'
+import { Attribute, ParallelAxesData } from 'types/dataTypes'
 
 import {
   getAttributeNames, getMaxAttributes, getMaxAttributeValues
-} from '../../../components/parallelAxes/dataParser'
+} from 'components/parallelAxes/dataParser'
 
 describe('getMaxAttributes finds the attributes with largest values in a dataset', () => {
   it('maps attributes as an array with max values', () => {

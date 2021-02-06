@@ -6,7 +6,7 @@ import { getAttributeNames, getMaxAttributeValues } from './dataParser'
 import { layout } from './layout'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 import { normalizeData } from './dataTransformations'
-import { Filter, ParallelAxesData } from '../../types/dataTypes'
+import { Filter, ParallelAxesData } from 'types/dataTypes'
 
 interface Props {
   data: ParallelAxesData[]

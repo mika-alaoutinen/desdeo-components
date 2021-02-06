@@ -1,9 +1,9 @@
 import React from 'react'
 import { VictoryBar } from 'victory'
 
-import ChartContainer from '../../containers/ChartContainer'
-import { mapFillStyle } from '../../styles/victoryStyles'
-import { OnClickChart } from '../../types/chartTypes'
+import ChartContainer from 'containers/ChartContainer'
+import { mapFillStyle } from 'styles/victoryStyles'
+import { OnClickChart } from 'types/chartTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
   <ChartContainer>

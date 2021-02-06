@@ -1,8 +1,8 @@
 import { normalizedData } from './normalizedDatasets'
-import { parallelAxesData } from '../../testdata'
-import { ParallelAxesData } from '../../../types/dataTypes'
+import { parallelAxesData } from 'tests/testdata'
+import { ParallelAxesData } from 'types/dataTypes'
 
-import { normalizeData } from '../../../components/parallelAxes/dataTransformations'
+import { normalizeData } from 'components/parallelAxes/dataTransformations'
 
 describe('Data should be normalized', () => {
   it('normalizeData', () => {

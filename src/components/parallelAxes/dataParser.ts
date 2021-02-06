@@ -1,4 +1,4 @@
-import { ParallelAxesData, Attribute } from '../../types/dataTypes'
+import { ParallelAxesData, Attribute } from 'types/dataTypes'
 
 // Find the maximum attribute values for each axis.
 // The max values will be used to normalize data and re-scale axis ticks.

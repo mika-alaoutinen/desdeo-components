@@ -1,4 +1,4 @@
-import { Coordinate, CoordinateSet, DataSet } from '../types/dataTypes'
+import { Coordinate, CoordinateSet, DataSet } from 'types/dataTypes'
 
 // Convert CSV dataset into CoordinateSet
 const convertToCoordinates = (data: DataSet): CoordinateSet[] =>

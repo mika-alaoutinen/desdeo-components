@@ -2,10 +2,10 @@ import React from 'react'
 
 import {
   renderComponent, renderDataLabels, renderFiveDatum, renderVictoryContainer
-} from '../componentTests'
-import { coordinateData } from '../../testdata'
+} from 'tests/components/componentTests'
+import { coordinateData } from 'tests/testdata'
 
-import ScatterSelection from '../../../components/scatter/ScatterSelection'
+import ScatterSelection from 'components/scatter/ScatterSelection'
 
 // Constants
 const onSelecthandler = jest.fn()

@@ -7,9 +7,9 @@ import {
   renderFiveDatum,
   renderVictoryContainer
 } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { coordinateData } from 'tests/testdata'
 
-import ScatterChart from '../../../components/scatter/ScatterChart'
+import ScatterChart from 'components/scatter/ScatterChart'
 
 // Constants
 const handler = jest.fn()

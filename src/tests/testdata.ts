@@ -1,6 +1,6 @@
 import {
   Coordinate, CoordinateSet, DataSet, ParallelAxesData
-} from '../types/dataTypes'
+} from 'types/dataTypes'
 
 export const testdata: DataSet = [
   {

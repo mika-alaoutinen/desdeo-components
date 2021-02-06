@@ -1,4 +1,4 @@
-import { CoordinateSet } from '../../types/dataTypes'
+import { CoordinateSet } from 'types/dataTypes'
 
 // Need to use regex with replace because Node.js has no implementation for replaceAll...
 const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
