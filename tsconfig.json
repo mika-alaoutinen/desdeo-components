@@ -29,7 +29,6 @@
   "exclude": [
     "build",
     "node_modules",
-    "src/stories",
     "src/style",
   ]
 }
