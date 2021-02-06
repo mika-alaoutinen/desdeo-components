@@ -4,7 +4,7 @@ import React from 'react'
 import { VictorySelectionContainer } from 'victory-selection-container'
 
 import ChartContainer from './ChartContainer'
-import { OnSelectHandler, OnSelectionClearedHandler } from '../types/chartTypes'
+import { OnSelectHandler, OnSelectionClearedHandler } from 'types/chartTypes'
 
 interface Props {
   onSelect: OnSelectHandler,

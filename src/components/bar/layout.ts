@@ -1,4 +1,4 @@
-import { Padding } from '../../types/layoutTypes'
+import { Padding } from 'types/layoutTypes'
 
 // If layout is horizontal, add extra padding left for axis labels
 export const padding: Padding = {

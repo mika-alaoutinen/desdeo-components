@@ -1,9 +1,9 @@
 import React from 'react'
 import { VictoryGroup } from 'victory'
 
-import ChartContainer from '../../containers/ChartContainer'
-import { OnClickHandler } from '../../types/chartTypes'
-import { CoordinateSet } from '../../types/dataTypes'
+import ChartContainer from 'containers/ChartContainer'
+import { OnClickHandler } from 'types/chartTypes'
+import { CoordinateSet } from 'types/dataTypes'
 import { padding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
 

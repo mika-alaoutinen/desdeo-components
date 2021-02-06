@@ -1,5 +1,5 @@
 import { getMaxAttributes } from './dataParser'
-import { Attribute, NormalizedData, ParallelAxesData, TextualData } from '../../types/dataTypes'
+import { Attribute, NormalizedData, ParallelAxesData, TextualData } from 'types/dataTypes'
 
 // Construct normalized datasets by dividing the value for each attribute by the maximum value.
 export const normalizeData = (rawData: ParallelAxesData[]): NormalizedData[] => {

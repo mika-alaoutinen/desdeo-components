@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryZoomContainer } from 'victory'
 
 import ChartContainer from './ChartContainer'
-import { Domain } from '../types/containerTypes'
+import { Domain } from 'types/containerTypes'
 
 interface Props {
   domain: Domain,

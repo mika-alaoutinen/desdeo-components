@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryStack } from 'victory'
 
-import ChartContainer from '../../containers/ChartContainer'
-import { BarChartProps } from '../../types/chartTypes'
+import ChartContainer from 'containers/ChartContainer'
+import { BarChartProps } from 'types/chartTypes'
 import { padding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
 

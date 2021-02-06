@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryChart, VictoryTheme } from 'victory'
 
-import { Domain } from '../types/containerTypes'
+import { Domain } from 'types/containerTypes'
 
 interface Padding {
   top?: number,

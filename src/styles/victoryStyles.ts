@@ -1,4 +1,4 @@
-import { Coordinate } from '../types/dataTypes'
+import { Coordinate } from 'types/dataTypes'
 
 export const SELECTED_COLOR = 'tomato'
 export const NOT_SELECTED_COLOR = 'black'
