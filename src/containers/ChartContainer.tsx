@@ -2,13 +2,7 @@ import React from 'react'
 import { VictoryChart, VictoryTheme } from 'victory'
 
 import { Domain } from 'types/containerTypes'
-
-interface Padding {
-  top?: number,
-  left?: number,
-  right?: number,
-  bottom?: number
-}
+import { Padding } from 'types/layoutTypes'
 
 interface Props {
   component?: React.ReactElement,
