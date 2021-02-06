@@ -2,11 +2,11 @@ import React from 'react'
 import { VictoryGroup } from 'victory'
 
 import ChartContainer from 'containers/ChartContainer'
+import { calculateHeight } from 'containers/containerUtils'
 import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
 import { padding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
-import { calculateHeight } from 'utils/containerUtils'
 
 interface Props {
   datasets: CoordinateSet[],
