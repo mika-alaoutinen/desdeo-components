@@ -7,14 +7,19 @@ import {
   renderComponent,
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
-} from '../componentTests'
-import { coordinateSets } from '../../testdata'
+} from 'tests/components/componentTests'
+import { coordinateSets } from 'tests/testdata'
 
-import GroupedBarChart from '../../../components/bar/GroupedBarChart'
+import GroupedBarChart from 'components/bar/GroupedBarChart'
 
 // Constants
 const handler = jest.fn()
-const component = <GroupedBarChart datasets={coordinateSets} onClick={handler} />
+const component =
+  <GroupedBarChart
+    datasets={coordinateSets}
+    labels={['Alternative 1', 'Alternative 2']}
+    onClick={handler}
+  />
 
 describe('GroupedBarChart is rendered correctly', () => {
   it('chart is rendered', () => {

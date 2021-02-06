@@ -1,4 +1,4 @@
-import { NormalizedData } from '../../../types/dataTypes'
+import { NormalizedData } from 'types/dataTypes'
 
 export const normalizedData: NormalizedData[] = [
   {

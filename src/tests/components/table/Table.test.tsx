@@ -1,10 +1,10 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import { renderComponent, renderDataLabels } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { renderComponent, renderDataLabels } from 'tests/components/componentTests'
+import { coordinateData } from 'tests/testdata'
 
-import Table from '../../../components/table/Table'
+import Table from 'components/table/Table'
 
 // Constants
 const handler = jest.fn()

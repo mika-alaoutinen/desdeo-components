@@ -7,10 +7,10 @@ import {
   renderComponent,
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
-} from '../componentTests'
-import { coordinateSets } from '../../testdata'
+} from 'tests/components/componentTests'
+import { coordinateSets } from 'tests/testdata'
 
-import StackedBarChart from '../../../components/bar/StackedBarChart'
+import StackedBarChart from 'components/bar/StackedBarChart'
 
 // Constants
 const handler = jest.fn()
