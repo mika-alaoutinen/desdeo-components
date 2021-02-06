@@ -25,8 +25,13 @@ const drawBar = (
     ]}
   />
 
+// No idea why tickLabels angle is giving a TypeScript error.
 const drawMainAxis = (datasets: CoordinateSet[], labels?: string[]): JSX.Element =>
   <VictoryAxis
+    style={{
+      ticks: { padding: 10 },
+      tickLabels: { angle: -35 }
+    }}
     tickFormat={labels ? labels : createAxisLabels(datasets)}
   />
 
