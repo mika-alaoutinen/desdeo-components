@@ -1,17 +1,31 @@
-import { Coordinate, CoordinateSet, DataSet } from 'types/dataTypes'
+import { CoordinateSet, DataSet } from 'types/dataTypes'
 
-// Convert CSV dataset into CoordinateSet
-const convertToCoordinates = (data: DataSet): CoordinateSet[] =>
-  data.map(({ label, data }) => ({
-    label,
-    data: data.map((datum, i) => convertNumberToCoordinate(datum, i))
-  }))
+const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
+  dataset.map(({ data, label }) => {
+    const coordinates = data.map((value, i) => ({
+      id: createId(label, i + 1),
+      x: i + 1,
+      y: value
+    }))
+    return { data: coordinates }
+  })
+
+const createCriteriaSets = (dataset: DataSet): CoordinateSet[] =>
+  dataset[0].data.map((_, colIndex) => {
+    const coordinates = dataset.map(({ data, label }, rowIndex) => ({
+      id: createId(label, colIndex + 1),
+      x: rowIndex + 1,
+      y: data[colIndex]
+    }))
+    return { data: coordinates }
+  })
 
 // Utility functions
-const convertNumberToCoordinate = (n: number, index: number): Coordinate => ({
-  id: n.toString(),
-  x: index + 1,
-  y: n
-})
+const createId = (label: string, n: number): string => {
+  const hyphenated = label.toLowerCase().replace(/ /g, '-')
+  return `${hyphenated}-${n}`
+}
 
-export { convertToCoordinates }
+export {
+  createAlternativeSets, createCriteriaSets
+}

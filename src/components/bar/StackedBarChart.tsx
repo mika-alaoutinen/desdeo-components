@@ -1,10 +1,9 @@
 import React from 'react'
-import { VictoryStack } from 'victory'
+import { VictoryChart, VictoryStack, VictoryTheme } from 'victory'
 
-import ChartContainer from 'containers/ChartContainer'
 import { BarChartProps } from 'types/chartTypes'
-import { padding } from './layout'
-import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
+import { horizontalPadding } from './layout'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
   datasets, onClick, horizontal
@@ -14,7 +13,11 @@ const StackedBarChart: React.FC<BarChartProps> = ({
     datasets.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
-    <ChartContainer padding={horizontal ? padding : undefined}>
+    <VictoryChart
+      domainPadding={20}
+      padding={horizontal ? horizontalPadding : undefined}
+      theme={VictoryTheme.material}
+    >
 
       {drawMainAxis(datasets)}
       {drawDependentAxis((x: number) => `$${x}k`)}
@@ -32,7 +35,7 @@ const StackedBarChart: React.FC<BarChartProps> = ({
         {drawBars()}
       </VictoryStack>
 
-    </ChartContainer>
+    </VictoryChart>
   )
 }
 
