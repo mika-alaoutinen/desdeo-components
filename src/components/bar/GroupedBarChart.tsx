@@ -2,11 +2,13 @@ import React from 'react'
 import { VictoryGroup } from 'victory'
 
 import ChartContainer from 'containers/ChartContainer'
-import { calculateHeight } from 'containers/containerUtils'
+import { calculateHeight, calculateWidth } from 'containers/containerUtils'
 import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
 import { padding } from './layout'
-import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
+import {
+  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
+} from './renderingFunctions'
 
 interface Props {
   datasets: CoordinateSet[],
@@ -26,6 +28,7 @@ const GroupedBarChart: React.FC<Props> = ({
     <ChartContainer
       height={calculateHeight(datasets)}
       padding={horizontal ? padding : undefined}
+      width={calculateWidth(datasets)}
     >
 
       {drawMainAxis(datasets, labels)}

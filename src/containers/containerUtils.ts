@@ -1,9 +1,13 @@
 import { CoordinateSet } from 'types/dataTypes'
 
 const calculateHeight = (datasets: CoordinateSet[]): number => {
-  // Calculate how high a chart should be based on the dataset
-  console.log(datasets)
+  datasets[0]
   return 500
 }
 
-export { calculateHeight }
+const calculateWidth = (datasets: CoordinateSet[]): number => {
+  datasets[0]
+  return 600
+}
+
+export { calculateHeight, calculateWidth }
