@@ -13,17 +13,19 @@ interface Padding {
 interface Props {
   component?: React.ReactElement,
   domain?: Domain,
+  height?: number,
   padding?: Padding
 }
 
 const ChartContainer: React.FC<Props> = ({
-  component, domain, padding, ...props
+  component, domain, height, padding, ...props
 }) => (
   <VictoryChart
     { ...props }
     containerComponent={component}
     domain={domain}
     domainPadding={20}
+    height={height ? height : undefined}
     padding={padding}
     theme={VictoryTheme.material}
   />

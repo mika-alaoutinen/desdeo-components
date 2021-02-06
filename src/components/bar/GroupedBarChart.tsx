@@ -6,6 +6,7 @@ import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
 import { padding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderingFunctions'
+import { calculateHeight } from 'utils/containerUtils'
 
 interface Props {
   datasets: CoordinateSet[],
@@ -23,6 +24,7 @@ const GroupedBarChart: React.FC<Props> = ({
 
   return (
     <ChartContainer
+      height={calculateHeight(datasets)}
       padding={horizontal ? padding : undefined}
     >
 
