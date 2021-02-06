@@ -17,7 +17,7 @@ const handler = jest.fn()
 const component =
   <GroupedBarChart
     datasets={coordinateSets}
-    labels={['Alternative 1', 'Alternative 2']}
+    labels={['dataset\n1', 'dataset\n2', 'dataset\n3' ]}
     onClick={handler}
   />
 
