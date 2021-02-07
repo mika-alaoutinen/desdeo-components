@@ -5,7 +5,7 @@ export interface BarChartProps {
   datasets: CoordinateSet[],
   labels: string[],
   onClick: OnClickHandler,
-  orientation?: Orientation
+  orientation: Orientation
 }
 
 export interface OnClickChart {

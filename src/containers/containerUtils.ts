@@ -5,7 +5,7 @@ const DEFAULT_DIMENSION = 350
 const HEIGHT_PER_ITEM = 10
 const WIDTH_PER_ITEM = 12
 
-const calculateHeight = (datasets: CoordinateSet[], orientation?: Orientation): number => {
+const calculateHeight = (datasets: CoordinateSet[], orientation: Orientation): number => {
   if (orientation === 'vertical') {
     return DEFAULT_DIMENSION
   }
@@ -14,8 +14,8 @@ const calculateHeight = (datasets: CoordinateSet[], orientation?: Orientation): 
   return valueOrDefault(height)
 }
 
-const calculateWidth = (datasets: CoordinateSet[], orientation?: Orientation): number => {
-  if (orientation !== 'vertical') {
+const calculateWidth = (datasets: CoordinateSet[], orientation: Orientation): number => {
+  if (orientation === 'horizontal') {
     return DEFAULT_DIMENSION
   }
 
