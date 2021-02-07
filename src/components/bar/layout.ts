@@ -16,5 +16,5 @@ const verticalPadding: Padding = {
 }
 
 // Default orientation is horizontal
-export const calculatePadding = (orientation: Orientation | undefined): Padding =>
+export const calculatePadding = (orientation: Orientation): Padding =>
   orientation === 'vertical' ? verticalPadding : horizontalPadding
