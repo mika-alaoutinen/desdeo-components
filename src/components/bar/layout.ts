@@ -4,14 +4,14 @@ import { Orientation, Padding } from 'types/layoutTypes'
 const horizontalPadding: Padding = {
   top: 25,
   left: 75,
-  right: 25,
+  right: 75,
   bottom: 25
 }
 
 const verticalPadding: Padding = {
   top: 25,
-  left: 25,
-  right: 25,
+  left: 50,
+  right: 50,
   bottom: 75
 }
 
