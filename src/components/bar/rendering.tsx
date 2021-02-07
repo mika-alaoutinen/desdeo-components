@@ -5,8 +5,6 @@ import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
 import { Orientation } from 'types/layoutTypes'
 
-// Reusable functions for rendering Victory components
-
 const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
   datasets
     .map(({ label }, i) => label ? label : `Label ${i + 1}`)
