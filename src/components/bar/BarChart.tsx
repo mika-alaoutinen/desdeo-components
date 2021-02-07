@@ -1,12 +1,14 @@
 import React from 'react'
-import { VictoryBar } from 'victory'
+import { VictoryBar, VictoryChart } from 'victory'
 
-import ChartContainer from 'containers/ChartContainer'
-import { mapFillStyle } from 'styles/victoryStyles'
+import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from 'styles/victoryStyles'
 import { OnClickChart } from 'types/chartTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
-  <ChartContainer>
+  <VictoryChart
+    domainPadding={DOMAIN_PADDING}
+    theme={MATERIAL_THEME}
+  >
 
     <VictoryBar
       data={data}
@@ -27,7 +29,7 @@ const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
       }}
     />
 
-  </ChartContainer>
+  </VictoryChart>
 )
 
 export default BarChart
