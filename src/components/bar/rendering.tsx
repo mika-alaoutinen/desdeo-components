@@ -28,7 +28,7 @@ const drawBar = (
     ]}
   />
 
-const drawMainAxis = (datasets: CoordinateSet[], labels?: string[]): JSX.Element =>
+const drawMainAxis = (datasets: CoordinateSet[], labels: string[]): JSX.Element =>
   <VictoryAxis
     tickFormat={labels ? labels : createAxisLabels(datasets)}
     tickLabelComponent={<VictoryLabel angle={-35} />}

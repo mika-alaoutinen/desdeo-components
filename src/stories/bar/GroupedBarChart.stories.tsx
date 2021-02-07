@@ -5,24 +5,19 @@ import GroupedBarChart from 'components/bar/GroupedBarChart'
 import { groupedByAlternatives, groupedByCriteria } from 'tests/testdata'
 import { Coordinate } from 'types/dataTypes'
 import { Orientation } from 'types/layoutTypes'
-import { range } from 'utils/utilFunctions'
+import { createAlternativesLabels } from './barUtils'
 
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
 
 // Grouping data by alternative solutions
-const alternativesComponent = (orientation: Orientation): JSX.Element => {
-  const alternatives = groupedByAlternatives[0].data.length
-  const labels = range(alternatives).map(n => `Alternative\n${n}`)
-
-  return (
-    <GroupedBarChart
-      datasets={groupedByAlternatives}
-      labels={labels}
-      onClick={clickHandler}
-      orientation={orientation}
-    />
-  )
-}
+const alternativesComponent = (orientation: Orientation): JSX.Element => (
+  <GroupedBarChart
+    datasets={groupedByAlternatives}
+    labels={createAlternativesLabels()}
+    onClick={clickHandler}
+    orientation={orientation}
+  />
+)
 
 export const GroupedByAlternativesHorizontal = (): JSX.Element =>
   alternativesComponent('horizontal')

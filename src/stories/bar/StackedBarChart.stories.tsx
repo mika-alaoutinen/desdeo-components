@@ -1,8 +1,9 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
+import { createAlternativesLabels } from './barUtils'
 import StackedBarChart from 'components/bar/StackedBarChart'
-import { coordinateSets } from 'tests/testdata'
+import { groupedByAlternatives } from 'tests/testdata'
 import { Coordinate } from 'types/dataTypes'
 import { Orientation } from 'types/layoutTypes'
 
@@ -16,7 +17,8 @@ export const VerticalStackedBarChart = (): JSX.Element =>
 
 const createComponent = (orientation: Orientation): JSX.Element => (
   <StackedBarChart
-    datasets={coordinateSets}
+    datasets={groupedByAlternatives}
+    labels={createAlternativesLabels()}
     onClick={clickHandler}
     orientation={orientation}
   />
