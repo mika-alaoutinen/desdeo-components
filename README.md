@@ -56,3 +56,8 @@ Launches Storybook for local development.
 ```
 npm run storybook
 ```
+
+## Todo
+- Get rid of container wrappers
+- Implement height and width functions in containerUtils.
+- Get bar labels working again.
