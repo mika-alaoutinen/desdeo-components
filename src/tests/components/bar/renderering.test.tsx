@@ -1,23 +1,15 @@
-import { createAxisLabels } from 'components/bar/rendering'
-import { CoordinateSet } from 'types/dataTypes'
+import { Coordinate } from 'types/dataTypes'
 
-describe('createAxisLabels maps labels from a CoordinateSet', () => {
-  it('replaces spaces with line breaks', () => {
-    const datasets: CoordinateSet[] = [
-      { data: [], label: 'dataset' },
-      { data: [], label: 'dataset with long label' },
-    ]
-    const expectedLabels = [ 'dataset', 'dataset\nwith\nlong\nlabel']
-    expect(createAxisLabels(datasets)).toEqual(expectedLabels)
-  })
+import { createBarLabel } from 'components/bar/rendering'
 
-  it('if no label is given, create a label with format Label 1, Label 2, etc.', () => {
-    const datasets: CoordinateSet[] = [
-      { data: [] },
-      { data: [] },
-      { data: [], label: 'dataset' },
-    ]
-    const expectedLabels = [ 'Label\n1', 'Label\n2', 'dataset' ]
-    expect(createAxisLabels(datasets)).toEqual(expectedLabels)
+describe('Creates label text for a coordinate', () => {
+  const coordinate: Coordinate = {
+    id: 'test-id',
+    x: 1,
+    y: 2
+  }
+
+  it('label has ID and value', () => {
+    expect(createBarLabel(coordinate)).toBe('test-id:\n2')
   })
 })
