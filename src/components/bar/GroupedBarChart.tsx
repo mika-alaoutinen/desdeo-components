@@ -22,7 +22,7 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
        width={calculateWidth(datasets, orientation)}
      >
 
-      {drawMainAxis(datasets, labels)}
+      {drawMainAxis(labels)}
       {drawDependentAxis()}
 
       <VictoryGroup

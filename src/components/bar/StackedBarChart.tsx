@@ -22,7 +22,7 @@ const StackedBarChart: React.FC<BarChartProps> = ({
       width={calculateWidth(datasets, orientation)}
     >
 
-      {drawMainAxis(datasets, labels)}
+      {drawMainAxis(labels)}
       {drawDependentAxis((x: number) => `$${x}k`)}
 
       <VictoryStack
