@@ -1,21 +1,14 @@
 import React from 'react'
-import { VictoryChart, VictoryGroup, VictoryTheme } from 'victory'
+import { VictoryChart, VictoryGroup } from 'victory'
 
 import { calculateHeight, calculateWidth } from 'containers/containerUtils'
-import { OnClickHandler } from 'types/chartTypes'
-import { CoordinateSet } from 'types/dataTypes'
-import { horizontalPadding, verticalPadding } from './layout'
+import { calculatePadding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
+import { MATERIAL_THEME } from 'styles/victoryStyles'
+import { BarChartProps } from 'types/chartTypes'
 
-interface Props {
-  datasets: CoordinateSet[],
-  labels: string[],
-  onClick: OnClickHandler,
-  horizontal?: boolean
-}
-
-const GroupedBarChart: React.FC<Props> = ({
-  datasets, labels, onClick, horizontal
+const GroupedBarChart: React.FC<BarChartProps> = ({
+  datasets, labels, onClick, orientation
 }) => {
 
   const drawBars = (): JSX.Element[] =>
@@ -23,17 +16,18 @@ const GroupedBarChart: React.FC<Props> = ({
 
   return (
     <VictoryChart
-       height={calculateHeight(datasets)}
-       padding={horizontal ? horizontalPadding : verticalPadding}
-       theme={VictoryTheme.material}
-       width={calculateWidth(datasets)}
+       height={calculateHeight(datasets, orientation)}
+       padding={calculatePadding(orientation)}
+       theme={MATERIAL_THEME}
+       width={calculateWidth(datasets, orientation)}
      >
+
       {drawMainAxis(datasets, labels)}
       {drawDependentAxis()}
 
       <VictoryGroup
-        horizontal={horizontal}
-        labelComponent={drawTooltip(horizontal)}
+        horizontal={orientation === 'horizontal'}
+        labelComponent={drawTooltip(orientation)}
         offset={8}
         style={{
           data: {

@@ -1,12 +1,16 @@
-export interface Layout {
+interface Layout {
   height: number,
   width: number,
   padding: Padding
 }
 
-export interface Padding {
+interface Padding {
   top: number,
   left: number,
   right: number,
   bottom: number
 }
+
+type Orientation = 'horizontal' | 'vertical'
+
+export type { Layout, Orientation, Padding }

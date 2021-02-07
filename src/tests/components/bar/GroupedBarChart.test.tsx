@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
+import { data } from './barData'
 import {
   dataShouldBeClickable,
   getPaths,
@@ -8,7 +9,6 @@ import {
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
 } from 'tests/components/componentTests'
-import { coordinateSets } from 'tests/testdata'
 
 import GroupedBarChart from 'components/bar/GroupedBarChart'
 
@@ -16,7 +16,7 @@ import GroupedBarChart from 'components/bar/GroupedBarChart'
 const handler = jest.fn()
 const component =
   <GroupedBarChart
-    datasets={coordinateSets}
+    datasets={data}
     labels={['dataset\n1', 'dataset\n2', 'dataset\n3' ]}
     onClick={handler}
   />

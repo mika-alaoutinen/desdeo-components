@@ -3,8 +3,7 @@ import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
-
-// Reusable functions for rendering Victory components
+import { Orientation } from 'types/layoutTypes'
 
 const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
   datasets
@@ -29,9 +28,9 @@ const drawBar = (
     ]}
   />
 
-const drawMainAxis = (datasets: CoordinateSet[], labels?: string[]): JSX.Element =>
+const drawMainAxis = (datasets: CoordinateSet[], labels: string[]): JSX.Element =>
   <VictoryAxis
-    tickFormat={labels ? labels : createAxisLabels(datasets)}
+    tickFormat={labels}
     tickLabelComponent={<VictoryLabel angle={-35} />}
   />
 
@@ -41,10 +40,10 @@ const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =
     tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
   />
 
-const drawTooltip = (horizontal?: boolean): JSX.Element => {
-  const offset = horizontal
-    ? { x: -25 }
-    : { y: 25 }
+const drawTooltip = (orientation?: Orientation): JSX.Element => {
+  const offset = orientation === 'vertical'
+    ? { y: 25 }
+    : { x: -25 }
 
   return (
     <VictoryTooltip

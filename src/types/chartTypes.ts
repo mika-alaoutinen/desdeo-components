@@ -1,15 +1,11 @@
-import { Coordinate, CoordinateSet, DataSet } from './dataTypes'
-
-export interface CSVProps {
-  data: DataSet,
-  onClick: OnClickHandler,
-  horizontal?: boolean
-}
+import { Coordinate, CoordinateSet } from './dataTypes'
+import { Orientation } from './layoutTypes'
 
 export interface BarChartProps {
   datasets: CoordinateSet[],
+  labels: string[],
   onClick: OnClickHandler,
-  horizontal?: boolean
+  orientation?: Orientation
 }
 
 export interface OnClickChart {

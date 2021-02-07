@@ -1,12 +1,14 @@
 import React from 'react'
-import { VictoryChart, VictoryStack, VictoryTheme } from 'victory'
+import { VictoryChart, VictoryStack } from 'victory'
 
 import { BarChartProps } from 'types/chartTypes'
-import { horizontalPadding } from './layout'
+import { calculatePadding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
+import { MATERIAL_THEME } from 'styles/victoryStyles'
+import { calculateWidth } from 'containers/containerUtils'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
-  datasets, onClick, horizontal
+  datasets, labels, onClick, orientation
 }) => {
 
   const drawBars = (): JSX.Element[] =>
@@ -14,18 +16,18 @@ const StackedBarChart: React.FC<BarChartProps> = ({
 
   return (
     <VictoryChart
-      domainPadding={20}
-      padding={horizontal ? horizontalPadding : undefined}
-      theme={VictoryTheme.material}
+      domainPadding={10}
+      padding={calculatePadding(orientation)}
+      theme={MATERIAL_THEME}
+      width={calculateWidth(datasets, orientation)}
     >
 
-      {drawMainAxis(datasets)}
+      {drawMainAxis(datasets, labels)}
       {drawDependentAxis((x: number) => `$${x}k`)}
 
       <VictoryStack
-        colorScale={[ 'brown', 'tomato', 'gold' ]}
-        horizontal={horizontal}
-        labelComponent={drawTooltip(horizontal)}
+        horizontal={orientation === 'horizontal'}
+        labelComponent={drawTooltip(orientation)}
         style={{
           data: {
             width: 20
