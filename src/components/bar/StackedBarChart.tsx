@@ -5,6 +5,7 @@ import { BarChartProps } from 'types/chartTypes'
 import { calculatePadding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
 import { MATERIAL_THEME } from 'styles/victoryStyles'
+import { calculateWidth } from 'containers/containerUtils'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
   datasets, labels, onClick, orientation
@@ -15,9 +16,10 @@ const StackedBarChart: React.FC<BarChartProps> = ({
 
   return (
     <VictoryChart
-      domainPadding={20}
+      domainPadding={10}
       padding={calculatePadding(orientation)}
       theme={MATERIAL_THEME}
+      width={calculateWidth(datasets, orientation)}
     >
 
       {drawMainAxis(datasets, labels)}
