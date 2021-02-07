@@ -1,9 +1,10 @@
 import { Coordinate, CoordinateSet } from './dataTypes'
+import { Orientation } from './layoutTypes'
 
 export interface BarChartProps {
   datasets: CoordinateSet[],
   onClick: OnClickHandler,
-  horizontal?: boolean
+  orientation?: Orientation
 }
 
 export interface OnClickChart {
