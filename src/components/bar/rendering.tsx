@@ -3,6 +3,7 @@ import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from 'types/chartTypes'
 import { CoordinateSet } from 'types/dataTypes'
+import { Orientation } from 'types/layoutTypes'
 
 // Reusable functions for rendering Victory components
 
@@ -41,10 +42,10 @@ const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =
     tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
   />
 
-const drawTooltip = (horizontal?: boolean): JSX.Element => {
-  const offset = horizontal
-    ? { x: -25 }
-    : { y: 25 }
+const drawTooltip = (orientation?: Orientation): JSX.Element => {
+  const offset = orientation === 'vertical'
+    ? { y: 25 }
+    : { x: -25 }
 
   return (
     <VictoryTooltip
