@@ -19,6 +19,11 @@ describe('Calculates chart height based on dataset and chart orientation', () =>
     const height = calculateHeight(groupedByCriteria, 'vertical')
     expect(height).toBe(defaultHeight)
   })
+
+  it('if calculated height is < 350, return default value instead', () => {
+    const height = calculateHeight([])
+    expect(height).toBe(defaultHeight)
+  })
 })
 
 describe('Calculates chart width based on dataset and chart orientation', () => {
@@ -38,5 +43,10 @@ describe('Calculates chart width based on dataset and chart orientation', () => 
   it('uses default width with chart that is grouped by alternatives when orientation is not given', () => {
     const width = calculateWidth(groupedByAlternatives)
     expect(width).toBe(defaultWidth)
+  })
+
+  it('if calculated width is < 350, return default value instead', () => {
+    const height = calculateHeight([])
+    expect(height).toBe(defaultWidth)
   })
 })
