@@ -1,9 +1,10 @@
 import React from 'react'
 // The selection container export in victory is broken.
 // Let's import it from the separate victory-selection-container npm package instead...
-import { VictoryChart, VictoryTheme } from 'victory'
+import { VictoryChart } from 'victory'
 import { VictorySelectionContainer } from 'victory-selection-container'
 
+import { DOMAIN_PADDING, MATERIAL_THEME } from 'styles/victoryStyles'
 import { OnSelectHandler, OnSelectionClearedHandler } from 'types/chartTypes'
 
 interface Props {
@@ -23,8 +24,8 @@ const SelectionContainer: React.FC<Props> = ({ onSelect, onSelectionCleared, ...
     <VictoryChart
       { ...props }
       containerComponent={selectionContainer()}
-      domainPadding={20}
-      theme={VictoryTheme.material}
+      domainPadding={DOMAIN_PADDING}
+      theme={MATERIAL_THEME}
     />
   )
 }

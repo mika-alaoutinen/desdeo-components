@@ -1,6 +1,7 @@
 import React from 'react'
-import { VictoryChart, VictoryTheme, VictoryZoomContainer } from 'victory'
+import { VictoryChart, VictoryZoomContainer } from 'victory'
 
+import { DOMAIN_PADDING, MATERIAL_THEME } from 'styles/victoryStyles'
 import { Domain } from 'types/containerTypes'
 
 interface Props {
@@ -20,8 +21,8 @@ const ZoomContainer: React.FC<Props> = ({ domain, zoomDomain, ...props }) => {
       { ...props }
       containerComponent={zoomComponent()}
       domain={domain}
-      domainPadding={20}
-      theme={VictoryTheme.material}
+      domainPadding={DOMAIN_PADDING}
+      theme={MATERIAL_THEME}
     />
   )
 }
