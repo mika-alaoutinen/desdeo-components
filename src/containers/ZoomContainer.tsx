@@ -1,7 +1,6 @@
 import React from 'react'
-import { VictoryZoomContainer } from 'victory'
+import { VictoryChart, VictoryTheme, VictoryZoomContainer } from 'victory'
 
-import ChartContainer from './ChartContainer'
 import { Domain } from 'types/containerTypes'
 
 interface Props {
@@ -17,10 +16,12 @@ const ZoomContainer: React.FC<Props> = ({ domain, zoomDomain, ...props }) => {
     />
 
   return (
-    <ChartContainer
+    <VictoryChart
       { ...props }
-      component={zoomComponent()}
+      containerComponent={zoomComponent()}
       domain={domain}
+      domainPadding={20}
+      theme={VictoryTheme.material}
     />
   )
 }
