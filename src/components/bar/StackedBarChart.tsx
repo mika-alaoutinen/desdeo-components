@@ -7,7 +7,7 @@ import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './renderi
 import { MATERIAL_THEME } from 'styles/victoryStyles'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
-  datasets, onClick, orientation
+  datasets, labels, onClick, orientation
 }) => {
 
   const drawBars = (): JSX.Element[] =>
@@ -20,7 +20,7 @@ const StackedBarChart: React.FC<BarChartProps> = ({
       theme={MATERIAL_THEME}
     >
 
-      {drawMainAxis(datasets)}
+      {drawMainAxis(datasets, labels)}
       {drawDependentAxis((x: number) => `$${x}k`)}
 
       <VictoryStack

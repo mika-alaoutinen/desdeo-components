@@ -3,6 +3,7 @@ import { Orientation } from './layoutTypes'
 
 export interface BarChartProps {
   datasets: CoordinateSet[],
+  labels: string[],
   onClick: OnClickHandler,
   orientation?: Orientation
 }
