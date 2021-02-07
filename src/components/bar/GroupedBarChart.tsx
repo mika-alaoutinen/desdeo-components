@@ -16,13 +16,13 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
 
   return (
     <VictoryChart
-       height={calculateHeight(datasets, orientation)}
-       padding={calculatePadding(orientation)}
-       theme={MATERIAL_THEME}
-       width={calculateWidth(datasets, orientation)}
+      height={calculateHeight(datasets, orientation)}
+      padding={calculatePadding(orientation)}
+      theme={MATERIAL_THEME}
+      width={calculateWidth(datasets, orientation)}
      >
 
-      {drawMainAxis(datasets, labels)}
+      {drawMainAxis(labels)}
       {drawDependentAxis()}
 
       <VictoryGroup

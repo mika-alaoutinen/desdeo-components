@@ -2,13 +2,11 @@ import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
 import { OnClickHandler } from 'types/chartTypes'
-import { CoordinateSet } from 'types/dataTypes'
+import { Coordinate, CoordinateSet } from 'types/dataTypes'
 import { Orientation } from 'types/layoutTypes'
 
-const createAxisLabels = (datasets: CoordinateSet[]): string[] =>
-  datasets
-    .map(({ label }, i) => label ? label : `Label ${i + 1}`)
-    .map(label => label.replace(/ /g, '\n'))
+const createBarLabel = ({ id, y }: Coordinate): string =>
+  `${id}:\n${y}`
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
@@ -26,9 +24,10 @@ const drawBar = (
         }
       },
     ]}
+    labels={({ datum }) => createBarLabel(datum)}
   />
 
-const drawMainAxis = (datasets: CoordinateSet[], labels: string[]): JSX.Element =>
+const drawMainAxis = (labels: string[]): JSX.Element =>
   <VictoryAxis
     tickFormat={labels}
     tickLabelComponent={<VictoryLabel angle={-35} />}
@@ -40,10 +39,10 @@ const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =
     tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
   />
 
-const drawTooltip = (orientation?: Orientation): JSX.Element => {
+const drawTooltip = (orientation: Orientation): JSX.Element => {
   const offset = orientation === 'vertical'
-    ? { y: 25 }
-    : { x: -25 }
+    ? { y: 10 }
+    : { x: -10 }
 
   return (
     <VictoryTooltip
@@ -55,5 +54,5 @@ const drawTooltip = (orientation?: Orientation): JSX.Element => {
 }
 
 export {
-  createAxisLabels, drawBar, drawMainAxis, drawDependentAxis, drawTooltip
+  createBarLabel, drawBar, drawMainAxis, drawDependentAxis, drawTooltip
 }

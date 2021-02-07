@@ -12,8 +12,10 @@ export const SOLID = 1
 export const OPAQUE = 0.7
 
 // Examples for how to style individual data points in a chart
-export const mapFillStyle = (datum: Coordinate): string =>
+const mapFillStyle = (datum: Coordinate): string =>
   datum.isSelected ? SELECTED_COLOR : NOT_SELECTED_COLOR
 
-export const mapOpacityStyle = (datum: Coordinate): number =>
+const mapOpacityStyle = (datum: Coordinate): number =>
   datum.y % 2 === 0 ? SOLID: OPAQUE
+
+export { mapFillStyle, mapOpacityStyle }

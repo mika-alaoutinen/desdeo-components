@@ -10,18 +10,13 @@ describe('Calculates chart height based on dataset and chart orientation', () =>
     expect(height).toBe(expectedHeight)
   })
 
-  it('calculates height of chart that is grouped by alternatives when orientation is not given', () => {
-    const height = calculateHeight(groupedByCriteria)
-    expect(height).toBe(expectedHeight)
-  })
-
   it('vertical charts that are grouped by alternatives use default height', () => {
     const height = calculateHeight(groupedByCriteria, 'vertical')
     expect(height).toBe(defaultHeight)
   })
 
   it('if calculated height is < 350, return default value instead', () => {
-    const height = calculateHeight([])
+    const height = calculateHeight([], 'horizontal')
     expect(height).toBe(defaultHeight)
   })
 })
@@ -40,13 +35,8 @@ describe('Calculates chart width based on dataset and chart orientation', () => 
     expect(width).toBe(defaultWidth)
   })
 
-  it('uses default width with chart that is grouped by alternatives when orientation is not given', () => {
-    const width = calculateWidth(groupedByAlternatives)
-    expect(width).toBe(defaultWidth)
-  })
-
   it('if calculated width is < 350, return default value instead', () => {
-    const height = calculateHeight([])
+    const height = calculateHeight([], 'horizontal')
     expect(height).toBe(defaultWidth)
   })
 })

@@ -19,6 +19,7 @@ const component =
     datasets={data}
     labels={['dataset\n1', 'dataset\n2', 'dataset\n3' ]}
     onClick={handler}
+    orientation='horizontal'
   />
 
 describe('StackedBarChart is rendered correctly', () => {
