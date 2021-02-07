@@ -10,14 +10,19 @@ import { range } from 'utils/utilFunctions'
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
 
 // Grouping data by alternative solutions
-const alternativesComponent = (orientation: Orientation): JSX.Element => (
-  <GroupedBarChart
-    datasets={groupedByAlternatives}
-    labels={range(10).map(n => `Alternative\n${n}`)}
-    onClick={clickHandler}
-    orientation={orientation}
-  />
-)
+const alternativesComponent = (orientation: Orientation): JSX.Element => {
+  const alternatives = groupedByAlternatives[0].data.length
+  const labels = range(alternatives).map(n => `Alternative\n${n}`)
+
+  return (
+    <GroupedBarChart
+      datasets={groupedByAlternatives}
+      labels={labels}
+      onClick={clickHandler}
+      orientation={orientation}
+    />
+  )
+}
 
 export const GroupedByAlternativesHorizontal = (): JSX.Element =>
   alternativesComponent('horizontal')
