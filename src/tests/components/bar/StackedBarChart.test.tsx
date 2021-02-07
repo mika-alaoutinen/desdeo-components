@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
+import { data } from './barData'
 import {
   dataShouldBeClickable,
   getPaths,
@@ -8,7 +9,6 @@ import {
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
 } from 'tests/components/componentTests'
-import { coordinateSets } from 'tests/testdata'
 
 import StackedBarChart from 'components/bar/StackedBarChart'
 
@@ -16,7 +16,7 @@ import StackedBarChart from 'components/bar/StackedBarChart'
 const handler = jest.fn()
 const component =
   <StackedBarChart
-    datasets={coordinateSets}
+    datasets={data}
     labels={['dataset\n1', 'dataset\n2', 'dataset\n3' ]}
     onClick={handler}
   />
