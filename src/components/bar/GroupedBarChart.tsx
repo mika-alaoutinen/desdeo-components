@@ -5,18 +5,9 @@ import { calculateHeight, calculateWidth } from 'containers/containerUtils'
 import { calculatePadding } from './layout'
 import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
 import { MATERIAL_THEME } from 'styles/victoryStyles'
-import { OnClickHandler } from 'types/chartTypes'
-import { CoordinateSet } from 'types/dataTypes'
-import { Orientation } from 'types/layoutTypes'
+import { BarChartProps } from 'types/chartTypes'
 
-interface Props {
-  datasets: CoordinateSet[],
-  labels: string[],
-  onClick: OnClickHandler,
-  orientation?: Orientation
-}
-
-const GroupedBarChart: React.FC<Props> = ({
+const GroupedBarChart: React.FC<BarChartProps> = ({
   datasets, labels, onClick, orientation
 }) => {
 
