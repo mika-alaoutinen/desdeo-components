@@ -17,8 +17,7 @@ export interface Coordinate {
 }
 
 export interface CoordinateSet {
-  data: Coordinate[],
-  label?: string
+  data: Coordinate[]
 }
 
 export interface NormalizedData {

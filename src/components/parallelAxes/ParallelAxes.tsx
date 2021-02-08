@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { VictoryAxis, VictoryBrushLine, VictoryChart, VictoryLine } from 'victory'
+import { VictoryAxis, VictoryChart } from 'victory'
 
 import AttributeLabels from './AttributeLabels'
-import { getAttributeNames, getMaxAttributeValues } from './dataParser'
-import { layout } from './layout'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
+import { getAttributeNames, getMaxAttributeValues } from './dataParser'
 import { normalizeData } from './dataTransformations'
+import { layout } from './layout'
+import { drawBrushLines, drawLines } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
 
 interface Props {
   data: ParallelAxesData[]
 }
 
-type Domain = [number, number] | null
+export type Domain = [number, number]
 
 const ParallelAxes: React.FC<Props> = ({ data }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
@@ -40,13 +41,11 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
     setActiveDataSets(getActiveDatasets(datasets, filters))
   }
 
-  // Draw chart elements. For whatever reason putting the rendering code
-  // into a separate React component destroyes the layout of all charts.
   const drawAxes = (): JSX.Element[] =>
     attributeNames.map((attribute, i) =>
       <VictoryAxis dependentAxis
         key={i}
-        axisComponent={drawBrushLines(attribute)}
+        axisComponent={drawBrushLines(attribute, onDomainChange)}
         offsetX={calculateAxisOffset(i, attributeNames.length)}
         style={{
           tickLabels: {
@@ -60,28 +59,6 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
       />
     )
 
-  const drawBrushLines = (attribute: string): JSX.Element =>
-    <VictoryBrushLine
-      name={attribute}
-      onBrushDomainChange={(domain, props) =>
-        onDomainChange(domain as [number, number], props?.name)}
-      width={20}
-    />
-
-const drawLines = (): JSX.Element[] =>
-  datasets.map(dataset =>
-    <VictoryLine
-      key={dataset.name}
-      name={dataset.name}
-      data={dataset.data}
-      groupComponent={<g/>}
-      style={{ data: {
-        stroke: 'tomato',
-        opacity: activeDatasets.includes(dataset.name) ? 1 : 0.2
-      } }}
-    />
-  )
-
   return (
     <VictoryChart
       domain={{ y: [0, 1.1] }}
@@ -91,7 +68,7 @@ const drawLines = (): JSX.Element[] =>
     >
       <AttributeLabels paddingTop={layout.padding.top - 40} />
       {/* Lines MUST be drawn before axes, or the brush functionality breaks! */}
-      {drawLines()}
+      {drawLines(datasets, activeDatasets)}
       {drawAxes()}
     </VictoryChart>
   )
