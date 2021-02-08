@@ -7,11 +7,11 @@ import { Domain } from './ParallelAxes'
 type OnDomainChange = (domainTuple: Domain, name?: string) => void
 
 const drawAxis = (
-  attribute: string, offsetX: number, tickValue: number, onDomainChange: OnDomainChange
+  axisComponent: JSX.Element, offsetX: number, tickValue: number
 ): JSX.Element =>
   <VictoryAxis
-    key={attribute}
-    axisComponent={drawBrushLine(attribute, onDomainChange)}
+    key={axisComponent.key}
+    axisComponent={axisComponent}
     dependentAxis
     offsetX={offsetX}
     style={{
@@ -29,6 +29,7 @@ const drawBrushLine = (
   attribute: string, onDomainChange: OnDomainChange
 ): JSX.Element =>
   <VictoryBrushLine
+    key={attribute}
     name={attribute}
     onBrushDomainChange={(domain, props) =>
       onDomainChange(domain as [number, number], props?.name)}
