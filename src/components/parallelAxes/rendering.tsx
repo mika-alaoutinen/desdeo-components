@@ -6,7 +6,25 @@ import { Domain } from './ParallelAxes'
 
 type OnDomainChange = (domainTuple: Domain, name?: string) => void
 
-const drawBrushLines = (
+// const drawAxes = (): JSX.Element[] =>
+//   attributeNames.map((attribute, i) =>
+//     <VictoryAxis dependentAxis
+//       key={i}
+//       axisComponent={drawBrushLines(attribute, onDomainChange)}
+//       offsetX={calculateAxisOffset(i, attributeNames.length)}
+//       style={{
+//         tickLabels: {
+//           fontSize: 15,
+//           padding: 15,
+//           pointerEvents: 'none'
+//         },
+//       }}
+//       tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
+//       tickFormat={(tick) => Math.round(tick * maxAttributeValues[i])}
+//     />
+//   )
+
+const drawBrushLine = (
   attribute: string, onDomainChange: OnDomainChange
 ): JSX.Element =>
   <VictoryBrushLine
@@ -16,22 +34,20 @@ const drawBrushLines = (
     width={20}
   />
 
-const drawLines = (
-  datasets: NormalizedData[], activeSets: string[]
-): JSX.Element[] =>
-  datasets.map(dataset =>
-    <VictoryLine
-      key={dataset.name}
-      name={dataset.name}
-      data={dataset.data}
-      groupComponent={<g/>}
-      style={{ data: {
-        stroke: 'tomato',
-        opacity: activeSets.includes(dataset.name) ? 1 : 0.2
-      } }}
-    />
-  )
+const drawLine = (
+  { data, name }: NormalizedData, opacity: number
+): JSX.Element =>
+  <VictoryLine
+    key={name}
+    name={name}
+    data={data}
+    groupComponent={<g/>}
+    style={{ data: {
+      stroke: 'tomato',
+      opacity: opacity
+    } }}
+  />
 
 export {
-  drawBrushLines, drawLines
+  drawBrushLine, drawLine
 }

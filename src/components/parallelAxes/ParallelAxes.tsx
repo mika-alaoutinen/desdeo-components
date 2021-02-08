@@ -6,7 +6,7 @@ import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 import { getMaxAttributeValues } from './dataParser'
 import { normalizeData } from './dataTransformations'
 import { layout } from './layout'
-import { drawBrushLines, drawLines } from './rendering'
+import { drawBrushLine, drawLine } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
 
 interface Props {
@@ -45,7 +45,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
     attributes.map((attribute, i) =>
       <VictoryAxis dependentAxis
         key={i}
-        axisComponent={drawBrushLines(attribute, onDomainChange)}
+        axisComponent={drawBrushLine(attribute, onDomainChange)}
         offsetX={calculateAxisOffset(i, attributes.length)}
         style={{
           tickLabels: {
@@ -59,6 +59,12 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
       />
     )
 
+  const drawLines = (): JSX.Element[] =>
+    datasets.map(dataset => {
+      const opacity = activeDatasets.includes(dataset.name) ? 1 : 0.2
+      return drawLine(dataset, opacity)
+    })
+
   return (
     <VictoryChart
       domain={{ y: [0, 1.1] }}
@@ -68,7 +74,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
     >
       <AttributeLabels paddingTop={layout.padding.top - 40} />
       {/* Lines MUST be drawn before axes, or the brush functionality breaks! */}
-      {drawLines(datasets, activeDatasets)}
+      {drawLines()}
       {drawAxes()}
     </VictoryChart>
   )
