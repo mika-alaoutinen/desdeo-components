@@ -8,15 +8,6 @@ export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
   return grouped.map(findByMaxValue)
 }
 
-export const getAttributeNames = (data: ParallelAxesData[]): string[] => {
-  const names = data
-    .flatMap(datum => datum.attributes)
-    .map(attribute => attribute.name)
-    .map(name => name.toLowerCase())
-
-  return [...new Set(names)]
-}
-
 export const getMaxAttributeValues = (data: ParallelAxesData[]): number[] =>
   getMaxAttributes(data).map(attribute => attribute.value)
 

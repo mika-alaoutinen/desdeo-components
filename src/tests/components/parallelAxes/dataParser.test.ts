@@ -1,9 +1,7 @@
 import { parallelAxesData } from 'tests/testdata'
-import { Attribute, ParallelAxesData } from 'types/dataTypes'
+import { Attribute } from 'types/dataTypes'
 
-import {
-  getAttributeNames, getMaxAttributes, getMaxAttributeValues
-} from 'components/parallelAxes/dataParser'
+import { getMaxAttributes, getMaxAttributeValues } from 'components/parallelAxes/dataParser'
 
 describe('getMaxAttributes finds the attributes with largest values in a dataset', () => {
   it('maps attributes as an array with max values', () => {
@@ -13,21 +11,6 @@ describe('getMaxAttributes finds the attributes with largest values in a dataset
       { name: 'luck', value: 17 }
     ]
     expect(getMaxAttributes(parallelAxesData)).toEqual(expected)
-  })
-})
-
-describe('getAttributeNames find all unique attribute names', () => {
-  it('maps names as an array of strings', () => {
-    const expected = [ 'strength', 'intelligence', 'luck' ]
-    expect(getAttributeNames(parallelAxesData)).toEqual(expected)
-  })
-
-  it('names are converted to lowercase', () => {
-    const data: ParallelAxesData[] = [{
-      name: 'placeholder',
-      attributes: [ { name: 'sTRengTh', value: 1 } ]
-    }]
-    expect(getAttributeNames(data)).toEqual([ 'strength' ])
   })
 })
 

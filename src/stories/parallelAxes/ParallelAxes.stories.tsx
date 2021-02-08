@@ -6,6 +6,7 @@ import { parallelAxesData } from 'tests/testdata'
 
 export const ParallelAxesComponent = (): JSX.Element => (
   <ParallelAxes
+    attributes={['strength', 'intelligence', 'luck']}
     data={parallelAxesData}
   />
 )

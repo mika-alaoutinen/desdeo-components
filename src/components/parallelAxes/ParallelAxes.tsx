@@ -3,25 +3,25 @@ import { VictoryAxis, VictoryChart } from 'victory'
 
 import AttributeLabels from './AttributeLabels'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
-import { getAttributeNames, getMaxAttributeValues } from './dataParser'
+import { getMaxAttributeValues } from './dataParser'
 import { normalizeData } from './dataTransformations'
 import { layout } from './layout'
 import { drawBrushLines, drawLines } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
 
 interface Props {
+  attributes: string[],
   data: ParallelAxesData[]
 }
 
 export type Domain = [number, number]
 
-const ParallelAxes: React.FC<Props> = ({ data }) => {
+const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
   const [ filters, setFilters ] = useState<Filter[]>([])
 
   // Init constants
   const datasets = normalizeData(data)
-  const attributeNames = getAttributeNames(data)
   const maxAttributeValues = getMaxAttributeValues(data)
 
   // All datasets are active on component load
@@ -42,11 +42,11 @@ const ParallelAxes: React.FC<Props> = ({ data }) => {
   }
 
   const drawAxes = (): JSX.Element[] =>
-    attributeNames.map((attribute, i) =>
+    attributes.map((attribute, i) =>
       <VictoryAxis dependentAxis
         key={i}
         axisComponent={drawBrushLines(attribute, onDomainChange)}
-        offsetX={calculateAxisOffset(i, attributeNames.length)}
+        offsetX={calculateAxisOffset(i, attributes.length)}
         style={{
           tickLabels: {
             fontSize: 15,
