@@ -1,28 +1,29 @@
 import React from 'react'
 import { NormalizedData } from 'types/dataTypes'
-import { VictoryBrushLine, VictoryLine } from 'victory'
+import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
 import { Domain } from './ParallelAxes'
 
 type OnDomainChange = (domainTuple: Domain, name?: string) => void
 
-// const drawAxes = (): JSX.Element[] =>
-//   attributeNames.map((attribute, i) =>
-//     <VictoryAxis dependentAxis
-//       key={i}
-//       axisComponent={drawBrushLines(attribute, onDomainChange)}
-//       offsetX={calculateAxisOffset(i, attributeNames.length)}
-//       style={{
-//         tickLabels: {
-//           fontSize: 15,
-//           padding: 15,
-//           pointerEvents: 'none'
-//         },
-//       }}
-//       tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-//       tickFormat={(tick) => Math.round(tick * maxAttributeValues[i])}
-//     />
-//   )
+const drawAxis = (
+  attribute: string, offsetX: number, tickValue: number, onDomainChange: OnDomainChange
+): JSX.Element =>
+  <VictoryAxis
+    key={attribute}
+    axisComponent={drawBrushLine(attribute, onDomainChange)}
+    dependentAxis
+    offsetX={offsetX}
+    style={{
+      tickLabels: {
+        fontSize: 15,
+        padding: 15,
+        pointerEvents: 'none'
+      },
+    }}
+    tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
+    tickFormat={(tick) => Math.round(tick * tickValue)}
+  />
 
 const drawBrushLine = (
   attribute: string, onDomainChange: OnDomainChange
@@ -48,6 +49,4 @@ const drawLine = (
     } }}
   />
 
-export {
-  drawBrushLine, drawLine
-}
+export { drawAxis, drawBrushLine, drawLine }

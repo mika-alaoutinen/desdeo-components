@@ -6,7 +6,7 @@ import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 import { getMaxAttributeValues } from './dataParser'
 import { normalizeData } from './dataTransformations'
 import { layout } from './layout'
-import { drawBrushLine, drawLine } from './rendering'
+import { drawAxis, drawBrushLine, drawLine } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
 
 interface Props {
@@ -41,11 +41,12 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
     setActiveDataSets(getActiveDatasets(datasets, filters))
   }
 
-  const drawAxes = (): JSX.Element[] =>
+  const drawAxesOld = (): JSX.Element[] =>
     attributes.map((attribute, i) =>
-      <VictoryAxis dependentAxis
-        key={i}
+      <VictoryAxis
+        key={attribute}
         axisComponent={drawBrushLine(attribute, onDomainChange)}
+        dependentAxis
         offsetX={calculateAxisOffset(i, attributes.length)}
         style={{
           tickLabels: {
@@ -58,6 +59,13 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
         tickFormat={(tick) => Math.round(tick * maxAttributeValues[i])}
       />
     )
+
+  const drawAxes = (): JSX.Element[] =>
+    attributes.map((attribute, i) => {
+      const offsetX = calculateAxisOffset(i, attributes.length)
+      const tickValue = maxAttributeValues[i]
+      return drawAxis(attribute, offsetX, tickValue, onDomainChange)
+    })
 
   const drawLines = (): JSX.Element[] =>
     datasets.map(dataset => {
