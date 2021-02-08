@@ -29,8 +29,32 @@ const testdata: DataSet = [
 const groupedByAlternatives: CoordinateSet[] = createAlternativeSets(testdata)
 const groupedByCriteria: CoordinateSet[] = createCriteriaSets(testdata)
 
+// name = alternative
+// attributes = criteria
+// { name = criterion }
+const parallelAxes: ParallelAxesData[] = [
+  {
+    name: 'Alternative 1',
+    attributes: [
+      { name: 'WQ Fishery', value: 5.758127 },
+      { name: 'WQ City', value: 3.17527 },
+      { name: 'ROI', value: 6.090291 },
+      { name: 'City Tax', value: 2.444406 },
+    ]
+  },
+  {
+    name: 'Alternative 2',
+    attributes: [
+      { name: 'WQ Fishery', value: 6.042483 },
+      { name: 'WQ City', value: 3.410843 },
+      { name: 'ROI', value: 6.887735 },
+      { name: 'City Tax', value: 8.989781 },
+    ]
+  },
+]
+
 // Should work to get rid of these datasets in favor of a universal data shape
-export const parallelAxesData: ParallelAxesData[] = [
+const parallelAxesData: ParallelAxesData[] = [
   {
     name: 'Adrien',
     attributes: [
@@ -66,5 +90,9 @@ const coordinateData: Coordinate[] = [
 ]
 
 export {
-  coordinateData, groupedByAlternatives, groupedByCriteria
+  coordinateData,
+  groupedByAlternatives,
+  groupedByCriteria,
+  parallelAxes,
+  parallelAxesData
 }

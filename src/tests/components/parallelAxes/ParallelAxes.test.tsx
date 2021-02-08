@@ -7,7 +7,11 @@ import { parallelAxesData } from 'tests/testdata'
 import ParallelAxes from 'components/parallelAxes/ParallelAxes'
 
 // Constants
-const component = <ParallelAxes data={parallelAxesData} />
+const component =
+  <ParallelAxes
+    attributes={['strength', 'intelligence', 'luck']}
+    data={parallelAxesData}
+  />
 
 describe('ParallelAxes is rendered correctly', () => {
   it('chart is rendered', () => {
