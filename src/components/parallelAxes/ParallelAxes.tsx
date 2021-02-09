@@ -1,86 +1,50 @@
 import React, { useEffect, useState } from 'react'
-import { VictoryAxis, VictoryBrushLine, VictoryChart, VictoryLine } from 'victory'
+import { VictoryChart } from 'victory'
 
 import AttributeLabels from './AttributeLabels'
-import { getAttributeNames, getMaxAttributeValues } from './dataParser'
 import { layout } from './layout'
-import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
-import { normalizeData } from './dataTransformations'
+import { drawAxis, drawBrushLine, drawLine } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
+import { DomainTuple } from 'types/victoryTypes'
+import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
-  data: ParallelAxesData[]
+  attributes: string[],
+  data: ParallelAxesData[],
+  maxTickValues: number[]
 }
 
-type Domain = [number, number] | null
-
-const ParallelAxes: React.FC<Props> = ({ data }) => {
+const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
   const [ filters, setFilters ] = useState<Filter[]>([])
 
-  // Init constants
-  const datasets = normalizeData(data)
-  const attributeNames = getAttributeNames(data)
-  const maxAttributeValues = getMaxAttributeValues(data)
-
   // All datasets are active on component load
   useEffect(() => {
-    setActiveDataSets(datasets.map(dataset => dataset.name))
+    setActiveDataSets(data.map(dataset => dataset.label))
   }, [])
 
   // Event handler for vertical brush filters
-  const onDomainChange = (domainTuple: Domain, name?: string): void => {
-    if (!name || !domainTuple) {
+  const onDomainChange = (domain: DomainTuple, name?: string): void => {
+    if (!name || !domain) {
       return
     }
-    // The domain numbers emitted by VictoryBrushLine are in the wrong order of [max, min].
-    // Flip the numbers around so that they make sense as a range.
-    const domain: [number, number] = [domainTuple[1], domainTuple[0]]
     setFilters(addNewFilters(filters, domain, name))
-    setActiveDataSets(getActiveDatasets(datasets, filters))
+    setActiveDataSets(getActiveDatasets(data, filters))
   }
 
-  // Draw chart elements. For whatever reason putting the rendering code
-  // into a separate React component destroyes the layout of all charts.
   const drawAxes = (): JSX.Element[] =>
-    attributeNames.map((attribute, i) =>
-      <VictoryAxis dependentAxis
-        key={i}
-        axisComponent={drawBrushLines(attribute)}
-        offsetX={calculateAxisOffset(i, attributeNames.length)}
-        style={{
-          tickLabels: {
-            fontSize: 15,
-            padding: 15,
-            pointerEvents: 'none'
-          },
-        }}
-        tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-        tickFormat={(tick) => Math.round(tick * maxAttributeValues[i])}
-      />
-    )
+    attributes.map((attribute, i) => {
+      const brushLine = drawBrushLine(attribute, onDomainChange)
+      const offsetX = calculateAxisOffset(i, attributes.length)
+      const tickValue = maxTickValues[i]
+      return drawAxis(brushLine, offsetX, tickValue)
+    })
 
-  const drawBrushLines = (attribute: string): JSX.Element =>
-    <VictoryBrushLine
-      name={attribute}
-      onBrushDomainChange={(domain, props) =>
-        onDomainChange(domain as [number, number], props?.name)}
-      width={20}
-    />
-
-const drawLines = (): JSX.Element[] =>
-  datasets.map(dataset =>
-    <VictoryLine
-      key={dataset.name}
-      name={dataset.name}
-      data={dataset.data}
-      groupComponent={<g/>}
-      style={{ data: {
-        stroke: 'tomato',
-        opacity: activeDatasets.includes(dataset.name) ? 1 : 0.2
-      } }}
-    />
-  )
+  const drawLines = (): JSX.Element[] =>
+    data.map(dataset => {
+      const opacity = activeDatasets.includes(dataset.label) ? 1 : 0.2
+      return drawLine(dataset, opacity)
+    })
 
   return (
     <VictoryChart

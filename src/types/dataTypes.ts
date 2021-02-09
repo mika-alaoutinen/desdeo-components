@@ -1,48 +1,40 @@
 // A dataset can have any number of columns
-export type DataSet = DataColumn[]
+type DataSet = DataColumn[]
 
 // Represents a column in the example CSV
-export interface DataColumn {
+interface DataColumn {
   label: string,
   data: number[]
 }
 
-// Should work to get rid of these in favor of a universal data shape
-export interface Coordinate {
-  id: string, // unique identifier
+interface Coordinate {
+  id: string,
   x: number,
   y: number,
   label?: string,
   isSelected?: boolean
 }
 
-export interface CoordinateSet {
-  data: Coordinate[],
-  label?: string
+interface CoordinateSet {
+  data: Coordinate[]
 }
 
-export interface NormalizedData {
-  name: string,
-  data: TextualData[]
+interface ParallelAxesData {
+  label: string,
+  attributes: Attribute[]
 }
 
-export interface TextualData {
+interface Attribute {
   x: string,
   y: number
 }
 
-// Temporary interfaces for test data
-export interface ParallelAxesData {
-  name: string,
-  attributes: Attribute[]
-}
-
-export interface Attribute {
-  name: string,
-  value: number
-}
-
-export interface Filter {
+interface Filter {
   attribute: string,
   range: [ number, number ]
+}
+
+export type {
+  DataColumn, DataSet, Coordinate, CoordinateSet,
+  ParallelAxesData, Attribute, Filter
 }

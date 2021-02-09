@@ -6,8 +6,15 @@ import { parallelAxesData } from 'tests/testdata'
 
 import ParallelAxes from 'components/parallelAxes/ParallelAxes'
 
+const attributes = ['wq fishery', 'wq city', 'roi', 'city tax']
+
 // Constants
-const component = <ParallelAxes data={parallelAxesData} />
+const component =
+  <ParallelAxes
+    attributes={attributes}
+    data={parallelAxesData}
+    maxTickValues={[ 6.1, 3.5, 6.9, 9.0 ]}
+  />
 
 describe('ParallelAxes is rendered correctly', () => {
   it('chart is rendered', () => {
@@ -20,22 +27,21 @@ describe('ParallelAxes is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has attribute labels strength, intelligence and luck', () => {
+  it('has given attribute labels', () => {
     render(component)
-    const attributes = [ 'strength', 'intelligence', 'luck' ]
     attributes.forEach(attribute =>
       expect(screen.getByText(attribute)).toBeTruthy())
   })
 
-  it('has three vertical brush bars', () => {
+  it('has four vertical brush bars', () => {
     const { container } = render(component)
     const brushBars = container.querySelectorAll('rect[role="presentation"]')
-    expect(brushBars).toHaveLength(3)
+    expect(brushBars).toHaveLength(4)
   })
 
-  it('has three lines representing datasets', () => {
+  it('has two lines representing datasets', () => {
     const { container } = render(component)
     const lines = container.querySelectorAll('path[role="presentation"]')
-    expect(lines).toHaveLength(3)
+    expect(lines).toHaveLength(2)
   })
 })
