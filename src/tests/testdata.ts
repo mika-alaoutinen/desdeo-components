@@ -26,13 +26,11 @@ const testdata: DataSet = [
   }
 ]
 
+// Larger datasets created with data transformation functions
 const groupedByAlternatives: CoordinateSet[] = createAlternativeSets(testdata)
 const groupedByCriteria: CoordinateSet[] = createCriteriaSets(testdata)
 
-// name = alternative
-// attributes = criteria
-// { name = criterion }
-const parallelAxes: ParallelAxesData[] = [
+const parallelAxesData: ParallelAxesData[] = [
   {
     label: 'Alternative 1',
     attributes: [
@@ -62,5 +60,5 @@ const coordinateData: Coordinate[] = [
 ]
 
 export {
-  coordinateData, groupedByAlternatives, groupedByCriteria, parallelAxes
+  coordinateData, groupedByAlternatives, groupedByCriteria, parallelAxesData
 }

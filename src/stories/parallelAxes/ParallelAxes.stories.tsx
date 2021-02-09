@@ -3,10 +3,10 @@ import { Meta } from '@storybook/react'
 
 import ParallelAxes from 'components/parallelAxes/ParallelAxes'
 import ParallelAxesWrapper from 'components/parallelAxesWrapper/ParallelAxesWrapper'
-import { parallelAxes } from 'tests/testdata'
+import { parallelAxesData } from 'tests/testdata'
 
 export const ParallelAxesComponent = (): JSX.Element =>
-  <ParallelAxesWrapper data={parallelAxes} />
+  <ParallelAxesWrapper data={parallelAxesData} />
 
 export default {
   title: 'DESDEO/ParallelAxes',

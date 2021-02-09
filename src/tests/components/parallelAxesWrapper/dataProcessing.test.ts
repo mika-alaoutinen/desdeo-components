@@ -1,5 +1,5 @@
 import { normalizedData } from './normalizedDatasets'
-import { parallelAxes } from 'tests/testdata'
+import { parallelAxesData } from 'tests/testdata'
 import { ParallelAxesData } from 'types/dataTypes'
 
 import {
@@ -8,7 +8,7 @@ import {
 
 describe('Data is cleaned up by sanitizing inputs and normalizing values', () => {
   it('data should be normalized', () => {
-    expect(normalizeData(parallelAxes)).toEqual(normalizedData)
+    expect(normalizeData(parallelAxesData)).toEqual(normalizedData)
   })
 
   it('data should be sanitized', () => {

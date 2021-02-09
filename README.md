@@ -56,3 +56,7 @@ Launches Storybook for local development.
 ```
 npm run storybook
 ```
+
+## TODO
+- Consider if data sanitization is necessary with parallel coordinates.
+- Add data transformation DataSet => ParallelAxesData

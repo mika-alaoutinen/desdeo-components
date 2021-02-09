@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { renderComponent, renderVictoryContainer } from 'tests/components/componentTests'
-import { parallelAxes } from 'tests/testdata'
+import { parallelAxesData } from 'tests/testdata'
 
 import ParallelAxes from 'components/parallelAxes/ParallelAxes'
 
@@ -12,7 +12,7 @@ const attributes = ['wq fishery', 'wq city', 'roi', 'city tax']
 const component =
   <ParallelAxes
     attributes={attributes}
-    data={parallelAxes}
+    data={parallelAxesData}
     maxTickValues={[ 6.1, 3.5, 6.9, 9.0 ]}
   />
 
