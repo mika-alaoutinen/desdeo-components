@@ -3,8 +3,7 @@ import { Attribute, ParallelAxesData } from 'types/dataTypes'
 const getAttributeNames = (data: ParallelAxesData[]): string[] => {
   const labels = data
     .flatMap(datum => datum.attributes)
-    .map(attribute => attribute.x)
-    .map(label => label.toLowerCase())
+    .map(({ x }) => x.toLowerCase())
 
   return [...new Set(labels)]
 }
