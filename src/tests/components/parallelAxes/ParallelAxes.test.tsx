@@ -11,6 +11,7 @@ const component =
   <ParallelAxes
     attributes={['strength', 'intelligence', 'luck']}
     data={parallelAxesData}
+    maxTickValues={[ 15, 30, 17 ]}
   />
 
 describe('ParallelAxes is rendered correctly', () => {
