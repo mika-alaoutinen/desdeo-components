@@ -8,13 +8,14 @@ const getAttributeNames = (data: ParallelAxesData[]): string[] => {
   return [...new Set(labels)]
 }
 
-// Find the maximum attribute values for each axis.
-// The max values will be used to normalize data and re-scale axis ticks.
 const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
   const attributes = data.flatMap(datum => datum.attributes)
   const grouped = groupByName(attributes)
   return grouped.map(findByMaxValue)
 }
+
+const getMaxValues = (data: ParallelAxesData[]): number[] =>
+  getMaxAttributes(data).map(attribute => attribute.y)
 
 // Utility functions
 const groupByName = (attributes: Attribute[]): Attribute[][] => {
@@ -42,4 +43,4 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
   )
 }
 
-export { getAttributeNames, getMaxAttributes }
+export { getAttributeNames, getMaxAttributes, getMaxValues }
