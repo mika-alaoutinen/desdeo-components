@@ -3,7 +3,7 @@ import { VictoryChart } from 'victory'
 
 import AttributeLabels from './AttributeLabels'
 import { getMaxAttributeValues } from './dataParser'
-import { normalizeData } from './dataTransformations'
+import { normalizeData } from '../parallelAxesWrapper/dataProcessing'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
