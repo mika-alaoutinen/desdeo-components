@@ -1,14 +1,5 @@
-import { getMaxAttributes } from '../parallelAxes/dataParser'
+import { getMaxAttributes } from './dataParser'
 import { Attribute, ParallelAxesData } from 'types/dataTypes'
-
-const getAttributeNames = (data: ParallelAxesData[]): string[] => {
-  const labels = data
-    .flatMap(datum => datum.attributes)
-    .map(attribute => attribute.x)
-    .map(label => label.toLowerCase())
-
-  return [...new Set(labels)]
-}
 
 const normalizeData = (data: ParallelAxesData[]): ParallelAxesData[] => {
   const maxAttributes = getMaxAttributes(data)
@@ -43,4 +34,4 @@ const labelsToLowerCase = (attributes: Attribute[]): Attribute[] =>
     x: attribute.x.toLowerCase()
   }))
 
-export { getAttributeNames, normalizeData, sanitizeData }
+export { normalizeData, sanitizeData }
