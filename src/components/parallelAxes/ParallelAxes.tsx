@@ -5,6 +5,7 @@ import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
 import { Filter, ParallelAxesData } from 'types/dataTypes'
+import { DomainTuple } from 'types/victoryTypes'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
@@ -12,8 +13,6 @@ interface Props {
   data: ParallelAxesData[],
   maxTickValues: number[]
 }
-
-export type Domain = [number, number]
 
 const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
   const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
@@ -25,13 +24,10 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
   }, [])
 
   // Event handler for vertical brush filters
-  const onDomainChange = (domainTuple: Domain, name?: string): void => {
-    if (!name || !domainTuple) {
+  const onDomainChange = (domain: DomainTuple, name?: string): void => {
+    if (!name || !domain) {
       return
     }
-    // The domain numbers emitted by VictoryBrushLine are in the wrong order of [max, min].
-    // Flip the numbers around so that they make sense as a range.
-    const domain: [number, number] = [domainTuple[1], domainTuple[0]]
     setFilters(addNewFilters(filters, domain, name))
     setActiveDataSets(getActiveDatasets(data, filters))
   }

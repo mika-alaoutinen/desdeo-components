@@ -1,10 +1,10 @@
 import React from 'react'
-import { ParallelAxesData } from 'types/dataTypes'
 import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
-import { Domain } from './ParallelAxes'
+import { ParallelAxesData } from 'types/dataTypes'
+import { DomainTuple } from 'types/victoryTypes'
 
-type OnDomainChange = (domainTuple: Domain, name?: string) => void
+type OnDomainChange = (domainTuple: DomainTuple, name?: string) => void
 
 const drawAxis = (
   axisComponent: JSX.Element, offsetX: number, tickValue: number
@@ -31,8 +31,12 @@ const drawBrushLine = (
   <VictoryBrushLine
     key={attribute}
     name={attribute}
-    onBrushDomainChange={(domain, props) =>
-      onDomainChange(domain as [number, number], props?.name)}
+    // The domain numbers receoved from the component are in the wrong order of [max, min].
+    // Flip the numbers around so that they make sense as a range.
+    onBrushDomainChange={(domain, props) => {
+      const domainTuple: DomainTuple = [domain[1] as number, domain[0] as number]
+      return onDomainChange(domainTuple, props?.name)
+    }}
     width={20}
   />
 
