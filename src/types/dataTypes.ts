@@ -19,13 +19,8 @@ interface CoordinateSet {
   data: Coordinate[]
 }
 
-interface NormalizedData {
-  name: string,
-  data: Attribute[]
-}
-
 interface ParallelAxesData {
-  name: string,
+  label: string,
   attributes: Attribute[]
 }
 
@@ -41,5 +36,5 @@ interface Filter {
 
 export type {
   DataColumn, DataSet, Coordinate, CoordinateSet,
-  NormalizedData, ParallelAxesData, Attribute, Filter
+  ParallelAxesData, Attribute, Filter
 }

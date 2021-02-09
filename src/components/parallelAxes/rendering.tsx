@@ -1,5 +1,5 @@
 import React from 'react'
-import { NormalizedData } from 'types/dataTypes'
+import { ParallelAxesData } from 'types/dataTypes'
 import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
 import { Domain } from './ParallelAxes'
@@ -37,12 +37,12 @@ const drawBrushLine = (
   />
 
 const drawLine = (
-  { data, name }: NormalizedData, opacity: number
+  { attributes, label }: ParallelAxesData, opacity: number
 ): JSX.Element =>
   <VictoryLine
-    key={name}
-    name={name}
-    data={data}
+    key={label}
+    name={label}
+    data={attributes}
     groupComponent={<g/>}
     style={{ data: {
       stroke: 'tomato',

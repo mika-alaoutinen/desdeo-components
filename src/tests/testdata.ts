@@ -34,7 +34,7 @@ const groupedByCriteria: CoordinateSet[] = createCriteriaSets(testdata)
 // { name = criterion }
 const parallelAxes: ParallelAxesData[] = [
   {
-    name: 'Alternative 1',
+    label: 'Alternative 1',
     attributes: [
       { x: 'WQ Fishery', y: 5.758127 },
       { x: 'WQ City', y: 3.17527 },
@@ -43,7 +43,7 @@ const parallelAxes: ParallelAxesData[] = [
     ]
   },
   {
-    name: 'Alternative 2',
+    label: 'Alternative 2',
     attributes: [
       { x: 'WQ Fishery', y: 6.042483 },
       { x: 'WQ City', y: 3.410843 },
@@ -56,7 +56,7 @@ const parallelAxes: ParallelAxesData[] = [
 // Should work to get rid of these datasets in favor of a universal data shape
 const parallelAxesData: ParallelAxesData[] = [
   {
-    name: 'Adrien',
+    label: 'Adrien',
     attributes: [
       { x: 'strength', y: 5 },
       { x: 'intelligence', y: 30 },
@@ -64,7 +64,7 @@ const parallelAxesData: ParallelAxesData[] = [
     ]
   },
   {
-    name: 'Brice',
+    label: 'Brice',
     attributes: [
       { x: 'strength', y: 10 },
       { x: 'intelligence', y: 25 },
@@ -72,7 +72,7 @@ const parallelAxesData: ParallelAxesData[] = [
     ]
   },
   {
-    name: 'Casey',
+    label: 'Casey',
     attributes: [
       { x: 'strength', y: 15 },
       { x: 'intelligence', y: 20 },

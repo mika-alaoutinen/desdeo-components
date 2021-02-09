@@ -11,11 +11,11 @@ describe('Data should be normalized', () => {
 
   it('data is sanitized before it is normalized', () => {
     const unsanitized: ParallelAxesData[] = [{
-      name: 'Adrien',
+      label: 'Adrien',
       attributes: [{ x: 'sTrENGth', y: 5 }]
     }]
 
     const sanitized = normalizeData(unsanitized)
-    expect(sanitized[0].data[0].x).toEqual('strength')
+    expect(sanitized[0].attributes[0].x).toEqual('strength')
   })
 })

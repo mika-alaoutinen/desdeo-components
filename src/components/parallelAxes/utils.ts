@@ -1,5 +1,5 @@
 import { layout as defaultLayout } from './layout'
-import { Filter, NormalizedData } from 'types/dataTypes'
+import { Filter, ParallelAxesData } from 'types/dataTypes'
 import { Layout } from 'types/layoutTypes'
 
 export const addNewFilters = (
@@ -34,14 +34,14 @@ export const calculateAxisOffset = (
   return step * index + padding.left
 }
 
-export const getActiveDatasets = (datasets: NormalizedData[], filters: Filter[]): string[] =>
+export const getActiveDatasets = (datasets: ParallelAxesData[], filters: Filter[]): string[] =>
   datasets
-    .map(dataset => isDatasetActive(dataset, filters) ? dataset.name : '')
+    .map(dataset => isDatasetActive(dataset, filters) ? dataset.label : '')
     .filter(Boolean)
 
-const isDatasetActive = (dataset: NormalizedData, filters: Filter[]): boolean =>
+const isDatasetActive = (dataset: ParallelAxesData, filters: Filter[]): boolean =>
   filters.every(({ attribute, range }) => {
-    const y = dataset.data.find(({ x }) => x === attribute)?.y
+    const y = dataset.attributes.find(({ x }) => x === attribute)?.y
     return y ? isNumberInRange(y, range) : false
   })
 

@@ -26,7 +26,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
 
   // All datasets are active on component load
   useEffect(() => {
-    setActiveDataSets(datasets.map(dataset => dataset.name))
+    setActiveDataSets(datasets.map(dataset => dataset.label))
   }, [])
 
   // Event handler for vertical brush filters
@@ -51,7 +51,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data }) => {
 
   const drawLines = (): JSX.Element[] =>
     datasets.map(dataset => {
-      const opacity = activeDatasets.includes(dataset.name) ? 1 : 0.2
+      const opacity = activeDatasets.includes(dataset.label) ? 1 : 0.2
       return drawLine(dataset, opacity)
     })
 
