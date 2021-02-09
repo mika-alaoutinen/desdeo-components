@@ -2,13 +2,13 @@ import { ParallelAxesData, Attribute } from 'types/dataTypes'
 
 // Find the maximum attribute values for each axis.
 // The max values will be used to normalize data and re-scale axis ticks.
-export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
+const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
   const attributes = data.flatMap(datum => datum.attributes)
   const grouped = groupByName(attributes)
   return grouped.map(findByMaxValue)
 }
 
-export const getMaxAttributeValues = (data: ParallelAxesData[]): number[] =>
+const getMaxAttributeValues = (data: ParallelAxesData[]): number[] =>
   getMaxAttributes(data).map(attribute => attribute.y)
 
 // Utility functions
@@ -36,3 +36,5 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
     , initial
   )
 }
+
+export { getMaxAttributes, getMaxAttributeValues }

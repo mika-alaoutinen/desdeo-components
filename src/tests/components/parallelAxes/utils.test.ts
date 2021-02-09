@@ -1,4 +1,4 @@
-import { normalizedData } from './normalizedDatasets'
+import { normalizedData } from '../parallelAxesWrapper/normalizedDatasets'
 import { Filter } from 'types/dataTypes'
 import { Layout } from 'types/layoutTypes'
 
