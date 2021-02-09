@@ -2,7 +2,7 @@ import React from 'react'
 
 import ParallelAxes from 'components/parallelAxes/ParallelAxes'
 import { normalizeData, sanitizeData } from './dataProcessing'
-import { getAttributeNames, getMaxAttributeValues } from './dataParser'
+import { getAttributeNames, getMaxAttributes } from './dataParser'
 import { ParallelAxesData } from 'types/dataTypes'
 
 interface Props {
@@ -16,12 +16,14 @@ interface Props {
  */
 const ParallelAxesWrapper: React.FC<Props> = ({ data }) => {
   const cleanData = normalizeData(sanitizeData(data))
+  const attributes = getAttributeNames(cleanData)
+  const maxValues = getMaxAttributes(data).map(attribute => attribute.y)
 
   return (
     <ParallelAxes
-      attributes={getAttributeNames(cleanData)}
+      attributes={attributes}
       data={cleanData}
-      maxTickValues={getMaxAttributeValues(data)}
+      maxTickValues={maxValues}
     />
   )
 }

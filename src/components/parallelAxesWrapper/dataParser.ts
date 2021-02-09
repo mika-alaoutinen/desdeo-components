@@ -9,9 +9,6 @@ const getAttributeNames = (data: ParallelAxesData[]): string[] => {
   return [...new Set(labels)]
 }
 
-const getMaxAttributeValues = (data: ParallelAxesData[]): number[] =>
-  getMaxAttributes(data).map(attribute => attribute.y)
-
 // Find the maximum attribute values for each axis.
 // The max values will be used to normalize data and re-scale axis ticks.
 const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
@@ -46,4 +43,4 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
   )
 }
 
-export { getAttributeNames, getMaxAttributes, getMaxAttributeValues }
+export { getAttributeNames, getMaxAttributes }
