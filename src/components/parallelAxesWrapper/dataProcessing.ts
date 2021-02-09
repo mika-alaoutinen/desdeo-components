@@ -1,14 +1,11 @@
 import { getMaxAttributes } from './dataParser'
 import { Attribute, ParallelAxesData } from 'types/dataTypes'
 
-const normalizeData = (data: ParallelAxesData[]): ParallelAxesData[] => {
-  const maxAttributes = getMaxAttributes(data)
-
-  return data.map(({ label, attributes }) => ({
+const normalizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
+  data.map(({ label, attributes }) => ({
     label,
-    attributes: normalizeAttributes(attributes, maxAttributes)
+    attributes: normalizeAttributes(attributes, getMaxAttributes(data))
   }))
-}
 
 const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
   data.map(datum => ({
@@ -22,9 +19,9 @@ const normalizeAttributes = (
 ): Attribute[] => {
   const maxValues = maxAttributes.map(attribute => attribute.y)
 
-  return attributes.map((attribute, i) => ({
-    x: attribute.x,
-    y: attribute.y / maxValues[i]
+  return attributes.map(({ x, y }, i) => ({
+    x,
+    y: y / maxValues[i]
   }))
 }
 
