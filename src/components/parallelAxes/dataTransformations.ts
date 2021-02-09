@@ -16,11 +16,11 @@ export const normalizeData = (rawData: ParallelAxesData[]): NormalizedData[] => 
 const normalizeAttributes = (
   attributes: Attribute[], maxAttributes: Attribute[]
 ): TextualData[] => {
-  const maxValues = maxAttributes.map(attribute => attribute.value)
+  const maxValues = maxAttributes.map(attribute => attribute.y)
 
   return attributes.map((attribute, i) => ({
-    x: attribute.name,
-    y: attribute.value / maxValues[i]
+    x: attribute.x,
+    y: attribute.y / maxValues[i]
   }))
 }
 
@@ -33,5 +33,5 @@ const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
 const namesToLowerCase = (attributes: Attribute[]): Attribute[] =>
   attributes.map(attribute => ({
     ...attribute,
-    name: attribute.name.toLowerCase()
+    name: attribute.x.toLowerCase()
   }))

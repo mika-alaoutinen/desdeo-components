@@ -36,19 +36,19 @@ const parallelAxes: ParallelAxesData[] = [
   {
     name: 'Alternative 1',
     attributes: [
-      { name: 'WQ Fishery', value: 5.758127 },
-      { name: 'WQ City', value: 3.17527 },
-      { name: 'ROI', value: 6.090291 },
-      { name: 'City Tax', value: 2.444406 },
+      { x: 'WQ Fishery', y: 5.758127 },
+      { x: 'WQ City', y: 3.17527 },
+      { x: 'ROI', y: 6.090291 },
+      { x: 'City Tax', y: 2.444406 },
     ]
   },
   {
     name: 'Alternative 2',
     attributes: [
-      { name: 'WQ Fishery', value: 6.042483 },
-      { name: 'WQ City', value: 3.410843 },
-      { name: 'ROI', value: 6.887735 },
-      { name: 'City Tax', value: 8.989781 },
+      { x: 'WQ Fishery', y: 6.042483 },
+      { x: 'WQ City', y: 3.410843 },
+      { x: 'ROI', y: 6.887735 },
+      { x: 'City Tax', y: 8.989781 },
     ]
   },
 ]
@@ -58,25 +58,25 @@ const parallelAxesData: ParallelAxesData[] = [
   {
     name: 'Adrien',
     attributes: [
-      { name: 'strength', value: 5 },
-      { name: 'intelligence', value: 30 },
-      { name: 'luck', value: 17 }
+      { x: 'strength', y: 5 },
+      { x: 'intelligence', y: 30 },
+      { x: 'luck', y: 17 }
     ]
   },
   {
     name: 'Brice',
     attributes: [
-      { name: 'strength', value: 10 },
-      { name: 'intelligence', value: 25 },
-      { name: 'luck', value: 8 }
+      { x: 'strength', y: 10 },
+      { x: 'intelligence', y: 25 },
+      { x: 'luck', y: 8 }
     ]
   },
   {
     name: 'Casey',
     attributes: [
-      { name: 'strength', value: 15 },
-      { name: 'intelligence', value: 20 },
-      { name: 'luck', value: 15 }
+      { x: 'strength', y: 15 },
+      { x: 'intelligence', y: 20 },
+      { x: 'luck', y: 15 }
     ]
   },
 ]

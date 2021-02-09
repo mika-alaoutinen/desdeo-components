@@ -9,28 +9,28 @@ export const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
 }
 
 export const getMaxAttributeValues = (data: ParallelAxesData[]): number[] =>
-  getMaxAttributes(data).map(attribute => attribute.value)
+  getMaxAttributes(data).map(attribute => attribute.y)
 
 // Utility functions
 const groupByName = (attributes: Attribute[]): Attribute[][] => {
   const groups = new Map<string, Attribute[]>(
-    attributes.map(attribute => [ attribute.name.toLowerCase(), [] ])
+    attributes.map(attribute => [ attribute.x.toLowerCase(), [] ])
   )
 
   attributes.forEach(attribute =>
-    groups.get(attribute.name)?.push(attribute))
+    groups.get(attribute.x)?.push(attribute))
 
   return [...groups.values()]
 }
 
 const findByMaxValue = (attributes: Attribute[]): Attribute => {
   const initial: Attribute = {
-    name: '',
-    value: -1
+    x: '',
+    y: -1
   }
 
   return attributes.reduce((currentMax, attribute) =>
-    attribute.value > currentMax.value
+    attribute.y > currentMax.y
       ? attribute
       : currentMax
     , initial

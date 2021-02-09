@@ -37,8 +37,8 @@ export interface ParallelAxesData {
 }
 
 export interface Attribute {
-  name: string,
-  value: number
+  x: string,
+  y: number
 }
 
 export interface Filter {

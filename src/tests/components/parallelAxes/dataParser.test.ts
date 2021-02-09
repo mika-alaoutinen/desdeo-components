@@ -6,9 +6,9 @@ import { getMaxAttributes, getMaxAttributeValues } from 'components/parallelAxes
 describe('getMaxAttributes finds the attributes with largest values in a dataset', () => {
   it('maps attributes as an array with max values', () => {
     const expected: Attribute[] = [
-      { name: 'strength', value: 15 },
-      { name: 'intelligence', value: 30 },
-      { name: 'luck', value: 17 }
+      { x: 'strength', y: 15 },
+      { x: 'intelligence', y: 30 },
+      { x: 'luck', y: 17 }
     ]
     expect(getMaxAttributes(parallelAxesData)).toEqual(expected)
   })
