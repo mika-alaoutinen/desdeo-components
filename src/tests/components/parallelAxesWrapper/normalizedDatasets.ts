@@ -2,27 +2,21 @@ import { ParallelAxesData } from 'types/dataTypes'
 
 export const normalizedData: ParallelAxesData[] = [
   {
-    label: 'Adrien',
+    label: 'Alternative 1',
     attributes: [
-      { x: 'strength', y: 0.3333333333333333 },
-      { x: 'intelligence', y: 1 },
-      { x: 'luck', y: 1 }
+      { x: 'wq fishery', y: 0.9529405378550507 },
+      { x: 'wq city', y: 0.9309340828645587 },
+      { x: 'roi', y: 0.8842226072867204 },
+      { x: 'city tax', y: 0.27190940468961367 },
     ]
   },
   {
-    label: 'Brice',
+    label: 'Alternative 2',
     attributes: [
-      { x: 'strength', y: 0.6666666666666666 },
-      { x: 'intelligence', y: 0.8333333333333334 },
-      { x: 'luck', y: 0.47058823529411764 }
-    ]
-  },
-  {
-    label: 'Casey',
-    attributes: [
-      { x: 'strength', y: 1 },
-      { x: 'intelligence', y: 0.6666666666666666 },
-      { x: 'luck', y: 0.8823529411764706 },
+      { x: 'wq fishery', y: 1 },
+      { x: 'wq city', y: 1 },
+      { x: 'roi', y: 1 },
+      { x: 'city tax', y: 1 },
     ]
   },
 ]

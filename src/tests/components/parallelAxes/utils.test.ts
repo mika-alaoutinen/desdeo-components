@@ -55,7 +55,8 @@ describe('calculateAxisOffset calculates offset based on given layout', () => {
 
 describe('getActiveDatasets finds active datasets', () => {
   it('all datasets are active when filters are empty', () => {
-    expect(getActiveDatasets(normalizedData, [])).toEqual([ 'Adrien', 'Brice', 'Casey' ])
+    const activeSets = getActiveDatasets(normalizedData, [])
+    expect(activeSets).toEqual([ 'Alternative 1', 'Alternative 2' ])
   })
 
   it('filtered datasets are not active', () => {

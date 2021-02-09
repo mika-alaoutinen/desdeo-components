@@ -36,47 +36,19 @@ const parallelAxes: ParallelAxesData[] = [
   {
     label: 'Alternative 1',
     attributes: [
-      { x: 'WQ Fishery', y: 5.758127 },
-      { x: 'WQ City', y: 3.17527 },
-      { x: 'ROI', y: 6.090291 },
-      { x: 'City Tax', y: 2.444406 },
+      { x: 'wq fishery', y: 5.758127 },
+      { x: 'wq city', y: 3.17527 },
+      { x: 'roi', y: 6.090291 },
+      { x: 'city tax', y: 2.444406 },
     ]
   },
   {
     label: 'Alternative 2',
     attributes: [
-      { x: 'WQ Fishery', y: 6.042483 },
-      { x: 'WQ City', y: 3.410843 },
-      { x: 'ROI', y: 6.887735 },
-      { x: 'City Tax', y: 8.989781 },
-    ]
-  },
-]
-
-// Should work to get rid of these datasets in favor of a universal data shape
-const parallelAxesData: ParallelAxesData[] = [
-  {
-    label: 'Adrien',
-    attributes: [
-      { x: 'strength', y: 5 },
-      { x: 'intelligence', y: 30 },
-      { x: 'luck', y: 17 }
-    ]
-  },
-  {
-    label: 'Brice',
-    attributes: [
-      { x: 'strength', y: 10 },
-      { x: 'intelligence', y: 25 },
-      { x: 'luck', y: 8 }
-    ]
-  },
-  {
-    label: 'Casey',
-    attributes: [
-      { x: 'strength', y: 15 },
-      { x: 'intelligence', y: 20 },
-      { x: 'luck', y: 15 }
+      { x: 'wq fishery', y: 6.042483 },
+      { x: 'wq city', y: 3.410843 },
+      { x: 'roi', y: 6.887735 },
+      { x: 'city tax', y: 8.989781 },
     ]
   },
 ]
@@ -90,9 +62,5 @@ const coordinateData: Coordinate[] = [
 ]
 
 export {
-  coordinateData,
-  groupedByAlternatives,
-  groupedByCriteria,
-  parallelAxes,
-  parallelAxesData
+  coordinateData, groupedByAlternatives, groupedByCriteria, parallelAxes
 }
