@@ -15,9 +15,10 @@ interface Props {
  * @param data Parallel Axes data
  */
 const ParallelAxesWrapper: React.FC<Props> = ({ data }) => {
-  const cleanData = normalizeData(sanitizeData(data))
+  const sanitized = sanitizeData(data)
+  const cleanData = normalizeData(sanitized)
   const attributes = getAttributeNames(cleanData)
-  const maxValues = getMaxAttributes(data).map(attribute => attribute.y)
+  const maxValues = getMaxAttributes(sanitized).map(attribute => attribute.y)
 
   return (
     <ParallelAxes
