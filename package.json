@@ -59,12 +59,6 @@
     "test:unit": "react-scripts test",
     "storybook": "start-storybook -p 6006 --quiet"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
