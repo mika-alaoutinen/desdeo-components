@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryBar, VictoryChart } from 'victory'
 
-import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from 'styles/victoryStyles'
-import { OnClickChart } from 'types/chartTypes'
+import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../styles/victoryStyles'
+import { OnClickChart } from '../../types/chartTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
   <VictoryChart

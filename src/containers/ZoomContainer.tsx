@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryChart, VictoryZoomContainer } from 'victory'
 
-import { DOMAIN_PADDING, MATERIAL_THEME } from 'styles/victoryStyles'
-import { Domain } from 'types/victoryTypes'
+import { DOMAIN_PADDING, MATERIAL_THEME } from '../styles/victoryStyles'
+import { Domain } from '../types/victoryTypes'
 
 interface Props {
   domain: Domain,

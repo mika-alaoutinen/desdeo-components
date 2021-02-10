@@ -1,6 +1,6 @@
 import { layout as defaultLayout } from './layout'
-import { Filter, ParallelAxesData } from 'types/dataTypes'
-import { Layout } from 'types/layoutTypes'
+import { Filter, ParallelAxesData } from '../../types/dataTypes'
+import { Layout } from '../../types/layoutTypes'
 
 export const addNewFilters = (
   filters: Filter[], domain: [number, number], name: string

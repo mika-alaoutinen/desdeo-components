@@ -1,4 +1,4 @@
-import { Orientation, Padding } from 'types/layoutTypes'
+import { Orientation, Padding } from '../../types/layoutTypes'
 
 // If layout is horizontal, add extra padding left for axis labels
 const horizontalPadding: Padding = {

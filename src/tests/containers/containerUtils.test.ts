@@ -1,5 +1,5 @@
-import { calculateHeight, calculateWidth } from 'containers/containerUtils'
-import { groupedByAlternatives, groupedByCriteria } from 'tests/testdata'
+import { calculateHeight, calculateWidth } from '../../containers/containerUtils'
+import { groupedByAlternatives, groupedByCriteria } from '../testdata'
 
 describe('Calculates chart height based on dataset and chart orientation', () => {
   const expectedHeight = 500

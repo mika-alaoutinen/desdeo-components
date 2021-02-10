@@ -43,7 +43,6 @@
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.38.3",
-    "rollup-plugin-includepaths": "^0.2.4",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.29.0"
   },
@@ -59,12 +58,6 @@
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage --collectCoverageFrom=!src/stories/**",
     "test:unit": "react-scripts test",
     "storybook": "start-storybook -p 6006 --quiet"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

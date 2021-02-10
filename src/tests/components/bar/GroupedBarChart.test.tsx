@@ -8,9 +8,9 @@ import {
   renderComponent,
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
-} from 'tests/components/componentTests'
+} from '../componentTests'
 
-import GroupedBarChart from 'components/bar/GroupedBarChart'
+import GroupedBarChart from '../../../components/bar/GroupedBarChart'
 
 // Constants
 const handler = jest.fn()

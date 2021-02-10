@@ -1,10 +1,10 @@
 import { normalizedData } from '../parallelAxesWrapper/normalizedDatasets'
-import { Filter } from 'types/dataTypes'
-import { Layout } from 'types/layoutTypes'
+import { Filter } from '../../../types/dataTypes'
+import { Layout } from '../../../types/layoutTypes'
 
 import {
   addNewFilters, calculateAxisOffset, getActiveDatasets
-} from 'components/parallelAxes/utils'
+} from '../../../components/parallelAxes/utils'
 
 describe('addNewFilters creates filters for datasets', () => {
   const domain: [number, number] = [ 0, 1 ]

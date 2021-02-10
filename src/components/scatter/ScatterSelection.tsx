@@ -1,9 +1,9 @@
 import React from 'react'
 import { VictoryScatter } from 'victory'
 
-import SelectionContainer from 'containers/SelectionContainer'
-import { mapFillStyle } from 'styles/victoryStyles'
-import { OnSelectChart } from 'types/chartTypes'
+import SelectionContainer from '../../containers/SelectionContainer'
+import { mapFillStyle } from '../../styles/victoryStyles'
+import { OnSelectChart } from '../../types/chartTypes'
 
 const ScatterChart: React.FC<OnSelectChart> = ({ data, onSelect, onSelectionCleared }) => (
   <SelectionContainer

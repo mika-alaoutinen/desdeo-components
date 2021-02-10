@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TableRow from './TableRow'
-import { OnClickChart } from 'types/chartTypes'
+import { OnClickChart } from '../../types/chartTypes'
 import { padding, tableStyle } from './tableStyles'
 
 const TableNew: React.FC<OnClickChart> = ({ data, onClick }) => {

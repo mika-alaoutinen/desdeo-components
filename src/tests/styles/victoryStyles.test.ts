@@ -1,8 +1,8 @@
-import { Coordinate } from 'types/dataTypes'
+import { Coordinate } from '../../types/dataTypes'
 
 import {
   mapFillStyle, mapOpacityStyle, OPAQUE, NOT_SELECTED_COLOR, SELECTED_COLOR, SOLID,
-} from 'styles/victoryStyles'
+} from '../../styles/victoryStyles'
 
 describe('Fill is based on if datum is selected or not', () => {
   it('should be black when unselected', () => {

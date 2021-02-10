@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Coordinate } from 'types/dataTypes'
+import { Coordinate } from '../../types/dataTypes'
 import {
   backgroundColor, padding, tableStyle, ROW_SELECTED_COLOR
 } from './tableStyles'

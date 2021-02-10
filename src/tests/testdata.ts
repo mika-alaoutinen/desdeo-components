@@ -1,7 +1,7 @@
 import {
   Coordinate, CoordinateSet, DataSet, ParallelAxesData
-} from 'types/dataTypes'
-import { createAlternativeSets, createCriteriaSets } from 'utils/dataTransformations'
+} from '../types/dataTypes'
+import { createAlternativeSets, createCriteriaSets } from '../utils/dataTransformations'
 
 const testdata: DataSet = [
   {

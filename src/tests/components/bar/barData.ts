@@ -1,4 +1,4 @@
-import { CoordinateSet } from 'types/dataTypes'
+import { CoordinateSet } from '../../../types/dataTypes'
 
 export const data: CoordinateSet[] = [
   {
@@ -7,7 +7,6 @@ export const data: CoordinateSet[] = [
       { id: 'H', x: 2, y: 15, label: 'C', isSelected: true },
       { id: 'I', x: 3, y: 60, label: 'C', isSelected: true }
     ],
-    label: 'dataset 3'
   },
 
   {
@@ -16,7 +15,6 @@ export const data: CoordinateSet[] = [
       { id: 'e', x: 2, y: 15, label: 'B', isSelected: false },
       { id: 'f', x: 3, y: 60, label: 'B', isSelected: false }
     ],
-    label: 'dataset 2'
   },
 
   {
@@ -25,6 +23,5 @@ export const data: CoordinateSet[] = [
       { id: 'b', x: 2, y: 40, label: 'A', isSelected: false },
       { id: 'c', x: 3, y: 70, label: 'A' }
     ],
-    label: 'dataset 1'
   }
 ]
