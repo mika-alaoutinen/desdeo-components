@@ -24,7 +24,7 @@ export default {
   ],
   plugins: [
     commonjs(),
-    includepaths({ paths: [ './' ] }),
+    includepaths({ paths: [ 'src' ] }),
     peerDepsExternal(),
     resolve(),
     typescript({
