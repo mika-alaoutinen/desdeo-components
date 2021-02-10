@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import { OnClickHandler } from 'types/chartTypes'
+import { OnClickHandler } from '../../types/chartTypes'
 
 // A set of basic tests for all chart components. Used to reduce repeated test code.
 

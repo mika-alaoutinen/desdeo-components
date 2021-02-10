@@ -1,5 +1,5 @@
-import { calculatePadding } from 'components/bar/layout'
-import { Padding } from 'types/layoutTypes'
+import { calculatePadding } from '../../../components/bar/layout'
+import { Padding } from '../../../types/layoutTypes'
 
 describe('Calculates padding based on chart orientation', () => {
   const horizontal: Padding = {

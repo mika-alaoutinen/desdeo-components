@@ -1,10 +1,10 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import GroupedBarChart from 'components/bar/GroupedBarChart'
-import { groupedByAlternatives, groupedByCriteria } from 'tests/testdata'
-import { Coordinate } from 'types/dataTypes'
-import { Orientation } from 'types/layoutTypes'
+import GroupedBarChart from '../../components/bar/GroupedBarChart'
+import { groupedByAlternatives, groupedByCriteria } from '../../tests/testdata'
+import { Coordinate } from '../../types/dataTypes'
+import { Orientation } from '../../types/layoutTypes'
 import { createAlternativesLabels } from './barUtils'
 
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)

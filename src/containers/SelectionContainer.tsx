@@ -4,8 +4,8 @@ import React from 'react'
 import { VictoryChart } from 'victory'
 import { VictorySelectionContainer } from 'victory-selection-container'
 
-import { DOMAIN_PADDING, MATERIAL_THEME } from 'styles/victoryStyles'
-import { OnSelectHandler, OnSelectionClearedHandler } from 'types/chartTypes'
+import { DOMAIN_PADDING, MATERIAL_THEME } from '../styles/victoryStyles'
+import { OnSelectHandler, OnSelectionClearedHandler } from '../types/chartTypes'
 
 interface Props {
   onSelect: OnSelectHandler,

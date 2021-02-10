@@ -1,6 +1,6 @@
-import { Coordinate } from 'types/dataTypes'
+import { Coordinate } from '../../../types/dataTypes'
 
-import { createBarLabel } from 'components/bar/rendering'
+import { createBarLabel } from '../../../components/bar/rendering'
 
 describe('Creates label text for a coordinate', () => {
   const coordinate: Coordinate = {

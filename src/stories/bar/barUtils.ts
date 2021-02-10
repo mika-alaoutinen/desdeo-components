@@ -1,5 +1,5 @@
-import { groupedByAlternatives } from 'tests/testdata'
-import { range } from 'utils/utilFunctions'
+import { groupedByAlternatives } from '../../tests/testdata'
+import { range } from '../../utils/utilFunctions'
 
 const createAlternativesLabels = (): string[] => {
   const alternatives = groupedByAlternatives[0].data.length

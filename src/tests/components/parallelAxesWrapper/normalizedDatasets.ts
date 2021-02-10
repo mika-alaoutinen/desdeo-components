@@ -1,4 +1,4 @@
-import { ParallelAxesData } from 'types/dataTypes'
+import { ParallelAxesData } from '../../../types/dataTypes'
 
 export const normalizedData: ParallelAxesData[] = [
   {

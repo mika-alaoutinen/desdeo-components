@@ -1,9 +1,9 @@
 import React from 'react'
 
-import ParallelAxes from 'components/parallelAxes/ParallelAxes'
+import ParallelAxes from '../parallelAxes/ParallelAxes'
 import { normalizeData, sanitizeData } from './dataProcessing'
 import { getAttributeNames, getMaxValues } from './dataParser'
-import { ParallelAxesData } from 'types/dataTypes'
+import { ParallelAxesData } from '../../types/dataTypes'
 
 interface Props {
   data: ParallelAxesData[]

@@ -1,5 +1,6 @@
-import { Coordinate } from 'types/dataTypes'
 import { VictoryTheme } from 'victory'
+
+import { Coordinate } from '../types/dataTypes'
 
 // Style constants
 export const DOMAIN_PADDING = 20
