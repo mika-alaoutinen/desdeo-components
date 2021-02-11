@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
-import { createBarLabel } from './dataParser'
+import { createCoordinateLabel } from './dataParser'
 import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'
@@ -22,7 +22,7 @@ const drawBar = (
         }
       },
     ]}
-    labels={({ datum }) => createBarLabel(datum)}
+    labels={({ datum }) => createCoordinateLabel(datum)}
   />
 
 const drawMainAxis = (labels: string[]): JSX.Element =>

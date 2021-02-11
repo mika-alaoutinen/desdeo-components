@@ -1,6 +1,6 @@
 import { Coordinate } from '../../../types/dataTypes'
 
-import { createBarLabel } from '../../../components/bar/dataParser'
+import { createCoordinateLabel } from '../../../components/bar/dataParser'
 
 describe('Creates label text for a coordinate', () => {
   const coordinate: Coordinate = {
@@ -10,6 +10,6 @@ describe('Creates label text for a coordinate', () => {
   }
 
   it('label has ID and value', () => {
-    expect(createBarLabel(coordinate)).toBe('test-id:\n2')
+    expect(createCoordinateLabel(coordinate)).toBe('test-id:\n2')
   })
 })

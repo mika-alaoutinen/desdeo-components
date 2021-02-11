@@ -3,7 +3,7 @@ import { Coordinate, CoordinateSet, DataSet } from '../../types/dataTypes'
 import { createAlternativeSets, createCriteriaSets } from '../../utils/dataTransformations'
 import { range, replaceSpacesWithLineBreaks } from '../../utils/utilFunctions'
 
-const createBarLabel = ({ id, y }: Coordinate): string =>
+const createCoordinateLabel = ({ id, y }: Coordinate): string =>
   `${id}:\n${y}`
 
 const createLabels = (data: DataSet, grouping: Grouping): string[] =>
@@ -29,4 +29,4 @@ const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
     ? createAlternativeSets(data)
     : createCriteriaSets(data)
 
-export { createBarLabel, createLabels, mapData }
+export { createCoordinateLabel, createLabels, mapData }
