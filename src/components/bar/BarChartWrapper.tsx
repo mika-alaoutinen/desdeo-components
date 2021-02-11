@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
-import { CoordinateSet, DataSet } from '../../types/dataTypes'
-import { BarChartProps, OnClickHandler } from '../../types/chartTypes'
+import { BarChartProps, BarChartWrapperProps } from '../../types/chartTypes'
+import { CoordinateSet } from '../../types/dataTypes'
 import { createAlternativeSets } from '../../utils/dataTransformations'
-import { Orientation } from '../../types/layoutTypes'
 
-type Grouping = 'alternatives' | 'criteria'
-
-interface Props {
-  BarChartComponent: React.FC<BarChartProps>,
-  data: DataSet,
-  grouping: Grouping,
-  onClick: OnClickHandler,
-  orientation: Orientation
+interface Props extends BarChartWrapperProps {
+  Component: React.FC<BarChartProps>
 }
 
 const BarChartWrapper: React.FC<Props> = ({
-  BarChartComponent, data, onClick, orientation
+  Component, data, onClick, orientation
 }) => {
+
   const [ datasets, setDatasets ] = useState<CoordinateSet[]>([])
   const [ labels, setLabels ] = useState<string[]>([])
 
@@ -28,7 +22,7 @@ const BarChartWrapper: React.FC<Props> = ({
   }, [])
 
   return (
-    <BarChartComponent
+    <Component
       datasets={datasets}
       labels={labels}
       onClick={onClick}
