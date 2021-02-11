@@ -1,10 +1,20 @@
 import React from 'react'
 
-const StackedBarChartWrapper: React.FC = () => {
-  return (
-    <div>
-    </div>
-  )
-}
+import BarChartWrapper from '../BarChartWrapper'
+import StackedBarChart from './StackedBarChart'
+import { BarChartWrapperProps } from '../../../types/chartTypes'
+
+const StackedBarChartWrapper: React.FC<BarChartWrapperProps> = ({
+  data, grouping, onClick, orientation
+}) => (
+
+  <BarChartWrapper
+    Component={StackedBarChart}
+    data={data}
+    grouping={grouping}
+    onClick={onClick}
+    orientation={orientation}
+  />
+)
 
 export default StackedBarChartWrapper
