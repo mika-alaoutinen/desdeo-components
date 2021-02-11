@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { createLabels, mapData } from '../../data/dataParser'
+import { createLabels, mapData } from '../../data/parser'
 import { BarChartProps, BarChartWrapperProps } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
 

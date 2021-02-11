@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
-import { createCoordinateLabel } from '../../data/dataParser'
+import { createCoordinateLabel } from '../../data/parser'
 import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'

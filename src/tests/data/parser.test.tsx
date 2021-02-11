@@ -1,6 +1,6 @@
 import { Coordinate } from '../../types/dataTypes'
 
-import { createCoordinateLabel } from '../../data/dataParser'
+import { createCoordinateLabel } from '../../data/parser'
 
 describe('Creates label text for a coordinate', () => {
   const coordinate: Coordinate = {
