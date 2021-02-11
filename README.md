@@ -60,3 +60,7 @@ npm run storybook
 ## TODO
 - Consider if data sanitization is necessary with parallel coordinates.
 - Add data transformation DataSet => ParallelAxesData
+- Horizontal stacked bar chart has wrong tick values
+- Labels for bar charts should be given as regular strings that are split to multiple lines.
+- Need to get rid of labels for bar charts.
+  => Add grouping property to CoordinateSet. Grouping: 'alternatives' | 'criteria'
