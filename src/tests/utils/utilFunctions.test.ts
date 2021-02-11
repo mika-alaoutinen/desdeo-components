@@ -1,4 +1,4 @@
-import { range } from '../../utils/utilFunctions'
+import { range, replaceSpacesWithLineBreaks } from '../../utils/utilFunctions'
 
 describe('range creates an array of [1..n] numbers', () => {
   it('creates an array from 1 to max', () => {
@@ -16,5 +16,22 @@ describe('range creates an array of [1..n] numbers', () => {
 
   it('max < 0 returns an empty array', () => {
     expect(range(-1)).toEqual([])
+  })
+})
+
+describe('replaceSpacesWithLineBreaks does what it says', () => {
+  it('replaces spaces with line breaks', () => {
+    const replaced = replaceSpacesWithLineBreaks('two words')
+    expect(replaced).toBe('two\nwords')
+  })
+
+  it('handles extra spaces between words', () => {
+    const replaced = replaceSpacesWithLineBreaks('two    words')
+    expect(replaced).toBe('two\nwords')
+  })
+
+  it('trims extra spaces', () => {
+    const replaced = replaceSpacesWithLineBreaks('  two words ')
+    expect(replaced).toBe('two\nwords')
   })
 })

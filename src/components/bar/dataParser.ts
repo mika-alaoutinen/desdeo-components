@@ -1,7 +1,7 @@
 import { Grouping } from '../../types/chartTypes'
 import { Coordinate, CoordinateSet, DataSet } from '../../types/dataTypes'
 import { createAlternativeSets, createCriteriaSets } from '../../utils/dataTransformations'
-import { range } from '../../utils/utilFunctions'
+import { range, replaceSpacesWithLineBreaks } from '../../utils/utilFunctions'
 
 const createBarLabel = ({ id, y }: Coordinate): string =>
   `${id}:\n${y}`
@@ -20,7 +20,9 @@ const countAlternatives = (data: DataSet): number =>
   data[0].data.length
 
 const mapCriteriaNames = (data: DataSet): string[] =>
-  data.map(coordinate => coordinate.label)
+  data
+    .map(coordinate => coordinate.label)
+    .map(replaceSpacesWithLineBreaks)
 
 const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
   grouping === 'alternatives'

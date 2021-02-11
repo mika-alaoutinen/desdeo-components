@@ -3,4 +3,9 @@ const range = (max: number): number[] =>
     ? []
     : [...Array(max).keys()].map(n => n + 1)
 
-export { range }
+const replaceSpacesWithLineBreaks = (stringWithSpaces: string): string =>
+  stringWithSpaces
+    .replace(/\s+/g,'\n')
+    .trim()
+
+export { range, replaceSpacesWithLineBreaks }
