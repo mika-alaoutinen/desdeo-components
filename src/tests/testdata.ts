@@ -1,7 +1,6 @@
 import {
-  Coordinate, CoordinateSet, DataSet, ParallelAxesData
+  Coordinate, DataSet, ParallelAxesData
 } from '../types/dataTypes'
-import { createAlternativeSets, createCriteriaSets } from '../data/transformations'
 
 const testdata: DataSet = [
   {
@@ -25,10 +24,6 @@ const testdata: DataSet = [
     data: [ 0.248895, 0.346752, 0.326688, 0.259547, 0.126336, 0.295807, 0.35, 0.328574, 0.228541, 0.327455 ]
   }
 ]
-
-// Larger datasets created with data transformation functions
-const groupedByAlternatives: CoordinateSet[] = createAlternativeSets(testdata)
-const groupedByCriteria: CoordinateSet[] = createCriteriaSets(testdata)
 
 const parallelAxesData: ParallelAxesData[] = [
   {
@@ -60,5 +55,5 @@ const coordinateData: Coordinate[] = [
 ]
 
 export {
-  coordinateData, groupedByAlternatives, groupedByCriteria, parallelAxesData, testdata
+  coordinateData, parallelAxesData, testdata
 }
