@@ -10,6 +10,7 @@ import {
 import { DataSet } from '../../../../types/dataTypes'
 
 import StackedBarChartWrapper from '../../../../components/bar/stacked/StackedBarChartWrapper'
+import { Grouping } from '../../../../types/chartTypes'
 
 const data: DataSet = [
   { label: 'Label A', data: [ 1, 2, 3 ] },
@@ -18,38 +19,63 @@ const data: DataSet = [
 
 const handler = jest.fn()
 
-const alternativesComponent =
+const createComponent = (grouping: Grouping): JSX.Element =>
   <StackedBarChartWrapper
     data={data}
-    grouping={'alternatives'}
+    grouping={grouping}
     onClick={handler}
     orientation={'horizontal'}
   />
 
-describe('Grouped bar wrapper is rendered correctly', () => {
-  it('chart is rendered', () => {
+const alternativesComponent = createComponent('alternatives')
+const criteriaComponent = createComponent('criteria')
+
+describe('Smoke tests for chart rendering', () => {
+  it('alternatives chart: is rendered', () => {
     renderComponent(alternativesComponent)
   })
 
-  it('Victory container is rendered', () => {
+  it('alternative chart: Victory container is rendered', () => {
     renderVictoryContainer(alternativesComponent)
+  })
+
+  it('criteria chart: is rendered', () => {
+    renderComponent(criteriaComponent)
+  })
+
+  it('criteria chart: Victory container is rendered', () => {
+    renderVictoryContainer(criteriaComponent)
   })
 })
 
-describe('Axes are displayed correctly', () => {
-  it('Y axis should have three Alternative labels', () => {
+describe('Chart axes are displayed correctly', () => {
+  it('alternatives bar: Y axis should have three Alternative labels', () => {
     render(alternativesComponent)
     const labels = screen.getAllByText('Alternative')
     expect(labels).toHaveLength(3)
   })
 
-  it('chart should have six bars', () => {
+  it('alternatives bar: chart should have six bars', () => {
     expect(getPaths(alternativesComponent)).toHaveLength(6)
+  })
+
+  it('criteria bar: Y axis should have two criteria labels', () => {
+    render(criteriaComponent)
+    const labels = screen.getAllByText('Label')
+    expect(labels).toHaveLength(2)
+  })
+
+  it('criteria bar: chart should have six bars', () => {
+    expect(getPaths(criteriaComponent)).toHaveLength(6)
   })
 })
 
 describe('Bars should be interactive', () => {
-  it('bar registers a click event', () => {
+  it('alternatives bar: registers a click event', () => {
     dataShouldBeClickable(alternativesComponent, handler)
+  })
+
+  it('criteria bar: registers a click event', () => {
+    dataShouldBeClickable(criteriaComponent, handler)
   })
 })

@@ -1,16 +1,16 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { data } from './barData'
+import { data } from '.././barData'
 import {
   dataShouldBeClickable,
   getPaths,
   renderComponent,
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
-} from '../componentTests'
+} from '../../componentTests'
 
-import StackedBarChart from '../../../components/bar/stacked/StackedBarChart'
+import StackedBarChart from '../../../../components/bar/stacked/StackedBarChart'
 
 // Constants
 const handler = jest.fn()

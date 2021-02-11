@@ -6,10 +6,10 @@ import {
   getPaths,
   renderComponent,
   renderVictoryContainer
-} from '../componentTests'
-import { DataSet } from '../../../types/dataTypes'
+} from '../../componentTests'
+import { DataSet } from '../../../../types/dataTypes'
 
-import GroupedBarChartWrapper from '../../../components/bar/grouped/GroupedBarChartWrapper'
+import GroupedBarChartWrapper from '../../../../components/bar/grouped/GroupedBarChartWrapper'
 
 const data: DataSet = [
   { label: 'Label A', data: [ 1, 2, 3 ] },
