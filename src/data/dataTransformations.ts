@@ -1,4 +1,5 @@
 import { Coordinate, CoordinateSet, DataSet } from '../types/dataTypes'
+import { createId } from '../utils/utilFunctions'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data, label }) => {
@@ -23,12 +24,6 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] =>
 
     return { data: coordinates }
   })
-
-// Utility functions
-const createId = (label: string, n: number): string => {
-  const hyphenated = label.toLowerCase().replace(/ /g, '-')
-  return `${hyphenated}-${n}`
-}
 
 export {
   createAlternativeSets, createCriteriaSets

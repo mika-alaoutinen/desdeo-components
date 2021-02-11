@@ -1,3 +1,8 @@
+const createId = (label: string, n: number): string => {
+  const hyphenated = label.toLowerCase().replace(/ /g, '-')
+  return `${hyphenated}-${n}`
+}
+
 const range = (max: number): number[] =>
   max < 0
     ? []
@@ -8,4 +13,4 @@ const replaceSpacesWithLineBreaks = (stringWithSpaces: string): string =>
     .replace(/\s+/g,'\n')
     .trim()
 
-export { range, replaceSpacesWithLineBreaks }
+export { createId, range, replaceSpacesWithLineBreaks }
