@@ -60,5 +60,5 @@ const coordinateData: Coordinate[] = [
 ]
 
 export {
-  coordinateData, groupedByAlternatives, groupedByCriteria, parallelAxesData
+  coordinateData, groupedByAlternatives, groupedByCriteria, parallelAxesData, testdata
 }

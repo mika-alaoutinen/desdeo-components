@@ -2,12 +2,30 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import GroupedBarChart from '../../components/bar/grouped/GroupedBarChart'
-import { groupedByAlternatives, groupedByCriteria } from '../../tests/testdata'
+import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
+import { groupedByAlternatives, groupedByCriteria, testdata } from '../../tests/testdata'
 import { Coordinate } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'
 import { createAlternativesLabels } from './barUtils'
 
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
+
+// Wrappers
+export const alternativesWrapper =
+  <GroupedBarChartWrapper
+    data={testdata}
+    grouping={'alternatives'}
+    onClick={clickHandler}
+    orientation={'horizontal'}
+  />
+
+export const criteriaWrapper =
+  <GroupedBarChartWrapper
+    data={testdata}
+    grouping={'criteria'}
+    onClick={clickHandler}
+    orientation={'horizontal'}
+  />
 
 // Grouping data by alternative solutions
 const alternativesComponent = (orientation: Orientation): JSX.Element => (
