@@ -10,7 +10,7 @@ import {
   shouldDisplayLabelOnMouseOver
 } from '../componentTests'
 
-import StackedBarChart from '../../../components/bar/StackedBarChart'
+import StackedBarChart from '../../../components/bar/stacked/StackedBarChart'
 
 // Constants
 const handler = jest.fn()

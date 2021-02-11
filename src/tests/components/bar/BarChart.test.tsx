@@ -9,7 +9,7 @@ import {
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
-import BarChart from '../../../components/bar/BarChart'
+import BarChart from '../../../components/bar/basic/BarChart'
 
 // Constants
 const handler = jest.fn()

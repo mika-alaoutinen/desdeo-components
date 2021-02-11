@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta } from '@storybook/react'
 
 import { createAlternativesLabels } from './barUtils'
-import StackedBarChart from '../../components/bar/StackedBarChart'
+import StackedBarChart from '../../components/bar/stacked/StackedBarChart'
 import { groupedByAlternatives } from '../../tests/testdata'
 import { Coordinate } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'

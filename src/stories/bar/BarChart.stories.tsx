@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import BarChart from '../../components/bar/BarChart'
+import BarChart from '../../components/bar/basic/BarChart'
 import { useOnClickHandler } from '../storyUtils'
 
 export const BarChartComponent = (): JSX.Element => {

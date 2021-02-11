@@ -1,11 +1,11 @@
 import React from 'react'
 import { VictoryChart, VictoryStack } from 'victory'
 
-import { calculatePadding } from './layout'
-import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
-import { calculateWidth } from '../../containers/containerUtils'
-import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { BarChartProps } from '../../types/chartTypes'
+import { calculatePadding } from '../layout'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from '../rendering'
+import { calculateWidth } from '../../../containers/containerUtils'
+import { MATERIAL_THEME } from '../../../styles/victoryStyles'
+import { BarChartProps } from '../../../types/chartTypes'
 
 const StackedBarChart: React.FC<BarChartProps> = ({
   datasets, labels, onClick, orientation
