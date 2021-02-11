@@ -1,3 +1,4 @@
+import { Grouping } from '../types/chartTypes'
 import { Coordinate, CoordinateSet, DataSet } from '../types/dataTypes'
 import { createId } from '../utils/utils'
 
@@ -25,6 +26,11 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] =>
     return { data: coordinates }
   })
 
+const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
+  grouping === 'alternatives'
+    ? createAlternativeSets(data)
+    : createCriteriaSets(data)
+
 export {
-  createAlternativeSets, createCriteriaSets
+  createAlternativeSets, createCriteriaSets, mapData
 }
