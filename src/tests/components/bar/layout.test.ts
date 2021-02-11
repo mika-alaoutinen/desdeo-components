@@ -23,8 +23,4 @@ describe('Calculates padding based on chart orientation', () => {
   it('vertical orientation has 75 padding bottom and 50 padding on both sides', () => {
     expect(calculatePadding('vertical')).toEqual(vertical)
   })
-
-  it('returns horizontal padding by default if orientation is not given', () => {
-    expect(calculatePadding(undefined)).toEqual(horizontal)
-  })
 })

@@ -1,4 +1,6 @@
+import { Grouping } from '../types/chartTypes'
 import { Coordinate, CoordinateSet, DataSet } from '../types/dataTypes'
+import { createId } from '../utils/utils'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data, label }) => {
@@ -24,12 +26,11 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] =>
     return { data: coordinates }
   })
 
-// Utility functions
-const createId = (label: string, n: number): string => {
-  const hyphenated = label.toLowerCase().replace(/ /g, '-')
-  return `${hyphenated}-${n}`
-}
+const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
+  grouping === 'alternatives'
+    ? createAlternativeSets(data)
+    : createCriteriaSets(data)
 
 export {
-  createAlternativeSets, createCriteriaSets
+  createAlternativeSets, createCriteriaSets, mapData
 }

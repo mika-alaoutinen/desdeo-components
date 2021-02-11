@@ -58,5 +58,6 @@ npm run storybook
 ```
 
 ## TODO
-- Consider if data sanitization is necessary with parallel coordinates.
-- Add data transformation DataSet => ParallelAxesData
+- Add data transformation DataSet => ParallelAxesData.
+- Stacked bar chart has wrong tick values.
+- Figure out how to use Storybook's controls panel to change props.

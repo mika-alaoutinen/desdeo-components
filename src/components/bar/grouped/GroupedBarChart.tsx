@@ -1,11 +1,11 @@
 import React from 'react'
 import { VictoryChart, VictoryGroup } from 'victory'
 
-import { calculateHeight, calculateWidth } from '../../containers/containerUtils'
-import { calculatePadding } from './layout'
-import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from './rendering'
-import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { BarChartProps } from '../../types/chartTypes'
+import { calculateHeight, calculateWidth } from '../../../containers/containerUtils'
+import { calculatePadding } from '../layout'
+import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from '../rendering'
+import { MATERIAL_THEME } from '../../../styles/victoryStyles'
+import { BarChartProps } from '../../../types/chartTypes'
 
 const GroupedBarChart: React.FC<BarChartProps> = ({
   datasets, labels, onClick, orientation

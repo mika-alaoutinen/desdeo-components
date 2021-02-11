@@ -1,30 +1,37 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import { createAlternativesLabels } from './barUtils'
-import StackedBarChart from '../../components/bar/StackedBarChart'
-import { groupedByAlternatives } from '../../tests/testdata'
+import StackedBarChartWrapper from '../../components/bar/stacked/StackedBarChartWrapper'
+import { testdata } from '../../tests/testdata'
+import { Grouping } from '../../types/chartTypes'
 import { Coordinate } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'
 
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
 
-export const HorizontalStackedBarChart = (): JSX.Element =>
-  createComponent('horizontal')
-
-export const VerticalStackedBarChart = (): JSX.Element =>
-  createComponent('vertical')
-
-const createComponent = (orientation: Orientation): JSX.Element => (
-  <StackedBarChart
-    datasets={groupedByAlternatives}
-    labels={createAlternativesLabels()}
+const wrapperComponent = (grouping: Grouping, orientation: Orientation): JSX.Element =>
+  <StackedBarChartWrapper
+    data={testdata}
+    grouping={grouping}
     onClick={clickHandler}
     orientation={orientation}
   />
-)
+
+// Grouping data by alternative solutions
+export const HorizontalAlternativesStackedBars = (): JSX.Element =>
+  wrapperComponent('alternatives', 'horizontal')
+
+export const VerticalAlternativesStackedBars = (): JSX.Element =>
+  wrapperComponent('alternatives', 'vertical')
+
+// Grouping data by criteria
+export const HorizontalCriteriaStackedBars = (): JSX.Element =>
+  wrapperComponent('criteria', 'horizontal')
+
+export const VerticalCriteriaStackedBars = (): JSX.Element =>
+  wrapperComponent('criteria', 'vertical')
 
 export default {
   title: 'DESDEO/StackedBarChart',
-  component: StackedBarChart
+  component: StackedBarChartWrapper
 } as Meta

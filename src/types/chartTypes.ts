@@ -1,24 +1,37 @@
-import { Coordinate, CoordinateSet } from './dataTypes'
+import { Coordinate, CoordinateSet, DataSet } from './dataTypes'
 import { Orientation } from './layoutTypes'
 
-export interface BarChartProps {
+interface BarChartProps {
   datasets: CoordinateSet[],
   labels: string[],
   onClick: OnClickHandler,
   orientation: Orientation
 }
 
-export interface OnClickChart {
+interface BarChartWrapperProps {
+  data: DataSet,
+  grouping: Grouping,
+  onClick: OnClickHandler,
+  orientation: Orientation
+}
+
+interface OnClickChart {
   data: Coordinate[],
   onClick: OnClickHandler
 }
 
-export interface OnSelectChart {
+interface OnSelectChart {
   data: Coordinate[],
   onSelect: OnSelectHandler,
   onSelectionCleared: OnSelectionClearedHandler
 }
 
-export type OnClickHandler = (clicked: Coordinate) => void
-export type OnSelectHandler = (selected: Coordinate[]) => void
-export type OnSelectionClearedHandler = () => void
+type Grouping = 'alternatives' | 'criteria'
+type OnClickHandler = (clicked: Coordinate) => void
+type OnSelectHandler = (selected: Coordinate[]) => void
+type OnSelectionClearedHandler = () => void
+
+export type {
+  BarChartProps, BarChartWrapperProps, OnClickChart, OnSelectChart,
+  Grouping, OnClickHandler, OnSelectHandler, OnSelectionClearedHandler
+}

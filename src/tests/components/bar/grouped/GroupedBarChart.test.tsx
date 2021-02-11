@@ -1,28 +1,28 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { data } from './barData'
+import { data } from '../barData'
 import {
   dataShouldBeClickable,
   getPaths,
   renderComponent,
   renderVictoryContainer,
   shouldDisplayLabelOnMouseOver
-} from '../componentTests'
+} from '../../componentTests'
 
-import StackedBarChart from '../../../components/bar/StackedBarChart'
+import GroupedBarChart from '../../../../components/bar/grouped/GroupedBarChart'
 
 // Constants
 const handler = jest.fn()
 const component =
-  <StackedBarChart
+  <GroupedBarChart
     datasets={data}
-    labels={['dataset\n1', 'dataset\n2', 'dataset\n3' ]}
+    labels={[ 'dataset\n1', 'dataset\n2', 'dataset\n3' ]}
     onClick={handler}
     orientation='horizontal'
   />
 
-describe('StackedBarChart is rendered correctly', () => {
+describe('GroupedBarChart is rendered correctly', () => {
   it('chart is rendered', () => {
     renderComponent(component)
   })
@@ -50,6 +50,6 @@ describe('Bars should be interactive', () => {
   })
 
   it('bar displays label on mouse over', () => {
-    shouldDisplayLabelOnMouseOver(component, 'A')
+    shouldDisplayLabelOnMouseOver(component, 'C')
   })
 })

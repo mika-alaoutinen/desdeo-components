@@ -1,47 +1,37 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import GroupedBarChart from '../../components/bar/GroupedBarChart'
-import { groupedByAlternatives, groupedByCriteria } from '../../tests/testdata'
+import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
+import { testdata } from '../../tests/testdata'
+import { Grouping } from '../../types/chartTypes'
 import { Coordinate } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'
-import { createAlternativesLabels } from './barUtils'
 
 const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
 
-// Grouping data by alternative solutions
-const alternativesComponent = (orientation: Orientation): JSX.Element => (
-  <GroupedBarChart
-    datasets={groupedByAlternatives}
-    labels={createAlternativesLabels()}
+const wrapperComponent = (grouping: Grouping, orientation: Orientation): JSX.Element =>
+  <GroupedBarChartWrapper
+    data={testdata}
+    grouping={grouping}
     onClick={clickHandler}
     orientation={orientation}
   />
-)
 
-export const GroupedByAlternativesHorizontal = (): JSX.Element =>
-  alternativesComponent('horizontal')
+// Grouping data by alternative solutions
+export const HorizontalAlternativesWrapper = (): JSX.Element =>
+  wrapperComponent('alternatives', 'horizontal')
 
-export const GroupedByAlternativesVertical = (): JSX.Element =>
-  alternativesComponent('vertical')
+export const VerticalAlternativesWrapper = (): JSX.Element =>
+  wrapperComponent('alternatives', 'vertical')
 
 // Grouping data by criteria
-const criteriaComponent = (orientation: Orientation): JSX.Element => (
-  <GroupedBarChart
-    datasets={groupedByCriteria}
-    labels={[ 'WQ\nFishery', 'WQ\nCity', 'ROI', 'City\nTax', 'Plant\nResources' ]}
-    onClick={clickHandler}
-    orientation={orientation}
-  />
-)
+export const HorizontaCriteriaWrapper = (): JSX.Element =>
+  wrapperComponent('criteria', 'horizontal')
 
-export const GroupedByCriteriaHorizontal = (): JSX.Element =>
-  criteriaComponent('horizontal')
-
-export const GroupedByCriteriaVertical = (): JSX.Element =>
-  criteriaComponent('vertical')
+export const VerticalCriteriaWrapper = (): JSX.Element =>
+  wrapperComponent('criteria', 'vertical')
 
 export default {
   title: 'DESDEO/GroupedBarChart',
-  component: GroupedBarChart
+  component: GroupedBarChartWrapper
 } as Meta

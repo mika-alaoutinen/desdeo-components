@@ -1,7 +1,7 @@
 // Export the components for publishing
-export { default as BarChartComponent } from './components/bar/BarChart'
-export { default as GroupedBarChartComponent } from './components/bar/GroupedBarChart'
-export { default as StackedBarChartComponent } from './components/bar/StackedBarChart'
+export { default as BarChartComponent } from './components/bar/basic/BarChart'
+export { default as GroupedBarChartComponent } from './components/bar/grouped/GroupedBarChartWrapper'
+export { default as StackedBarChartComponent } from './components/bar/stacked/StackedBarChartWrapper'
 
 export { default as ParallelAxesComponent } from './components/parallelAxesWrapper/ParallelAxesWrapper'
 
