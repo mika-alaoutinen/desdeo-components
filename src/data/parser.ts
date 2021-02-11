@@ -1,7 +1,7 @@
 import { Grouping } from '../types/chartTypes'
 import { Coordinate, CoordinateSet, DataSet } from '../types/dataTypes'
 import { createAlternativeSets, createCriteriaSets } from './transformations'
-import { range, replaceSpacesWithLineBreaks } from '../utils/utilFunctions'
+import { range, replaceSpacesWithLineBreaks } from '../utils/utils'
 
 const createCoordinateLabel = ({ id, y }: Coordinate): string =>
   `${id}:\n${y}`

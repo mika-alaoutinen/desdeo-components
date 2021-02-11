@@ -1,5 +1,5 @@
 import { Coordinate, CoordinateSet, DataSet } from '../types/dataTypes'
-import { createId } from '../utils/utilFunctions'
+import { createId } from '../utils/utils'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data, label }) => {

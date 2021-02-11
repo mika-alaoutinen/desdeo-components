@@ -1,4 +1,4 @@
-import { range, replaceSpacesWithLineBreaks } from '../../utils/utilFunctions'
+import { range, replaceSpacesWithLineBreaks } from '../../utils/utils'
 
 describe('range creates an array of [1..n] numbers', () => {
   it('creates an array from 1 to max', () => {
