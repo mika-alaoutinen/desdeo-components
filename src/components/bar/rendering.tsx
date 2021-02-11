@@ -1,12 +1,10 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
 
+import { createBarLabel } from './dataParser'
 import { OnClickHandler } from '../../types/chartTypes'
-import { Coordinate, CoordinateSet } from '../../types/dataTypes'
+import { CoordinateSet } from '../../types/dataTypes'
 import { Orientation } from '../../types/layoutTypes'
-
-const createBarLabel = ({ id, y }: Coordinate): string =>
-  `${id}:\n${y}`
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
@@ -54,5 +52,5 @@ const drawTooltip = (orientation: Orientation): JSX.Element => {
 }
 
 export {
-  createBarLabel, drawBar, drawMainAxis, drawDependentAxis, drawTooltip
+  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
 }
