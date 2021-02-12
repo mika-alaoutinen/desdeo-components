@@ -2,7 +2,7 @@ import { layout as defaultLayout } from './layout'
 import { Filter, ParallelAxesData } from '../../types/dataTypes'
 import { Layout } from '../../types/layoutTypes'
 
-export const addNewFilters = (
+const addNewFilters = (
   filters: Filter[], domain: [number, number], name: string
 ): Filter[] => {
   const extent = domain && Math.abs(domain[1] - domain[0])
@@ -26,7 +26,7 @@ export const addNewFilters = (
   )
 }
 
-export const calculateAxisOffset = (
+const calculateAxisOffset = (
   index: number, attributesLength: number, layout?: Layout
 ): number => {
   const { width, padding } = layout ? layout : defaultLayout
@@ -34,11 +34,12 @@ export const calculateAxisOffset = (
   return step * index + padding.left
 }
 
-export const getActiveDatasets = (datasets: ParallelAxesData[], filters: Filter[]): string[] =>
+const getActiveDatasets = (datasets: ParallelAxesData[], filters: Filter[]): string[] =>
   datasets
     .map(dataset => isDatasetActive(dataset, filters) ? dataset.label : '')
     .filter(Boolean)
 
+// Utility functions
 const isDatasetActive = (dataset: ParallelAxesData, filters: Filter[]): boolean =>
   filters.every(({ attribute, range }) => {
     const y = dataset.attributes.find(({ x }) => x === attribute)?.y
@@ -47,3 +48,7 @@ const isDatasetActive = (dataset: ParallelAxesData, filters: Filter[]): boolean 
 
 const isNumberInRange = (n: number, range: [number, number]): boolean =>
   n > range[0] && n < range[1]
+
+export {
+  addNewFilters, calculateAxisOffset, getActiveDatasets
+}
