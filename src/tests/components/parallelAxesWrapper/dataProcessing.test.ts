@@ -1,7 +1,7 @@
 import { parallelAxesData } from '../../testdata'
 import { ParallelAxesData } from '../../../types/dataTypes'
 
-import { normalizeData } from '../../../components/parallelAxesWrapper/dataProcessing'
+import { normalizeData } from '../../../components/parallelAxes/wrapper/dataProcessing'
 
 describe('Data is cleaned up by sanitizing inputs and normalizing values', () => {
   const normalizedData: ParallelAxesData[] = [

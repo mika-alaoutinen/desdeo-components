@@ -1,5 +1,5 @@
 import { getMaxAttributes } from './dataParser'
-import { Attribute, ParallelAxesData } from '../../types/dataTypes'
+import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 
 const normalizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
   data.map(({ label, attributes }) => ({

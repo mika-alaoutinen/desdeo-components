@@ -4,7 +4,7 @@ import { Layout } from '../../../types/layoutTypes'
 
 import {
   addNewFilters, calculateAxisOffset, getActiveDatasets
-} from '../../../components/parallelAxes/utils'
+} from '../../../components/parallelAxes/component/utils'
 
 describe('addNewFilters creates filters for datasets', () => {
   const domain: [number, number] = [ 0, 1 ]

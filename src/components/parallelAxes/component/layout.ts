@@ -1,4 +1,4 @@
-import { Layout } from '../../types/layoutTypes'
+import { Layout } from '../../../types/layoutTypes'
 
 export const layout: Layout = {
   height: 500,

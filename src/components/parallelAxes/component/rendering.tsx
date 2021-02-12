@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
-import { ParallelAxesData } from '../../types/dataTypes'
-import { DomainTuple } from '../../types/victoryTypes'
+import { ParallelAxesData } from '../../../types/dataTypes'
+import { DomainTuple } from '../../../types/victoryTypes'
 
 type OnDomainChange = (domainTuple: DomainTuple, name?: string) => void
 

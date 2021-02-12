@@ -1,4 +1,4 @@
-import { Attribute, ParallelAxesData } from '../../types/dataTypes'
+import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 
 const getAttributeNames = (data: ParallelAxesData[]): string[] => {
   const labels = data
