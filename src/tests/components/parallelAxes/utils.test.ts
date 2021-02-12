@@ -31,7 +31,7 @@ describe('calculateAxisOffset calculates offset based on given layout', () => {
   const attributesLength = 3
 
   it('uses default layout if no layout is given as parameter', () => {
-    const expectedOffsets = [50, 250, 450]
+    const expectedOffsets = [100, 375, 650]
     expectedOffsets.forEach((offset, i) =>
       expect(calculateAxisOffset(i, attributesLength)).toEqual(offset))
   })

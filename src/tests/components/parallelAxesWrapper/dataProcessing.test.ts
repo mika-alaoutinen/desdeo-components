@@ -1,23 +1,10 @@
 import { normalizedData } from './normalizedDatasets'
 import { parallelAxesData } from '../../testdata'
-import { ParallelAxesData } from '../../../types/dataTypes'
 
-import {
-  normalizeData, sanitizeData
-} from '../../../components/parallelAxesWrapper/dataProcessing'
+import { normalizeData } from '../../../components/parallelAxesWrapper/dataProcessing'
 
 describe('Data is cleaned up by sanitizing inputs and normalizing values', () => {
   it('data should be normalized', () => {
     expect(normalizeData(parallelAxesData)).toEqual(normalizedData)
-  })
-
-  it('data should be sanitized', () => {
-    const unsanitized: ParallelAxesData[] = [{
-      label: 'Alternative 1',
-      attributes: [{ id: 'city-tax-1', x: 'CiTY taX', y: 5 }]
-    }]
-
-    const sanitized = sanitizeData(unsanitized)
-    expect(sanitized[0].attributes[0].x).toEqual('city tax')
   })
 })
