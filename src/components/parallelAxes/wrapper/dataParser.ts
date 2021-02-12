@@ -3,7 +3,7 @@ import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 const getAttributeNames = (data: ParallelAxesData[]): string[] => {
   const labels = data
     .flatMap(datum => datum.attributes)
-    .map(({ x }) => x.toLowerCase())
+    .map(attribute => attribute.x)
 
   return [...new Set(labels)]
 }
@@ -33,7 +33,7 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
   const initial: Attribute = {
     id: '',
     x: '',
-    y: -1
+    y: -0.00001
   }
 
   return attributes.reduce((currentMax, attribute) =>
