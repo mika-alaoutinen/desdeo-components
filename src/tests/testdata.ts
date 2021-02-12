@@ -1,6 +1,4 @@
-import {
-  Coordinate, DataSet, ParallelAxesData
-} from '../types/dataTypes'
+import { Coordinate, DataSet, ParallelAxesData } from '../types/dataTypes'
 
 const testdata: DataSet = [
   {
