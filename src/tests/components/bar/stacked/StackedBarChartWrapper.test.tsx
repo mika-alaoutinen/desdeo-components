@@ -10,9 +10,9 @@ import {
 } from '../../componentTests'
 import { Grouping } from '../../../../types/chartTypes'
 import { DataSet } from '../../../../types/dataTypes'
+import { Orientation } from '../../../../types/layoutTypes'
 
 import StackedBarChartWrapper from '../../../../components/bar/stacked/StackedBarChartWrapper'
-import { Orientation } from '../../../../types/layoutTypes'
 
 const data: DataSet = [
   { label: 'Label A', data: [ 1, 2, 3 ] },

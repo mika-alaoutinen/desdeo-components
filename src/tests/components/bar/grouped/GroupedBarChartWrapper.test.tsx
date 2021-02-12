@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import {
   dataShouldBeClickable,
@@ -7,10 +8,11 @@ import {
   renderComponent,
   renderVictoryContainer
 } from '../../componentTests'
+import { Grouping } from '../../../../types/chartTypes'
 import { DataSet } from '../../../../types/dataTypes'
+import { Orientation } from '../../../../types/layoutTypes'
 
 import GroupedBarChartWrapper from '../../../../components/bar/grouped/GroupedBarChartWrapper'
-import { Grouping } from '../../../../types/chartTypes'
 
 const data: DataSet = [
   { label: 'Label A', data: [ 1, 2, 3 ] },
@@ -70,12 +72,41 @@ describe('Chart axes are displayed correctly', () => {
   })
 })
 
-describe('Bars should be interactive', () => {
+describe('Bars should be clickable', () => {
   it('alternatives bar: registers a click event', () => {
     dataShouldBeClickable(alternativesComponent, handler)
   })
 
   it('criteria bar: registers a click event', () => {
     dataShouldBeClickable(criteriaComponent, handler)
+  })
+})
+
+describe('Bars should display label on mouseover', () => {
+  const data: DataSet = [
+    { label: 'A', data: [ 1 ] },
+  ]
+
+  const createComponent = (orientation: Orientation): JSX.Element =>
+    <GroupedBarChartWrapper
+      data={data}
+      grouping={'alternatives'}
+      onClick={handler}
+      orientation={orientation}
+    />
+
+  const testLabelOnMouseover = (orientation: Orientation): void => {
+    const component = createComponent(orientation)
+    const paths = getPaths(component)
+    fireEvent.mouseOver(paths[0])
+    expect(screen.getByText(/a-1/)).toBeInTheDocument()
+  }
+
+  it('horizontal bar displays label on mouse over', () => {
+    testLabelOnMouseover('horizontal')
+  })
+
+  it('vertical bar displays label on mouse over', () => {
+    testLabelOnMouseover('vertical')
   })
 })
