@@ -2,11 +2,11 @@ import { Layout } from '../../types/layoutTypes'
 
 export const layout: Layout = {
   height: 500,
-  width: 500,
+  width: 750,
   padding: {
-    top: 100,
-    left: 50,
-    right: 50,
+    top: 50,
+    left: 100,
+    right: 100,
     bottom: 50
   }
 }
