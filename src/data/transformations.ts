@@ -14,8 +14,12 @@ const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
     return { data: coordinates }
   })
 
-const createCriteriaSets = (dataset: DataSet): CoordinateSet[] =>
-  dataset[0].data.map((_, colIndex) => {
+const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
+  if (!dataset.length) {
+    return []
+  }
+
+  return dataset[0].data.map((_, colIndex) => {
 
     const coordinates: Coordinate[] = dataset.map(({ data, label }, rowIndex) => ({
       id: createId(label, colIndex + 1),
@@ -25,6 +29,7 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] =>
 
     return { data: coordinates }
   })
+}
 
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   return []
