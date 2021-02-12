@@ -25,6 +25,7 @@ interface ParallelAxesData {
 }
 
 interface Attribute {
+  id: string,
   x: string,
   y: number
 }

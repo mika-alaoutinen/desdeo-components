@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
-import { ParallelAxesData } from '../../types/dataTypes'
-import { DomainTuple } from '../../types/victoryTypes'
+import { ParallelAxesData } from '../../../types/dataTypes'
+import { DomainTuple } from '../../../types/victoryTypes'
 
 type OnDomainChange = (domainTuple: DomainTuple, name?: string) => void
 
@@ -34,6 +34,10 @@ const drawBrushLine = (
     // The domain numbers receoved from the component are in the wrong order of [max, min].
     // Flip the numbers around so that they make sense as a range.
     onBrushDomainChange={(domain, props) => {
+      // Stops the application from crashing if the brush is clicked instead of clicked and dragged
+      if (!domain) {
+        return
+      }
       const domainTuple: DomainTuple = [domain[1] as number, domain[0] as number]
       return onDomainChange(domainTuple, props?.name)
     }}

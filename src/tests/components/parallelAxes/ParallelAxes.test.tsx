@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import { renderComponent, renderVictoryContainer } from '../componentTests'
 import { parallelAxesData } from '../../testdata'
 
-import ParallelAxes from '../../../components/parallelAxes/ParallelAxes'
+import ParallelAxes from '../../../components/parallelAxes/component/ParallelAxes'
 
 const attributes = ['wq fishery', 'wq city', 'roi', 'city tax']
 

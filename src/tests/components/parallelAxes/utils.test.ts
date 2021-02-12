@@ -1,10 +1,10 @@
-import { normalizedData } from '../parallelAxesWrapper/normalizedDatasets'
+import { parallelAxesData } from '../../testdata'
 import { Filter } from '../../../types/dataTypes'
 import { Layout } from '../../../types/layoutTypes'
 
 import {
   addNewFilters, calculateAxisOffset, getActiveDatasets
-} from '../../../components/parallelAxes/utils'
+} from '../../../components/parallelAxes/component/utils'
 
 describe('addNewFilters creates filters for datasets', () => {
   const domain: [number, number] = [ 0, 1 ]
@@ -31,7 +31,7 @@ describe('calculateAxisOffset calculates offset based on given layout', () => {
   const attributesLength = 3
 
   it('uses default layout if no layout is given as parameter', () => {
-    const expectedOffsets = [50, 250, 450]
+    const expectedOffsets = [100, 375, 650]
     expectedOffsets.forEach((offset, i) =>
       expect(calculateAxisOffset(i, attributesLength)).toEqual(offset))
   })
@@ -55,7 +55,7 @@ describe('calculateAxisOffset calculates offset based on given layout', () => {
 
 describe('getActiveDatasets finds active datasets', () => {
   it('all datasets are active when filters are empty', () => {
-    const activeSets = getActiveDatasets(normalizedData, [])
+    const activeSets = getActiveDatasets(parallelAxesData, [])
     expect(activeSets).toEqual([ 'Alternative 1', 'Alternative 2' ])
   })
 
@@ -64,7 +64,7 @@ describe('getActiveDatasets finds active datasets', () => {
       attribute: 'strength',
       range: [ 0, 0.01 ]
     }]
-    expect(getActiveDatasets(normalizedData, filters)).toEqual([])
+    expect(getActiveDatasets(parallelAxesData, filters)).toEqual([])
   })
 
   it('handles unknown filter type', () => {
@@ -72,6 +72,6 @@ describe('getActiveDatasets finds active datasets', () => {
       attribute: 'unknown',
       range: [ 0, 1 ]
     }]
-    expect(getActiveDatasets(normalizedData, filters)).toEqual([])
+    expect(getActiveDatasets(parallelAxesData, filters)).toEqual([])
   })
 })
