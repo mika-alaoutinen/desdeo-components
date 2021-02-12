@@ -1,5 +1,5 @@
 import { Grouping } from '../types/chartTypes'
-import { Coordinate, CoordinateSet, DataSet, ParallelAxesData } from '../types/dataTypes'
+import { Attribute, Coordinate, CoordinateSet, DataSet, ParallelAxesData } from '../types/dataTypes'
 import { createId } from '../utils/utils'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
@@ -32,7 +32,23 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
 }
 
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
-  return []
+  if (!dataset.length) {
+    return []
+  }
+
+  return dataset[0].data.map((_, colIndex) => {
+
+    const attributes: Attribute[] = dataset.map(({ data, label }) => ({
+      id: createId(label, colIndex + 1),
+      x: label.toLowerCase(),
+      y: data[colIndex]
+    }))
+
+    return {
+      attributes,
+      label: `Alternative ${colIndex + 1}`
+    }
+  })
 }
 
 const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>

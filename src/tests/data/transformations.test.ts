@@ -70,14 +70,14 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
     {
       label: 'Alternative 1',
       attributes: [
-        { id: 'wq-fishery-1', x: 'wq fishery', y: 5.758127 },
+        { id: 'wq-fishery-1', x: 'wq fishery', y: 6.042483 },
         { id: 'wq-city-1', x: 'wq city', y: 3.17527 },
       ]
     },
     {
       label: 'Alternative 2',
       attributes: [
-        { id: 'wq-fishery-2', x: 'wq fishery', y: 6.042483 },
+        { id: 'wq-fishery-2', x: 'wq fishery', y: 5.758127 },
         { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
       ]
     },
