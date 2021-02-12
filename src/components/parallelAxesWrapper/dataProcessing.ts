@@ -7,12 +7,6 @@ const normalizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
     attributes: normalizeAttributes(attributes, getMaxAttributes(data))
   }))
 
-const sanitizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
-  data.map(datum => ({
-    ...datum,
-    attributes: labelsToLowerCase(datum.attributes)
-  }))
-
 // Utility functions
 const normalizeAttributes = (
   attributes: Attribute[], maxAttributes: Attribute[]
@@ -25,10 +19,4 @@ const normalizeAttributes = (
   }))
 }
 
-const labelsToLowerCase = (attributes: Attribute[]): Attribute[] =>
-  attributes.map(attribute => ({
-    ...attribute,
-    x: attribute.x.toLowerCase()
-  }))
-
-export { normalizeData, sanitizeData }
+export { normalizeData }
