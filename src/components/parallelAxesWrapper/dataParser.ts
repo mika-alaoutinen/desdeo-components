@@ -31,6 +31,7 @@ const groupByName = (attributes: Attribute[]): Attribute[][] => {
 
 const findByMaxValue = (attributes: Attribute[]): Attribute => {
   const initial: Attribute = {
+    id: '',
     x: '',
     y: -1
   }
