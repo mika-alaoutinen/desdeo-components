@@ -6,13 +6,13 @@ import {
   dataShouldBeClickable,
   getPaths,
   renderComponent,
-  renderVictoryContainer,
-} from '../../componentTests'
-import { Grouping } from '../../../../types/chartTypes'
-import { DataSet } from '../../../../types/dataTypes'
-import { Orientation } from '../../../../types/layoutTypes'
+  renderVictoryContainer
+} from '../componentTests'
+import { Grouping } from '../../../types/chartTypes'
+import { DataSet } from '../../../types/dataTypes'
+import { Orientation } from '../../../types/layoutTypes'
 
-import StackedBarChartWrapper from '../../../../components/bar/stacked/StackedBarChartWrapper'
+import GroupedBarChartWrapper from '../../../components/bar/grouped/GroupedBarChartWrapper'
 
 const data: DataSet = [
   { label: 'Label A', data: [ 1, 2, 3 ] },
@@ -22,7 +22,7 @@ const data: DataSet = [
 const handler = jest.fn()
 
 const createComponent = (grouping: Grouping): JSX.Element =>
-  <StackedBarChartWrapper
+  <GroupedBarChartWrapper
     data={data}
     grouping={grouping}
     onClick={handler}
@@ -88,7 +88,7 @@ describe('Bars should display label on mouseover', () => {
   ]
 
   const createComponent = (orientation: Orientation): JSX.Element =>
-    <StackedBarChartWrapper
+    <GroupedBarChartWrapper
       data={data}
       grouping={'alternatives'}
       onClick={handler}
