@@ -61,3 +61,4 @@ npm run storybook
 - Add data transformation DataSet => ParallelAxesData.
 - Figure out how to use Storybook's controls panel to change props.
 - Horizontal and vertical orientations are the wrong way around.
+- Clicking on a parallel axis brush bar crashes the application.

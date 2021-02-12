@@ -1,22 +1,20 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import { renderComponent, renderVictoryContainer } from '../componentTests'
-import { parallelAxesData } from '../../testdata'
+import { DataSet } from '../../../types/dataTypes'
 
-import ParallelAxes from '../../../components/parallelAxes/component/ParallelAxes'
+import ParallelAxesWrapper from '../../../components/parallelAxes/wrapper/ParallelAxesWrapper'
 
-const attributes = ['wq fishery', 'wq city', 'roi', 'city tax']
+const data: DataSet = [
+  { label: 'Label A', data: [ 1, 2, 3 ] },
+  { label: 'Label B', data: [ 4, 5, 6 ] },
+]
 
-// Constants
-const component =
-  <ParallelAxes
-    attributes={attributes}
-    data={parallelAxesData}
-    maxTickValues={[ 6.1, 3.5, 6.9, 9.0 ]}
-  />
+const component = <ParallelAxesWrapper data={data} />
 
-describe('ParallelAxes is rendered correctly', () => {
+describe('Smoke tests for ParallelAxes rendering', () => {
   it('chart is rendered', () => {
     renderComponent(component)
   })
@@ -27,21 +25,26 @@ describe('ParallelAxes is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has given attribute labels', () => {
+  it('chart has attribute labels', () => {
     render(component)
-    attributes.forEach(attribute =>
-      expect(screen.getByText(attribute)).toBeTruthy())
+    expect(screen.getAllByText(/label/)).toHaveLength(2)
   })
 
-  it('has four vertical brush bars', () => {
+  it('has two vertical brush bars', () => {
     const { container } = render(component)
     const brushBars = container.querySelectorAll('rect[role="presentation"]')
-    expect(brushBars).toHaveLength(4)
+    expect(brushBars).toHaveLength(2)
   })
 
-  it('has two lines representing datasets', () => {
+  it('has three lines representing datasets', () => {
     const { container } = render(component)
     const lines = container.querySelectorAll('path[role="presentation"]')
-    expect(lines).toHaveLength(2)
+    expect(lines).toHaveLength(3)
+  })
+
+  it('vertical brush bars have max values of 3 and 6', () => {
+    render(component)
+    expect(screen.getByText(/3/)).toBeInTheDocument()
+    expect(screen.getByText(/6/)).toBeInTheDocument()
   })
 })
