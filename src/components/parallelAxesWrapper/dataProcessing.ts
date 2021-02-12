@@ -19,9 +19,9 @@ const normalizeAttributes = (
 ): Attribute[] => {
   const maxValues = maxAttributes.map(attribute => attribute.y)
 
-  return attributes.map(({ x, y }, i) => ({
-    x,
-    y: y / maxValues[i]
+  return attributes.map((attribute, i) => ({
+    ...attribute,
+    y: attribute.y / maxValues[i]
   }))
 }
 

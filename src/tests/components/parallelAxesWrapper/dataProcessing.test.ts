@@ -14,7 +14,7 @@ describe('Data is cleaned up by sanitizing inputs and normalizing values', () =>
   it('data should be sanitized', () => {
     const unsanitized: ParallelAxesData[] = [{
       label: 'Alternative 1',
-      attributes: [{ x: 'CiTY taX', y: 5 }]
+      attributes: [{ id: 'city-tax-1', x: 'CiTY taX', y: 5 }]
     }]
 
     const sanitized = sanitizeData(unsanitized)
