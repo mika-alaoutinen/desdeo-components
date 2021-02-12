@@ -23,7 +23,7 @@ const StackedBarChart: React.FC<BarChartProps> = ({
     >
 
       {drawMainAxis(labels)}
-      {drawDependentAxis((x: number) => `$${x}k`)}
+      {drawDependentAxis()}
 
       <VictoryStack
         horizontal={orientation === 'horizontal'}

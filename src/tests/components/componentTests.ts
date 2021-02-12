@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import { OnClickHandler } from '../../types/chartTypes'
 
@@ -41,7 +42,7 @@ export const shouldDisplayLabelOnMouseOver = (
 ): void => {
   const paths = getPaths(component)
   fireEvent.mouseOver(paths[0])
-  expect(screen.getByText(label)).toBeTruthy()
+  expect(screen.getByText(label)).toBeInTheDocument()
 }
 
 // The datum in a Victory chart are rendered as SVG path elements

@@ -6,10 +6,10 @@ import {
   renderDataLabels,
   renderFiveDatum,
   renderVictoryContainer
-} from '../../componentTests'
-import { coordinateData } from '../../../testdata'
+} from '../componentTests'
+import { coordinateData } from '../../testdata'
 
-import BarChart from '../../../../components/bar/basic/BarChart'
+import BarChart from '../../../components/bar/basic/BarChart'
 
 // Constants
 const handler = jest.fn()

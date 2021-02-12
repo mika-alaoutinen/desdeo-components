@@ -59,5 +59,4 @@ npm run storybook
 
 ## TODO
 - Add data transformation DataSet => ParallelAxesData.
-- Stacked bar chart has wrong tick values.
 - Figure out how to use Storybook's controls panel to change props.
