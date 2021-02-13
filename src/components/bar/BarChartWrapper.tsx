@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { swapOrientation } from './layout'
 import { createDataLabels } from '../../data/parser'
 import { mapData } from '../../data/transformations'
 import { BarChartProps, BarChartWrapperProps } from '../../types/chartTypes'
@@ -10,19 +11,14 @@ interface Props extends BarChartWrapperProps {
 
 const BarChartWrapper: React.FC<Props> = ({
   Component, data, grouping, onClick, orientation
-}) => {
+}) => (
 
-  const datasets = mapData(data, grouping)
-  const labels = createDataLabels(data, grouping)
-
-  return (
-    <Component
-      datasets={datasets}
-      labels={labels}
-      onClick={onClick}
-      orientation={orientation}
-    />
-  )
-}
+  <Component
+    datasets={mapData(data, grouping)}
+    labels={createDataLabels(data, grouping)}
+    onClick={onClick}
+    orientation={swapOrientation(orientation)}
+  />
+)
 
 export default BarChartWrapper

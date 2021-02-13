@@ -25,7 +25,7 @@ export const VerticalAlternativesWrapper = (): JSX.Element =>
   wrapperComponent('alternatives', 'vertical')
 
 // Grouping data by criteria
-export const HorizontaCriteriaWrapper = (): JSX.Element =>
+export const HorizontalCriteriaWrapper = (): JSX.Element =>
   wrapperComponent('criteria', 'horizontal')
 
 export const VerticalCriteriaWrapper = (): JSX.Element =>
