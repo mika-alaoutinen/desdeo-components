@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { ROW_SELECTED_COLOR } from '../../../components/table/tableStyles'
@@ -12,6 +12,16 @@ const handler = jest.fn()
 describe('TableRow is rendered correctly', () => {
   it('component is rendered', () => {
     expect(renderComponent(createCoordinate())).toBeTruthy()
+  })
+
+  it('if coordinate has no label, show text "no label"', () => {
+    const coordinate: Coordinate = {
+      id: '123',
+      x: 1,
+      y: 1
+    }
+    renderComponent(coordinate)
+    expect(screen.getByText(/no label/)).toBeInTheDocument()
   })
 })
 
