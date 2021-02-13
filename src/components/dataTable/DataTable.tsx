@@ -1,7 +1,8 @@
 import React from 'react'
 
 import DataTableBody from './DataTableBody'
-import DataTableHeadings from './DataTableHeadings'
+import DataTableHead from './DataTableHead'
+import { transpose } from '../../data/transformations'
 import { tableStyle } from '../table/tableStyles'
 import { DataSet } from '../../types/dataTypes'
 
@@ -13,14 +14,11 @@ interface Props {
 }
 
 const DataTable: React.FC<Props> = ({ data, onClick }) => {
-  const getHeadings = (): string[] =>
-    data.map(column => column.label)
-
   return (
     <table style={tableStyle}>
-      <DataTableHeadings labels={getHeadings()} />
+      <DataTableHead labels={data.map(column => column.label)} />
       <DataTableBody
-        data={data}
+        data={transpose(data)}
         onClick={onClick}
       />
     </table>
