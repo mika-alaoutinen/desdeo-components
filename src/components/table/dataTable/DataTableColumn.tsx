@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { DataTableClickHandler } from './DataTable'
 import DataTableRow from './DataTableRow'
+import { DataTableClickHandler } from './DataTable'
+import { backgroundColor, rowStyle } from '../tableStyles'
 
 interface Props {
   data: number[],
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const DataTableColumn: React.FC<Props> = ({ data, onClick }) => {
+  const [ color, setColor ] = useState<backgroundColor>('white')
 
   const renderRows = (): JSX.Element[] =>
     data.map(value =>
@@ -20,7 +22,11 @@ const DataTableColumn: React.FC<Props> = ({ data, onClick }) => {
     )
 
   return (
-    <tr>
+    <tr
+      onMouseEnter={() => setColor('whitesmoke')}
+      onMouseLeave={() => setColor('white')}
+      style={rowStyle(color)}
+    >
       {renderRows()}
     </tr>
   )

@@ -16,10 +16,7 @@ interface Props {
 const DataTable: React.FC<Props> = ({ data, onClick }) => (
   <table style={tableStyle}>
     <TableHead labels={data.map(column => column.label)} />
-    <DataTableBody
-      data={transpose(data)}
-      onClick={onClick}
-    />
+    <DataTableBody data={transpose(data)} onClick={onClick} />
   </table>
 )
 
