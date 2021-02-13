@@ -1,7 +1,7 @@
 import { DataSet, CoordinateSet, ParallelAxesData } from '../../types/dataTypes'
 
 import {
-  createAlternativeSets, createCriteriaSets, createParallelAxesData
+  createAlternativeSets, createCriteriaSets, createParallelAxesData, transpose
 } from '../../data/transformations'
 
 const data: DataSet = [
@@ -89,5 +89,20 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
 
   it ('handles an empty input', () => {
     expect(createParallelAxesData([])).toEqual([])
+  })
+})
+
+describe('Transpose transforms DataSet into a 2D array', () => {
+  const expected = [
+    [ 6.042483, 3.17527 ],
+    [ 5.758127, 3.410843 ]
+  ]
+
+  it('transposes data', () => {
+    expect(transpose(data)).toEqual(expected)
+  })
+
+  it ('handles an empty input', () => {
+    expect(transpose([])).toEqual([])
   })
 })

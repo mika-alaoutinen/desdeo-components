@@ -58,6 +58,18 @@ const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
     ? createAlternativeSets(data)
     : createCriteriaSets(data)
 
+const transpose = (dataset: DataSet): number[][] => {
+  if (!dataset.length) {
+    return []
+  }
+
+  const data = dataset.map(d => d.data)
+
+  return data[0].map((_, colIndex) =>
+    data.map(row => row[colIndex]))
+}
+
 export {
-  createAlternativeSets, createCriteriaSets, createParallelAxesData, mapData
+  createAlternativeSets, createCriteriaSets, createParallelAxesData,
+  mapData, transpose
 }
