@@ -9,7 +9,7 @@ import CoordinateTableColumn from '../../../components/table/coordinateTable/Coo
 
 const handler = jest.fn()
 
-describe('TableRow is rendered correctly', () => {
+describe('TableColumn is rendered correctly', () => {
   it('component is rendered', () => {
     expect(renderComponent(createCoordinate())).toBeTruthy()
   })
