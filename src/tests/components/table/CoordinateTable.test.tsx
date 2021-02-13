@@ -1,16 +1,16 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import { renderComponent, renderDataLabels } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
 import CoordinateTable from '../../../components/table/coordinateTable/CoordinateTable'
 
-// Constants
 const handler = jest.fn()
 const component = <CoordinateTable data={coordinateData} onClick={handler} />
 
-describe('Table is rendered correctly', () => {
+describe('CoordinateTable is rendered correctly', () => {
   it('component is rendered', () => {
     renderComponent(component)
   })
@@ -25,7 +25,7 @@ describe('Data is displayed correctly', () => {
     render(component)
     const expectedHeadings = [ 'Label', 'X', 'Y', 'Selected' ]
     expectedHeadings.forEach(heading =>
-      expect(heading).toBeTruthy())
+      expect(screen.getByText(heading)).toBeInTheDocument())
   })
 })
 
