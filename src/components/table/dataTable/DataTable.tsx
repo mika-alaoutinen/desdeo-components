@@ -2,9 +2,9 @@ import React from 'react'
 
 import DataTableBody from './DataTableBody'
 import DataTableHead from './DataTableHead'
-import { transpose } from '../../data/transformations'
-import { tableStyle } from '../table/tableStyles'
-import { DataSet } from '../../types/dataTypes'
+import { transpose } from '../../../data/transformations'
+import { tableStyle } from '../tableStyles'
+import { DataSet } from '../../../types/dataTypes'
 
 export type DataTableClickHandler = (n: number) => void
 

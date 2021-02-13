@@ -1,12 +1,11 @@
-import '@testing-library/jest-dom'
-
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import { ROW_SELECTED_COLOR } from '../../../components/table/tableStyles'
 import { Coordinate } from '../../../types/dataTypes'
 
-import TableRow from '../../../components/table/TableRow'
+import TableRow from '../../../components/table/coordinateTable/TableRow'
 
 // Constants
 const handler = jest.fn()
@@ -33,7 +32,9 @@ describe('Background color of a row changes on mouse hover', () => {
   it('background is whitesmoke on mouse hover', () => {
     const container = renderComponent(createCoordinate())
     const row = container.querySelector('tr')
-    fireEvent.mouseEnter(row)
+    if (row) {
+      fireEvent.mouseEnter(row)
+    }
     expect(row).toHaveStyle({ background: 'whitesmoke' })
   })
 })
@@ -42,7 +43,9 @@ describe('Clicking on a table row calls onClick function', () => {
   it('onClick is called', () => {
     const container = renderComponent(createCoordinate())
     const row = container.querySelector('tr')
-    fireEvent.click(row)
+    if (row) {
+      fireEvent.click(row)
+    }
     expect(handler).toHaveBeenCalled()
   })
 })

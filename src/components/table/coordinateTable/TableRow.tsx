@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 
-import { OnClickHandler } from '../../types/chartTypes'
-import { Coordinate } from '../../types/dataTypes'
-import {
-  backgroundColor, padding, tableStyle, ROW_SELECTED_COLOR
-} from './tableStyles'
+import { OnClickHandler } from '../../../types/chartTypes'
+import { Coordinate } from '../../../types/dataTypes'
+import { backgroundColor, padding, rowStyle } from '../tableStyles'
 
 interface Props {
   datum: Coordinate,
@@ -18,11 +16,6 @@ const TableRow: React.FC<Props> = ({ datum, onClick }) => {
   const label = datum.label ? datum.label : 'no label'
   const selected = datum.isSelected ? 'true' : 'false'
 
-  const style: React.CSSProperties = {
-    ...tableStyle,
-    background: datum.isSelected ? ROW_SELECTED_COLOR : color
-  }
-
   const renderCell = (text: string): JSX.Element =>
     <td style={padding}>{text}</td>
 
@@ -32,7 +25,7 @@ const TableRow: React.FC<Props> = ({ datum, onClick }) => {
       onClick={() => onClick(datum)}
       onMouseEnter={() => setColor('whitesmoke')}
       onMouseLeave={() => setColor('white')}
-      style={style}
+      style={rowStyle(color, datum.isSelected)}
     >
       {renderCell(label)}
       {renderCell(x.toString())}

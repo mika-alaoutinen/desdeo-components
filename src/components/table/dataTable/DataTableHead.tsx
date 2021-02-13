@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { padding } from '../table/tableStyles'
+import { padding } from '../tableStyles'
 
 interface Props {
   labels: string[]

@@ -1,10 +1,10 @@
 import React from 'react'
 
 import TableRow from './TableRow'
-import { padding, tableStyle } from './tableStyles'
-import { OnClickChart } from '../../types/chartTypes'
+import { padding, tableStyle } from '../tableStyles'
+import { OnClickChart } from '../../../types/chartTypes'
 
-const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
+const CoordinateTable: React.FC<OnClickChart> = ({ data, onClick }) => {
 
   const renderHeadings = (headings: string[]): JSX.Element[] =>
     headings.map(heading =>
@@ -39,4 +39,4 @@ const Table: React.FC<OnClickChart> = ({ data, onClick }) => {
   )
 }
 
-export default Table
+export default CoordinateTable

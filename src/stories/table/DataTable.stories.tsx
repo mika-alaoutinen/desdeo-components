@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
 
-import DataTable, { DataTableClickHandler } from '../../components/dataTable/DataTable'
+import DataTable, { DataTableClickHandler } from '../../components/table/dataTable/DataTable'
 import { testdata } from '../../tests/testdata'
 
 const clickHandler: DataTableClickHandler = (n: number) => console.log('number', n)
