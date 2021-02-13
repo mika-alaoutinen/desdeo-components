@@ -5,9 +5,8 @@ import '@testing-library/jest-dom'
 import { ROW_SELECTED_COLOR } from '../../../components/table/tableStyles'
 import { Coordinate } from '../../../types/dataTypes'
 
-import TableRow from '../../../components/table/coordinateTable/TableRow'
+import CoordinateTableColumn from '../../../components/table/coordinateTable/CoordinateTableColumn'
 
-// Constants
 const handler = jest.fn()
 
 describe('TableRow is rendered correctly', () => {
@@ -59,8 +58,8 @@ const renderComponent = (datum: Coordinate): Element => {
   return container
 }
 
-const createComponent = (datum: Coordinate): JSX.Element =>
-  <TableRow datum={datum} onClick={handler} />
+const createComponent = (coordinate: Coordinate): JSX.Element =>
+  <CoordinateTableColumn coordinate={coordinate} onClick={handler} />
 
 const createCoordinate = (isSelected?: boolean): Coordinate => ({
   id: '123',
