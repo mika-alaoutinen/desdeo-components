@@ -9,7 +9,7 @@ import CoordinateTableColumn from '../../../components/table/coordinateTable/Coo
 
 const handler = jest.fn()
 
-describe('TableColumn is rendered correctly', () => {
+describe('CoordinateTableColumn is rendered correctly', () => {
   it('component is rendered', () => {
     expect(renderComponent(createCoordinate())).toBeTruthy()
   })
@@ -32,19 +32,21 @@ describe('Background color of a row changes on mouse hover', () => {
     expect(row).toHaveStyle({ background: 'white' })
   })
 
-  it('background is #ffdfda when row is selected', () => {
-    const container = renderComponent(createCoordinate(true))
-    const row = container.querySelector('tr')
-    expect(row).toHaveStyle({ background: ROW_SELECTED_COLOR })
-  })
-
-  it('background is whitesmoke on mouse hover', () => {
+  it('background changes to whitesmoke on mouse hover and back to white on mouse leave', () => {
     const container = renderComponent(createCoordinate())
     const row = container.querySelector('tr')
     if (row) {
       fireEvent.mouseEnter(row)
+      expect(row).toHaveStyle({ background: 'whitesmoke' })
+      fireEvent.mouseLeave(row)
+      expect(row).toHaveStyle({ background: 'white' })
     }
-    expect(row).toHaveStyle({ background: 'whitesmoke' })
+  })
+
+  it('background is #ffdfda when row is selected', () => {
+    const container = renderComponent(createCoordinate(true))
+    const row = container.querySelector('tr')
+    expect(row).toHaveStyle({ background: ROW_SELECTED_COLOR })
   })
 })
 
