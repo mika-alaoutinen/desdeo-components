@@ -2,7 +2,7 @@ import { Coordinate, CoordinateSet, DataSet } from './dataTypes'
 import { Orientation } from './layoutTypes'
 
 interface BarChartProps {
-  datasets: CoordinateSet[],
+  data: CoordinateSet[],
   labels: string[],
   onClick: OnClickHandler,
   orientation: Orientation

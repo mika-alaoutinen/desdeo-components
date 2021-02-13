@@ -11,7 +11,7 @@ const GroupedBarChartWrapper: React.FC<BarChartWrapperProps> = ({
 }) => (
 
   <GroupedBarChart
-    datasets={mapData(data, grouping)}
+    data={mapData(data, grouping)}
     labels={createDataLabels(data, grouping)}
     onClick={onClick}
     orientation={swapOrientation(orientation)}
