@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { padding } from '../tableStyles'
+import { padding } from './tableStyles'
 
 interface Props {
   labels: string[]
 }
 
-const DataTableHeadings: React.FC<Props> = ({ labels }) => {
+const TableHead: React.FC<Props> = ({ labels }) => {
   const renderHeadings = (): JSX.Element[] =>
     labels.map(label =>
       <th key={label} style={padding}>
@@ -23,4 +23,4 @@ const DataTableHeadings: React.FC<Props> = ({ labels }) => {
   )
 }
 
-export default DataTableHeadings
+export default TableHead
