@@ -1,5 +1,6 @@
-import { calculatePadding } from '../../../components/bar/layout'
 import { Padding } from '../../../types/layoutTypes'
+
+import { calculatePadding, swapOrientation } from '../../../components/bar/layout'
 
 describe('Calculates padding based on chart orientation', () => {
   const horizontal: Padding = {
@@ -22,5 +23,15 @@ describe('Calculates padding based on chart orientation', () => {
 
   it('vertical orientation has 75 padding bottom and 50 padding on both sides', () => {
     expect(calculatePadding('vertical')).toEqual(vertical)
+  })
+})
+
+describe('Swaps the Orientation property around', () => {
+  it('horizontal is switched to vertical', () => {
+    expect(swapOrientation('horizontal')).toBe('vertical')
+  })
+
+  it('vertical is switched to horizontal', () => {
+    expect(swapOrientation('vertical')).toBe('horizontal')
   })
 })

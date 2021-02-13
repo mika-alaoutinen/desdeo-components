@@ -8,18 +8,18 @@ import { MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 
 const GroupedBarChart: React.FC<BarChartProps> = ({
-  datasets, labels, onClick, orientation
+  data, labels, onClick, orientation
 }) => {
 
   const drawBars = (): JSX.Element[] =>
-    datasets.map((dataset, i) => drawBar(dataset, onClick, i))
+    data.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
     <VictoryChart
-      height={calculateHeight(datasets, orientation)}
+      height={calculateHeight(data, orientation)}
       padding={calculatePadding(orientation)}
       theme={MATERIAL_THEME}
-      width={calculateWidth(datasets, orientation)}
+      width={calculateWidth(data, orientation)}
      >
 
       {drawMainAxis(labels)}

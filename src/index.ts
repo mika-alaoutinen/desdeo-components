@@ -8,4 +8,4 @@ export { default as ParallelAxesComponent } from './components/parallelAxes/wrap
 export { default as ScatterChartComponent } from './components/scatter/ScatterChart'
 export { default as ScatterSelectionComponent } from './components/scatter/ScatterSelection'
 
-export { default as TableComponent } from './components/table/Table'
+export { default as CoordinateTableComponent } from './components/table/coordinateTable/CoordinateTable'

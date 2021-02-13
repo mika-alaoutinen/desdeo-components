@@ -5,7 +5,7 @@ import {
   StackedBarChartComponent,
   ScatterChartComponent,
   ScatterSelectionComponent,
-  TableComponent
+  CoordinateTableComponent
 } from '../index'
 
 describe('Chart components are exported', () => {
@@ -33,7 +33,7 @@ describe('Chart components are exported', () => {
     expect(ScatterSelectionComponent).toBeTruthy()
   })
 
-  it('TableComponent is truthy', () => {
-    expect(TableComponent).toBeTruthy()
+  it('CoordinateTableComponent is truthy', () => {
+    expect(CoordinateTableComponent).toBeTruthy()
   })
 })
