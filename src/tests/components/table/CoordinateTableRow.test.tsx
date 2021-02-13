@@ -38,10 +38,10 @@ describe('Background color of a row changes on mouse hover', () => {
   })
 })
 
-describe('Clicking on a table row calls onClick function', () => {
+describe('Clicking on a table cell calls onClick function', () => {
   it('onClick is called', () => {
     const container = renderComponent(createCoordinate())
-    const row = container.querySelector('tr')
+    const row = container.querySelector('td')
     if (row) {
       fireEvent.click(row)
     }
