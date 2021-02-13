@@ -1,6 +1,12 @@
 import { Grouping } from '../types/chartTypes'
-import { Attribute, Coordinate, CoordinateSet, DataSet, ParallelAxesData } from '../types/dataTypes'
+import {
+  Attribute, Coordinate, CoordinateSet, DataSet, ParallelAxesData
+} from '../types/dataTypes'
 import { createId } from '../utils/utils'
+
+const createCoordinates = (dataset: DataSet): Coordinate[] => {
+  return []
+}
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data, label }) => {
@@ -57,5 +63,6 @@ const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
     : createCriteriaSets(data)
 
 export {
-  createAlternativeSets, createCriteriaSets, createParallelAxesData, mapData
+  createCoordinates, createAlternativeSets, createCriteriaSets,
+  createParallelAxesData, mapData
 }
