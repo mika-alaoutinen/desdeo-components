@@ -4,10 +4,6 @@ import {
 } from '../types/dataTypes'
 import { createId } from '../utils/utils'
 
-const createCoordinates = (dataset: DataSet): Coordinate[] => {
-  return []
-}
-
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data, label }) => {
 
@@ -63,6 +59,5 @@ const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
     : createCriteriaSets(data)
 
 export {
-  createCoordinates, createAlternativeSets, createCriteriaSets,
-  createParallelAxesData, mapData
+  createAlternativeSets, createCriteriaSets, createParallelAxesData, mapData
 }

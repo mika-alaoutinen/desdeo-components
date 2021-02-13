@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { OnClickHandler } from '../../types/chartTypes'
 import { Coordinate } from '../../types/dataTypes'
 import {
   backgroundColor, padding, tableStyle, ROW_SELECTED_COLOR
@@ -7,7 +8,7 @@ import {
 
 interface Props {
   datum: Coordinate,
-  onClick: (datum: Coordinate) => void
+  onClick: OnClickHandler
 }
 
 const TableRow: React.FC<Props> = ({ datum, onClick }) => {
