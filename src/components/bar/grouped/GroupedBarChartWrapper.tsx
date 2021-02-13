@@ -1,19 +1,20 @@
 import React from 'react'
 
-import BarChartWrapper from '../BarChartWrapper'
 import GroupedBarChart from './GroupedBarChart'
+import { swapOrientation } from '../layout'
+import { createDataLabels } from '../../../data/parser'
+import { mapData } from '../../../data/transformations'
 import { BarChartWrapperProps } from '../../../types/chartTypes'
 
 const GroupedBarChartWrapper: React.FC<BarChartWrapperProps> = ({
   data, grouping, onClick, orientation
 }) => (
 
-  <BarChartWrapper
-    Component={GroupedBarChart}
-    data={data}
-    grouping={grouping}
+  <GroupedBarChart
+    datasets={mapData(data, grouping)}
+    labels={createDataLabels(data, grouping)}
     onClick={onClick}
-    orientation={orientation}
+    orientation={swapOrientation(orientation)}
   />
 )
 
