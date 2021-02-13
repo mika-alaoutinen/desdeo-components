@@ -13,16 +13,14 @@ interface Props {
   onClick: DataTableClickHandler
 }
 
-const DataTable: React.FC<Props> = ({ data, onClick }) => {
-  return (
-    <table style={tableStyle}>
-      <DataTableHead labels={data.map(column => column.label)} />
-      <DataTableBody
-        data={transpose(data)}
-        onClick={onClick}
-      />
-    </table>
-  )
-}
+const DataTable: React.FC<Props> = ({ data, onClick }) => (
+  <table style={tableStyle}>
+    <DataTableHead labels={data.map(column => column.label)} />
+    <DataTableBody
+      data={transpose(data)}
+      onClick={onClick}
+    />
+  </table>
+)
 
 export default DataTable

@@ -10,19 +10,18 @@ interface Props {
 
 const DataTableBody: React.FC<Props> = ({ data, onClick }) => {
 
-  const renderRows = (): JSX.Element[] =>
+  const renderColumns = (): JSX.Element[] =>
     data.map((column, i) =>
-      <tr key={i}>
-        {<DataTableColumn
-          data={column}
-          onClick={onClick}
-        />}
-      </tr>
+      <DataTableColumn
+        key={i}
+        data={column}
+        onClick={onClick}
+      />
     )
 
   return (
     <tbody>
-      {renderRows()}
+      {renderColumns()}
     </tbody>
   )
 }
