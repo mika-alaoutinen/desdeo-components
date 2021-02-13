@@ -1,30 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 
+import HoverableTableRow from '../HoverableTableRow'
+import CoordinateTableRow from './CoordinateTableRow'
 import { OnClickHandler } from '../../../types/chartTypes'
 import { Coordinate } from '../../../types/dataTypes'
-import { backgroundColor, rowStyle } from '../tableStyles'
-import CoordinateTableRow from './CoordinateTableRow'
 
 interface Props {
   coordinate: Coordinate,
   onClick: OnClickHandler
 }
 
-const CoordinateTableColumn: React.FC<Props> = ({ coordinate, onClick }) => {
-  const [ color, setColor ] = useState<backgroundColor>('white')
-  const { id, isSelected } = coordinate
-
-  return (
-    <tr
-      key={id}
-      onClick={() => onClick(coordinate)}
-      onMouseEnter={() => setColor('whitesmoke')}
-      onMouseLeave={() => setColor('white')}
-      style={rowStyle(color, isSelected)}
-    >
-      <CoordinateTableRow coordinate={coordinate} />
-    </tr>
-  )
-}
+const CoordinateTableColumn: React.FC<Props> = ({ coordinate, onClick }) => (
+  <HoverableTableRow
+    rows={<CoordinateTableRow coordinate={coordinate} onClick={onClick} />}
+    isSelected={coordinate.isSelected}
+  />
+)
 
 export default CoordinateTableColumn
