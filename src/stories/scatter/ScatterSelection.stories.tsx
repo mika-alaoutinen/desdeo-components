@@ -32,11 +32,6 @@ export default {
   title: 'DESDEO/ScatterSelection',
   component: ScatterSelectionWrapper,
   argTypes: {
-    data: {
-      control: {
-        type: 'object'
-      }
-    },
     onSelect: {
       table: {
         disable: true

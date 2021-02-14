@@ -24,17 +24,14 @@ export const ScatterChartWithWrapper = Template.bind({})
 ScatterChartWithWrapper.args = {
   data: datasetTuple,
   onClick: (coordinate) => console.log('coordinate', coordinate),
+  xAxisLabel: 'WQ Fishery',
+  yAxisLabel: 'WQ City',
 }
 
 export default {
   title: 'DESDEO/ScatterChart',
   component: ScatterChartWrapper,
   argTypes: {
-    data: {
-      control: {
-        type: 'object'
-      }
-    },
     onClick: {
       table: {
         disable: true
