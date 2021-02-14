@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import { props } from './Props'
+import { argTypes, props } from './storyConfig'
 import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
@@ -13,5 +13,6 @@ GroupedBarChart.args = props
 
 export default {
   title: 'DESDEO/GroupedBarChart',
-  component: GroupedBarChartWrapper
+  component: GroupedBarChartWrapper,
+  argTypes
 } as Meta

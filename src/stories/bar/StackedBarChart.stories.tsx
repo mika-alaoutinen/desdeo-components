@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import { props } from './Props'
+import { props } from './storyConfig'
 import StackedBarChartWrapper from '../../components/bar/stacked/StackedBarChartWrapper'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
