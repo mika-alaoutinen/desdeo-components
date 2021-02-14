@@ -1,14 +1,18 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
-import ParallelAxes from '../../components/parallelAxes/component/ParallelAxes'
-import ParallelAxesWrapper from '../../components/parallelAxes/wrapper/ParallelAxesWrapper'
+import ParallelAxesWrapper, { Props } from '../../components/parallelAxes/wrapper/ParallelAxesWrapper'
 import { testdata } from '../../tests/testdata'
 
-export const ParallelAxesComponent = (): JSX.Element =>
-  <ParallelAxesWrapper data={testdata} />
+const Template: Story<Props> = args =>
+  <ParallelAxesWrapper {...args} />
+
+export const ParallelCoordinates = Template.bind({})
+ParallelCoordinates.args = {
+  data: testdata
+}
 
 export default {
   title: 'DESDEO/ParallelAxes',
-  component: ParallelAxes
+  component: ParallelAxesWrapper
 } as Meta

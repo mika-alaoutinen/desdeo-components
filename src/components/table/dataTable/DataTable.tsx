@@ -8,7 +8,7 @@ import { DataSet } from '../../../types/dataTypes'
 
 export type DataTableClickHandler = (n: number) => void
 
-interface Props {
+export interface Props {
   data: DataSet,
   onClick: DataTableClickHandler
 }
