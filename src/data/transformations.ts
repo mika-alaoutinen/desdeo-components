@@ -41,7 +41,7 @@ const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
 
   for (let i = 0; i < length; i++) {
     const coordinate: Coordinate = {
-      id: createId('coordinate', i),
+      id: createId('coordinate', i + 1),
       x: xAxisData[i],
       y: yAxisData[i]
     }

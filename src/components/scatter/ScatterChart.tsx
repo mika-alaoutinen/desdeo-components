@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import ZoomContainer from '../../containers/ZoomContainer'
-import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
+import { mapFillStyle } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
 
 const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
@@ -24,7 +24,6 @@ const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
       style={{
         data: {
           fill: ({ datum }) => mapFillStyle(datum),
-          opacity: ({ datum }) => mapOpacityStyle(datum)
         }
       }}
     />
