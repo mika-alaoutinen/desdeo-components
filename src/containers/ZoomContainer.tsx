@@ -5,7 +5,7 @@ import { DOMAIN_PADDING, MATERIAL_THEME } from '../styles/victoryStyles'
 import { Domain } from '../types/victoryTypes'
 
 interface Props {
-  domain: Domain,
+  domain?: Domain,
   zoomDomain?: Domain
 }
 

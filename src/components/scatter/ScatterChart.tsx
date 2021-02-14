@@ -4,15 +4,9 @@ import { VictoryScatter } from 'victory'
 import ZoomContainer from '../../containers/ZoomContainer'
 import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
-import { Domain } from '../../types/victoryTypes'
-
-const domain: Domain = {
-  x: [0, 100],
-  y: [0, 100]
-}
 
 const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
-  <ZoomContainer domain={domain}>
+  <ZoomContainer>
 
     <VictoryScatter
       data={data}
