@@ -5,8 +5,8 @@ export { default as StackedBarChartComponent } from './components/bar/stacked/St
 
 export { default as ParallelAxesComponent } from './components/parallelAxes/wrapper/ParallelAxesWrapper'
 
-export { default as ScatterChartComponent } from './components/scatter/ScatterChart'
-export { default as ScatterSelectionComponent } from './components/scatter/ScatterSelection'
+export { default as ScatterChartComponent } from './components/scatter/ScatterChartWrapper'
+export { default as ScatterSelectionComponent } from './components/scatter/ScatterSelectionWrapper'
 
 export { default as CoordinateTableComponent } from './components/table/coordinateTable/CoordinateTable'
 export { default as DataTableComponent } from './components/table/dataTable/DataTable'
