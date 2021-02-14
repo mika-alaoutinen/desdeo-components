@@ -60,6 +60,3 @@ Launches Storybook for local development.
 ```
 npm run storybook
 ```
-
-## TODO
-- Figure out how to use Storybook's controls panel to change props.
