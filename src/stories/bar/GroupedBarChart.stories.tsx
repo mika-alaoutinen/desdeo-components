@@ -1,37 +1,18 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
+import { argTypes, props } from './storyConfig'
 import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
-import { testdata } from '../../tests/testdata'
-import { Grouping } from '../../types/chartTypes'
-import { Coordinate } from '../../types/dataTypes'
-import { Orientation } from '../../types/layoutTypes'
+import { BarChartWrapperProps } from '../../types/chartTypes'
 
-const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
+const Template: Story<BarChartWrapperProps> = args =>
+  <GroupedBarChartWrapper {...args} />
 
-const wrapperComponent = (grouping: Grouping, orientation: Orientation): JSX.Element =>
-  <GroupedBarChartWrapper
-    data={testdata}
-    grouping={grouping}
-    onClick={clickHandler}
-    orientation={orientation}
-  />
-
-// Grouping data by alternative solutions
-export const HorizontalAlternativesWrapper = (): JSX.Element =>
-  wrapperComponent('alternatives', 'horizontal')
-
-export const VerticalAlternativesWrapper = (): JSX.Element =>
-  wrapperComponent('alternatives', 'vertical')
-
-// Grouping data by criteria
-export const HorizontalCriteriaWrapper = (): JSX.Element =>
-  wrapperComponent('criteria', 'horizontal')
-
-export const VerticalCriteriaWrapper = (): JSX.Element =>
-  wrapperComponent('criteria', 'vertical')
+export const GroupedBarChart = Template.bind({})
+GroupedBarChart.args = props
 
 export default {
   title: 'DESDEO/GroupedBarChart',
-  component: GroupedBarChartWrapper
+  component: GroupedBarChartWrapper,
+  argTypes
 } as Meta

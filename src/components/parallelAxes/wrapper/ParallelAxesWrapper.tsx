@@ -6,7 +6,7 @@ import { getAttributeNames, getMaxValues } from './dataParser'
 import { createParallelAxesData } from '../../../data/transformations'
 import { DataSet } from '../../../types/dataTypes'
 
-interface Props {
+export interface Props {
   data: DataSet
 }
 
