@@ -17,7 +17,9 @@ interface BarChartWrapperProps {
 
 interface OnClickChart {
   data: Coordinate[],
-  onClick: OnClickHandler
+  onClick: OnClickHandler,
+  xAxisLabel?: string,
+  yAxisLabel?: string
 }
 
 interface OnSelectChart {
