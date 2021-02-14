@@ -10,13 +10,11 @@ export interface Props {
   onClick: OnClickHandler
 }
 
-const ScatterChartWrapper: React.FC<Props> = ({ data, onClick }) => {
-  return (
-    <ScatterChart
-      data={createCoordinates(data)}
-      onClick={onClick}
-    />
-  )
-}
+const ScatterChartWrapper: React.FC<Props> = ({ data, onClick }) => (
+  <ScatterChart
+    data={createCoordinates(data)}
+    onClick={onClick}
+  />
+)
 
 export default ScatterChartWrapper
