@@ -1,6 +1,6 @@
 import { Grouping } from '../types/chartTypes'
 import {
-  Attribute, Coordinate, CoordinateSet, DataSet, ParallelAxesData
+  Attribute, Coordinate, CoordinateSet, DataSet, DataSetTuple, ParallelAxesData
 } from '../types/dataTypes'
 import { createId } from '../utils/utils'
 
@@ -31,6 +31,24 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
 
     return { data: coordinates }
   })
+}
+
+const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
+  const xAxisData = tuple[0].data
+  const yAxisData = tuple[1].data
+  const coordinates: Coordinate[] = []
+  const length = Math.min(xAxisData.length, yAxisData.length)
+
+  for (let i = 0; i < length; i++) {
+    const coordinate: Coordinate = {
+      id: createId('coordinate', i),
+      x: xAxisData[i],
+      y: yAxisData[i]
+    }
+    coordinates.push(coordinate)
+  }
+
+  return coordinates
 }
 
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
@@ -70,6 +88,6 @@ const transpose = (dataset: DataSet): number[][] => {
 }
 
 export {
-  createAlternativeSets, createCriteriaSets, createParallelAxesData,
-  mapData, transpose
+  createAlternativeSets, createCriteriaSets, createCoordinates,
+  createParallelAxesData, mapData, transpose
 }
