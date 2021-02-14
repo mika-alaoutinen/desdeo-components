@@ -1,35 +1,15 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
+import { props } from './Props'
 import StackedBarChartWrapper from '../../components/bar/stacked/StackedBarChartWrapper'
-import { testdata } from '../../tests/testdata'
-import { Grouping } from '../../types/chartTypes'
-import { Coordinate } from '../../types/dataTypes'
-import { Orientation } from '../../types/layoutTypes'
+import { BarChartWrapperProps } from '../../types/chartTypes'
 
-const clickHandler = (coordinate: Coordinate) => console.log('coordinate', coordinate)
+const Template: Story<BarChartWrapperProps> = args =>
+  <StackedBarChartWrapper {...args} />
 
-const wrapperComponent = (grouping: Grouping, orientation: Orientation): JSX.Element =>
-  <StackedBarChartWrapper
-    data={testdata}
-    grouping={grouping}
-    onClick={clickHandler}
-    orientation={orientation}
-  />
-
-// Grouping data by alternative solutions
-export const HorizontalAlternativesStackedBars = (): JSX.Element =>
-  wrapperComponent('alternatives', 'horizontal')
-
-export const VerticalAlternativesStackedBars = (): JSX.Element =>
-  wrapperComponent('alternatives', 'vertical')
-
-// Grouping data by criteria
-export const HorizontalCriteriaStackedBars = (): JSX.Element =>
-  wrapperComponent('criteria', 'horizontal')
-
-export const VerticalCriteriaStackedBars = (): JSX.Element =>
-  wrapperComponent('criteria', 'vertical')
+export const StackedBarChart = Template.bind({})
+StackedBarChart.args = props
 
 export default {
   title: 'DESDEO/StackedBarChart',
