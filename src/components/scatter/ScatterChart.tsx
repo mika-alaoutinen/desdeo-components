@@ -1,7 +1,7 @@
 import React from 'react'
-import { VictoryAxis, VictoryChart, VictoryScatter, VictoryZoomContainer } from 'victory'
-import { axisStyles } from '../../containers/containerStyles'
+import { VictoryChart, VictoryScatter, VictoryZoomContainer } from 'victory'
 
+import { drawDependentAxis, drawMainAxis } from './rendering'
 import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
 
@@ -15,16 +15,8 @@ const ScatterChart: React.FC<OnClickChart> = ({
     theme={MATERIAL_THEME}
   >
 
-    <VictoryAxis
-      label={xAxisLabel ? xAxisLabel : 'X axis'}
-      style={axisStyles}
-    />
-
-    <VictoryAxis
-      dependentAxis
-      label={yAxisLabel ? yAxisLabel : 'Y axis'}
-      style={axisStyles}
-    />
+    {drawMainAxis(xAxisLabel)}
+    {drawDependentAxis(yAxisLabel)}
 
     <VictoryScatter
       data={data}
