@@ -23,9 +23,7 @@ const Template: Story<Props> = args =>
 export const ScatterChartWithWrapper = Template.bind({})
 ScatterChartWithWrapper.args = {
   data: datasetTuple,
-  onClick: (coordinate) => console.log('coordinate', coordinate),
-  xAxisLabel: 'WQ Fishery',
-  yAxisLabel: 'WQ City',
+  onClick: (coordinate) => console.log('coordinate', coordinate)
 }
 
 export default {

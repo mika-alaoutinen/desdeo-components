@@ -7,20 +7,15 @@ import { DataSetTuple } from '../../types/dataTypes'
 
 export interface Props {
   data: DataSetTuple,
-  onClick: OnClickHandler,
-  xAxisLabel?: string,
-  yAxisLabel?: string
+  onClick: OnClickHandler
 }
 
-const ScatterChartWrapper: React.FC<Props> = ({
-  data, onClick, xAxisLabel, yAxisLabel
-}) => (
-
+const ScatterChartWrapper: React.FC<Props> = ({ data, onClick }) => (
   <ScatterChart
     data={createCoordinates(data)}
     onClick={onClick}
-    xAxisLabel={xAxisLabel}
-    yAxisLabel={yAxisLabel}
+    xAxisLabel={data[0].label}
+    yAxisLabel={data[1].label}
   />
 )
 
