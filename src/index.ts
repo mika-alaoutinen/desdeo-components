@@ -9,3 +9,4 @@ export { default as ScatterChartComponent } from './components/scatter/ScatterCh
 export { default as ScatterSelectionComponent } from './components/scatter/ScatterSelection'
 
 export { default as CoordinateTableComponent } from './components/table/coordinateTable/CoordinateTable'
+export { default as DataTableComponent } from './components/table/dataTable/DataTable'
