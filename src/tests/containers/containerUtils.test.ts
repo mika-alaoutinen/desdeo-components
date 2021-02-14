@@ -1,11 +1,11 @@
-import { testdata } from '../testdata'
+import { dataset } from '../testdata'
 import { createAlternativeSets, createCriteriaSets } from '../../data/transformations'
 
 import { calculateHeight, calculateWidth } from '../../containers/containerUtils'
 
 // Create test data
-const groupedByAlternatives = createAlternativeSets(testdata)
-const groupedByCriteria = createCriteriaSets(testdata)
+const groupedByAlternatives = createAlternativeSets(dataset)
+const groupedByCriteria = createCriteriaSets(dataset)
 
 describe('Calculates chart height based on dataset and chart orientation', () => {
   const expectedHeight = 500

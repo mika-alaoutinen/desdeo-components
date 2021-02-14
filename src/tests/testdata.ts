@@ -1,6 +1,8 @@
-import { Coordinate, DataSet, ParallelAxesData } from '../types/dataTypes'
+import {
+  Coordinate, DataSet, DataSetTuple, ParallelAxesData
+} from '../types/dataTypes'
 
-const testdata: DataSet = [
+const dataset: DataSet = [
   {
     label: 'WQ Fishery',
     data: [ 6.042483, 5.758127, 6.287081, 6.134672, 5.610188, 5.231501, 6.34, 6.291364, 5.407513, 6.019503 ]
@@ -20,6 +22,17 @@ const testdata: DataSet = [
   {
     label: 'Plant Resources',
     data: [ 0.248895, 0.346752, 0.326688, 0.259547, 0.126336, 0.295807, 0.35, 0.328574, 0.228541, 0.327455 ]
+  }
+]
+
+const datasetTuple: DataSetTuple = [
+  {
+    label: 'WQ Fishery',
+    data: [ 6.042483, 5.758127, 6.287081, 6.134672, 5.610188, 5.231501, 6.34, 6.291364, 5.407513, 6.019503 ]
+  },
+  {
+    label: 'WQ City',
+    data: [ 3.17527, 3.410843, 3.207926, 2.98383, 2.910456, 3.248641, 2.962557, 3.346416, 3.130143, 3.350959 ]
   }
 ]
 
@@ -53,5 +66,5 @@ const coordinateData: Coordinate[] = [
 ]
 
 export {
-  coordinateData, parallelAxesData, testdata
+  coordinateData, dataset, datasetTuple, parallelAxesData
 }

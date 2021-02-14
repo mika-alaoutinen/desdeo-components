@@ -1,4 +1,4 @@
-import { testdata } from '../../tests/testdata'
+import { dataset } from '../../tests/testdata'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
 // Used to configure Storybook's Controls view
@@ -28,7 +28,7 @@ const argTypes = {
 }
 
 const props: BarChartWrapperProps = {
-  data: testdata,
+  data: dataset,
   grouping: 'alternatives',
   onClick: (coordinate) => console.log('coordinate', coordinate),
   orientation: 'horizontal'
