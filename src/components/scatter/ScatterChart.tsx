@@ -1,18 +1,20 @@
 import React from 'react'
 import { VictoryScatter } from 'victory'
 
-import ZoomContainer from '../../containers/ZoomContainer'
-import { mapFillStyle, mapOpacityStyle } from '../../styles/victoryStyles'
+import ZoomContainer from '../victory/ZoomContainer'
+import { createCoordinateLabel, drawDependentAxis, drawMainAxis } from './rendering'
+import { drawTooltip } from '../victory/components'
+import { mapFillStyle } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
-import { Domain } from '../../types/victoryTypes'
 
-const domain: Domain = {
-  x: [0, 100],
-  y: [0, 100]
-}
+const ScatterChart: React.FC<OnClickChart> = ({
+  data, onClick, xAxisLabel, yAxisLabel
+}) => (
 
-const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
-  <ZoomContainer domain={domain}>
+  <ZoomContainer>
+
+    {drawMainAxis(xAxisLabel)}
+    {drawDependentAxis(yAxisLabel)}
 
     <VictoryScatter
       data={data}
@@ -26,11 +28,12 @@ const ScatterChart: React.FC<OnClickChart> = ({ data, onClick }) => (
           }
         }
       ]}
-      size={7}
+      labelComponent={drawTooltip()}
+      labels={({ datum }) => createCoordinateLabel(datum)}
+      size={5}
       style={{
         data: {
           fill: ({ datum }) => mapFillStyle(datum),
-          opacity: ({ datum }) => mapOpacityStyle(datum)
         }
       }}
     />

@@ -1,8 +1,8 @@
-import { testdata } from '../../tests/testdata'
+import { dataset } from '../../tests/testdata'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
 // Used to configure Storybook's Controls view
-const argTypes = {
+export const argTypes = {
   data: {
     control: {
       type: 'object'
@@ -27,11 +27,9 @@ const argTypes = {
   }
 }
 
-const props: BarChartWrapperProps = {
-  data: testdata,
+export const props: BarChartWrapperProps = {
+  data: dataset,
   grouping: 'alternatives',
   onClick: (coordinate) => console.log('coordinate', coordinate),
   orientation: 'horizontal'
 }
-
-export { argTypes, props }

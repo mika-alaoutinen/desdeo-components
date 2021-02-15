@@ -1,8 +1,10 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
 import ScatterSelection from '../../components/scatter/ScatterSelection'
+import ScatterSelectionWrapper, { Props } from '../../components/scatter/ScatterSelectionWrapper'
 import { useOnSelectHandler } from '../storyUtils'
+import { datasetTuple } from '../../tests/testdata'
 
 export const ScatterSeletionComponent = (): JSX.Element => {
   const { data, onSelect, onSelectionCleared } = useOnSelectHandler()
@@ -16,7 +18,29 @@ export const ScatterSeletionComponent = (): JSX.Element => {
   )
 }
 
+const Template: Story<Props> = args =>
+  <ScatterSelectionWrapper {...args} />
+
+export const ScatterSelectionWithWrapper = Template.bind({})
+ScatterSelectionWithWrapper.args = {
+  data: datasetTuple,
+  onSelect: coordinates => console.log('selected', coordinates),
+  onSelectionCleared: () => console.log('selections cleared')
+}
+
 export default {
   title: 'DESDEO/ScatterSelection',
-  component: ScatterSelection
+  component: ScatterSelectionWrapper,
+  argTypes: {
+    onSelect: {
+      table: {
+        disable: true
+      }
+    },
+    onSelectionCleared: {
+      table: {
+        disable: true
+      }
+    },
+  }
 } as Meta

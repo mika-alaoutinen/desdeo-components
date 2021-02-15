@@ -2,13 +2,26 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
 import { dataShouldBeClickable, getPaths } from '../componentTests'
-import { CoordinateSet } from '../../../types/dataTypes'
+import { Coordinate, CoordinateSet } from '../../../types/dataTypes'
 
 import {
-  drawBar, drawDependentAxis, drawMainAxis
+  createCoordinateLabel, drawBar, drawDependentAxis, drawMainAxis
 } from '../../../components/bar/rendering'
 
 const clickHandler = jest.fn()
+
+describe('Creates label text for a coordinate', () => {
+  const coordinate: Coordinate = {
+    id: 'test-id',
+    x: 1,
+    y: 2
+  }
+
+  it('label has ID and value', () => {
+    expect(createCoordinateLabel(coordinate)).toBe('test-id:\n2')
+  })
+})
+
 
 describe('Draws a dependent axis', () => {
   it('uses default tick format when tickFormatter is not given', () => {

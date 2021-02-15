@@ -1,12 +1,8 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
 
 import {
-  dataShouldBeClickable,
-  getPaths,
-  renderComponent,
-  renderVictoryContainer,
+  dataShouldBeClickable, getPaths, renderComponent, renderVictoryContainer
 } from '../componentTests'
 import { Grouping } from '../../../types/chartTypes'
 import { DataSet } from '../../../types/dataTypes'

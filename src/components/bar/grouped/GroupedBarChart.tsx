@@ -1,9 +1,10 @@
 import React from 'react'
 import { VictoryChart, VictoryGroup } from 'victory'
 
-import { calculateHeight, calculateWidth } from '../../../containers/containerUtils'
 import { calculatePadding } from '../layout'
-import { drawBar, drawMainAxis, drawDependentAxis, drawTooltip } from '../rendering'
+import { drawBar, drawMainAxis, drawDependentAxis } from '../rendering'
+import { drawTooltip } from '../../victory/components'
+import { calculateHeight, calculateWidth } from '../../victory/containerUtils'
 import { MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 

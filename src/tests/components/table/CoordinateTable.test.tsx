@@ -2,7 +2,7 @@ import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { renderComponent, renderDataLabels } from '../componentTests'
+import { renderComponent } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
 import CoordinateTable from '../../../components/table/coordinateTable/CoordinateTable'
@@ -17,10 +17,6 @@ describe('CoordinateTable is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has data labels A-E', () => {
-    renderDataLabels(component)
-  })
-
   it('has headings Label, X, Y and Selected', () => {
     render(component)
     const expectedHeadings = [ 'Label', 'X', 'Y', 'Selected' ]
@@ -31,8 +27,11 @@ describe('Data is displayed correctly', () => {
 
 describe('Rows should be clickable', () => {
   it('registers a click event', () => {
-    render(component)
-    fireEvent.click(screen.getByText('A'))
+    const { container } = render(component)
+    const td = container.querySelector('td')
+    if (td) {
+      fireEvent.click(td)
+    }
     expect(handler).toHaveBeenCalled()
   })
 })

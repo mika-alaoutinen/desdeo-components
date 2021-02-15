@@ -1,25 +1,11 @@
-import { Coordinate, DataSet } from '../../types/dataTypes'
+import { DataSet } from '../../types/dataTypes'
 
-import {
-  createCoordinateLabel, createDataLabels
-} from '../../data/parser'
+import { createDataLabels } from '../../data/parser'
 
 const data: DataSet = [
   { label: 'Label A', data: [ 1, 2 ] },
   { label: 'Label B', data: [ 3, 4 ] },
 ]
-
-describe('Creates label text for a coordinate', () => {
-  const coordinate: Coordinate = {
-    id: 'test-id',
-    x: 1,
-    y: 2
-  }
-
-  it('label has ID and value', () => {
-    expect(createCoordinateLabel(coordinate)).toBe('test-id:\n2')
-  })
-})
 
 describe('Should create labels from data that is grouped by alternatives', () => {
   it('alternatives grouping produces Alternative 1 and Alternative 2', () => {

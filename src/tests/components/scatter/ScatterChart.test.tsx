@@ -1,22 +1,25 @@
 import React from 'react'
+import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import {
-  dataShouldBeClickable,
-  renderComponent,
-  renderDataLabels,
-  renderFiveDatum,
-  renderVictoryContainer
+  dataShouldBeClickable, renderComponent, renderVictoryContainer, renderData
 } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { DataSetTuple } from '../../../types/dataTypes'
 
-import ScatterChart from '../../../components/scatter/ScatterChart'
+import ScatterChartWrapper from '../../../components/scatter/ScatterChartWrapper'
 
-// Constants
+const data: DataSetTuple = [
+  { label: 'Label A', data: [ 1, 2, 3 ] },
+  { label: 'Label B', data: [ 4, 5, 6 ] },
+]
+
 const handler = jest.fn()
-const component = <ScatterChart data={coordinateData} onClick={handler} />
 
-describe('ScatterChart is rendered correctly', () => {
-  it('component is rendered', () => {
+const component = <ScatterChartWrapper data={data} onClick={handler} />
+
+describe('Smoke tests for chart rendering', () => {
+  it('scatter chart wrapper is rendered', () => {
     renderComponent(component)
   })
 
@@ -26,12 +29,18 @@ describe('ScatterChart is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has data labels A-E', () => {
-    renderDataLabels(component)
+  it('has three path elements representing data points', () => {
+    renderData(component, 3)
   })
 
-  it('has five path elements representing data points', () => {
-    renderFiveDatum(component)
+  it('chart has a Y-axis label', () => {
+    render(component)
+    expect(screen.getByText(/Label A/)).toBeInTheDocument()
+  })
+
+  it('chart has an X-axis label', () => {
+    render(component)
+    expect(screen.getByText(/Label B/)).toBeInTheDocument()
   })
 })
 

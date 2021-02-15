@@ -15,15 +15,19 @@ interface BarChartWrapperProps {
   orientation: Orientation
 }
 
-interface OnClickChart {
-  data: Coordinate[],
+interface OnClickChart extends CoordinateChart {
   onClick: OnClickHandler
 }
 
-interface OnSelectChart {
-  data: Coordinate[],
+interface OnSelectChart extends CoordinateChart {
   onSelect: OnSelectHandler,
   onSelectionCleared: OnSelectionClearedHandler
+}
+
+interface CoordinateChart {
+  data: Coordinate[],
+  xAxisLabel?: string,
+  yAxisLabel?: string
 }
 
 type Grouping = 'alternatives' | 'criteria'

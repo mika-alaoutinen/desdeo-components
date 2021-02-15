@@ -1,17 +1,12 @@
 import React from 'react'
 
 import {
-  dataShouldBeClickable,
-  renderComponent,
-  renderDataLabels,
-  renderFiveDatum,
-  renderVictoryContainer
+  dataShouldBeClickable, renderComponent, renderData, renderVictoryContainer
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
 import BarChart from '../../../components/bar/basic/BarChart'
 
-// Constants
 const handler = jest.fn()
 const component = <BarChart data={coordinateData} onClick={handler} />
 
@@ -26,12 +21,8 @@ describe('BarChart is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has data labels A-E', () => {
-    renderDataLabels(component)
-  })
-
   it('has five path elements representing bars', () => {
-    renderFiveDatum(component)
+    renderData(component, 5)
   })
 })
 

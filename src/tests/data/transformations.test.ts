@@ -1,7 +1,10 @@
-import { DataSet, CoordinateSet, ParallelAxesData } from '../../types/dataTypes'
+import {
+  DataSet, CoordinateSet, ParallelAxesData, DataSetTuple, Coordinate
+} from '../../types/dataTypes'
 
 import {
-  createAlternativeSets, createCriteriaSets, createParallelAxesData, transpose
+  createAlternativeSets, createCriteriaSets, createCoordinates,
+  createDataTableData, createParallelAxesData
 } from '../../data/transformations'
 
 const data: DataSet = [
@@ -65,6 +68,27 @@ describe('createCriteriaSets produces datasets that are grouped by available cri
   })
 })
 
+describe('createCoordinates produces datasets for scatter charts', () => {
+  const data: DataSetTuple = [
+    {
+      label: 'WQ Fishery',
+      data: [ 6.042483, 5.758127 ]
+    },
+    {
+      label: 'WQ City',
+      data: [ 3.17527, 3.410843 ]
+    },
+  ]
+
+  it('transforms dataset as expected', () => {
+    const expected: Coordinate[] = [
+      { id: 'wq-fishery-wq-city-1', x: 6.042483, y: 3.17527 },
+      { id: 'wq-fishery-wq-city-2', x: 5.758127, y: 3.410843 }
+    ]
+    expect(createCoordinates(data)).toEqual(expected)
+  })
+})
+
 describe('createParallelAxesData produces datasets for Parallel Axis component', () => {
   const expected: ParallelAxesData[] = [
     {
@@ -92,17 +116,17 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
   })
 })
 
-describe('Transpose transforms DataSet into a 2D array', () => {
+describe('createDataTableData transforms DataSet into a 2D array', () => {
   const expected = [
     [ 6.042483, 3.17527 ],
     [ 5.758127, 3.410843 ]
   ]
 
   it('transposes data', () => {
-    expect(transpose(data)).toEqual(expected)
+    expect(createDataTableData(data)).toEqual(expected)
   })
 
   it ('handles an empty input', () => {
-    expect(transpose([])).toEqual([])
+    expect(createDataTableData([])).toEqual([])
   })
 })

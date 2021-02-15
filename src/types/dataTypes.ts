@@ -1,5 +1,6 @@
-// A dataset can have any number of columns
 type DataSet = DataColumn[]
+
+type DataSetTuple = [ DataColumn, DataColumn ]
 
 // Represents a column in the example CSV
 interface DataColumn {
@@ -36,6 +37,6 @@ interface Filter {
 }
 
 export type {
-  DataColumn, DataSet, Coordinate, CoordinateSet,
+  DataSet, DataSetTuple, Coordinate, CoordinateSet,
   ParallelAxesData, Attribute, Filter
 }

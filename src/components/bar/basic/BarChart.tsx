@@ -1,7 +1,11 @@
 import React from 'react'
 import { VictoryBar, VictoryChart } from 'victory'
 
-import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../../styles/victoryStyles'
+import { createCoordinateLabel } from '../rendering'
+import { drawTooltip } from '../../victory/components'
+import {
+  DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME
+} from '../../../styles/victoryStyles'
 import { OnClickChart } from '../../../types/chartTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
@@ -22,6 +26,8 @@ const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
           }
         },
       ]}
+      labelComponent={drawTooltip()}
+      labels={({ datum }) => createCoordinateLabel(datum)}
       style={{
         data: {
           fill: ({ datum }) => mapFillStyle(datum)
