@@ -3,20 +3,26 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import {
-  dataShouldBeClickable, renderComponent, renderVictoryContainer, renderData
+  renderComponent, renderVictoryContainer, renderData
 } from '../componentTests'
 import { DataSetTuple } from '../../../types/dataTypes'
 
-import ScatterChartWrapper from '../../../components/scatter/ScatterChartWrapper'
+import ScatterSelectionWrapper from '../../../components/scatter/ScatterSelectionWrapper'
 
 const data: DataSetTuple = [
   { label: 'Label A', data: [ 1, 2, 3 ] },
   { label: 'Label B', data: [ 4, 5, 6 ] },
 ]
 
-const handler = jest.fn()
+const onSelect = jest.fn()
+const onSelectionCleared = jest.fn()
 
-const component = <ScatterChartWrapper data={data} onClick={handler} />
+const component =
+  <ScatterSelectionWrapper
+    data={data}
+    onSelect={onSelect}
+    onSelectionCleared={onSelectionCleared}
+  />
 
 describe('Smoke tests for chart rendering', () => {
   it('scatter chart wrapper is rendered', () => {
@@ -41,11 +47,5 @@ describe('Data is displayed correctly', () => {
   it('chart has an X-axis label', () => {
     render(component)
     expect(screen.getByText(/Label B/)).toBeInTheDocument()
-  })
-})
-
-describe('Data points should be clickable', () => {
-  it('registers a click event', () => {
-    dataShouldBeClickable(component, handler)
   })
 })
