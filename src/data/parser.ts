@@ -1,17 +1,12 @@
 import { Grouping } from '../types/chartTypes'
-import { Coordinate, DataSet } from '../types/dataTypes'
+import { DataSet } from '../types/dataTypes'
 import { range, replaceSpacesWithLineBreaks } from '../utils/utils'
 
-const createCoordinateLabel = ({ id, y }: Coordinate): string =>
-  `${id}:
-  ${y}`
-
-const createDataLabels = (data: DataSet, grouping: Grouping): string[] =>
+export const createDataLabels = (data: DataSet, grouping: Grouping): string[] =>
   grouping === 'alternatives'
     ? mapAlternativesLabels(data)
     : mapCriteriaNames(data)
 
-// Utility functions
 const mapAlternativesLabels = (data: DataSet): string[] =>
   range(countAlternatives(data))
     .map(n => `Alternative\n${n}`)
@@ -26,5 +21,3 @@ const countAlternatives = (data: DataSet): number => {
     .map(column => column.data.length)
     .reduce((max, current) => current > max ? current : max, 0)
 }
-
-export { createCoordinateLabel, createDataLabels }

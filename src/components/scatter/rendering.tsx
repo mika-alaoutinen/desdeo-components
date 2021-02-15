@@ -5,9 +5,7 @@ import { axisStyles } from '../../containers/containerStyles'
 import { Coordinate } from '../../types/dataTypes'
 
 const createCoordinateLabel = ({ id, x, y }: Coordinate): string =>
-  `${id}:
-  X: ${x}
-  Y: ${y}`
+  `${id}:\nX: ${x}\nY: ${y}`
 
 const drawMainAxis = (label?: string): JSX.Element =>
   <VictoryAxis

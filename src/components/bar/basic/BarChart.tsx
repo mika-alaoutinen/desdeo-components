@@ -1,10 +1,12 @@
 import React from 'react'
 import { VictoryBar, VictoryChart } from 'victory'
 
-import { createCoordinateLabel } from '../../../data/parser'
-import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../../styles/victoryStyles'
-import { OnClickChart } from '../../../types/chartTypes'
+import { createCoordinateLabel } from '../rendering'
 import { drawTooltip } from '../../victory/rendering'
+import {
+  DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME
+} from '../../../styles/victoryStyles'
+import { OnClickChart } from '../../../types/chartTypes'
 
 const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
   <VictoryChart

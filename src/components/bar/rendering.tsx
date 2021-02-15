@@ -1,9 +1,11 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
-import { createCoordinateLabel } from '../../data/parser'
 import { OnClickHandler } from '../../types/chartTypes'
-import { CoordinateSet } from '../../types/dataTypes'
+import { Coordinate, CoordinateSet } from '../../types/dataTypes'
+
+const createCoordinateLabel = ({ id, y }: Coordinate): string =>
+  `${id}:\n${y}`
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
@@ -37,5 +39,5 @@ const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =
   />
 
 export {
-  drawBar, drawMainAxis, drawDependentAxis
+  createCoordinateLabel, drawBar, drawMainAxis, drawDependentAxis
 }
