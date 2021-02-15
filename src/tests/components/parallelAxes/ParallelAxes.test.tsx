@@ -8,7 +8,6 @@ import ParallelAxes from '../../../components/parallelAxes/component/ParallelAxe
 
 const attributes = ['wq fishery', 'wq city', 'roi', 'city tax']
 
-// Constants
 const component =
   <ParallelAxes
     attributes={attributes}
