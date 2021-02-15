@@ -51,6 +51,12 @@ const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
   return coordinates
 }
 
+const createDataTableData = (dataset: DataSet): number[][] => {
+  return !dataset.length
+    ? []
+    : transpose(dataset.map(d => d.data)) as number[][]
+}
+
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   if (!dataset.length) {
     return []
@@ -76,18 +82,11 @@ const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
     ? createAlternativeSets(data)
     : createCriteriaSets(data)
 
-const transpose = (dataset: DataSet): number[][] => {
-  if (!dataset.length) {
-    return []
-  }
-
-  const data = dataset.map(d => d.data)
-
-  return data[0].map((_, colIndex) =>
-    data.map(row => row[colIndex]))
-}
+const transpose = (nestedArrays: unknown[][]): unknown[][] =>
+  nestedArrays[0].map((_, colIndex) =>
+    nestedArrays.map(row => row[colIndex]))
 
 export {
   createAlternativeSets, createCriteriaSets, createCoordinates,
-  createParallelAxesData, mapData, transpose
+  createDataTableData, createParallelAxesData, mapData
 }
