@@ -1,10 +1,9 @@
 import React from 'react'
-import { VictoryAxis, VictoryBar, VictoryLabel, VictoryTooltip } from 'victory'
+import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
 import { createCoordinateLabel } from '../../data/parser'
 import { OnClickHandler } from '../../types/chartTypes'
 import { CoordinateSet } from '../../types/dataTypes'
-import { Orientation } from '../../types/layoutTypes'
 
 const drawBar = (
   { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
@@ -37,20 +36,6 @@ const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =
     tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
   />
 
-const drawTooltip = (orientation: Orientation): JSX.Element => {
-  const offset = orientation === 'vertical'
-    ? { y: 10 }
-    : { x: -10 }
-
-  return (
-    <VictoryTooltip
-      centerOffset={offset}
-      flyoutComponent={<VictoryLabel />}
-      style={{ fontSize: 10 }}
-    />
-  )
-}
-
 export {
-  drawBar, drawMainAxis, drawDependentAxis, drawTooltip
+  drawBar, drawMainAxis, drawDependentAxis
 }
