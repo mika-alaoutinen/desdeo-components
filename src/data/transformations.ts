@@ -34,22 +34,17 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
 }
 
 const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
-  const xAxisData = tuple[0].data
-  const yAxisData = tuple[1].data
-  const coordinates: Coordinate[] = []
-  const length = Math.min(xAxisData.length, yAxisData.length)
+  const { data: xData , label: xLabel } = tuple[0]
+  const { data: yData , label: yLabel } = tuple[1]
 
-  for (let i = 0; i < length; i++) {
-    const labels = `${tuple[0].label} ${tuple[1].label}`
-    const coordinate: Coordinate = {
-      id: createId(labels, i + 1),
-      x: xAxisData[i],
-      y: yAxisData[i]
-    }
-    coordinates.push(coordinate)
-  }
+  const length = Math.min(xData.length, yData.length)
+  const range = [...Array(length).keys()]
 
-  return coordinates
+  return range.map(n => ({
+    id: createId(`${xLabel} ${yLabel}`, n + 1),
+    x: xData[n],
+    y: yData[n],
+  }))
 }
 
 const createDataTableData = (dataset: DataSet): number[][] => {
