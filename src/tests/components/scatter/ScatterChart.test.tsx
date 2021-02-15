@@ -1,17 +1,12 @@
 import React from 'react'
 
 import {
-  dataShouldBeClickable,
-  renderComponent,
-  renderDataLabels,
-  renderFiveDatum,
-  renderVictoryContainer
+  dataShouldBeClickable, renderComponent, renderFiveDatum, renderVictoryContainer
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
 import ScatterChart from '../../../components/scatter/ScatterChart'
 
-// Constants
 const handler = jest.fn()
 const component = <ScatterChart data={coordinateData} onClick={handler} />
 
@@ -26,10 +21,6 @@ describe('ScatterChart is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has data labels A-E', () => {
-    renderDataLabels(component)
-  })
-
   it('has five path elements representing data points', () => {
     renderFiveDatum(component)
   })

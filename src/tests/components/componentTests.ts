@@ -17,13 +17,6 @@ const renderVictoryContainer = (component: React.ReactElement): void => {
   expect(victoryContainers[0]).toBeTruthy()
 }
 
-const renderDataLabels = (component: React.ReactElement): void => {
-  render(component)
-  const expectedLabels = [ 'A', 'B', 'C', 'D', 'E' ]
-  expectedLabels.forEach(label =>
-    expect(screen.getAllByText(label)).toHaveLength(1))
-}
-
 const renderFiveDatum = (component: React.ReactElement): void => {
   const paths = getPaths(component)
   expect(paths).toHaveLength(5)
@@ -52,6 +45,6 @@ const getPaths = (component: React.ReactElement): NodeListOf<SVGPathElement> => 
 }
 
 export {
-  renderComponent, renderVictoryContainer, renderDataLabels, renderFiveDatum,
+  renderComponent, renderVictoryContainer, renderFiveDatum,
   dataShouldBeClickable, shouldDisplayLabelOnMouseOver, getPaths
 }

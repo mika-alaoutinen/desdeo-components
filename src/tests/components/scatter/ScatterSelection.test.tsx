@@ -1,13 +1,12 @@
 import React from 'react'
 
 import {
-  renderComponent, renderDataLabels, renderFiveDatum, renderVictoryContainer
+  renderComponent, renderFiveDatum, renderVictoryContainer
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
 import ScatterSelection from '../../../components/scatter/ScatterSelection'
 
-// Constants
 const onSelecthandler = jest.fn()
 const selectionClearedHandler = jest.fn()
 
@@ -29,10 +28,6 @@ describe('ScatterSelect is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has data labels A-E', () => {
-    renderDataLabels(component)
-  })
-
   it('has five path elements representing data points', () => {
     renderFiveDatum(component)
   })
