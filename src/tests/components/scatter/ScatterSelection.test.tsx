@@ -1,24 +1,31 @@
 import React from 'react'
+import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 
 import {
-  renderComponent, renderData, renderVictoryContainer
+  renderComponent, renderVictoryContainer, renderData
 } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { DataSetTuple } from '../../../types/dataTypes'
 
-import ScatterSelection from '../../../components/scatter/ScatterSelection'
+import ScatterSelectionWrapper from '../../../components/scatter/ScatterSelectionWrapper'
 
-const onSelecthandler = jest.fn()
-const selectionClearedHandler = jest.fn()
+const data: DataSetTuple = [
+  { label: 'Label A', data: [ 1, 2, 3 ] },
+  { label: 'Label B', data: [ 4, 5, 6 ] },
+]
+
+const onSelect = jest.fn()
+const onSelectionCleared = jest.fn()
 
 const component =
-  <ScatterSelection
-    data={coordinateData}
-    onSelect={onSelecthandler}
-    onSelectionCleared={selectionClearedHandler}
+  <ScatterSelectionWrapper
+    data={data}
+    onSelect={onSelect}
+    onSelectionCleared={onSelectionCleared}
   />
 
-describe('ScatterSelect is rendered correctly', () => {
-  it('component is rendered', () => {
+describe('Smoke tests for chart rendering', () => {
+  it('scatter chart wrapper is rendered', () => {
     renderComponent(component)
   })
 
@@ -28,7 +35,17 @@ describe('ScatterSelect is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has five path elements representing data points', () => {
-    renderData(component, 5)
+  it('has three path elements representing data points', () => {
+    renderData(component, 3)
+  })
+
+  it('chart has a Y-axis label', () => {
+    render(component)
+    expect(screen.getByText(/Label A/)).toBeInTheDocument()
+  })
+
+  it('chart has an X-axis label', () => {
+    render(component)
+    expect(screen.getByText(/Label B/)).toBeInTheDocument()
   })
 })
