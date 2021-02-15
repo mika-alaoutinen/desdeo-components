@@ -1,9 +1,8 @@
 import React from 'react'
 import { VictoryChart, VictoryScatter, VictoryZoomContainer } from 'victory'
 
-import {
-  createCoordinateLabel, drawDependentAxis, drawMainAxis, drawTooltip
-} from './rendering'
+import { createCoordinateLabel, drawDependentAxis, drawMainAxis } from './rendering'
+import { drawTooltip } from '../victory/rendering'
 import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
 

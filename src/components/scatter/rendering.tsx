@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryAxis, VictoryLabel, VictoryTooltip } from 'victory'
+import { VictoryAxis } from 'victory'
 
 import { axisStyles } from '../../containers/containerStyles'
 import { Coordinate } from '../../types/dataTypes'
@@ -22,12 +22,6 @@ const drawDependentAxis = (label?: string): JSX.Element =>
     style={axisStyles}
   />
 
-const drawTooltip = (): JSX.Element =>
-  <VictoryTooltip
-    flyoutComponent={<VictoryLabel />}
-    style={{ fontSize: 10 }}
-  />
-
 export {
-  createCoordinateLabel, drawDependentAxis, drawMainAxis, drawTooltip
+  createCoordinateLabel, drawDependentAxis, drawMainAxis
 }
