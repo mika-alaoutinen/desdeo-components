@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  renderComponent, renderFiveDatum, renderVictoryContainer
+  renderComponent, renderData, renderVictoryContainer
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
@@ -29,6 +29,6 @@ describe('ScatterSelect is rendered correctly', () => {
 
 describe('Data is displayed correctly', () => {
   it('has five path elements representing data points', () => {
-    renderFiveDatum(component)
+    renderData(component, 5)
   })
 })

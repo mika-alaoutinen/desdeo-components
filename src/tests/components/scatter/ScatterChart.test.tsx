@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  dataShouldBeClickable, renderComponent, renderFiveDatum, renderVictoryContainer
+  dataShouldBeClickable, renderComponent, renderData, renderVictoryContainer
 } from '../componentTests'
 import { coordinateData } from '../../testdata'
 
@@ -22,7 +22,7 @@ describe('ScatterChart is rendered correctly', () => {
 
 describe('Data is displayed correctly', () => {
   it('has five path elements representing data points', () => {
-    renderFiveDatum(component)
+    renderData(component, 5)
   })
 })
 
