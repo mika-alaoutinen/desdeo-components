@@ -1,11 +1,11 @@
 import React from 'react'
 import { VictoryScatter } from 'victory'
 
-import SelectionContainer from '../../containers/SelectionContainer'
+import SelectionContainer from '../victory/SelectionContainer'
 import {
   createCoordinateLabel, drawDependentAxis, drawMainAxis
 } from './rendering'
-import { drawTooltip } from '../victory/rendering'
+import { drawTooltip } from '../victory/components'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { OnSelectChart } from '../../types/chartTypes'
 

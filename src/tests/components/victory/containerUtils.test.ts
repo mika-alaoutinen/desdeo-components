@@ -1,7 +1,7 @@
-import { dataset } from '../testdata'
-import { createAlternativeSets, createCriteriaSets } from '../../data/transformations'
+import { dataset } from '../../testdata'
+import { createAlternativeSets, createCriteriaSets } from '../../../data/transformations'
 
-import { calculateHeight, calculateWidth } from '../../containers/containerUtils'
+import { calculateHeight, calculateWidth } from '../../../components/victory/containerUtils'
 
 // Create test data
 const groupedByAlternatives = createAlternativeSets(dataset)

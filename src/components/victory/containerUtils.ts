@@ -1,5 +1,5 @@
-import { CoordinateSet } from '../types/dataTypes'
-import { Orientation } from '../types/layoutTypes'
+import { CoordinateSet } from '../../types/dataTypes'
+import { Orientation } from '../../types/layoutTypes'
 
 const DEFAULT_DIMENSION = 350
 const HEIGHT_PER_ITEM = 10

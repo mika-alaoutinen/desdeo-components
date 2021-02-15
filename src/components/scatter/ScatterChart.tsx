@@ -1,11 +1,11 @@
 import React from 'react'
 import { VictoryScatter } from 'victory'
 
+import ZoomContainer from '../victory/ZoomContainer'
 import { createCoordinateLabel, drawDependentAxis, drawMainAxis } from './rendering'
-import { drawTooltip } from '../victory/rendering'
+import { drawTooltip } from '../victory/components'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
-import ZoomContainer from '../../containers/ZoomContainer'
 
 const ScatterChart: React.FC<OnClickChart> = ({
   data, onClick, xAxisLabel, yAxisLabel

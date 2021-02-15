@@ -3,8 +3,8 @@ import { VictoryChart, VictoryStack } from 'victory'
 
 import { calculatePadding } from '../layout'
 import { drawBar, drawMainAxis, drawDependentAxis } from '../rendering'
-import { drawTooltip } from '../../victory/rendering'
-import { calculateWidth } from '../../../containers/containerUtils'
+import { drawTooltip } from '../../victory/components'
+import { calculateWidth } from '../../victory/containerUtils'
 import { MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 

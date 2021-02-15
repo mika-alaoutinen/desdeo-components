@@ -2,7 +2,7 @@ import React from 'react'
 import { VictoryBar, VictoryChart } from 'victory'
 
 import { createCoordinateLabel } from '../rendering'
-import { drawTooltip } from '../../victory/rendering'
+import { drawTooltip } from '../../victory/components'
 import {
   DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME
 } from '../../../styles/victoryStyles'
