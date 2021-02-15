@@ -40,8 +40,9 @@ const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
   const length = Math.min(xAxisData.length, yAxisData.length)
 
   for (let i = 0; i < length; i++) {
+    const labels = `${tuple[0].label} ${tuple[1].label}`
     const coordinate: Coordinate = {
-      id: createId('coordinate', i + 1),
+      id: createId(labels, i + 1),
       x: xAxisData[i],
       y: yAxisData[i]
     }

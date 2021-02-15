@@ -1,7 +1,10 @@
-import { DataSet, CoordinateSet, ParallelAxesData } from '../../types/dataTypes'
+import {
+  DataSet, CoordinateSet, ParallelAxesData, DataSetTuple, Coordinate
+} from '../../types/dataTypes'
 
 import {
-  createAlternativeSets, createCriteriaSets, createDataTableData, createParallelAxesData
+  createAlternativeSets, createCriteriaSets, createCoordinates,
+  createDataTableData, createParallelAxesData
 } from '../../data/transformations'
 
 const data: DataSet = [
@@ -62,6 +65,27 @@ describe('createCriteriaSets produces datasets that are grouped by available cri
 
   it ('handles an empty input', () => {
     expect(createCriteriaSets([])).toEqual([])
+  })
+})
+
+describe('createCoordinates produces datasets for scatter charts', () => {
+  const data: DataSetTuple = [
+    {
+      label: 'WQ Fishery',
+      data: [ 6.042483, 5.758127 ]
+    },
+    {
+      label: 'WQ City',
+      data: [ 3.17527, 3.410843 ]
+    },
+  ]
+
+  it('transforms dataset as expected', () => {
+    const expected: Coordinate[] = [
+      { id: 'wq-fishery-wq-city-1', x: 6.042483, y: 3.17527 },
+      { id: 'wq-fishery-wq-city-2', x: 5.758127, y: 3.410843 }
+    ]
+    expect(createCoordinates(data)).toEqual(expected)
   })
 })
 
