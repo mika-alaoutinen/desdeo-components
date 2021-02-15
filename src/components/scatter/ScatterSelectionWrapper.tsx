@@ -19,6 +19,8 @@ const ScatterSelectionWrapper: React.FC<Props> = ({
     data={createCoordinates(data)}
     onSelect={onSelect}
     onSelectionCleared={onSelectionCleared}
+    xAxisLabel={data[0].label}
+    yAxisLabel={data[1].label}
   />
 )
 
