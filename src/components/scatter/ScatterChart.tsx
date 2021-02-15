@@ -1,7 +1,9 @@
 import React from 'react'
 import { VictoryChart, VictoryScatter, VictoryZoomContainer } from 'victory'
 
-import { drawDependentAxis, drawMainAxis } from './rendering'
+import {
+  createCoordinateLabel, drawDependentAxis, drawMainAxis, drawTooltip
+} from './rendering'
 import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../styles/victoryStyles'
 import { OnClickChart } from '../../types/chartTypes'
 
@@ -30,7 +32,9 @@ const ScatterChart: React.FC<OnClickChart> = ({
           }
         }
       ]}
-      size={7}
+      labelComponent={drawTooltip()}
+      labels={({ datum }) => createCoordinateLabel(datum)}
+      size={5}
       style={{
         data: {
           fill: ({ datum }) => mapFillStyle(datum),

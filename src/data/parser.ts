@@ -3,7 +3,8 @@ import { Coordinate, DataSet } from '../types/dataTypes'
 import { range, replaceSpacesWithLineBreaks } from '../utils/utils'
 
 const createCoordinateLabel = ({ id, y }: Coordinate): string =>
-  `${id}:\n${y}`
+  `${id}:
+  ${y}`
 
 const createDataLabels = (data: DataSet, grouping: Grouping): string[] =>
   grouping === 'alternatives'
