@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryBar, VictoryChart } from 'victory'
+import { VictoryAxis, VictoryBar, VictoryChart } from 'victory'
 
 import { createCoordinateLabel } from '../rendering'
 import { drawTooltip } from '../../victory/components'
@@ -8,11 +8,21 @@ import {
 } from '../../../styles/victoryStyles'
 import { OnClickChart } from '../../../types/chartTypes'
 
-const BarChart: React.FC<OnClickChart> = ({ data, onClick }) => (
+const BarChart: React.FC<OnClickChart> = ({ data, onClick, xAxisLabel }) => (
   <VictoryChart
     domainPadding={DOMAIN_PADDING}
     theme={MATERIAL_THEME}
   >
+
+  <VictoryAxis
+    label={xAxisLabel}
+    style={{
+      ticks: { stroke: 'transparent' },
+      tickLabels: { fill: 'transparent' }
+    }}
+  />
+
+  <VictoryAxis dependentAxis />
 
     <VictoryBar
       data={data}
