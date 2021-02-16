@@ -3,16 +3,11 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { renderComponent, renderVictoryContainer } from '../componentTests'
-import { DataSet } from '../../../types/dataTypes'
 
 import ParallelAxesWrapper from '../../../components/parallelAxes/wrapper/ParallelAxesWrapper'
+import { dataset } from '../../testdata'
 
-const data: DataSet = [
-  { label: 'Label A', data: [ 1, 2, 3 ] },
-  { label: 'Label B', data: [ 4, 5, 6 ] },
-]
-
-const component = <ParallelAxesWrapper data={data} />
+const component = <ParallelAxesWrapper data={dataset} />
 
 describe('Smoke tests for ParallelAxes rendering', () => {
   it('chart is rendered', () => {

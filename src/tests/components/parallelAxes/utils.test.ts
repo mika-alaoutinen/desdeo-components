@@ -1,4 +1,4 @@
-import { parallelAxesData } from '../../testdata'
+import { parallelAxesData } from '../../../data/testdata'
 import { Filter } from '../../../types/dataTypes'
 import { Layout } from '../../../types/layoutTypes'
 

@@ -2,9 +2,10 @@ import React from 'react'
 
 import { DataTableClickHandler } from './DataTable'
 import DataTableColumn from './DataTableColumn'
+import { Value } from '../../../types/dataTypes'
 
 interface Props {
-  data: number[][],
+  data: Value[][],
   onClick: DataTableClickHandler
 }
 

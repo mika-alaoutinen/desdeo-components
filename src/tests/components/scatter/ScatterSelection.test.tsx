@@ -5,23 +5,20 @@ import '@testing-library/jest-dom'
 import {
   renderComponent, renderVictoryContainer, renderData
 } from '../componentTests'
-import { DataSetTuple } from '../../../types/dataTypes'
+import { coordinates } from '../../testdata'
 
-import ScatterSelectionWrapper from '../../../components/scatter/ScatterSelectionWrapper'
-
-const data: DataSetTuple = [
-  { label: 'Label A', data: [ 1, 2, 3 ] },
-  { label: 'Label B', data: [ 4, 5, 6 ] },
-]
+import ScatterSelection from '../../../components/scatter/ScatterSelection'
 
 const onSelect = jest.fn()
 const onSelectionCleared = jest.fn()
 
 const component =
-  <ScatterSelectionWrapper
-    data={data}
+  <ScatterSelection
+    data={coordinates}
     onSelect={onSelect}
     onSelectionCleared={onSelectionCleared}
+    xAxisLabel='Label A'
+    yAxisLabel='Label B'
   />
 
 describe('Smoke tests for chart rendering', () => {
@@ -35,17 +32,13 @@ describe('Smoke tests for chart rendering', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has three path elements representing data points', () => {
-    renderData(component, 3)
+  it('has five path elements representing data points', () => {
+    renderData(component, 5)
   })
 
-  it('chart has a Y-axis label', () => {
+  it('chart has axis labels', () => {
     render(component)
     expect(screen.getByText(/Label A/)).toBeInTheDocument()
-  })
-
-  it('chart has an X-axis label', () => {
-    render(component)
     expect(screen.getByText(/Label B/)).toBeInTheDocument()
   })
 })

@@ -1,16 +1,28 @@
 import { Grouping } from '../types/chartTypes'
 import {
-  Attribute, Coordinate, CoordinateSet, DataSet, DataSetTuple, ParallelAxesData
+  Attribute, Coordinate, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
 } from '../types/dataTypes'
-import { createId } from '../utils/utils'
+
+const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
+  const coordinates = data.map((value, x) => {
+    const { id, isSelected, value: y } = value
+    return { id, isSelected, x: x + 1, y }
+  })
+
+  return {
+    data: coordinates,
+    label
+  }
+}
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
-  dataset.map(({ data, label }) => {
+  dataset.map(({ data }) => {
 
-    const coordinates: Coordinate[] = data.map((value, i) => ({
-      id: createId(label, i + 1),
+    const coordinates: Coordinate[] = data.map(({ id, isSelected, value }, i) => ({
+      id,
       x: i + 1,
-      y: value
+      y: value,
+      isSelected
     }))
 
     return { data: coordinates }
@@ -22,35 +34,24 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
   }
 
   return dataset[0].data.map((_, colIndex) => {
-
-    const coordinates: Coordinate[] = dataset.map(({ data, label }, rowIndex) => ({
-      id: createId(label, colIndex + 1),
-      x: rowIndex + 1,
-      y: data[colIndex],
-    }))
+    const coordinates: Coordinate[] = dataset.map(({ data }, rowIndex) => {
+      const { id, isSelected, value: y } = data[colIndex]
+      return {
+        id,
+        x: rowIndex + 1,
+        y,
+        isSelected
+      }
+    })
 
     return { data: coordinates }
   })
 }
 
-const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
-  const { data: xData , label: xLabel } = tuple[0]
-  const { data: yData , label: yLabel } = tuple[1]
-
-  const length = Math.min(xData.length, yData.length)
-  const range = [...Array(length).keys()]
-
-  return range.map(n => ({
-    id: createId(`${xLabel} ${yLabel}`, n + 1),
-    x: xData[n],
-    y: yData[n],
-  }))
-}
-
-const createDataTableData = (dataset: DataSet): number[][] => {
+const createDataTableData = (dataset: DataSet): Value[][] => {
   return !dataset.length
     ? []
-    : transpose(dataset.map(d => d.data)) as number[][]
+    : transpose(dataset.map(column => column.data)) as Value[][]
 }
 
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
@@ -59,11 +60,10 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   }
 
   return dataset[0].data.map((_, colIndex) => {
-
     const attributes: Attribute[] = dataset.map(({ data, label }) => ({
-      id: createId(label, colIndex + 1),
+      id: data[colIndex].id,
       x: label.toLowerCase(),
-      y: data[colIndex]
+      y: data[colIndex].value,
     }))
 
     return {
@@ -83,6 +83,6 @@ const transpose = (nestedArrays: unknown[][]): unknown[][] =>
     nestedArrays.map(row => row[colIndex]))
 
 export {
-  createAlternativeSets, createCriteriaSets, createCoordinates,
+  createAlternativeSets, createBarData, createCriteriaSets,
   createDataTableData, createParallelAxesData, mapData
 }

@@ -1,41 +1,31 @@
-import {
-  DataSet, CoordinateSet, ParallelAxesData, DataSetTuple, Coordinate
-} from '../../types/dataTypes'
+import { dataset } from '../testdata'
+import { CoordinateSet, ParallelAxesData, Value } from '../../types/dataTypes'
 
 import {
-  createAlternativeSets, createCriteriaSets, createCoordinates,
+  createAlternativeSets, createCriteriaSets,
   createDataTableData, createParallelAxesData
 } from '../../data/transformations'
-
-const data: DataSet = [
-  {
-    label: 'WQ Fishery',
-    data: [ 6.042483, 5.758127 ]
-  },
-  {
-    label: 'WQ City',
-    data: [ 3.17527, 3.410843 ]
-  },
-]
 
 describe('createAlternativeSets produces datasets that are grouped by alternative solutions', () => {
   const expected: CoordinateSet[] = [
     {
       data: [
-        { id: 'wq-fishery-1', x: 1, y: 6.042483 },
-        { id: 'wq-fishery-2', x: 2, y: 5.758127 },
+        { id: 'a1', isSelected: false, x: 1, y: 1 },
+        { id: 'a2', isSelected: false, x: 2, y: 2 },
+        { id: 'a3', isSelected: false, x: 3, y: 3 },
       ]
     },
     {
       data: [
-        { id: 'wq-city-1', x: 1, y: 3.17527 },
-        { id: 'wq-city-2', x: 2, y: 3.410843 },
+        { id: 'b1', isSelected: false, x: 1, y: 4 },
+        { id: 'b2', isSelected: false, x: 2, y: 5 },
+        { id: 'b3', isSelected: false, x: 3, y: 6 },
       ]
     },
   ]
 
   it('transforms alternatives data as expected', () => {
-    expect(createAlternativeSets(data)).toEqual(expected)
+    expect(createAlternativeSets(dataset)).toEqual(expected)
   })
 
   it ('handles an empty input', () => {
@@ -47,45 +37,30 @@ describe('createCriteriaSets produces datasets that are grouped by available cri
   const expected: CoordinateSet[] = [
     {
       data: [
-        { id: 'wq-fishery-1', x: 1, y: 6.042483 },
-        { id: 'wq-city-1', x: 2, y: 3.17527 },
+        { id: 'a1', isSelected: false, x: 1, y: 1 },
+        { id: 'b1', isSelected: false, x: 2, y: 4 },
       ]
     },
     {
       data: [
-        { id: 'wq-fishery-2', x: 1, y: 5.758127 },
-        { id: 'wq-city-2', x: 2, y: 3.410843 },
+        { id: 'a2', isSelected: false, x: 1, y: 2 },
+        { id: 'b2', isSelected: false, x: 2, y: 5 },
+      ]
+    },
+    {
+      data: [
+        { id: 'a3', isSelected: false, x: 1, y: 3 },
+        { id: 'b3', isSelected: false, x: 2, y: 6 },
       ]
     },
   ]
 
   it('transforms criteria data as expected', () => {
-    expect(createCriteriaSets(data)).toEqual(expected)
+    expect(createCriteriaSets(dataset)).toEqual(expected)
   })
 
   it ('handles an empty input', () => {
     expect(createCriteriaSets([])).toEqual([])
-  })
-})
-
-describe('createCoordinates produces datasets for scatter charts', () => {
-  const data: DataSetTuple = [
-    {
-      label: 'WQ Fishery',
-      data: [ 6.042483, 5.758127 ]
-    },
-    {
-      label: 'WQ City',
-      data: [ 3.17527, 3.410843 ]
-    },
-  ]
-
-  it('transforms dataset as expected', () => {
-    const expected: Coordinate[] = [
-      { id: 'wq-fishery-wq-city-1', x: 6.042483, y: 3.17527 },
-      { id: 'wq-fishery-wq-city-2', x: 5.758127, y: 3.410843 }
-    ]
-    expect(createCoordinates(data)).toEqual(expected)
   })
 })
 
@@ -94,21 +69,28 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
     {
       label: 'Alternative 1',
       attributes: [
-        { id: 'wq-fishery-1', x: 'wq fishery', y: 6.042483 },
-        { id: 'wq-city-1', x: 'wq city', y: 3.17527 },
+        { id: 'a1', x: 'label a', y: 1 },
+        { id: 'b1', x: 'label b', y: 4 },
       ]
     },
     {
       label: 'Alternative 2',
       attributes: [
-        { id: 'wq-fishery-2', x: 'wq fishery', y: 5.758127 },
-        { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
+        { id: 'a2', x: 'label a', y: 2 },
+        { id: 'b2', x: 'label b', y: 5 },
+      ]
+    },
+    {
+      label: 'Alternative 3',
+      attributes: [
+        { id: 'a3', x: 'label a', y: 3 },
+        { id: 'b3', x: 'label b', y: 6 },
       ]
     },
   ]
 
   it('transforms parallel axes data as expected', () => {
-    expect(createParallelAxesData(data)).toEqual(expected)
+    expect(createParallelAxesData(dataset)).toEqual(expected)
   })
 
   it ('handles an empty input', () => {
@@ -117,13 +99,23 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
 })
 
 describe('createDataTableData transforms DataSet into a 2D array', () => {
-  const expected = [
-    [ 6.042483, 3.17527 ],
-    [ 5.758127, 3.410843 ]
+  const expected: Value[][] = [
+    [
+      { id: 'a1', isSelected: false, value: 1 },
+      { id: 'b1', isSelected: false, value: 4 },
+    ],
+    [
+      { id: 'a2', isSelected: false, value: 2 },
+      { id: 'b2', isSelected: false, value: 5 },
+    ],
+    [
+      { id: 'a3', isSelected: false, value: 3 },
+      { id: 'b3', isSelected: false, value: 6 },
+    ],
   ]
 
   it('transposes data', () => {
-    expect(createDataTableData(data)).toEqual(expected)
+    expect(createDataTableData(dataset)).toEqual(expected)
   })
 
   it ('handles an empty input', () => {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import ParallelAxesWrapper, { Props } from '../../components/parallelAxes/wrapper/ParallelAxesWrapper'
-import { dataset } from '../../tests/testdata'
+import { dataset } from '../../data/testdata'
 
 const Template: Story<Props> = args =>
   <ParallelAxesWrapper {...args} />

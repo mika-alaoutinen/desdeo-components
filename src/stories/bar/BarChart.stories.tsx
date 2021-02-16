@@ -1,8 +1,10 @@
 import React from 'react'
-import { Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
 
 import BarChart from '../../components/bar/basic/BarChart'
+import BarChartWrapper, { Props } from '../../components/bar/basic/BarChartWrapper'
 import { useOnClickHandler } from '../storyUtils'
+import { dataset } from '../../data/testdata'
 
 export const BarChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
@@ -15,7 +17,23 @@ export const BarChartComponent = (): JSX.Element => {
   )
 }
 
+const Template: Story<Props> = args =>
+  <BarChartWrapper {...args} />
+
+export const BarChartTemplate = Template.bind({})
+BarChartTemplate.args = {
+  data: dataset[0],
+  onClick: c => console.log('coordinate', c)
+}
+
 export default {
   title: 'DESDEO/BarChart',
-  component: BarChart
+  component: BarChartWrapper,
+  argTypes: {
+    onClick: {
+      table: {
+        disable: true
+      }
+    },
+  }
 } as Meta

@@ -9,8 +9,14 @@ import {
 } from './tableRowTests'
 
 import DataTableColumn from '../../../components/table/dataTable/DataTableColumn'
+import { Value } from '../../../types/dataTypes'
 
-const data: number[] =[ 1, 2, 3 ]
+const data: Value[] = [
+  { id: '1', isSelected: false, value: 1 },
+  { id: '2', isSelected: false, value: 2 },
+  { id: '3', isSelected: false, value: 3 }
+]
+
 const handler = jest.fn()
 const component = <DataTableColumn data={data} onClick={handler} />
 

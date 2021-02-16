@@ -3,12 +3,12 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { renderComponent } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { coordinates } from '../../../tests/testdata'
 
 import CoordinateTable from '../../../components/table/coordinateTable/CoordinateTable'
 
 const handler = jest.fn()
-const component = <CoordinateTable data={coordinateData} onClick={handler} />
+const component = <CoordinateTable data={coordinates} onClick={handler} />
 
 describe('CoordinateTable is rendered correctly', () => {
   it('component is rendered', () => {

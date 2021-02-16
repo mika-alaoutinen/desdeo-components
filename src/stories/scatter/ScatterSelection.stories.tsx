@@ -2,9 +2,9 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import ScatterSelection from '../../components/scatter/ScatterSelection'
-import ScatterSelectionWrapper, { Props } from '../../components/scatter/ScatterSelectionWrapper'
 import { useOnSelectHandler } from '../storyUtils'
-import { datasetTuple } from '../../tests/testdata'
+import { coordinates } from '../../data/testdata'
+import { OnSelectChart } from '../../types/chartTypes'
 
 export const ScatterSeletionComponent = (): JSX.Element => {
   const { data, onSelect, onSelectionCleared } = useOnSelectHandler()
@@ -14,23 +14,27 @@ export const ScatterSeletionComponent = (): JSX.Element => {
       data={data}
       onSelect={onSelect}
       onSelectionCleared={onSelectionCleared}
+      xAxisLabel={'WQ Fishery'}
+      yAxisLabel={'WQ City'}
     />
   )
 }
 
-const Template: Story<Props> = args =>
-  <ScatterSelectionWrapper {...args} />
+const Template: Story<OnSelectChart> = args =>
+  <ScatterSelection {...args} />
 
-export const ScatterSelectionWithWrapper = Template.bind({})
-ScatterSelectionWithWrapper.args = {
-  data: datasetTuple,
+export const ScatterSelectionTemplate = Template.bind({})
+ScatterSelectionTemplate.args = {
+  data: coordinates,
   onSelect: coordinates => console.log('selected', coordinates),
-  onSelectionCleared: () => console.log('selections cleared')
+  onSelectionCleared: () => console.log('selections cleared'),
+  xAxisLabel: 'WQ Fishery',
+  yAxisLabel: 'WQ City'
 }
 
 export default {
   title: 'DESDEO/ScatterSelection',
-  component: ScatterSelectionWrapper,
+  component: ScatterSelection,
   argTypes: {
     onSelect: {
       table: {

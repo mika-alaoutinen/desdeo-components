@@ -1,4 +1,4 @@
-import { parallelAxesData } from '../../testdata'
+import { parallelAxesData } from '../../../data/testdata'
 import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 
 import {

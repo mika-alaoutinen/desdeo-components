@@ -3,17 +3,12 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { renderComponent } from '../componentTests'
-import { DataSet } from '../../../types/dataTypes'
+import { dataset } from '../../testdata'
 
 import DataTable from '../../../components/table/dataTable/DataTable'
 
-const data: DataSet = [
-  { label: 'Label A', data: [ 1, 2, 3 ] },
-  { label: 'Label B', data: [ 4, 5, 6 ] },
-]
-
 const handler = jest.fn()
-const component = <DataTable data={data} onClick={handler} />
+const component = <DataTable data={dataset} onClick={handler} />
 
 describe('DataTable is rendered correctly', () => {
   it('component is rendered', () => {
