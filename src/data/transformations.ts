@@ -1,8 +1,7 @@
 import { Grouping } from '../types/chartTypes'
 import {
-  Attribute, Coordinate, CoordinateSet, DataSet, DataSetTuple, ParallelAxesData, Value
+  Attribute, Coordinate, CoordinateSet, DataSet, ParallelAxesData, Value
 } from '../types/dataTypes'
-import { createId } from '../utils/utils'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data }) => {
@@ -35,21 +34,6 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
 
     return { data: coordinates }
   })
-}
-
-// Delete this
-const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
-  const { data: xData , label: xLabel } = tuple[0]
-  const { data: yData , label: yLabel } = tuple[1]
-
-  const length = Math.min(xData.length, yData.length)
-  const range = [...Array(length).keys()]
-
-  return range.map(n => ({
-    id: createId(`${xLabel} ${yLabel}`, n + 1),
-    x: xData[n].value,
-    y: yData[n].value,
-  }))
 }
 
 const createDataTableData = (dataset: DataSet): Value[][] => {
@@ -87,6 +71,6 @@ const transpose = (nestedArrays: unknown[][]): unknown[][] =>
     nestedArrays.map(row => row[colIndex]))
 
 export {
-  createAlternativeSets, createCriteriaSets, createCoordinates,
+  createAlternativeSets, createCriteriaSets,
   createDataTableData, createParallelAxesData, mapData
 }
