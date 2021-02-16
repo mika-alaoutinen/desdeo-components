@@ -17,6 +17,8 @@ const component =
     data={coordinates}
     onSelect={onSelect}
     onSelectionCleared={onSelectionCleared}
+    xAxisLabel='Label A'
+    yAxisLabel='Label B'
   />
 
 describe('Smoke tests for chart rendering', () => {
@@ -30,17 +32,13 @@ describe('Smoke tests for chart rendering', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has three path elements representing data points', () => {
-    renderData(component, 3)
+  it('has five path elements representing data points', () => {
+    renderData(component, 5)
   })
 
-  it('chart has a Y-axis label', () => {
+  it('chart has axis labels', () => {
     render(component)
     expect(screen.getByText(/Label A/)).toBeInTheDocument()
-  })
-
-  it('chart has an X-axis label', () => {
-    render(component)
     expect(screen.getByText(/Label B/)).toBeInTheDocument()
   })
 })
