@@ -3,12 +3,12 @@ import React from 'react'
 import {
   dataShouldBeClickable, renderComponent, renderData, renderVictoryContainer
 } from '../componentTests'
-import { coordinateData } from '../../../data/testdata'
+import { coordinates } from '../../../tests/testdata'
 
 import BarChart from '../../../components/bar/basic/BarChart'
 
 const handler = jest.fn()
-const component = <BarChart data={coordinateData} onClick={handler} />
+const component = <BarChart data={coordinates} onClick={handler} />
 
 describe('BarChart is rendered correctly', () => {
   it('chart is rendered', () => {

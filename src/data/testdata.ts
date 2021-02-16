@@ -1,6 +1,12 @@
-import {
-  Coordinate, DataSet, DataSetTuple, ParallelAxesData
-} from '../types/dataTypes'
+import { Coordinate, DataSet, ParallelAxesData } from '../types/dataTypes'
+
+const coordinates: Coordinate[] = [
+  { id: 'a', x: 10, y: 20, isSelected: true },
+  { id: 'b', x: 20, y: 40, isSelected: false },
+  { id: 'c', x: 30, y: 70, },
+  { id: 'd', x: 40, y: 30, isSelected: true },
+  { id: 'e', x: 50, y: 50, },
+]
 
 const dataset: DataSet = [
   {
@@ -84,40 +90,6 @@ const dataset: DataSet = [
   }
 ]
 
-// Delete this
-const datasetTuple: DataSetTuple = [
-  {
-    label: 'WQ Fishery',
-    data: [
-      { id: 'wq-fishery-0', isSelected: false, value: 6.042483 },
-      { id: 'wq-fishery-1', isSelected: false, value: 5.758127 },
-      { id: 'wq-fishery-2', isSelected: false, value: 6.287081 },
-      { id: 'wq-fishery-3', isSelected: false, value: 6.134672 },
-      { id: 'wq-fishery-4', isSelected: false, value: 5.610188 },
-      { id: 'wq-fishery-5', isSelected: false, value: 5.231501 },
-      { id: 'wq-fishery-6', isSelected: false, value: 6.34 },
-      { id: 'wq-fishery-7', isSelected: false, value: 6.291364 },
-      { id: 'wq-fishery-8', isSelected: false, value: 5.407513 },
-      { id: 'wq-fishery-9', isSelected: false, value: 6.019503 },
-    ]
-  },
-  {
-    label: 'WQ City',
-    data: [
-      { id: 'wq-city-0', isSelected: false, value: 3.17527 },
-      { id: 'wq-city-1', isSelected: false, value: 3.410843 },
-      { id: 'wq-city-2', isSelected: false, value: 3.207926 },
-      { id: 'wq-city-3', isSelected: false, value: 2.98383 },
-      { id: 'wq-city-4', isSelected: false, value: 2.910456 },
-      { id: 'wq-city-5', isSelected: false, value: 3.248641 },
-      { id: 'wq-city-6', isSelected: false, value: 2.962557 },
-      { id: 'wq-city-7', isSelected: false, value: 3.346416 },
-      { id: 'wq-city-8', isSelected: false, value: 3.130143 },
-      { id: 'wq-city-9', isSelected: false, value: 3.350959 },
-    ]
-  }
-]
-
 const parallelAxesData: ParallelAxesData[] = [
   {
     label: 'Alternative 1',
@@ -139,14 +111,4 @@ const parallelAxesData: ParallelAxesData[] = [
   },
 ]
 
-const coordinateData: Coordinate[] = [
-  { id: 'a', x: 10, y: 20, isSelected: true },
-  { id: 'b', x: 20, y: 40, isSelected: false },
-  { id: 'c', x: 30, y: 70, },
-  { id: 'd', x: 40, y: 30, isSelected: true },
-  { id: 'e', x: 50, y: 50, },
-]
-
-export {
-  coordinateData, dataset, datasetTuple, parallelAxesData
-}
+export { coordinates, dataset, parallelAxesData }
