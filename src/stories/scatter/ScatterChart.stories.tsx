@@ -2,9 +2,9 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import ScatterChart from '../../components/scatter/ScatterChart'
-import ScatterChartWrapper, { Props } from '../../components/scatter/ScatterChartWrapper'
 import { useOnClickHandler } from '../storyUtils'
-import { datasetTuple } from '../../data/testdata'
+import { coordinates } from '../../data/testdata'
+import { OnClickChart } from '../../types/chartTypes'
 
 export const ScatterChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
@@ -17,18 +17,18 @@ export const ScatterChartComponent = (): JSX.Element => {
   )
 }
 
-const Template: Story<Props> = args =>
-  <ScatterChartWrapper {...args} />
+const Template: Story<OnClickChart> = args =>
+  <ScatterChart {...args} />
 
 export const ScatterChartWithWrapper = Template.bind({})
 ScatterChartWithWrapper.args = {
-  data: datasetTuple,
-  onClick: (coordinate) => console.log('coordinate', coordinate)
+  data: coordinates,
+  onClick: c => console.log('coordinate', c)
 }
 
 export default {
   title: 'DESDEO/ScatterChart',
-  component: ScatterChartWrapper,
+  component: ScatterChart,
   argTypes: {
     onClick: {
       table: {

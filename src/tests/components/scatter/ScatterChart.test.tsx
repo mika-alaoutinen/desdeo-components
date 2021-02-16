@@ -5,32 +5,12 @@ import '@testing-library/jest-dom'
 import {
   dataShouldBeClickable, renderComponent, renderVictoryContainer, renderData
 } from '../componentTests'
-import { DataSetTuple } from '../../../types/dataTypes'
+import { coordinates } from '../../testdata'
 
-import ScatterChartWrapper from '../../../components/scatter/ScatterChartWrapper'
-
-export const data: DataSetTuple = [
-  {
-    label: 'Label A',
-    data: [
-      { id: 'a1', isSelected: false, value: 1 },
-      { id: 'a2', isSelected: false, value: 2 },
-      { id: 'a3', isSelected: false, value: 3 },
-    ]
-  },
-  {
-    label: 'Label B',
-    data: [
-      { id: 'b1', isSelected: false, value: 4 },
-      { id: 'b2', isSelected: false, value: 5 },
-      { id: 'b3', isSelected: false, value: 6 },
-    ]
-  },
-]
+import ScatterChart from '../../../components/scatter/ScatterChart'
 
 const handler = jest.fn()
-
-const component = <ScatterChartWrapper data={data} onClick={handler} />
+const component = <ScatterChart data={coordinates} onClick={handler} />
 
 describe('Smoke tests for chart rendering', () => {
   it('scatter chart wrapper is rendered', () => {
