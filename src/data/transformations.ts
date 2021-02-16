@@ -5,10 +5,10 @@ import {
 import { createId } from '../utils/utils'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
-  dataset.map(({ data, label }) => {
+  dataset.map(({ data }) => {
 
-    const coordinates: Coordinate[] = data.map(({ isSelected, value }, i) => ({
-      id: createId(label, i + 1),
+    const coordinates: Coordinate[] = data.map(({ id, isSelected, value }, i) => ({
+      id,
       x: i + 1,
       y: value,
       isSelected
