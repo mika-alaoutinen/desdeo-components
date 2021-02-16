@@ -3,7 +3,7 @@ import React from 'react'
 import {
   dataShouldBeClickable, renderComponent, renderData, renderVictoryContainer
 } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { coordinateData } from '../../../data/testdata'
 
 import BarChart from '../../../components/bar/basic/BarChart'
 

@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import ScatterChart from '../../components/scatter/ScatterChart'
 import ScatterChartWrapper, { Props } from '../../components/scatter/ScatterChartWrapper'
 import { useOnClickHandler } from '../storyUtils'
-import { datasetTuple } from '../../tests/testdata'
+import { datasetTuple } from '../../data/testdata'
 
 export const ScatterChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()

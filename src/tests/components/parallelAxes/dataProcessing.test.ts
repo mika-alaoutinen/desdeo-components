@@ -1,4 +1,4 @@
-import { parallelAxesData } from '../../testdata'
+import { parallelAxesData } from '../../../data/testdata'
 import { ParallelAxesData } from '../../../types/dataTypes'
 
 import { normalizeData } from '../../../components/parallelAxes/wrapper/dataProcessing'

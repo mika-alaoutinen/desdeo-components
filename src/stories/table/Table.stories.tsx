@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import CoordinateTable from '../../components/table/coordinateTable/CoordinateTable'
 import DataTable, { Props } from '../../components/table/dataTable/DataTable'
 import { useOnClickHandler } from '../storyUtils'
-import { dataset } from '../../tests/testdata'
+import { dataset } from '../../data/testdata'
 
 export const CoordinateTableComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()

@@ -1,4 +1,4 @@
-import { dataset } from '../../tests/testdata'
+import { dataset } from '../../data/testdata'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
 // Used to configure Storybook's Controls view

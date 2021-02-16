@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import ScatterSelection from '../../components/scatter/ScatterSelection'
 import ScatterSelectionWrapper, { Props } from '../../components/scatter/ScatterSelectionWrapper'
 import { useOnSelectHandler } from '../storyUtils'
-import { datasetTuple } from '../../tests/testdata'
+import { datasetTuple } from '../../data/testdata'
 
 export const ScatterSeletionComponent = (): JSX.Element => {
   const { data, onSelect, onSelectionCleared } = useOnSelectHandler()

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { coordinateData } from '../tests/testdata'
+import { coordinateData } from '../data/testdata'
 import { OnClickChart, OnSelectChart } from '../types/chartTypes'
 import { Coordinate } from '../types/dataTypes'
 

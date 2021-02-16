@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { renderComponent } from '../componentTests'
-import { coordinateData } from '../../testdata'
+import { coordinateData } from '../../../data/testdata'
 
 import CoordinateTable from '../../../components/table/coordinateTable/CoordinateTable'
 
