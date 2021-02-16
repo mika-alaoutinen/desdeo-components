@@ -1,7 +1,5 @@
 type DataSet = DataColumn[]
 
-type DataSetTuple = [ DataColumn, DataColumn ]
-
 // Represents a column in the example CSV
 interface DataColumn {
   label: string,
@@ -15,7 +13,8 @@ interface Value {
 }
 
 interface CoordinateSet {
-  data: Coordinate[]
+  data: Coordinate[],
+  label?: string
 }
 
 interface Coordinate {
@@ -43,6 +42,6 @@ interface Filter {
 }
 
 export type {
-  DataSet, DataSetTuple, Value, Coordinate, CoordinateSet,
-  ParallelAxesData, Attribute, Filter
+  Attribute, Coordinate, CoordinateSet, DataSet,
+  DataColumn, Filter, ParallelAxesData, Value
 }

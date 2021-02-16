@@ -22,8 +22,8 @@ export const ScatterChartComponent = (): JSX.Element => {
 const Template: Story<OnClickChart> = args =>
   <ScatterChart {...args} />
 
-export const ScatterChartWithWrapper = Template.bind({})
-ScatterChartWithWrapper.args = {
+export const ScatterChartTemplate = Template.bind({})
+ScatterChartTemplate.args = {
   data: coordinates,
   onClick: c => console.log('coordinate', c),
   xAxisLabel: 'WQ Fishery',
