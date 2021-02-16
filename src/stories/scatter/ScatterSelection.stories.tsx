@@ -14,8 +14,8 @@ export const ScatterSeletionComponent = (): JSX.Element => {
       data={data}
       onSelect={onSelect}
       onSelectionCleared={onSelectionCleared}
-      xAxisLabel={'X axis'}
-      yAxisLabel={'Y axis'}
+      xAxisLabel={'WQ Fishery'}
+      yAxisLabel={'WQ City'}
     />
   )
 }
@@ -28,8 +28,8 @@ ScatterSelectionTemplate.args = {
   data: coordinates,
   onSelect: coordinates => console.log('selected', coordinates),
   onSelectionCleared: () => console.log('selections cleared'),
-  xAxisLabel: 'X axis',
-  yAxisLabel: 'y axis'
+  xAxisLabel: 'WQ Fishery',
+  yAxisLabel: 'WQ City'
 }
 
 export default {

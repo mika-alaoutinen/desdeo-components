@@ -1,11 +1,16 @@
 import { Coordinate, DataSet, ParallelAxesData } from '../types/dataTypes'
 
 const coordinates: Coordinate[] = [
-  { id: 'a', x: 10, y: 20, isSelected: true },
-  { id: 'b', x: 20, y: 40, isSelected: false },
-  { id: 'c', x: 30, y: 70, },
-  { id: 'd', x: 40, y: 30, isSelected: true },
-  { id: 'e', x: 50, y: 50, },
+  { id: 'a', x: 6.042483, y: 3.17527 },
+  { id: 'b', x: 5.758127, y: 3.410843 },
+  { id: 'c', x: 6.287081, y: 3.207926, },
+  { id: 'd', x: 6.134672, y: 2.98383 },
+  { id: 'e', x: 5.610188, y: 2.910456, },
+  { id: 'f', x: 5.231501, y: 3.248641, },
+  { id: 'g', x: 6.34, y: 2.962557, },
+  { id: 'h', x: 6.291364, y: 2.962557, },
+  { id: 'i', x: 5.407513, y: 3.346416, },
+  { id: 'j', x: 6.019503, y: 3.350959, },
 ]
 
 const dataset: DataSet = [

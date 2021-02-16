@@ -13,8 +13,8 @@ export const ScatterChartComponent = (): JSX.Element => {
     <ScatterChart
       data={data}
       onClick={onClick}
-      xAxisLabel={'X axis'}
-      yAxisLabel={'Y axis'}
+      xAxisLabel={'WQ Fishery'}
+      yAxisLabel={'WQ City'}
     />
   )
 }
@@ -26,8 +26,8 @@ export const ScatterChartWithWrapper = Template.bind({})
 ScatterChartWithWrapper.args = {
   data: coordinates,
   onClick: c => console.log('coordinate', c),
-  xAxisLabel: 'X axis',
-  yAxisLabel: 'y axis'
+  xAxisLabel: 'WQ Fishery',
+  yAxisLabel: 'WQ City'
 }
 
 export default {
