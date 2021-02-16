@@ -5,7 +5,17 @@ type DataSetTuple = [ DataColumn, DataColumn ]
 // Represents a column in the example CSV
 interface DataColumn {
   label: string,
-  data: number[]
+  data: Value[]
+}
+
+interface Value {
+  id: string,
+  isSelected: boolean,
+  value: number
+}
+
+interface CoordinateSet {
+  data: Coordinate[]
 }
 
 interface Coordinate {
@@ -14,10 +24,6 @@ interface Coordinate {
   y: number,
   label?: string,
   isSelected?: boolean
-}
-
-interface CoordinateSet {
-  data: Coordinate[]
 }
 
 interface ParallelAxesData {
@@ -37,6 +43,6 @@ interface Filter {
 }
 
 export type {
-  DataSet, DataSetTuple, Coordinate, CoordinateSet,
+  DataSet, DataSetTuple, Value, Coordinate, CoordinateSet,
   ParallelAxesData, Attribute, Filter
 }

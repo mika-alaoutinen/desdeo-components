@@ -7,10 +7,11 @@ import { createId } from '../utils/utils'
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data, label }) => {
 
-    const coordinates: Coordinate[] = data.map((value, i) => ({
+    const coordinates: Coordinate[] = data.map(({ isSelected, value }, i) => ({
       id: createId(label, i + 1),
       x: i + 1,
-      y: value
+      y: value,
+      isSelected
     }))
 
     return { data: coordinates }
@@ -22,17 +23,21 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
   }
 
   return dataset[0].data.map((_, colIndex) => {
-
-    const coordinates: Coordinate[] = dataset.map(({ data, label }, rowIndex) => ({
-      id: createId(label, colIndex + 1),
-      x: rowIndex + 1,
-      y: data[colIndex],
-    }))
+    const coordinates: Coordinate[] = dataset.map(({ data }, rowIndex) => {
+      const { id, isSelected, value: y } = data[colIndex]
+      return {
+        id,
+        x: rowIndex + 1,
+        y,
+        isSelected
+      }
+    })
 
     return { data: coordinates }
   })
 }
 
+// Delete this
 const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
   const { data: xData , label: xLabel } = tuple[0]
   const { data: yData , label: yLabel } = tuple[1]
@@ -42,8 +47,8 @@ const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
 
   return range.map(n => ({
     id: createId(`${xLabel} ${yLabel}`, n + 1),
-    x: xData[n],
-    y: yData[n],
+    x: xData[n].value,
+    y: yData[n].value,
   }))
 }
 
@@ -59,11 +64,10 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   }
 
   return dataset[0].data.map((_, colIndex) => {
-
     const attributes: Attribute[] = dataset.map(({ data, label }) => ({
-      id: createId(label, colIndex + 1),
+      id: data[colIndex].id,
       x: label.toLowerCase(),
-      y: data[colIndex]
+      y: data[colIndex].value,
     }))
 
     return {
