@@ -1,7 +1,19 @@
 import { Grouping } from '../types/chartTypes'
 import {
-  Attribute, Coordinate, CoordinateSet, DataSet, ParallelAxesData, Value
+  Attribute, Coordinate, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
 } from '../types/dataTypes'
+
+const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
+  const coordinates = data.map((value, x) => {
+    const { id, isSelected, value: y } = value
+    return { id, isSelected, x: x + 1, y }
+  })
+
+  return {
+    data: coordinates,
+    label
+  }
+}
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data }) => {
@@ -71,6 +83,6 @@ const transpose = (nestedArrays: unknown[][]): unknown[][] =>
     nestedArrays.map(row => row[colIndex]))
 
 export {
-  createAlternativeSets, createCriteriaSets,
+  createAlternativeSets, createBarData, createCriteriaSets,
   createDataTableData, createParallelAxesData, mapData
 }
