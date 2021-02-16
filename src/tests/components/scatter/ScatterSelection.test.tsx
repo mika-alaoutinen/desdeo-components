@@ -9,9 +9,23 @@ import { DataSetTuple } from '../../../types/dataTypes'
 
 import ScatterSelectionWrapper from '../../../components/scatter/ScatterSelectionWrapper'
 
-const data: DataSetTuple = [
-  { label: 'Label A', data: [ 1, 2, 3 ] },
-  { label: 'Label B', data: [ 4, 5, 6 ] },
+export const data: DataSetTuple = [
+  {
+    label: 'Label A',
+    data: [
+      { id: 'a1', isSelected: false, value: 1 },
+      { id: 'a2', isSelected: false, value: 2 },
+      { id: 'a3', isSelected: false, value: 3 },
+    ]
+  },
+  {
+    label: 'Label B',
+    data: [
+      { id: 'b1', isSelected: false, value: 4 },
+      { id: 'b2', isSelected: false, value: 5 },
+      { id: 'b3', isSelected: false, value: 6 },
+    ]
+  },
 ]
 
 const onSelect = jest.fn()

@@ -5,22 +5,18 @@ import '@testing-library/jest-dom'
 import {
   dataShouldBeClickable, getPaths, renderComponent, renderVictoryContainer
 } from '../componentTests'
+import { dataset } from '../../testdata'
 import { Grouping } from '../../../types/chartTypes'
 import { DataSet } from '../../../types/dataTypes'
 import { Orientation } from '../../../types/layoutTypes'
 
 import GroupedBarChartWrapper from '../../../components/bar/grouped/GroupedBarChartWrapper'
 
-const data: DataSet = [
-  { label: 'Label A', data: [ 1, 2, 3 ] },
-  { label: 'Label B', data: [ 4, 5, 6 ] },
-]
-
 const handler = jest.fn()
 
 const createComponent = (grouping: Grouping): JSX.Element =>
   <GroupedBarChartWrapper
-    data={data}
+    data={dataset}
     grouping={grouping}
     onClick={handler}
     orientation={'horizontal'}
@@ -81,7 +77,10 @@ describe('Bars should be clickable', () => {
 
 describe('Bars should display label on mouseover', () => {
   const data: DataSet = [
-    { label: 'A', data: [ 1 ] },
+    {
+      label: 'A',
+      data: [{ id: 'a1', isSelected: false, value: 1 }]
+    },
   ]
 
   const createComponent = (orientation: Orientation): JSX.Element =>
@@ -96,7 +95,7 @@ describe('Bars should display label on mouseover', () => {
     const component = createComponent(orientation)
     const paths = getPaths(component)
     fireEvent.mouseOver(paths[0])
-    expect(screen.getByText(/a-1/)).toBeInTheDocument()
+    expect(screen.getByText(/a1/)).toBeInTheDocument()
   }
 
   it('horizontal bar displays label on mouse over', () => {
