@@ -1,6 +1,6 @@
 import { Grouping } from '../types/chartTypes'
 import {
-  Attribute, Coordinate, CoordinateSet, DataSet, DataSetTuple, ParallelAxesData
+  Attribute, Coordinate, CoordinateSet, DataSet, DataSetTuple, ParallelAxesData, Value
 } from '../types/dataTypes'
 import { createId } from '../utils/utils'
 
@@ -52,10 +52,10 @@ const createCoordinates = (tuple: DataSetTuple): Coordinate[] => {
   }))
 }
 
-const createDataTableData = (dataset: DataSet): number[][] => {
+const createDataTableData = (dataset: DataSet): Value[][] => {
   return !dataset.length
     ? []
-    : transpose(dataset.map(d => d.data)) as number[][]
+    : transpose(dataset.map(column => column.data)) as Value[][]
 }
 
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {

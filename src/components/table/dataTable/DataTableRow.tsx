@@ -2,19 +2,20 @@ import React from 'react'
 
 import { DataTableClickHandler } from './DataTable'
 import { padding } from '../tableStyles'
+import { Value } from '../../../types/dataTypes'
 
 interface Props {
-  row: number,
+  row: Value,
   onClick: DataTableClickHandler
 }
 
 const DataTableRow: React.FC<Props> = ({ row, onClick }) => (
   <td
-    key={row}
+    key={row.id}
     onClick={() => onClick(row)}
     style={padding}
   >
-    {row}
+    {row.value}
   </td>
 )
 

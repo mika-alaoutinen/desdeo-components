@@ -4,9 +4,9 @@ import DataTableBody from './DataTableBody'
 import TableHead from '../TableHead'
 import { createDataTableData } from '../../../data/transformations'
 import { tableStyle } from '../tableStyles'
-import { DataSet } from '../../../types/dataTypes'
+import { DataSet, Value } from '../../../types/dataTypes'
 
-export type DataTableClickHandler = (n: number) => void
+export type DataTableClickHandler = (value: Value) => void
 
 export interface Props {
   data: DataSet,
