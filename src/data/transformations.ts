@@ -1,4 +1,4 @@
-import { Grouping } from '../types/chartTypes'
+import { Grouping } from '../types/dataTypes'
 import {
   Attribute, Coordinate, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
 } from '../types/dataTypes'

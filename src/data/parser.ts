@@ -1,4 +1,4 @@
-import { Grouping } from '../types/chartTypes'
+import { Grouping } from '../types/dataTypes'
 import { DataSet } from '../types/dataTypes'
 import { range, replaceSpacesWithLineBreaks } from '../utils/utils'
 

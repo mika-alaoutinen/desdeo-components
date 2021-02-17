@@ -6,7 +6,7 @@ import {
   dataShouldBeClickable, getPaths, renderComponent, renderVictoryContainer
 } from '../componentTests'
 import { dataset } from '../../testdata'
-import { Grouping } from '../../../types/chartTypes'
+import { Grouping } from '../../../types/dataTypes'
 import { DataSet } from '../../../types/dataTypes'
 import { Orientation } from '../../../types/layoutTypes'
 

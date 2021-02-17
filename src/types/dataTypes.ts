@@ -1,4 +1,5 @@
 type DataSet = DataColumn[]
+type Grouping = 'alternatives' | 'criteria'
 
 // Represents a column in the example CSV
 interface DataColumn {
@@ -43,5 +44,5 @@ interface Filter {
 
 export type {
   Attribute, Coordinate, CoordinateSet, DataSet,
-  DataColumn, Filter, ParallelAxesData, Value
+  DataColumn, Filter, Grouping, ParallelAxesData, Value
 }

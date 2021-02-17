@@ -1,5 +1,5 @@
 import {
-  Coordinate, CoordinateSet, DataSet
+  Coordinate, CoordinateSet, DataSet, Grouping
 } from './dataTypes'
 import {
   OnClickHandler, OnSelectHandler, OnSelectionClearedHandler
@@ -35,9 +35,7 @@ interface CoordinateChart {
   yAxisLabel?: string
 }
 
-type Grouping = 'alternatives' | 'criteria'
-
 export type {
-  BarChartProps, BarChartWrapperProps, CoordinateChart, OnClickChart,
-  OnSelectChart, Grouping
+  BarChartProps, BarChartWrapperProps, CoordinateChart,
+  OnClickChart, OnSelectChart
 }
