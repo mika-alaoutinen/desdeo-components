@@ -1,7 +1,7 @@
-import { createAlternativeSets, createCriteriaSets } from './transformationUtils'
+import { createAlternativeSets, createCriteriaSets, transpose } from './transformationUtils'
 import { Grouping } from '../types/dataTypes'
 import {
-  Attribute, Coordinate, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
+  Attribute, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
 } from '../types/dataTypes'
 
 const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
@@ -46,17 +46,6 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   })
 }
 
-const mapCoordinateToValue = ({
-  id, isSelected = false, y: value }: Coordinate
-): Value => ({
-  id, isSelected, value
-})
-
-const transpose = (nestedArrays: unknown[][]): unknown[][] =>
-  nestedArrays[0].map((_, colIndex) =>
-    nestedArrays.map(row => row[colIndex]))
-
 export {
-  createAlternativeSets, createBarData, createCriteriaSets,
-  createDataTableData, createParallelAxesData, mapCoordinateToValue, createCoordinateSets
+  createBarData, createDataTableData, createParallelAxesData, createCoordinateSets
 }
