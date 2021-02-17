@@ -1,4 +1,9 @@
-import { Coordinate, CoordinateSet, DataSet } from './dataTypes'
+import {
+  Coordinate, CoordinateSet, DataSet, Grouping
+} from './dataTypes'
+import {
+  OnClickHandler, OnCoordinateClick, OnCoordinateSelect, OnSelectionClearedHandler
+} from './eventHandlerTypes'
 import { Orientation } from './layoutTypes'
 
 interface BarChartProps {
@@ -15,27 +20,29 @@ interface BarChartWrapperProps {
   orientation: Orientation
 }
 
-interface OnClickChart extends CoordinateChart {
+// Used with one-dimensional data, i.e. everything else except scatter plots.
+interface ValueChart extends CoordinatesChart {
   onClick: OnClickHandler
 }
 
-interface OnSelectChart extends CoordinateChart {
-  onSelect: OnSelectHandler,
+// Used with two-dimensional data, i.e. with scatter plots.
+// Data must be given as a [x, y] coordinate pair.
+interface CoordinateChart extends CoordinatesChart {
+  onClick: OnCoordinateClick
+}
+
+interface CoordinateSelectChart extends CoordinatesChart {
+  onSelect: OnCoordinateSelect,
   onSelectionCleared: OnSelectionClearedHandler
 }
 
-interface CoordinateChart {
+interface CoordinatesChart {
   data: Coordinate[],
   xAxisLabel?: string,
   yAxisLabel?: string
 }
 
-type Grouping = 'alternatives' | 'criteria'
-type OnClickHandler = (clicked: Coordinate) => void
-type OnSelectHandler = (selected: Coordinate[]) => void
-type OnSelectionClearedHandler = () => void
-
 export type {
-  BarChartProps, BarChartWrapperProps, OnClickChart, OnSelectChart,
-  Grouping, OnClickHandler, OnSelectHandler, OnSelectionClearedHandler
+  BarChartProps, BarChartWrapperProps, CoordinateChart,
+  CoordinateSelectChart, ValueChart
 }

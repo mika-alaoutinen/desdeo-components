@@ -3,7 +3,7 @@ import React from 'react'
 import StackedBarChart from './StackedBarChart'
 import { swapOrientation } from '../layout'
 import { createDataLabels } from '../../../data/parser'
-import { mapData } from '../../../data/transformations'
+import { createCoordinateSets } from '../../../data/inputTransformations'
 import { BarChartWrapperProps } from '../../../types/chartTypes'
 
 const StackedBarChartWrapper: React.FC<BarChartWrapperProps> = ({
@@ -11,7 +11,7 @@ const StackedBarChartWrapper: React.FC<BarChartWrapperProps> = ({
 }) => (
 
   <StackedBarChart
-    data={mapData(data, grouping)}
+    data={createCoordinateSets(data, grouping)}
     labels={createDataLabels(data, grouping)}
     onClick={onClick}
     orientation={swapOrientation(orientation)}

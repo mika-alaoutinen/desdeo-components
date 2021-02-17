@@ -3,12 +3,12 @@ import React from 'react'
 import {
   dataShouldBeClickable, renderComponent, renderData, renderVictoryContainer
 } from '../componentTests'
-import { coordinates } from '../../../tests/testdata'
+import { dataset } from '../../../tests/testdata'
 
-import BarChart from '../../../components/bar/basic/BarChart'
+import BarChartWrapper from '../../../components/bar/basic/BarChartWrapper'
 
 const handler = jest.fn()
-const component = <BarChart data={coordinates} onClick={handler} />
+const component = <BarChartWrapper data={dataset[0]} onClick={handler} />
 
 describe('BarChart is rendered correctly', () => {
   it('chart is rendered', () => {
@@ -21,8 +21,8 @@ describe('BarChart is rendered correctly', () => {
 })
 
 describe('Data is displayed correctly', () => {
-  it('has five path elements representing bars', () => {
-    renderData(component, 5)
+  it('has three path elements representing bars', () => {
+    renderData(component, 3)
   })
 })
 

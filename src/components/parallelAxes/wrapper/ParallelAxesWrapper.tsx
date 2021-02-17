@@ -3,7 +3,7 @@ import React from 'react'
 import ParallelAxes from '../component/ParallelAxes'
 import { normalizeData } from './dataProcessing'
 import { getAttributeNames, getMaxValues } from './dataParser'
-import { createParallelAxesData } from '../../../data/transformations'
+import { createParallelAxesData } from '../../../data/inputTransformations'
 import { DataSet } from '../../../types/dataTypes'
 
 export interface Props {

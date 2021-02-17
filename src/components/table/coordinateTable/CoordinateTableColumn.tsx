@@ -2,8 +2,8 @@ import React from 'react'
 
 import HoverableTableRow from '../HoverableTableRow'
 import CoordinateTableRow from './CoordinateTableRow'
-import { OnClickHandler } from '../../../types/chartTypes'
 import { Coordinate } from '../../../types/dataTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
   coordinate: Coordinate,

@@ -1,5 +1,5 @@
 import { dataset } from '../../../data/testdata'
-import { createAlternativeSets, createCriteriaSets } from '../../../data/transformations'
+import { createAlternativeSets, createCriteriaSets } from '../../../data/transformationUtils'
 
 import { calculateHeight, calculateWidth } from '../../../components/victory/containerUtils'
 

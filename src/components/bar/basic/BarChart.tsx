@@ -3,12 +3,13 @@ import { VictoryAxis, VictoryBar, VictoryChart } from 'victory'
 
 import { createCoordinateLabel } from '../rendering'
 import { drawTooltip } from '../../victory/components'
+import { mapCoordinateToValue } from '../../../data/outputTransformations'
 import {
   DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME
 } from '../../../styles/victoryStyles'
-import { OnClickChart } from '../../../types/chartTypes'
+import { ValueChart } from '../../../types/chartTypes'
 
-const BarChart: React.FC<OnClickChart> = ({ data, onClick, xAxisLabel }) => (
+const BarChart: React.FC<ValueChart> = ({ data, onClick, xAxisLabel }) => (
   <VictoryChart
     domainPadding={DOMAIN_PADDING}
     theme={MATERIAL_THEME}
@@ -31,7 +32,7 @@ const BarChart: React.FC<OnClickChart> = ({ data, onClick, xAxisLabel }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }) => onClick(datum)
+              mutation: ({ datum }) => onClick(mapCoordinateToValue(datum))
             }]
           }
         },

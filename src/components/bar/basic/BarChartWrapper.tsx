@@ -1,9 +1,9 @@
 import React from 'react'
 
 import BarChart from './BarChart'
-import { createBarData } from '../../../data/transformations'
-import { OnClickHandler } from '../../../types/chartTypes'
+import { createBarData } from '../../../data/inputTransformations'
 import { DataColumn } from '../../../types/dataTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 export interface Props {
   data: DataColumn,

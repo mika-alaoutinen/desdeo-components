@@ -2,12 +2,12 @@ import React from 'react'
 
 import DataTableRow from './DataTableRow'
 import HoverableTableRow from '../HoverableTableRow'
-import { DataTableClickHandler } from './DataTable'
 import { Value } from '../../../types/dataTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
   data: Value[],
-  onClick: DataTableClickHandler
+  onClick: OnClickHandler
 }
 
 const DataTableColumn: React.FC<Props> = ({ data, onClick }) => {

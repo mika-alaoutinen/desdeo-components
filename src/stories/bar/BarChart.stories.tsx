@@ -23,7 +23,7 @@ const Template: Story<Props> = args =>
 export const BarChartTemplate = Template.bind({})
 BarChartTemplate.args = {
   data: dataset[0],
-  onClick: c => console.log('coordinate', c)
+  onClick: value => console.log('value', value)
 }
 
 export default {

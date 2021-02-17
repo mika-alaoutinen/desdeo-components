@@ -30,6 +30,6 @@ export const argTypes = {
 export const props: BarChartWrapperProps = {
   data: dataset,
   grouping: 'alternatives',
-  onClick: (coordinate) => console.log('coordinate', coordinate),
+  onClick: value => console.log('value', value),
   orientation: 'horizontal'
 }

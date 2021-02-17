@@ -1,8 +1,9 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
-import { OnClickHandler } from '../../types/chartTypes'
+import { mapCoordinateToValue } from '../../data/outputTransformations'
 import { Coordinate, CoordinateSet } from '../../types/dataTypes'
+import { OnClickHandler } from '../../types/eventHandlerTypes'
 
 const createCoordinateLabel = ({ id, y }: Coordinate): string =>
   `${id}:\n${y}`
@@ -18,7 +19,7 @@ const drawBar = (
         target: 'data',
         eventHandlers: {
           onClick: () => [{
-            mutation: ({ datum }) => onClick(datum)
+            mutation: ({ datum }) => onClick(mapCoordinateToValue(datum))
           }]
         }
       },

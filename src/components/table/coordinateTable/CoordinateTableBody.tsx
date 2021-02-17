@@ -1,8 +1,8 @@
 import React from 'react'
 
 import CoordinateTableColumn from './CoordinateTableColumn'
-import { OnClickHandler } from '../../../types/chartTypes'
 import { Coordinate } from '../../../types/dataTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
   data: Coordinate[],
