@@ -3,7 +3,7 @@ import { VictoryAxis, VictoryBar, VictoryChart } from 'victory'
 
 import { createCoordinateLabel } from '../rendering'
 import { drawTooltip } from '../../victory/components'
-import { mapCoordinateToValue } from '../../../data/transformations'
+import { mapCoordinateToValue } from '../../../data/outputTransformations'
 import {
   DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME
 } from '../../../styles/victoryStyles'

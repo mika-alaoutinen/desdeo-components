@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
-import { mapCoordinateToValue } from '../../data/transformations'
+import { mapCoordinateToValue } from '../../data/outputTransformations'
 import { Coordinate, CoordinateSet } from '../../types/dataTypes'
 import { OnClickHandler } from '../../types/eventHandlerTypes'
 

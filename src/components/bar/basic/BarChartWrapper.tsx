@@ -1,7 +1,7 @@
 import React from 'react'
 
 import BarChart from './BarChart'
-import { createBarData } from '../../../data/transformations'
+import { createBarData } from '../../../data/inputTransformations'
 import { DataColumn } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
 

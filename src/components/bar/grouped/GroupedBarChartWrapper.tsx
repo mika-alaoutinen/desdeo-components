@@ -3,7 +3,7 @@ import React from 'react'
 import GroupedBarChart from './GroupedBarChart'
 import { swapOrientation } from '../layout'
 import { createDataLabels } from '../../../data/parser'
-import { createCoordinateSets } from '../../../data/transformations'
+import { createCoordinateSets } from '../../../data/inputTransformations'
 import { BarChartWrapperProps } from '../../../types/chartTypes'
 
 const GroupedBarChartWrapper: React.FC<BarChartWrapperProps> = ({

@@ -3,7 +3,7 @@ import React from 'react'
 import { padding } from '../tableStyles'
 import { Coordinate } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
-import { mapCoordinateToValue } from '../../../data/transformations'
+import { mapCoordinateToValue } from '../../../data/outputTransformations'
 
 interface Props {
   coordinate: Coordinate,
