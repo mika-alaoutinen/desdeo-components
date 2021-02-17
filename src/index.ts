@@ -1,5 +1,5 @@
 // Export the components for publishing
-export { default as BarChartComponent } from './components/bar/basic/BarChart'
+export { default as BarChartComponent } from './components/bar/basic/BarChartWrapper'
 export { default as GroupedBarChartComponent } from './components/bar/grouped/GroupedBarChartWrapper'
 export { default as StackedBarChartComponent } from './components/bar/stacked/StackedBarChartWrapper'
 
