@@ -1,3 +1,4 @@
+import { createAlternativeSets, createCriteriaSets } from './transformationUtils'
 import { Grouping } from '../types/dataTypes'
 import {
   Attribute, Coordinate, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
@@ -19,39 +20,6 @@ const createCoordinateSets = (data: DataSet, grouping: Grouping): CoordinateSet[
   grouping === 'alternatives'
     ? createAlternativeSets(data)
     : createCriteriaSets(data)
-
-const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
-  dataset.map(({ data }) => {
-
-    const coordinates: Coordinate[] = data.map(({ id, isSelected, value }, i) => ({
-      id,
-      x: i + 1,
-      y: value,
-      isSelected
-    }))
-
-    return { data: coordinates }
-  })
-
-const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
-  if (!dataset.length) {
-    return []
-  }
-
-  return dataset[0].data.map((_, colIndex) => {
-    const coordinates: Coordinate[] = dataset.map(({ data }, rowIndex) => {
-      const { id, isSelected, value: y } = data[colIndex]
-      return {
-        id,
-        x: rowIndex + 1,
-        y,
-        isSelected
-      }
-    })
-
-    return { data: coordinates }
-  })
-}
 
 const createDataTableData = (dataset: DataSet): Value[][] => {
   return !dataset.length
@@ -77,8 +45,6 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
     }
   })
 }
-
-
 
 const mapCoordinateToValue = ({
   id, isSelected = false, y: value }: Coordinate
