@@ -2,11 +2,11 @@ import React from 'react'
 
 import CoordinateTableColumn from './CoordinateTableColumn'
 import { Coordinate } from '../../../types/dataTypes'
-import { OnClickHandler } from '../../../types/eventHandlerTypes'
+import { OnCoordinateClick } from '../../../types/eventHandlerTypes'
 
 interface Props {
   data: Coordinate[],
-  onClick: OnClickHandler
+  onClick: OnCoordinateClick
 }
 
 const CoordinateTableBody: React.FC<Props> = ({ data, onClick }) => {
