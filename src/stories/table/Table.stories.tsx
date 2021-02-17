@@ -23,7 +23,7 @@ const Template: Story<Props> = args =>
 export const DataTableComponent = Template.bind({})
 DataTableComponent.args = {
   data: dataset,
-  onClick: value => console.log('clicked', value)
+  onClick: value => console.log('value', value)
 }
 
 export default {

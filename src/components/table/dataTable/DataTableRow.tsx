@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { DataTableClickHandler } from './DataTable'
 import { padding } from '../tableStyles'
 import { Value } from '../../../types/dataTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
   row: Value,
-  onClick: DataTableClickHandler
+  onClick: OnClickHandler
 }
 
 const DataTableRow: React.FC<Props> = ({ row, onClick }) => (

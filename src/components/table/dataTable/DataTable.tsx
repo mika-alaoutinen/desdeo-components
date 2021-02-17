@@ -4,13 +4,12 @@ import DataTableBody from './DataTableBody'
 import TableHead from '../TableHead'
 import { createDataTableData } from '../../../data/transformations'
 import { tableStyle } from '../tableStyles'
-import { DataSet, Value } from '../../../types/dataTypes'
-
-export type DataTableClickHandler = (value: Value) => void
+import { DataSet } from '../../../types/dataTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 export interface Props {
   data: DataSet,
-  onClick: DataTableClickHandler
+  onClick: OnClickHandler
 }
 
 const DataTable: React.FC<Props> = ({ data, onClick }) => (

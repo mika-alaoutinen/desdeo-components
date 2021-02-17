@@ -78,11 +78,17 @@ const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
     ? createAlternativeSets(data)
     : createCriteriaSets(data)
 
+const mapCoordinateToValue = ({
+  id, isSelected = false, y: value }: Coordinate
+): Value => ({
+  id, isSelected, value
+})
+
 const transpose = (nestedArrays: unknown[][]): unknown[][] =>
   nestedArrays[0].map((_, colIndex) =>
     nestedArrays.map(row => row[colIndex]))
 
 export {
   createAlternativeSets, createBarData, createCriteriaSets,
-  createDataTableData, createParallelAxesData, mapData
+  createDataTableData, createParallelAxesData, mapCoordinateToValue, mapData
 }

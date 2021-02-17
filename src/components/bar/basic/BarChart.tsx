@@ -3,6 +3,7 @@ import { VictoryAxis, VictoryBar, VictoryChart } from 'victory'
 
 import { createCoordinateLabel } from '../rendering'
 import { drawTooltip } from '../../victory/components'
+import { mapCoordinateToValue } from '../../../data/transformations'
 import {
   DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME
 } from '../../../styles/victoryStyles'
@@ -31,7 +32,7 @@ const BarChart: React.FC<OnClickChart> = ({ data, onClick, xAxisLabel }) => (
           target: 'data',
           eventHandlers: {
             onClick: () => [{
-              mutation: ({ datum }) => onClick(datum)
+              mutation: ({ datum }) => onClick(mapCoordinateToValue(datum))
             }]
           }
         },

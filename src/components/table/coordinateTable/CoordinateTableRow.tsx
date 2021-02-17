@@ -3,6 +3,7 @@ import React from 'react'
 import { padding } from '../tableStyles'
 import { Coordinate } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
+import { mapCoordinateToValue } from '../../../data/transformations'
 
 interface Props {
   coordinate: Coordinate,
@@ -16,7 +17,12 @@ const CoordinateTableRow: React.FC<Props> = ({ coordinate, onClick }) => {
 
   // Clicking on any cell selects the coordinate
   const renderCell = (text: string): JSX.Element =>
-    <td onClick={() => onClick(coordinate)} style={padding}>{text}</td>
+    <td
+      onClick={() => onClick(mapCoordinateToValue(coordinate))}
+      style={padding}
+    >
+      {text}
+    </td>
 
   return (
     <>
