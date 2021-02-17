@@ -7,9 +7,9 @@ import {
 } from './rendering'
 import { drawTooltip } from '../victory/components'
 import { mapFillStyle } from '../../styles/victoryStyles'
-import { OnSelectChart } from '../../types/chartTypes'
+import { CoordinateSelectChart } from '../../types/chartTypes'
 
-const ScatterChart: React.FC<OnSelectChart> = ({
+const ScatterChart: React.FC<CoordinateSelectChart> = ({
   data, onSelect, onSelectionCleared, xAxisLabel, yAxisLabel
 }) => (
 

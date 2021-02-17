@@ -5,9 +5,9 @@ import ZoomContainer from '../victory/ZoomContainer'
 import { createCoordinateLabel, drawDependentAxis, drawMainAxis } from './rendering'
 import { drawTooltip } from '../victory/components'
 import { mapFillStyle } from '../../styles/victoryStyles'
-import { OnClickChart } from '../../types/chartTypes'
+import { CoordinateChart } from '../../types/chartTypes'
 
-const ScatterChart: React.FC<OnClickChart> = ({
+const ScatterChart: React.FC<CoordinateChart> = ({
   data, onClick, xAxisLabel, yAxisLabel
 }) => (
 
