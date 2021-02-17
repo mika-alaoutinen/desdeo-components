@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
-import { OnClickHandler } from '../../types/chartTypes'
 import { Coordinate, CoordinateSet } from '../../types/dataTypes'
+import { OnClickHandler } from '../../types/eventHandlerTypes'
 
 const createCoordinateLabel = ({ id, y }: Coordinate): string =>
   `${id}:\n${y}`

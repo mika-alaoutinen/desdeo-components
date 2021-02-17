@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { OnClickHandler } from '../../types/chartTypes'
+import { OnClickHandler } from '../../types/eventHandlerTypes'
 
 // A set of basic tests for all chart components. Used to reduce repeated test code.
 

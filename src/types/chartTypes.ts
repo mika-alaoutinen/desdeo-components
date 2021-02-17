@@ -1,4 +1,9 @@
-import { Coordinate, CoordinateSet, DataSet } from './dataTypes'
+import {
+  Coordinate, CoordinateSet, DataSet
+} from './dataTypes'
+import {
+  OnClickHandler, OnSelectHandler, OnSelectionClearedHandler
+} from './eventHandlerTypes'
 import { Orientation } from './layoutTypes'
 
 interface BarChartProps {
@@ -31,11 +36,8 @@ interface CoordinateChart {
 }
 
 type Grouping = 'alternatives' | 'criteria'
-type OnClickHandler = (clicked: Coordinate) => void
-type OnSelectHandler = (selected: Coordinate[]) => void
-type OnSelectionClearedHandler = () => void
 
 export type {
-  BarChartProps, BarChartWrapperProps, OnClickChart, OnSelectChart,
-  Grouping, OnClickHandler, OnSelectHandler, OnSelectionClearedHandler
+  BarChartProps, BarChartWrapperProps, CoordinateChart, OnClickChart,
+  OnSelectChart, Grouping
 }

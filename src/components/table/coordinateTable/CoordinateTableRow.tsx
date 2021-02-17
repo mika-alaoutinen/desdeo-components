@@ -2,7 +2,7 @@ import React from 'react'
 
 import { padding } from '../tableStyles'
 import { Coordinate } from '../../../types/dataTypes'
-import { OnClickHandler } from '../../../types/chartTypes'
+import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
   coordinate: Coordinate,

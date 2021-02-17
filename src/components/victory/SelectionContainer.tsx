@@ -5,7 +5,7 @@ import { VictoryChart } from 'victory'
 import { VictorySelectionContainer } from 'victory-selection-container'
 
 import { DOMAIN_PADDING, MATERIAL_THEME } from '../../styles/victoryStyles'
-import { OnSelectHandler, OnSelectionClearedHandler } from '../../types/chartTypes'
+import { OnSelectHandler, OnSelectionClearedHandler } from '../../types/eventHandlerTypes'
 
 interface Props {
   onSelect: OnSelectHandler,

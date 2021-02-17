@@ -60,3 +60,7 @@ Launches Storybook for local development.
 ```
 npm run storybook
 ```
+
+## TODO
+- Fix click handlers so that they emit Values, not Coordinates (except for scatter charts).
+- Add tests for BarChartWrapper.
