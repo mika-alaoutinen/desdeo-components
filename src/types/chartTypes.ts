@@ -2,7 +2,7 @@ import {
   Coordinate, CoordinateSet, DataSet, Grouping
 } from './dataTypes'
 import {
-  OnClickHandler, onCoordinateClick, OnSelectHandler, OnSelectionClearedHandler
+  OnClickHandler, OnCoordinateClick, OnCoordinateSelect, OnSelectionClearedHandler
 } from './eventHandlerTypes'
 import { Orientation } from './layoutTypes'
 
@@ -28,11 +28,11 @@ interface ValueChart extends CoordinatesChart {
 // Used with two-dimensional data, i.e. with scatter plots.
 // Data must be given as a [x, y] coordinate pair.
 interface CoordinateChart extends CoordinatesChart {
-  onClick: onCoordinateClick
+  onClick: OnCoordinateClick
 }
 
-interface OnSelectChart extends CoordinatesChart {
-  onSelect: OnSelectHandler,
+interface CoordinateSelectChart extends CoordinatesChart {
+  onSelect: OnCoordinateSelect,
   onSelectionCleared: OnSelectionClearedHandler
 }
 
@@ -43,5 +43,6 @@ interface CoordinatesChart {
 }
 
 export type {
-  BarChartProps, BarChartWrapperProps, CoordinateChart, ValueChart, OnSelectChart
+  BarChartProps, BarChartWrapperProps, CoordinateChart,
+  CoordinateSelectChart, ValueChart
 }
