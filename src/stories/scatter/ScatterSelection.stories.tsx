@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react'
 import ScatterSelection from '../../components/scatter/ScatterSelection'
 import { useOnSelectHandler } from '../storyUtils'
 import { coordinates } from '../../data/testdata'
-import { OnSelectChart } from '../../types/chartTypes'
+import { CoordinateSelectChart } from '../../types/chartTypes'
 
 export const ScatterSeletionComponent = (): JSX.Element => {
   const { data, onSelect, onSelectionCleared } = useOnSelectHandler()
@@ -20,7 +20,7 @@ export const ScatterSeletionComponent = (): JSX.Element => {
   )
 }
 
-const Template: Story<OnSelectChart> = args =>
+const Template: Story<CoordinateSelectChart> = args =>
   <ScatterSelection {...args} />
 
 export const ScatterSelectionTemplate = Template.bind({})
