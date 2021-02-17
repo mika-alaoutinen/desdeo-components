@@ -3,11 +3,11 @@ import React from 'react'
 import HoverableTableRow from '../HoverableTableRow'
 import CoordinateTableRow from './CoordinateTableRow'
 import { Coordinate } from '../../../types/dataTypes'
-import { OnClickHandler } from '../../../types/eventHandlerTypes'
+import { OnCoordinateClick } from '../../../types/eventHandlerTypes'
 
 interface Props {
   coordinate: Coordinate,
-  onClick: OnClickHandler
+  onClick: OnCoordinateClick
 }
 
 const CoordinateTableColumn: React.FC<Props> = ({ coordinate, onClick }) => (
