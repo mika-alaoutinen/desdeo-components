@@ -1,7 +1,35 @@
 import { dataset } from '../testdata'
-import { ParallelAxesData, Value } from '../../types/dataTypes'
+import {
+  CoordinateSet, DataColumn, ParallelAxesData, Value
+} from '../../types/dataTypes'
 
-import { createDataTableData, createParallelAxesData } from '../../data/inputTransformations'
+import {
+  createBarData, createDataTableData, createParallelAxesData
+} from '../../data/inputTransformations'
+
+describe('createBarData procudes datasets for a regular bar chart', () => {
+  const data = dataset[0]
+
+  it('transforms a DataColumn as expected', () => {
+    const expected: CoordinateSet = {
+      data: [
+        { id: 'a1', isSelected: false, x: 1, y: 1 },
+        { id: 'a2', isSelected: false, x: 2, y: 2 },
+        { id: 'a3', isSelected: false, x: 3, y: 3 },
+      ],
+      label: 'Label A'
+    }
+    expect(createBarData(data)).toEqual(expected)
+  })
+
+  it('handles an empty input', () => {
+    const data: DataColumn = {
+      data: [],
+      label: 'Empty set'
+    }
+    expect(createBarData(data)).toEqual({ data: [], label: 'Empty set' })
+  })
+})
 
 describe('createParallelAxesData produces datasets for Parallel Axis component', () => {
   const expected: ParallelAxesData[] = [
