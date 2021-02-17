@@ -2,12 +2,12 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import ScatterChart from '../../components/scatter/ScatterChart'
-import { useOnClickHandler } from '../storyUtils'
+import { useCoordinateClickHandler } from '../storyUtils'
 import { coordinates } from '../../data/testdata'
-import { OnClickChart } from '../../types/chartTypes'
+import { CoordinateChart } from '../../types/chartTypes'
 
 export const ScatterChartComponent = (): JSX.Element => {
-  const { data, onClick } = useOnClickHandler()
+  const { data, onClick } = useCoordinateClickHandler()
 
   return (
     <ScatterChart
@@ -19,13 +19,13 @@ export const ScatterChartComponent = (): JSX.Element => {
   )
 }
 
-const Template: Story<OnClickChart> = args =>
+const Template: Story<CoordinateChart> = args =>
   <ScatterChart {...args} />
 
 export const ScatterChartTemplate = Template.bind({})
 ScatterChartTemplate.args = {
   data: coordinates,
-  onClick: c => console.log('coordinate', c),
+  onClick: coordinate => console.log('coordinate', coordinate),
   xAxisLabel: 'WQ Fishery',
   yAxisLabel: 'WQ City'
 }

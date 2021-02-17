@@ -1,24 +1,27 @@
 import { useState } from 'react'
 
 import { coordinates } from '../data/testdata'
-import { ValueChart, CoordinateSelectChart } from '../types/chartTypes'
+import { CoordinateChart, CoordinateSelectChart, ValueChart } from '../types/chartTypes'
 import { Coordinate, Value } from '../types/dataTypes'
 
 export const useOnClickHandler = (): ValueChart => {
   const [ data, setData ] = useState(coordinates)
 
-  const onClick = (clicked: Value): void => {
-    const edited = data.map(datum => datum.id === clicked.id
-      ? editSelected(datum)
-      : datum
-    )
-    setData(edited)
+  const onClick = ({ id }: Value): void => {
+    setData(editCoordinates(id, data))
   }
 
-  return {
-    data,
-    onClick
+  return { data, onClick }
+}
+
+export const useCoordinateClickHandler = (): CoordinateChart => {
+  const [ data, setData ] = useState(coordinates)
+
+  const onClick = ({ id }: Coordinate): void => {
+    setData(editCoordinates(id, data))
   }
+
+  return { data, onClick }
 }
 
 export const useOnSelectHandler = (): CoordinateSelectChart => {
@@ -35,14 +38,15 @@ export const useOnSelectHandler = (): CoordinateSelectChart => {
     setData(unselected)
   }
 
-  return {
-    data,
-    onSelect,
-    onSelectionCleared
-  }
+  return { data, onSelect, onSelectionCleared }
 }
 
 // Utility functions
+const editCoordinates = (clickedId: string, data: Coordinate[]): Coordinate[] =>
+  data.map(coordinate => coordinate.id === clickedId
+    ? editSelected(coordinate)
+    : coordinate)
+
 const editSelected = (datum: Coordinate): Coordinate =>
   datum.isSelected === undefined
     ? setSelected(datum, true)
