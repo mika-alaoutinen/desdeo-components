@@ -1,6 +1,6 @@
 {
   "name": "desdeo-components",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": false,
   "main": "build/index.js",
   "module": "build/index.es.js",
