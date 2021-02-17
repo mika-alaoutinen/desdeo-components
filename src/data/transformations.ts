@@ -15,6 +15,11 @@ const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
   }
 }
 
+const createCoordinateSets = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
+  grouping === 'alternatives'
+    ? createAlternativeSets(data)
+    : createCriteriaSets(data)
+
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data }) => {
 
@@ -73,10 +78,7 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   })
 }
 
-const mapData = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
-  grouping === 'alternatives'
-    ? createAlternativeSets(data)
-    : createCriteriaSets(data)
+
 
 const mapCoordinateToValue = ({
   id, isSelected = false, y: value }: Coordinate
@@ -90,5 +92,5 @@ const transpose = (nestedArrays: unknown[][]): unknown[][] =>
 
 export {
   createAlternativeSets, createBarData, createCriteriaSets,
-  createDataTableData, createParallelAxesData, mapCoordinateToValue, mapData
+  createDataTableData, createParallelAxesData, mapCoordinateToValue, createCoordinateSets
 }
