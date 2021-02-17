@@ -5,7 +5,6 @@ import CoordinateTable from '../../components/table/coordinateTable/CoordinateTa
 import DataTable, { Props } from '../../components/table/dataTable/DataTable'
 import { useOnClickHandler } from '../storyUtils'
 import { dataset } from '../../data/testdata'
-import { Value } from '../../types/dataTypes'
 
 export const CoordinateTableComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
@@ -24,7 +23,7 @@ const Template: Story<Props> = args =>
 export const DataTableComponent = Template.bind({})
 DataTableComponent.args = {
   data: dataset,
-  onClick: (v: Value) => console.log('clicked', v)
+  onClick: value => console.log('clicked', value)
 }
 
 export default {

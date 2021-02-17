@@ -36,6 +36,5 @@ interface CoordinateChart {
 }
 
 export type {
-  BarChartProps, BarChartWrapperProps, CoordinateChart,
-  OnClickChart, OnSelectChart
+  BarChartProps, BarChartWrapperProps, OnClickChart, OnSelectChart
 }
