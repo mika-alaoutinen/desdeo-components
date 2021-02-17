@@ -1,4 +1,4 @@
-import { dataset } from '../../data/testdata'
+import { dataset } from '../testdata'
 import { CoordinateSet } from '../../types/dataTypes'
 
 import { createAlternativeSets, createCriteriaSets } from '../../data/transformationUtils'
