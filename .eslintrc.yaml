@@ -1,0 +1,30 @@
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:@typescript-eslint/recommended-requiring-type-checking
+
+plugins:
+  - "@typescript-eslint"
+  - prettier
+  - react
+
+env:
+  browser: true
+  es6: true
+  jest: true
+
+rules:
+  "@typescript-eslint/explicit-function-return-type": 1
+  react/prop-types: 0
+  prettier/prettier: 2
+
+settings:
+  react:
+    pragma: "React"
+    version: "detect"
+
+parser: "@typescript-eslint/parser"
+parserOptions:
+  project: "./tsconfig.json"
