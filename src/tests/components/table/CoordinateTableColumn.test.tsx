@@ -6,7 +6,7 @@ import {
   clickingOnCellCallsClickHandler,
   colorShouldChangeOnMouseHover,
   defaultColorShouldBeWhite,
-  renderTableComponent
+  renderTableComponent,
 } from './tableRowTests'
 
 import { ROW_SELECTED_COLOR } from '../../../components/table/tableStyles'
@@ -26,7 +26,7 @@ describe('CoordinateTableColumn is rendered correctly', () => {
     const coordinate: Coordinate = {
       id: '123',
       x: 1,
-      y: 1
+      y: 1,
     }
 
     const component = createComponent(coordinate)
@@ -61,13 +61,14 @@ describe('Clicking on a table cell calls onClick function', () => {
   })
 })
 
-const createComponent = (coordinate: Coordinate): JSX.Element =>
+const createComponent = (coordinate: Coordinate): JSX.Element => (
   <CoordinateTableColumn coordinate={coordinate} onClick={handler} />
+)
 
 const createCoordinate = (isSelected?: boolean): Coordinate => ({
   id: '123',
   label: 'A',
   isSelected,
   x: 1,
-  y: 1
+  y: 1,
 })

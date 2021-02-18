@@ -7,12 +7,8 @@ import { drawTooltip } from '../victory/components'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { CoordinateChart } from '../../types/chartTypes'
 
-const ScatterChart: React.FC<CoordinateChart> = ({
-  data, onClick, xAxisLabel, yAxisLabel
-}) => (
-
+const ScatterChart: React.FC<CoordinateChart> = ({ data, onClick, xAxisLabel, yAxisLabel }) => (
   <ZoomContainer>
-
     {drawMainAxis(xAxisLabel)}
     {drawDependentAxis(yAxisLabel)}
 
@@ -22,11 +18,13 @@ const ScatterChart: React.FC<CoordinateChart> = ({
         {
           target: 'data',
           eventHandlers: {
-            onClick: () => [{
-              mutation: ({ datum }) => onClick(datum)
-            }]
-          }
-        }
+            onClick: () => [
+              {
+                mutation: ({ datum }) => onClick(datum),
+              },
+            ],
+          },
+        },
       ]}
       labelComponent={drawTooltip()}
       labels={({ datum }) => createCoordinateLabel(datum)}
@@ -34,10 +32,9 @@ const ScatterChart: React.FC<CoordinateChart> = ({
       style={{
         data: {
           fill: ({ datum }) => mapFillStyle(datum),
-        }
+        },
       }}
     />
-
   </ZoomContainer>
 )
 

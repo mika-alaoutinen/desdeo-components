@@ -6,9 +6,7 @@ import { DomainTuple } from '../../../types/victoryTypes'
 
 type OnDomainChange = (domainTuple: DomainTuple, name?: string) => void
 
-const drawAxis = (
-  axisComponent: JSX.Element, offsetX: number, tickValue: number
-): JSX.Element =>
+const drawAxis = (axisComponent: JSX.Element, offsetX: number, tickValue: number): JSX.Element => (
   <VictoryAxis
     key={axisComponent.key}
     axisComponent={axisComponent}
@@ -18,16 +16,15 @@ const drawAxis = (
       tickLabels: {
         fontSize: 15,
         padding: 15,
-        pointerEvents: 'none'
+        pointerEvents: 'none',
       },
     }}
     tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-    tickFormat={(tick) => Math.round(tick * tickValue)}
+    tickFormat={tick => Math.round(tick * tickValue)}
   />
+)
 
-const drawBrushLine = (
-  attribute: string, onDomainChange: OnDomainChange
-): JSX.Element =>
+const drawBrushLine = (attribute: string, onDomainChange: OnDomainChange): JSX.Element => (
   <VictoryBrushLine
     key={attribute}
     name={attribute}
@@ -43,19 +40,21 @@ const drawBrushLine = (
     }}
     width={20}
   />
+)
 
-const drawLine = (
-  { attributes, label }: ParallelAxesData, opacity: number
-): JSX.Element =>
+const drawLine = ({ attributes, label }: ParallelAxesData, opacity: number): JSX.Element => (
   <VictoryLine
     key={label}
     name={label}
     data={attributes}
-    groupComponent={<g/>}
-    style={{ data: {
-      stroke: 'tomato',
-      opacity: opacity
-    } }}
+    groupComponent={<g />}
+    style={{
+      data: {
+        stroke: 'tomato',
+        opacity: opacity,
+      },
+    }}
   />
+)
 
 export { drawAxis, drawBrushLine, drawLine }

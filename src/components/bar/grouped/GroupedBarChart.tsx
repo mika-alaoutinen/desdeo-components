@@ -8,12 +8,8 @@ import { calculateHeight, calculateWidth } from '../../victory/containerUtils'
 import { MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 
-const GroupedBarChart: React.FC<BarChartProps> = ({
-  data, labels, onClick, orientation
-}) => {
-
-  const drawBars = (): JSX.Element[] =>
-    data.map((dataset, i) => drawBar(dataset, onClick, i))
+const GroupedBarChart: React.FC<BarChartProps> = ({ data, labels, onClick, orientation }) => {
+  const drawBars = (): JSX.Element[] => data.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
     <VictoryChart
@@ -21,8 +17,7 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
       padding={calculatePadding(orientation)}
       theme={MATERIAL_THEME}
       width={calculateWidth(data, orientation)}
-     >
-
+    >
       {drawMainAxis(labels)}
       {drawDependentAxis()}
 
@@ -32,13 +27,12 @@ const GroupedBarChart: React.FC<BarChartProps> = ({
         offset={8}
         style={{
           data: {
-            width: 6
-          }
+            width: 6,
+          },
         }}
       >
         {drawBars()}
       </VictoryGroup>
-
     </VictoryChart>
   )
 }

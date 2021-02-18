@@ -1,18 +1,19 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import ParallelAxesWrapper, { Props } from '../../components/parallelAxes/wrapper/ParallelAxesWrapper'
+import ParallelAxesWrapper, {
+  Props,
+} from '../../components/parallelAxes/wrapper/ParallelAxesWrapper'
 import { dataset } from '../../data/testdata'
 
-const Template: Story<Props> = args =>
-  <ParallelAxesWrapper {...args} />
+const Template: Story<Props> = args => <ParallelAxesWrapper {...args} />
 
 export const ParallelCoordinates = Template.bind({})
 ParallelCoordinates.args = {
-  data: dataset
+  data: dataset,
 }
 
 export default {
   title: 'DESDEO/ParallelAxes',
-  component: ParallelAxesWrapper
+  component: ParallelAxesWrapper,
 } as Meta

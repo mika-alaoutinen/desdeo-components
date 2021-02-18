@@ -2,7 +2,9 @@ import { parallelAxesData } from '../../../data/testdata'
 import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 
 import {
-  getAttributeNames, getMaxAttributes, getMaxValues
+  getAttributeNames,
+  getMaxAttributes,
+  getMaxValues,
 } from '../../../components/parallelAxes/wrapper/dataParser'
 
 describe('getAttributeNames finds all distinct attributes', () => {
@@ -13,7 +15,7 @@ describe('getAttributeNames finds all distinct attributes', () => {
         attributes: [
           { id: '1', x: 'wq fishery', y: 1 },
           { id: '2', x: 'wq city', y: 2 },
-        ]
+        ],
       },
     ]
     expect(getAttributeNames(data)).toEqual(['wq fishery', 'wq city'])
@@ -26,7 +28,7 @@ describe('getAttributeNames finds all distinct attributes', () => {
         attributes: [
           { id: '1', x: 'wq fishery', y: 1 },
           { id: '2', x: 'wq fishery', y: 2 },
-        ]
+        ],
       },
     ]
     expect(getAttributeNames(data)).toEqual(['wq fishery'])
@@ -43,7 +45,7 @@ describe('getMaxAttributes finds the attributes with largest values in a dataset
       { id: 'wq-fishery-2', x: 'wq fishery', y: 6.042483 },
       { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
       { id: 'roi-2', x: 'roi', y: 6.887735 },
-      { id: 'city-tax-2', x: 'city tax', y: 8.989781 }
+      { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
     ]
     expect(getMaxAttributes(parallelAxesData)).toEqual(expected)
   })
@@ -51,7 +53,7 @@ describe('getMaxAttributes finds the attributes with largest values in a dataset
 
 describe('getMaxAttributeValues find the largest value for each kind of attribute', () => {
   it('maps values as an array of numbers', () => {
-    const expected = [ 6.042483, 3.410843, 6.887735, 8.989781 ]
+    const expected = [6.042483, 3.410843, 6.887735, 8.989781]
     expect(getMaxValues(parallelAxesData)).toEqual(expected)
   })
 
@@ -59,9 +61,7 @@ describe('getMaxAttributeValues find the largest value for each kind of attribut
     const data: ParallelAxesData[] = [
       {
         label: 'Alternative 1',
-        attributes: [
-          { id: '1', x: 'wq fishery', y: -1 },
-        ]
+        attributes: [{ id: '1', x: 'wq fishery', y: -1 }],
       },
     ]
     const defaultReturnValue = -0.00001

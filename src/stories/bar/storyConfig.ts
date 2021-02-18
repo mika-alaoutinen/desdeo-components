@@ -5,31 +5,31 @@ import { BarChartWrapperProps } from '../../types/chartTypes'
 export const argTypes = {
   data: {
     control: {
-      type: 'object'
-    }
+      type: 'object',
+    },
   },
   grouping: {
     control: {
       type: 'inline-radio',
-      options: [ 'alternatives', 'criteria' ]
-    }
+      options: ['alternatives', 'criteria'],
+    },
   },
   onClick: {
     table: {
-      disable: true
-    }
+      disable: true,
+    },
   },
   orientation: {
     control: {
       type: 'inline-radio',
-      options: [ 'horizontal', 'vertical' ]
-    }
-  }
+      options: ['horizontal', 'vertical'],
+    },
+  },
 }
 
 export const props: BarChartWrapperProps = {
   data: dataset,
   grouping: 'alternatives',
   onClick: value => console.log('value', value),
-  orientation: 'horizontal'
+  orientation: 'horizontal',
 }

@@ -6,7 +6,7 @@ import { Coordinate } from '../../../types/dataTypes'
 import { OnCoordinateClick } from '../../../types/eventHandlerTypes'
 
 interface Props {
-  coordinate: Coordinate,
+  coordinate: Coordinate
   onClick: OnCoordinateClick
 }
 

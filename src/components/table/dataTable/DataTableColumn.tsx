@@ -6,20 +6,13 @@ import { Value } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
-  data: Value[],
+  data: Value[]
   onClick: OnClickHandler
 }
 
 const DataTableColumn: React.FC<Props> = ({ data, onClick }) => {
-
   const renderRows = (): JSX.Element[] =>
-    data.map(value =>
-      <DataTableRow
-        key={value.id}
-        row={value}
-        onClick={onClick}
-      />
-    )
+    data.map(value => <DataTableRow key={value.id} row={value} onClick={onClick} />)
 
   return <HoverableTableRow rows={renderRows()} />
 }

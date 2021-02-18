@@ -5,7 +5,7 @@ import {
   clickingOnCellCallsClickHandler,
   colorShouldChangeOnMouseHover,
   defaultColorShouldBeWhite,
-  renderTableComponent
+  renderTableComponent,
 } from './tableRowTests'
 
 import DataTableColumn from '../../../components/table/dataTable/DataTableColumn'
@@ -14,7 +14,7 @@ import { Value } from '../../../types/dataTypes'
 const data: Value[] = [
   { id: '1', isSelected: false, value: 1 },
   { id: '2', isSelected: false, value: 2 },
-  { id: '3', isSelected: false, value: 3 }
+  { id: '3', isSelected: false, value: 3 },
 ]
 
 const handler = jest.fn()

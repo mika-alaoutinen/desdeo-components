@@ -2,7 +2,10 @@ import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 import {
-  dataShouldBeClickable, getPaths, renderComponent, renderVictoryContainer
+  dataShouldBeClickable,
+  getPaths,
+  renderComponent,
+  renderVictoryContainer,
 } from '../componentTests'
 import { dataset } from '../../testdata'
 import { Grouping } from '../../../types/dataTypes'
@@ -13,13 +16,14 @@ import StackedBarChartWrapper from '../../../components/bar/stacked/StackedBarCh
 
 const handler = jest.fn()
 
-const createComponent = (grouping: Grouping): JSX.Element =>
+const createComponent = (grouping: Grouping): JSX.Element => (
   <StackedBarChartWrapper
     data={dataset}
     grouping={grouping}
     onClick={handler}
     orientation={'horizontal'}
   />
+)
 
 const alternativesComponent = createComponent('alternatives')
 const criteriaComponent = createComponent('criteria')
@@ -78,17 +82,18 @@ describe('Bars should display label on mouseover', () => {
   const data: DataSet = [
     {
       label: 'A',
-      data: [{ id: 'a1', isSelected: false, value: 1 }]
+      data: [{ id: 'a1', isSelected: false, value: 1 }],
     },
   ]
 
-  const createComponent = (orientation: Orientation): JSX.Element =>
+  const createComponent = (orientation: Orientation): JSX.Element => (
     <StackedBarChartWrapper
       data={data}
       grouping={'alternatives'}
       onClick={handler}
       orientation={orientation}
     />
+  )
 
   const testLabelOnMouseover = (orientation: Orientation): void => {
     const component = createComponent(orientation)

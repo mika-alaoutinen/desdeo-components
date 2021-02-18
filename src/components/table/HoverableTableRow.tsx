@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import { backgroundColor, rowStyle } from './tableStyles'
 
 interface Props {
-  rows: JSX.Element | JSX.Element[],
+  rows: JSX.Element | JSX.Element[]
   isSelected?: boolean
 }
 
 const HoverableTableRow: React.FC<Props> = ({ rows, isSelected }) => {
-  const [ color, setColor ] = useState<backgroundColor>('white')
+  const [color, setColor] = useState<backgroundColor>('white')
 
   return (
     <tr

@@ -26,7 +26,6 @@ const calculateWidth = (data: CoordinateSet[], orientation: Orientation): number
 const itemsInDataset = (datasets: CoordinateSet[]): number =>
   datasets.flatMap(dataset => dataset.data).length
 
-const valueOrDefault = (value: number): number =>
-  Math.max(value, DEFAULT_DIMENSION)
+const valueOrDefault = (value: number): number => Math.max(value, DEFAULT_DIMENSION)
 
 export { calculateHeight, calculateWidth }

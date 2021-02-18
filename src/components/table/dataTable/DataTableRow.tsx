@@ -5,16 +5,12 @@ import { Value } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 interface Props {
-  row: Value,
+  row: Value
   onClick: OnClickHandler
 }
 
 const DataTableRow: React.FC<Props> = ({ row, onClick }) => (
-  <td
-    key={row.id}
-    onClick={() => onClick(row)}
-    style={padding}
-  >
+  <td key={row.id} onClick={() => onClick(row)} style={padding}>
     {row.value}
   </td>
 )

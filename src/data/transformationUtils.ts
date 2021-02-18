@@ -2,12 +2,11 @@ import { DataSet, CoordinateSet, Coordinate } from '../types/dataTypes'
 
 const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
   dataset.map(({ data }) => {
-
     const coordinates: Coordinate[] = data.map(({ id, isSelected, value }, i) => ({
       id,
       x: i + 1,
       y: value,
-      isSelected
+      isSelected,
     }))
 
     return { data: coordinates }
@@ -25,7 +24,7 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
         id,
         x: rowIndex + 1,
         y,
-        isSelected
+        isSelected,
       }
     })
 
@@ -34,9 +33,6 @@ const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
 }
 
 const transpose = (nestedArrays: unknown[][]): unknown[][] =>
-  nestedArrays[0].map((_, colIndex) =>
-    nestedArrays.map(row => row[colIndex]))
+  nestedArrays[0].map((_, colIndex) => nestedArrays.map(row => row[colIndex]))
 
-export {
-  createAlternativeSets, createCriteriaSets, transpose
-}
+export { createAlternativeSets, createCriteriaSets, transpose }

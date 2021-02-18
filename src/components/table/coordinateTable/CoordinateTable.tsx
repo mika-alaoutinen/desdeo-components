@@ -7,7 +7,7 @@ import { CoordinateChart } from '../../../types/chartTypes'
 
 const CoordinateTable: React.FC<CoordinateChart> = ({ data, onClick }) => (
   <table style={tableStyle}>
-    <TableHead labels={[ 'Label', 'X', 'Y', 'Selected' ]} />
+    <TableHead labels={['Label', 'X', 'Y', 'Selected']} />
     <CoordinateTableBody data={data} onClick={onClick} />
   </table>
 )

@@ -1,7 +1,10 @@
 import React from 'react'
 
 import {
-  dataShouldBeClickable, renderComponent, renderData, renderVictoryContainer
+  dataShouldBeClickable,
+  renderComponent,
+  renderData,
+  renderVictoryContainer,
 } from '../componentTests'
 import { dataset } from '../../../tests/testdata'
 

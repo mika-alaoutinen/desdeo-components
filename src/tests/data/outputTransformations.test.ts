@@ -18,5 +18,5 @@ const createCoordinate = (isSelected?: boolean): Coordinate => ({
   id: '1',
   x: 1,
   y: 2,
-  isSelected
+  isSelected,
 })

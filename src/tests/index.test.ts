@@ -6,7 +6,7 @@ import {
   ScatterChartComponent,
   ScatterSelectionComponent,
   CoordinateTableComponent,
-  DataTableComponent
+  DataTableComponent,
 } from '../index'
 
 describe('Chart components are exported', () => {

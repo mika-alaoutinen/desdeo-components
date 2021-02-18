@@ -5,13 +5,13 @@ import { DOMAIN_PADDING, MATERIAL_THEME } from '../../styles/victoryStyles'
 import { Domain } from '../../types/victoryTypes'
 
 interface Props {
-  domain?: Domain,
+  domain?: Domain
   zoomDomain?: Domain
 }
 
 const ZoomContainer: React.FC<Props> = ({ domain, zoomDomain, ...props }) => (
   <VictoryChart
-    { ...props }
+    {...props}
     containerComponent={<VictoryZoomContainer zoomDomain={zoomDomain} />}
     domain={domain}
     domainPadding={DOMAIN_PADDING}

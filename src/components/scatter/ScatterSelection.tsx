@@ -2,22 +2,19 @@ import React from 'react'
 import { VictoryScatter } from 'victory'
 
 import SelectionContainer from '../victory/SelectionContainer'
-import {
-  createCoordinateLabel, drawDependentAxis, drawMainAxis
-} from './rendering'
+import { createCoordinateLabel, drawDependentAxis, drawMainAxis } from './rendering'
 import { drawTooltip } from '../victory/components'
 import { mapFillStyle } from '../../styles/victoryStyles'
 import { CoordinateSelectChart } from '../../types/chartTypes'
 
 const ScatterChart: React.FC<CoordinateSelectChart> = ({
-  data, onSelect, onSelectionCleared, xAxisLabel, yAxisLabel
+  data,
+  onSelect,
+  onSelectionCleared,
+  xAxisLabel,
+  yAxisLabel,
 }) => (
-
-  <SelectionContainer
-    onSelect={onSelect}
-    onSelectionCleared={onSelectionCleared}
-  >
-
+  <SelectionContainer onSelect={onSelect} onSelectionCleared={onSelectionCleared}>
     {drawMainAxis(xAxisLabel)}
     {drawDependentAxis(yAxisLabel)}
 
@@ -28,11 +25,10 @@ const ScatterChart: React.FC<CoordinateSelectChart> = ({
       size={5}
       style={{
         data: {
-          fill: ({ datum }) => mapFillStyle(datum)
-        }
+          fill: ({ datum }) => mapFillStyle(datum),
+        },
       }}
     />
-
   </SelectionContainer>
 )
 

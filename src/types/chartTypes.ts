@@ -1,22 +1,23 @@
+import { Coordinate, CoordinateSet, DataSet, Grouping } from './dataTypes'
 import {
-  Coordinate, CoordinateSet, DataSet, Grouping
-} from './dataTypes'
-import {
-  OnClickHandler, OnCoordinateClick, OnCoordinateSelect, OnSelectionClearedHandler
+  OnClickHandler,
+  OnCoordinateClick,
+  OnCoordinateSelect,
+  OnSelectionClearedHandler,
 } from './eventHandlerTypes'
 import { Orientation } from './layoutTypes'
 
 interface BarChartProps {
-  data: CoordinateSet[],
-  labels: string[],
-  onClick: OnClickHandler,
+  data: CoordinateSet[]
+  labels: string[]
+  onClick: OnClickHandler
   orientation: Orientation
 }
 
 interface BarChartWrapperProps {
-  data: DataSet,
-  grouping: Grouping,
-  onClick: OnClickHandler,
+  data: DataSet
+  grouping: Grouping
+  onClick: OnClickHandler
   orientation: Orientation
 }
 
@@ -32,17 +33,20 @@ interface CoordinateChart extends CoordinatesChart {
 }
 
 interface CoordinateSelectChart extends CoordinatesChart {
-  onSelect: OnCoordinateSelect,
+  onSelect: OnCoordinateSelect
   onSelectionCleared: OnSelectionClearedHandler
 }
 
 interface CoordinatesChart {
-  data: Coordinate[],
-  xAxisLabel?: string,
+  data: Coordinate[]
+  xAxisLabel?: string
   yAxisLabel?: string
 }
 
 export type {
-  BarChartProps, BarChartWrapperProps, CoordinateChart,
-  CoordinateSelectChart, ValueChart
+  BarChartProps,
+  BarChartWrapperProps,
+  CoordinateChart,
+  CoordinateSelectChart,
+  ValueChart,
 }

@@ -11,16 +11,14 @@ interface Props {
   some magic. I have absolutely no idea how the label texts can be changed.
 */
 const AttributeLabels: React.FC<Props> = ({ paddingTop, ...props }) => {
-
-  const createLabels = (): JSX.Element =>
-      <VictoryLabel y={paddingTop ? paddingTop : 60} />
+  const createLabels = (): JSX.Element => <VictoryLabel y={paddingTop ? paddingTop : 60} />
 
   return (
     <VictoryAxis
-      { ...props }
+      {...props}
       style={{
         axis: { stroke: 'none' },
-        tickLabels: { fontSize: 20 }
+        tickLabels: { fontSize: 20 },
       }}
       tickLabelComponent={createLabels()}
     />

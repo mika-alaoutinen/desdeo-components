@@ -7,9 +7,11 @@ import { createCoordinateSets } from '../../../data/inputTransformations'
 import { BarChartWrapperProps } from '../../../types/chartTypes'
 
 const StackedBarChartWrapper: React.FC<BarChartWrapperProps> = ({
-  data, grouping, onClick, orientation
+  data,
+  grouping,
+  onClick,
+  orientation,
 }) => (
-
   <StackedBarChart
     data={createCoordinateSets(data, grouping)}
     labels={createDataLabels(data, grouping)}

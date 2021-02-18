@@ -9,19 +9,19 @@ import { DomainTuple } from '../../../types/victoryTypes'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
-  attributes: string[],
-  data: ParallelAxesData[],
+  attributes: string[]
+  data: ParallelAxesData[]
   maxTickValues: number[]
 }
 
 const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
-  const [ activeDatasets, setActiveDataSets ] = useState<string[]>([])
-  const [ filters, setFilters ] = useState<Filter[]>([])
+  const [activeDatasets, setActiveDataSets] = useState<string[]>([])
+  const [filters, setFilters] = useState<Filter[]>([])
 
   // All datasets are active on component load
   useEffect(() => {
     setActiveDataSets(data.map(dataset => dataset.label))
-  }, [])
+  }, [data])
 
   // Event handler for vertical brush filters
   const onDomainChange = (domain: DomainTuple, name?: string): void => {

@@ -25,7 +25,7 @@ describe('Data is displayed correctly', () => {
 
   // For whatever reason screen doesn't find the values, so let's get stupid...
   it('all data is rendered', () => {
-    const values = [ '1', '2', '3', '4', '5', '6' ]
+    const values = ['1', '2', '3', '4', '5', '6']
     const { container } = render(component)
     const cells = container.querySelectorAll('td')
     cells.forEach(cell => {

@@ -5,7 +5,7 @@ import { CoordinateChart, CoordinateSelectChart, ValueChart } from '../types/cha
 import { Coordinate, Value } from '../types/dataTypes'
 
 export const useOnClickHandler = (): ValueChart => {
-  const [ data, setData ] = useState(coordinates)
+  const [data, setData] = useState(coordinates)
 
   const onClick = ({ id }: Value): void => {
     setData(editCoordinates(id, data))
@@ -15,7 +15,7 @@ export const useOnClickHandler = (): ValueChart => {
 }
 
 export const useCoordinateClickHandler = (): CoordinateChart => {
-  const [ data, setData ] = useState(coordinates)
+  const [data, setData] = useState(coordinates)
 
   const onClick = ({ id }: Coordinate): void => {
     setData(editCoordinates(id, data))
@@ -25,7 +25,7 @@ export const useCoordinateClickHandler = (): CoordinateChart => {
 }
 
 export const useOnSelectHandler = (): CoordinateSelectChart => {
-  const [ data, setData ] = useState(coordinates)
+  const [data, setData] = useState(coordinates)
 
   const onSelect = (selected: Coordinate[]): void => {
     const selectedIDs = selected.map(datum => datum.id)
@@ -43,21 +43,15 @@ export const useOnSelectHandler = (): CoordinateSelectChart => {
 
 // Utility functions
 const editCoordinates = (clickedId: string, data: Coordinate[]): Coordinate[] =>
-  data.map(coordinate => coordinate.id === clickedId
-    ? editSelected(coordinate)
-    : coordinate)
+  data.map(coordinate => (coordinate.id === clickedId ? editSelected(coordinate) : coordinate))
 
 const editSelected = (datum: Coordinate): Coordinate =>
-  datum.isSelected === undefined
-    ? setSelected(datum, true)
-    : setSelected(datum, !datum.isSelected)
+  datum.isSelected === undefined ? setSelected(datum, true) : setSelected(datum, !datum.isSelected)
 
 const mapSelected = (selectedIDs: string[], datum: Coordinate): Coordinate =>
-  selectedIDs.includes(datum.id)
-    ? setSelected(datum, true)
-    : datum
+  selectedIDs.includes(datum.id) ? setSelected(datum, true) : datum
 
 const setSelected = (datum: Coordinate, isSelected: boolean): Coordinate => ({
   ...datum,
-  isSelected
+  isSelected,
 })

@@ -10,14 +10,12 @@ const tableStyle: React.CSSProperties = {
 
 const padding: React.CSSProperties = {
   padding: '1em',
-  textAlign: 'right'
+  textAlign: 'right',
 }
 
 const rowStyle = (color: backgroundColor, isSelected?: boolean): React.CSSProperties => ({
   ...tableStyle,
-  background: isSelected ? ROW_SELECTED_COLOR : color
+  background: isSelected ? ROW_SELECTED_COLOR : color,
 })
 
-export {
-  ROW_SELECTED_COLOR, tableStyle, padding, rowStyle
-}
+export { ROW_SELECTED_COLOR, tableStyle, padding, rowStyle }

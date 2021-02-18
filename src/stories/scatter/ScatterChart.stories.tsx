@@ -10,24 +10,18 @@ export const ScatterChartComponent = (): JSX.Element => {
   const { data, onClick } = useCoordinateClickHandler()
 
   return (
-    <ScatterChart
-      data={data}
-      onClick={onClick}
-      xAxisLabel={'WQ Fishery'}
-      yAxisLabel={'WQ City'}
-    />
+    <ScatterChart data={data} onClick={onClick} xAxisLabel={'WQ Fishery'} yAxisLabel={'WQ City'} />
   )
 }
 
-const Template: Story<CoordinateChart> = args =>
-  <ScatterChart {...args} />
+const Template: Story<CoordinateChart> = args => <ScatterChart {...args} />
 
 export const ScatterChartTemplate = Template.bind({})
 ScatterChartTemplate.args = {
   data: coordinates,
   onClick: coordinate => console.log('coordinate', coordinate),
   xAxisLabel: 'WQ Fishery',
-  yAxisLabel: 'WQ City'
+  yAxisLabel: 'WQ City',
 }
 
 export default {
@@ -36,8 +30,8 @@ export default {
   argTypes: {
     onClick: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
-  }
+  },
 } as Meta

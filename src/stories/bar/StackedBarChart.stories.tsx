@@ -5,8 +5,7 @@ import { argTypes, props } from './storyConfig'
 import StackedBarChartWrapper from '../../components/bar/stacked/StackedBarChartWrapper'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
-const Template: Story<BarChartWrapperProps> = args =>
-  <StackedBarChartWrapper {...args} />
+const Template: Story<BarChartWrapperProps> = args => <StackedBarChartWrapper {...args} />
 
 export const StackedBarChart = Template.bind({})
 StackedBarChart.args = props
@@ -14,5 +13,5 @@ StackedBarChart.args = props
 export default {
   title: 'DESDEO/StackedBarChart',
   component: StackedBarChartWrapper,
-  argTypes
+  argTypes,
 } as Meta

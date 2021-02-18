@@ -6,20 +6,14 @@ import { DataColumn } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 export interface Props {
-  data: DataColumn,
+  data: DataColumn
   onClick: OnClickHandler
 }
 
 const BarChartWrapper: React.FC<Props> = ({ data, onClick }) => {
   const { data: barData, label } = createBarData(data)
 
-  return (
-    <BarChart
-      data={barData}
-      onClick={onClick}
-      xAxisLabel={label}
-    />
-  )
+  return <BarChart data={barData} onClick={onClick} xAxisLabel={label} />
 }
 
 export default BarChartWrapper
