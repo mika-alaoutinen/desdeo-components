@@ -1,5 +1,6 @@
 # Workflow that is run when a push is made to any branch except master or release.
-# Runs linter and unit tests.
+# Runs linter and unit tests. If linting errors are found, attempt to auto-fix them
+# by pushing a new commit to the feature branch.
 
 name: Feature branch workflow
 
@@ -18,8 +19,7 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 12
-    - name: npm install
-      run: npm ci
+    - run: npm ci
     - name: run linter action
       uses: wearerequired/lint-action@v1
       with:
@@ -35,12 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        persist-credentials: false
     - uses: actions/setup-node@v2
       with:
-        node-version: '12.x'
+        node-version: 12
     - run: npm ci
     - run: npm run test
-      env:
-        CI: true
