@@ -10,16 +10,14 @@ on:
      - release*
 
 jobs:
-  lint-test:
-    name: Runs linter and unit tests
+  test:
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code from repository
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
       with:
         persist-credentials: false
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2
       with:
         node-version: '12.x'
     - run: npm ci
