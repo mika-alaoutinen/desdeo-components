@@ -5,7 +5,7 @@ import { mapCoordinateToValue } from '../../data/outputTransformations'
 import { Coordinate, CoordinateSet } from '../../types/dataTypes'
 import { OnClickHandler } from '../../types/eventHandlerTypes'
 
-const createCoordinateLabel = ({ id, y }: Coordinate): string => `${id}:\n${y}`;
+const createCoordinateLabel = ({ id, y }: Coordinate): string => `${id}:\n${y}`
 
 const drawBar = (
   { data }: CoordinateSet,
