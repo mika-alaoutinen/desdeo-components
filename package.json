@@ -47,7 +47,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.39.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.29.0"
+    "rollup-plugin-typescript2": "^0.30.0"
   },
   "peerDependencies": {
     "react": "^17.0.1",
