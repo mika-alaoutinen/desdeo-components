@@ -54,9 +54,8 @@
     "build": "rimraf build && rollup -c",
     "build-storybook": "build-storybook",
     "lint": "eslint --ext ts,tsx . --fix",
-    "test": "npm run test:unit",
+    "test": "react-scripts test",
     "test:coverage": "react-scripts test --env=jsdom --watchAll=false --coverage --collectCoverageFrom=!src/stories/**",
-    "test:unit": "react-scripts test",
     "storybook": "start-storybook -p 6006 --quiet"
   },
   "browserslist": {

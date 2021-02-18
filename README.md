@@ -38,8 +38,8 @@ npm run lint
 ```
 
 ### 3. Test scripts
-Runs all tests. Currently, the application has only unit tests,
-however end-to-end tests should also be run with this command.
+Launches the test runner in the interactive watch mode.
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 ```
 npm test
 ```
@@ -47,12 +47,6 @@ npm test
 Produce test coverage report
 ```
 npm test:coverage
-```
-
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-```
-npm test:unit
 ```
 
 ### 4. Run Storybook
