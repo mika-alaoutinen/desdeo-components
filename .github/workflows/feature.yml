@@ -25,7 +25,9 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         eslint: true
+        eslint_extensions: ts,tsx
         prettier: true
+        prettier_extensions: ts,tsx
 
   test:
     name: Run tests
