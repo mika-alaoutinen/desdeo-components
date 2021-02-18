@@ -5,8 +5,7 @@ import { argTypes, props } from './storyConfig'
 import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
-const Template: Story<BarChartWrapperProps> = args =>
-  <GroupedBarChartWrapper {...args} />
+const Template: Story<BarChartWrapperProps> = args => <GroupedBarChartWrapper {...args} />
 
 export const GroupedBarChart = Template.bind({})
 GroupedBarChart.args = props
@@ -14,5 +13,5 @@ GroupedBarChart.args = props
 export default {
   title: 'DESDEO/GroupedBarChart',
   component: GroupedBarChartWrapper,
-  argTypes
+  argTypes,
 } as Meta

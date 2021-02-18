@@ -8,12 +8,8 @@ import { calculateWidth } from '../../victory/containerUtils'
 import { MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 
-const StackedBarChart: React.FC<BarChartProps> = ({
-  data, labels, onClick, orientation
-}) => {
-
-  const drawBars = (): JSX.Element[] =>
-    data.map((dataset, i) => drawBar(dataset, onClick, i))
+const StackedBarChart: React.FC<BarChartProps> = ({ data, labels, onClick, orientation }) => {
+  const drawBars = (): JSX.Element[] => data.map((dataset, i) => drawBar(dataset, onClick, i))
 
   return (
     <VictoryChart
@@ -22,7 +18,6 @@ const StackedBarChart: React.FC<BarChartProps> = ({
       theme={MATERIAL_THEME}
       width={calculateWidth(data, orientation)}
     >
-
       {drawMainAxis(labels)}
       {drawDependentAxis()}
 
@@ -31,13 +26,12 @@ const StackedBarChart: React.FC<BarChartProps> = ({
         labelComponent={drawTooltip(orientation)}
         style={{
           data: {
-            width: 20
-          }
+            width: 20,
+          },
         }}
       >
         {drawBars()}
       </VictoryStack>
-
     </VictoryChart>
   )
 }

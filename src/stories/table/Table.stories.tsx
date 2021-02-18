@@ -9,21 +9,15 @@ import { dataset } from '../../data/testdata'
 export const CoordinateTableComponent = (): JSX.Element => {
   const { data, onClick } = useCoordinateClickHandler()
 
-  return (
-    <CoordinateTable
-      data={data}
-      onClick={onClick}
-    />
-  )
+  return <CoordinateTable data={data} onClick={onClick} />
 }
 
-const Template: Story<Props> = args =>
-  <DataTable {...args} />
+const Template: Story<Props> = args => <DataTable {...args} />
 
 export const DataTableComponent = Template.bind({})
 DataTableComponent.args = {
   data: dataset,
-  onClick: value => console.log('value', value)
+  onClick: value => console.log('value', value),
 }
 
 export default {
@@ -32,13 +26,13 @@ export default {
   argTypes: {
     data: {
       control: {
-        type: 'object'
-      }
+        type: 'object',
+      },
     },
     onClick: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
-  }
+  },
 } as Meta

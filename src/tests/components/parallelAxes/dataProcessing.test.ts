@@ -12,7 +12,7 @@ describe('Data is cleaned up by sanitizing inputs and normalizing values', () =>
         { id: 'wq-city-1', x: 'wq city', y: 0.9309340828645587 },
         { id: 'roi-1', x: 'roi', y: 0.8842226072867204 },
         { id: 'city-tax-1', x: 'city tax', y: 0.27190940468961367 },
-      ]
+      ],
     },
     {
       label: 'Alternative 2',
@@ -21,7 +21,7 @@ describe('Data is cleaned up by sanitizing inputs and normalizing values', () =>
         { id: 'wq-city-2', x: 'wq city', y: 1 },
         { id: 'roi-2', x: 'roi', y: 1 },
         { id: 'city-tax-2', x: 'city tax', y: 1 },
-      ]
+      ],
     },
   ]
 

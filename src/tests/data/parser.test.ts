@@ -6,27 +6,25 @@ import { createDataLabels } from '../../data/parser'
 describe('Should create labels from data that is grouped by alternatives', () => {
   it('alternatives grouping produces Alternative 1 and Alternative 2', () => {
     const labels = createDataLabels(dataset, 'alternatives')
-    expect(labels).toEqual([ 'Alternative\n1', 'Alternative\n2', 'Alternative\n3' ])
+    expect(labels).toEqual(['Alternative\n1', 'Alternative\n2', 'Alternative\n3'])
   })
 
   it('handles uneven datasets', () => {
     const unevenData: DataSet = [
       {
         label: 'A',
-        data: [
-          { id: 'a1', isSelected: false, value: 6.042483 }
-        ]
+        data: [{ id: 'a1', isSelected: false, value: 6.042483 }],
       },
       {
         label: 'B',
         data: [
           { id: 'b1', isSelected: false, value: 3.17527 },
-          { id: 'b2', isSelected: false, value: 3.410843 }
-        ]
+          { id: 'b2', isSelected: false, value: 3.410843 },
+        ],
       },
     ]
     const labels = createDataLabels(unevenData, 'alternatives')
-    expect(labels).toEqual([ 'Alternative\n1', 'Alternative\n2' ])
+    expect(labels).toEqual(['Alternative\n1', 'Alternative\n2'])
   })
 
   it('handles an empty dataset', () => {
@@ -37,7 +35,7 @@ describe('Should create labels from data that is grouped by alternatives', () =>
 describe('Should create labels from data that is grouped by criteria', () => {
   it('criteria grouping finds all distinct labels from data set', () => {
     const labels = createDataLabels(dataset, 'criteria')
-    expect(labels).toEqual([ 'Label\nA', 'Label\nB' ])
+    expect(labels).toEqual(['Label\nA', 'Label\nB'])
   })
 
   it('handles an empty dataset', () => {

@@ -5,7 +5,7 @@ import { Coordinate } from '../../../types/dataTypes'
 import { OnCoordinateClick } from '../../../types/eventHandlerTypes'
 
 interface Props {
-  coordinate: Coordinate,
+  coordinate: Coordinate
   onClick: OnCoordinateClick
 }
 
@@ -15,13 +15,11 @@ const CoordinateTableRow: React.FC<Props> = ({ coordinate, onClick }) => {
   const selected = coordinate.isSelected ? 'true' : 'false'
 
   // Clicking on any cell selects the coordinate
-  const renderCell = (text: string): JSX.Element =>
-    <td
-      onClick={() => onClick(coordinate)}
-      style={padding}
-    >
+  const renderCell = (text: string): JSX.Element => (
+    <td onClick={() => onClick(coordinate)} style={padding}>
       {text}
     </td>
+  )
 
   return (
     <>

@@ -3,14 +3,14 @@ import { Coordinate, DataSet, ParallelAxesData } from '../types/dataTypes'
 const coordinates: Coordinate[] = [
   { id: 'a', x: 6.042483, y: 3.17527 },
   { id: 'b', x: 5.758127, y: 3.410843 },
-  { id: 'c', x: 6.287081, y: 3.207926, },
+  { id: 'c', x: 6.287081, y: 3.207926 },
   { id: 'd', x: 6.134672, y: 2.98383 },
-  { id: 'e', x: 5.610188, y: 2.910456, },
-  { id: 'f', x: 5.231501, y: 3.248641, },
-  { id: 'g', x: 6.34, y: 2.962557, },
-  { id: 'h', x: 6.291364, y: 2.962557, },
-  { id: 'i', x: 5.407513, y: 3.346416, },
-  { id: 'j', x: 6.019503, y: 3.350959, },
+  { id: 'e', x: 5.610188, y: 2.910456 },
+  { id: 'f', x: 5.231501, y: 3.248641 },
+  { id: 'g', x: 6.34, y: 2.962557 },
+  { id: 'h', x: 6.291364, y: 2.962557 },
+  { id: 'i', x: 5.407513, y: 3.346416 },
+  { id: 'j', x: 6.019503, y: 3.350959 },
 ]
 
 const dataset: DataSet = [
@@ -27,7 +27,7 @@ const dataset: DataSet = [
       { id: 'wq-fishery-7', isSelected: false, value: 6.291364 },
       { id: 'wq-fishery-8', isSelected: false, value: 5.407513 },
       { id: 'wq-fishery-9', isSelected: false, value: 6.019503 },
-    ]
+    ],
   },
 
   {
@@ -43,7 +43,7 @@ const dataset: DataSet = [
       { id: 'wq-city-7', isSelected: false, value: 3.346416 },
       { id: 'wq-city-8', isSelected: false, value: 3.130143 },
       { id: 'wq-city-9', isSelected: false, value: 3.350959 },
-    ]
+    ],
   },
 
   {
@@ -59,7 +59,7 @@ const dataset: DataSet = [
       { id: 'roi', isSelected: false, value: 2.847139 },
       { id: 'roi', isSelected: false, value: 7.254194 },
       { id: 'roi', isSelected: false, value: 6.195485 },
-    ]
+    ],
   },
 
   {
@@ -75,7 +75,7 @@ const dataset: DataSet = [
       { id: 'city-tax', isSelected: false, value: 5.67065 },
       { id: 'city-tax', isSelected: false, value: 2.057297 },
       { id: 'city-tax', isSelected: false, value: 6.173211 },
-    ]
+    ],
   },
 
   {
@@ -91,8 +91,8 @@ const dataset: DataSet = [
       { id: 'plant-resources', isSelected: false, value: 0.328574 },
       { id: 'plant-resources', isSelected: false, value: 0.228541 },
       { id: 'plant-resources', isSelected: false, value: 0.327455 },
-    ]
-  }
+    ],
+  },
 ]
 
 const parallelAxesData: ParallelAxesData[] = [
@@ -103,7 +103,7 @@ const parallelAxesData: ParallelAxesData[] = [
       { id: 'wq-city-1', x: 'wq city', y: 3.17527 },
       { id: 'roi-1', x: 'roi', y: 6.090291 },
       { id: 'city-tax-1', x: 'city tax', y: 2.444406 },
-    ]
+    ],
   },
   {
     label: 'Alternative 2',
@@ -112,7 +112,7 @@ const parallelAxesData: ParallelAxesData[] = [
       { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
       { id: 'roi-2', x: 'roi', y: 6.887735 },
       { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
-    ]
+    ],
   },
 ]
 

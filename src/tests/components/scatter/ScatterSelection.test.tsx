@@ -2,9 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import {
-  renderComponent, renderVictoryContainer, renderData
-} from '../componentTests'
+import { renderComponent, renderVictoryContainer, renderData } from '../componentTests'
 import { coordinates } from '../../testdata'
 
 import ScatterSelection from '../../../components/scatter/ScatterSelection'
@@ -12,7 +10,7 @@ import ScatterSelection from '../../../components/scatter/ScatterSelection'
 const onSelect = jest.fn()
 const onSelectionCleared = jest.fn()
 
-const component =
+const component = (
   <ScatterSelection
     data={coordinates}
     onSelect={onSelect}
@@ -20,6 +18,7 @@ const component =
     xAxisLabel='Label A'
     yAxisLabel='Label B'
   />
+)
 
 describe('Smoke tests for chart rendering', () => {
   it('scatter chart wrapper is rendered', () => {

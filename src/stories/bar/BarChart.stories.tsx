@@ -9,21 +9,15 @@ import { dataset } from '../../data/testdata'
 export const BarChartComponent = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
 
-  return (
-    <BarChart
-      data={data}
-      onClick={onClick}
-    />
-  )
+  return <BarChart data={data} onClick={onClick} />
 }
 
-const Template: Story<Props> = args =>
-  <BarChartWrapper {...args} />
+const Template: Story<Props> = args => <BarChartWrapper {...args} />
 
 export const BarChartTemplate = Template.bind({})
 BarChartTemplate.args = {
   data: dataset[0],
-  onClick: value => console.log('value', value)
+  onClick: value => console.log('value', value),
 }
 
 export default {
@@ -32,8 +26,8 @@ export default {
   argTypes: {
     onClick: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
-  }
+  },
 } as Meta

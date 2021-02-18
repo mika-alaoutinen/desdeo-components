@@ -1,10 +1,10 @@
 import { dataset } from '../testdata'
-import {
-  CoordinateSet, DataColumn, ParallelAxesData, Value
-} from '../../types/dataTypes'
+import { CoordinateSet, DataColumn, ParallelAxesData, Value } from '../../types/dataTypes'
 
 import {
-  createBarData, createDataTableData, createParallelAxesData
+  createBarData,
+  createDataTableData,
+  createParallelAxesData,
 } from '../../data/inputTransformations'
 
 describe('createBarData procudes datasets for a regular bar chart', () => {
@@ -17,7 +17,7 @@ describe('createBarData procudes datasets for a regular bar chart', () => {
         { id: 'a2', isSelected: false, x: 2, y: 2 },
         { id: 'a3', isSelected: false, x: 3, y: 3 },
       ],
-      label: 'Label A'
+      label: 'Label A',
     }
     expect(createBarData(data)).toEqual(expected)
   })
@@ -25,7 +25,7 @@ describe('createBarData procudes datasets for a regular bar chart', () => {
   it('handles an empty input', () => {
     const data: DataColumn = {
       data: [],
-      label: 'Empty set'
+      label: 'Empty set',
     }
     expect(createBarData(data)).toEqual({ data: [], label: 'Empty set' })
   })
@@ -38,21 +38,21 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
       attributes: [
         { id: 'a1', x: 'label a', y: 1 },
         { id: 'b1', x: 'label b', y: 4 },
-      ]
+      ],
     },
     {
       label: 'Alternative 2',
       attributes: [
         { id: 'a2', x: 'label a', y: 2 },
         { id: 'b2', x: 'label b', y: 5 },
-      ]
+      ],
     },
     {
       label: 'Alternative 3',
       attributes: [
         { id: 'a3', x: 'label a', y: 3 },
         { id: 'b3', x: 'label b', y: 6 },
-      ]
+      ],
     },
   ]
 
@@ -60,7 +60,7 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
     expect(createParallelAxesData(dataset)).toEqual(expected)
   })
 
-  it ('handles an empty input', () => {
+  it('handles an empty input', () => {
     expect(createParallelAxesData([])).toEqual([])
   })
 })
@@ -85,7 +85,7 @@ describe('createDataTableData transforms DataSet into a 2D array', () => {
     expect(createDataTableData(dataset)).toEqual(expected)
   })
 
-  it ('handles an empty input', () => {
+  it('handles an empty input', () => {
     expect(createDataTableData([])).toEqual([])
   })
 })

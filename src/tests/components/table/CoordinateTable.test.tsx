@@ -19,9 +19,8 @@ describe('CoordinateTable is rendered correctly', () => {
 describe('Data is displayed correctly', () => {
   it('has headings Label, X, Y and Selected', () => {
     render(component)
-    const expectedHeadings = [ 'Label', 'X', 'Y', 'Selected' ]
-    expectedHeadings.forEach(heading =>
-      expect(screen.getByText(heading)).toBeInTheDocument())
+    const expectedHeadings = ['Label', 'X', 'Y', 'Selected']
+    expectedHeadings.forEach(heading => expect(screen.getByText(heading)).toBeInTheDocument())
   })
 })
 

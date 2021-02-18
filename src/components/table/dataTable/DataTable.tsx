@@ -8,17 +8,14 @@ import { DataSet } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 export interface Props {
-  data: DataSet,
+  data: DataSet
   onClick: OnClickHandler
 }
 
 const DataTable: React.FC<Props> = ({ data, onClick }) => (
   <table style={tableStyle}>
     <TableHead labels={data.map(column => column.label)} />
-    <DataTableBody
-      data={createDataTableData(data)}
-      onClick={onClick}
-    />
+    <DataTableBody data={createDataTableData(data)} onClick={onClick} />
   </table>
 )
 

@@ -22,17 +22,13 @@ const renderData = (component: React.ReactElement, length: number): void => {
   expect(paths).toHaveLength(length)
 }
 
-const dataShouldBeClickable = (
-  component: React.ReactElement, handler: OnClickHandler
-): void => {
+const dataShouldBeClickable = (component: React.ReactElement, handler: OnClickHandler): void => {
   const paths = getPaths(component)
   fireEvent.click(paths[0])
   expect(handler).toHaveBeenCalled()
 }
 
-const shouldDisplayLabelOnMouseOver = (
-  component: React.ReactElement, label: string
-): void => {
+const shouldDisplayLabelOnMouseOver = (component: React.ReactElement, label: string): void => {
   const paths = getPaths(component)
   fireEvent.mouseOver(paths[0])
   expect(screen.getByText(label)).toBeInTheDocument()
@@ -45,6 +41,10 @@ const getPaths = (component: React.ReactElement): NodeListOf<SVGPathElement> => 
 }
 
 export {
-  renderComponent, renderData, renderVictoryContainer,
-  dataShouldBeClickable, shouldDisplayLabelOnMouseOver, getPaths
+  renderComponent,
+  renderData,
+  renderVictoryContainer,
+  dataShouldBeClickable,
+  shouldDisplayLabelOnMouseOver,
+  getPaths,
 }

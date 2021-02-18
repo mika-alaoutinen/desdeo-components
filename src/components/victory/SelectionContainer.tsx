@@ -8,21 +8,21 @@ import { DOMAIN_PADDING, MATERIAL_THEME } from '../../styles/victoryStyles'
 import { OnCoordinateSelect, OnSelectionClearedHandler } from '../../types/eventHandlerTypes'
 
 interface Props {
-  onSelect: OnCoordinateSelect,
+  onSelect: OnCoordinateSelect
   onSelectionCleared: OnSelectionClearedHandler
 }
 
 const SelectionContainer: React.FC<Props> = ({ onSelect, onSelectionCleared, ...props }) => {
-
-  const selectionContainer = (): JSX.Element =>
+  const selectionContainer = (): JSX.Element => (
     <VictorySelectionContainer
       onSelection={points => onSelect(points[0].data)}
       onSelectionCleared={onSelectionCleared}
     />
+  )
 
   return (
     <VictoryChart
-      { ...props }
+      {...props}
       containerComponent={selectionContainer()}
       domainPadding={DOMAIN_PADDING}
       theme={MATERIAL_THEME}

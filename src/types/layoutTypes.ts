@@ -1,13 +1,13 @@
 interface Layout {
-  height: number,
-  width: number,
+  height: number
+  width: number
   padding: Padding
 }
 
 interface Padding {
-  top: number,
-  left: number,
-  right: number,
+  top: number
+  left: number
+  right: number
   bottom: number
 }
 

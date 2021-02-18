@@ -5,40 +5,38 @@ import { mapCoordinateToValue } from '../../data/outputTransformations'
 import { Coordinate, CoordinateSet } from '../../types/dataTypes'
 import { OnClickHandler } from '../../types/eventHandlerTypes'
 
-const createCoordinateLabel = ({ id, y }: Coordinate): string =>
-  `${id}:\n${y}`
+const createCoordinateLabel = ({ id, y }: Coordinate): string => `${id}:\n${y}`
 
 const drawBar = (
-  { data }: CoordinateSet, onClick: OnClickHandler, key: number|string
-): JSX.Element =>
+  { data }: CoordinateSet,
+  onClick: OnClickHandler,
+  key: number | string
+): JSX.Element => (
   <VictoryBar
     key={key}
-    data ={data}
+    data={data}
     events={[
       {
         target: 'data',
         eventHandlers: {
-          onClick: () => [{
-            mutation: ({ datum }) => onClick(mapCoordinateToValue(datum))
-          }]
-        }
+          onClick: () => [
+            {
+              mutation: ({ datum }) => onClick(mapCoordinateToValue(datum)),
+            },
+          ],
+        },
       },
     ]}
     labels={({ datum }) => createCoordinateLabel(datum)}
   />
+)
 
-const drawMainAxis = (labels: string[]): JSX.Element =>
-  <VictoryAxis
-    tickFormat={labels}
-    tickLabelComponent={<VictoryLabel angle={-35} />}
-  />
+const drawMainAxis = (labels: string[]): JSX.Element => (
+  <VictoryAxis tickFormat={labels} tickLabelComponent={<VictoryLabel angle={-35} />} />
+)
 
-const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element =>
-  <VictoryAxis
-    dependentAxis
-    tickFormat={(x: number) => tickFormatter ? tickFormatter(x) : x}
-  />
+const drawDependentAxis = (tickFormatter?: (x: number) => string): JSX.Element => (
+  <VictoryAxis dependentAxis tickFormat={(x: number) => (tickFormatter ? tickFormatter(x) : x)} />
+)
 
-export {
-  createCoordinateLabel, drawBar, drawMainAxis, drawDependentAxis
-}
+export { createCoordinateLabel, drawBar, drawMainAxis, drawDependentAxis }

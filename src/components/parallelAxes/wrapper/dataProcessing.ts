@@ -4,18 +4,16 @@ import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 const normalizeData = (data: ParallelAxesData[]): ParallelAxesData[] =>
   data.map(({ label, attributes }) => ({
     label,
-    attributes: normalizeAttributes(attributes, getMaxAttributes(data))
+    attributes: normalizeAttributes(attributes, getMaxAttributes(data)),
   }))
 
 // Utility functions
-const normalizeAttributes = (
-  attributes: Attribute[], maxAttributes: Attribute[]
-): Attribute[] => {
+const normalizeAttributes = (attributes: Attribute[], maxAttributes: Attribute[]): Attribute[] => {
   const maxValues = maxAttributes.map(attribute => attribute.y)
 
   return attributes.map((attribute, i) => ({
     ...attribute,
-    y: attribute.y / maxValues[i]
+    y: attribute.y / maxValues[i],
   }))
 }
 

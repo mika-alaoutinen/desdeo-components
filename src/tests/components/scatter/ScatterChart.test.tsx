@@ -3,20 +3,19 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import {
-  dataShouldBeClickable, renderComponent, renderVictoryContainer, renderData
+  dataShouldBeClickable,
+  renderComponent,
+  renderVictoryContainer,
+  renderData,
 } from '../componentTests'
 import { coordinates } from '../../testdata'
 
 import ScatterChart from '../../../components/scatter/ScatterChart'
 
 const handler = jest.fn()
-const component =
-  <ScatterChart
-    data={coordinates}
-    onClick={handler}
-    xAxisLabel='Label A'
-    yAxisLabel='Label B'
-  />
+const component = (
+  <ScatterChart data={coordinates} onClick={handler} xAxisLabel='Label A' yAxisLabel='Label B' />
+)
 
 describe('Smoke tests for chart rendering', () => {
   it('scatter chart wrapper is rendered', () => {

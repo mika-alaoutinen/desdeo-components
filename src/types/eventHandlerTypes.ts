@@ -5,6 +5,4 @@ type OnCoordinateClick = (clicked: Coordinate) => void
 type OnCoordinateSelect = (selected: Coordinate[]) => void
 type OnSelectionClearedHandler = () => void
 
-export type {
-  OnClickHandler, OnCoordinateClick, OnCoordinateSelect, OnSelectionClearedHandler
-}
+export type { OnClickHandler, OnCoordinateClick, OnCoordinateSelect, OnSelectionClearedHandler }

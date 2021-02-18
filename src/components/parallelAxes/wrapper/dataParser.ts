@@ -1,9 +1,7 @@
 import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
 
 const getAttributeNames = (data: ParallelAxesData[]): string[] => {
-  const labels = data
-    .flatMap(datum => datum.attributes)
-    .map(attribute => attribute.x)
+  const labels = data.flatMap(datum => datum.attributes).map(attribute => attribute.x)
 
   return [...new Set(labels)]
 }
@@ -20,11 +18,10 @@ const getMaxValues = (data: ParallelAxesData[]): number[] =>
 // Utility functions
 const groupByName = (attributes: Attribute[]): Attribute[][] => {
   const groups = new Map<string, Attribute[]>(
-    attributes.map(attribute => [ attribute.x.toLowerCase(), [] ])
+    attributes.map(attribute => [attribute.x.toLowerCase(), []])
   )
 
-  attributes.forEach(attribute =>
-    groups.get(attribute.x)?.push(attribute))
+  attributes.forEach(attribute => groups.get(attribute.x)?.push(attribute))
 
   return [...groups.values()]
 }
@@ -33,14 +30,12 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
   const initial: Attribute = {
     id: '',
     x: '',
-    y: -0.00001
+    y: -0.00001,
   }
 
-  return attributes.reduce((currentMax, attribute) =>
-    attribute.y > currentMax.y
-      ? attribute
-      : currentMax
-    , initial
+  return attributes.reduce(
+    (currentMax, attribute) => (attribute.y > currentMax.y ? attribute : currentMax),
+    initial
   )
 }
 

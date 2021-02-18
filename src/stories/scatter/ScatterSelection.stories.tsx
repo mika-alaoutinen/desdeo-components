@@ -20,8 +20,7 @@ export const ScatterSeletionComponent = (): JSX.Element => {
   )
 }
 
-const Template: Story<CoordinateSelectChart> = args =>
-  <ScatterSelection {...args} />
+const Template: Story<CoordinateSelectChart> = args => <ScatterSelection {...args} />
 
 export const ScatterSelectionTemplate = Template.bind({})
 ScatterSelectionTemplate.args = {
@@ -29,7 +28,7 @@ ScatterSelectionTemplate.args = {
   onSelect: coordinates => console.log('selected', coordinates),
   onSelectionCleared: () => console.log('selections cleared'),
   xAxisLabel: 'WQ Fishery',
-  yAxisLabel: 'WQ City'
+  yAxisLabel: 'WQ City',
 }
 
 export default {
@@ -38,13 +37,13 @@ export default {
   argTypes: {
     onSelect: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
     onSelectionCleared: {
       table: {
-        disable: true
-      }
+        disable: true,
+      },
     },
-  }
+  },
 } as Meta

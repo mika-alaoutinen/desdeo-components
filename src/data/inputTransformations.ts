@@ -1,7 +1,12 @@
 import { createAlternativeSets, createCriteriaSets, transpose } from './transformationUtils'
 import { Grouping } from '../types/dataTypes'
 import {
-  Attribute, CoordinateSet, DataColumn, DataSet, ParallelAxesData, Value
+  Attribute,
+  CoordinateSet,
+  DataColumn,
+  DataSet,
+  ParallelAxesData,
+  Value,
 } from '../types/dataTypes'
 
 const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
@@ -12,19 +17,15 @@ const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
 
   return {
     data: coordinates,
-    label
+    label,
   }
 }
 
 const createCoordinateSets = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
-  grouping === 'alternatives'
-    ? createAlternativeSets(data)
-    : createCriteriaSets(data)
+  grouping === 'alternatives' ? createAlternativeSets(data) : createCriteriaSets(data)
 
 const createDataTableData = (dataset: DataSet): Value[][] => {
-  return !dataset.length
-    ? []
-    : transpose(dataset.map(column => column.data)) as Value[][]
+  return !dataset.length ? [] : (transpose(dataset.map(column => column.data)) as Value[][])
 }
 
 const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
@@ -41,11 +42,9 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
 
     return {
       attributes,
-      label: `Alternative ${colIndex + 1}`
+      label: `Alternative ${colIndex + 1}`,
     }
   })
 }
 
-export {
-  createBarData, createDataTableData, createParallelAxesData, createCoordinateSets
-}
+export { createBarData, createDataTableData, createParallelAxesData, createCoordinateSets }

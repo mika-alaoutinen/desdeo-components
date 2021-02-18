@@ -7,6 +7,6 @@ export const layout: Layout = {
     top: 50,
     left: 100,
     right: 100,
-    bottom: 50
-  }
+    bottom: 50,
+  },
 }

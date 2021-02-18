@@ -8,17 +8,15 @@ interface Props {
 
 const TableHead: React.FC<Props> = ({ labels }) => {
   const renderHeadings = (): JSX.Element[] =>
-    labels.map(label =>
+    labels.map(label => (
       <th key={label} style={padding}>
         {label}
       </th>
-    )
+    ))
 
   return (
     <thead>
-      <tr>
-        {renderHeadings()}
-      </tr>
+      <tr>{renderHeadings()}</tr>
     </thead>
   )
 }

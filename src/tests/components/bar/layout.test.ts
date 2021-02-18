@@ -7,14 +7,14 @@ describe('Calculates padding based on chart orientation', () => {
     top: 25,
     left: 75,
     right: 75,
-    bottom: 25
+    bottom: 25,
   }
 
   const vertical: Padding = {
     top: 25,
     left: 50,
     right: 50,
-    bottom: 75
+    bottom: 75,
   }
 
   it('horizontal orientation has 75 padding on both sides', () => {
