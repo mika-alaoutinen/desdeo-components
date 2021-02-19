@@ -1,5 +1,4 @@
-import { MaxValue } from '../../components/radar/RadarChart'
-import { DataSet } from '../../types/dataTypes'
+import { DataSet, MaxValue } from '../../types/dataTypes'
 import { dataset } from '../testdata'
 
 import { createDataLabels, findMaxValues } from '../../data/datasetParser'

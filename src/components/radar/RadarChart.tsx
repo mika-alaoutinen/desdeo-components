@@ -1,14 +1,9 @@
 import React from 'react'
 import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis } from 'victory'
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { AttributeSet } from '../../types/dataTypes'
+import { AttributeSet, MaxValue } from '../../types/dataTypes'
 
-export interface MaxValue {
-  label: string
-  value: number
-}
-
-export interface Props {
+interface Props {
   data: AttributeSet[]
   maxValues: MaxValue[]
 }

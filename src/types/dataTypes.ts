@@ -13,6 +13,17 @@ interface Value {
   value: number
 }
 
+interface AttributeSet {
+  label: string
+  attributes: Attribute[]
+}
+
+interface Attribute {
+  id: string
+  x: string
+  y: number
+}
+
 interface CoordinateSet {
   data: Coordinate[]
   label?: string
@@ -26,30 +37,25 @@ interface Coordinate {
   isSelected?: boolean
 }
 
-interface AttributeSet {
-  label: string
-  attributes: Attribute[]
-}
-
-interface Attribute {
-  id: string
-  x: string
-  y: number
-}
-
 interface Filter {
   attribute: string
   range: [number, number]
 }
 
+interface MaxValue {
+  label: string
+  value: number
+}
+
 export type {
   Attribute,
+  AttributeSet,
   Coordinate,
   CoordinateSet,
   DataSet,
   DataColumn,
   Filter,
   Grouping,
-  AttributeSet,
+  MaxValue,
   Value,
 }
