@@ -1,4 +1,5 @@
-import { DataSet, Grouping, MaxValue } from '../types/dataTypes'
+import { DataSet, MaxValue } from '../types/dataTypes'
+import { Grouping } from '../types/layoutTypes'
 import { range, replaceSpacesWithLineBreaks } from '../utils/utils'
 
 export const createDataLabels = (data: DataSet[], grouping: Grouping): string[] =>

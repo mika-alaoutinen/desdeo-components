@@ -1,17 +1,3 @@
-type Grouping = 'alternatives' | 'criteria'
-
-// Represents a column in the example CSV
-interface DataSet {
-  label: string
-  data: Value[]
-}
-
-interface Value {
-  id: string
-  isSelected: boolean
-  value: number
-}
-
 interface AttributeSet {
   label: string
   attributes: Attribute[]
@@ -36,6 +22,18 @@ interface Coordinate {
   isSelected?: boolean
 }
 
+// Represents a column in the example CSV
+interface DataSet {
+  label: string
+  data: Value[]
+}
+
+interface Value {
+  id: string
+  isSelected: boolean
+  value: number
+}
+
 interface Filter {
   attribute: string
   range: [number, number]
@@ -46,14 +44,4 @@ interface MaxValue {
   value: number
 }
 
-export type {
-  Attribute,
-  AttributeSet,
-  Coordinate,
-  CoordinateSet,
-  DataSet,
-  Filter,
-  Grouping,
-  MaxValue,
-  Value,
-}
+export type { Attribute, AttributeSet, Coordinate, CoordinateSet, DataSet, Filter, MaxValue, Value }

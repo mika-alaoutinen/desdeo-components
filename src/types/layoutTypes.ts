@@ -11,6 +11,7 @@ interface Padding {
   bottom: number
 }
 
+type Grouping = 'alternatives' | 'criteria'
 type Orientation = 'horizontal' | 'vertical'
 
-export type { Layout, Orientation, Padding }
+export type { Grouping, Layout, Orientation, Padding }

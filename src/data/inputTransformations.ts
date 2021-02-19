@@ -1,12 +1,6 @@
+import { Attribute, AttributeSet, CoordinateSet, DataSet, Value } from '../types/dataTypes'
+import { Grouping } from '../types/layoutTypes'
 import { createAlternativeSets, createCriteriaSets, transpose } from './transformationUtils'
-import {
-  Attribute,
-  AttributeSet,
-  CoordinateSet,
-  DataSet,
-  Grouping,
-  Value,
-} from '../types/dataTypes'
 
 const createBarData = ({ data, label }: DataSet): CoordinateSet => {
   const coordinates = data.map((value, x) => {

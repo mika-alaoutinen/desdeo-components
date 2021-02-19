@@ -1,11 +1,11 @@
-import { Coordinate, CoordinateSet, DataSet, Grouping } from './dataTypes'
+import { Coordinate, CoordinateSet, DataSet } from './dataTypes'
 import {
   OnClickHandler,
   OnCoordinateClick,
   OnCoordinateSelect,
   OnSelectionClearedHandler,
 } from './eventHandlerTypes'
-import { Orientation } from './layoutTypes'
+import { Grouping, Orientation } from './layoutTypes'
 
 interface BarChartProps {
   data: CoordinateSet[]
