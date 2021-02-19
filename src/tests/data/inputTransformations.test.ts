@@ -1,5 +1,5 @@
 import { dataset } from '../testdata'
-import { CoordinateSet, DataColumn, AttributeSet, Value } from '../../types/dataTypes'
+import { AttributeSet, CoordinateSet, DataSet, Value } from '../../types/dataTypes'
 
 import {
   createAttributeSets,
@@ -23,7 +23,7 @@ describe('createBarData procudes datasets for a regular bar chart', () => {
   })
 
   it('handles an empty input', () => {
-    const data: DataColumn = {
+    const data: DataSet = {
       data: [],
       label: 'Empty set',
     }

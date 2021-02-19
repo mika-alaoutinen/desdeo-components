@@ -1,8 +1,7 @@
-type DataSet = DataColumn[]
 type Grouping = 'alternatives' | 'criteria'
 
 // Represents a column in the example CSV
-interface DataColumn {
+interface DataSet {
   label: string
   data: Value[]
 }
@@ -53,7 +52,6 @@ export type {
   Coordinate,
   CoordinateSet,
   DataSet,
-  DataColumn,
   Filter,
   Grouping,
   MaxValue,

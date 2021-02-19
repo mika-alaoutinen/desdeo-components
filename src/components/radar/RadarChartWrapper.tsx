@@ -6,7 +6,7 @@ import { DataSet } from '../../types/dataTypes'
 import RadarChart from './RadarChart'
 
 export interface Props {
-  data: DataSet
+  data: DataSet[]
 }
 
 const RadarChartWrapper: React.FC<Props> = ({ data }) => {

@@ -10,7 +10,7 @@ export const coordinates: Coordinate[] = [
   { id: 'e', x: 50, y: 50 },
 ]
 
-export const dataset: DataSet = [
+export const dataset: DataSet[] = [
   {
     label: 'Label A',
     data: [

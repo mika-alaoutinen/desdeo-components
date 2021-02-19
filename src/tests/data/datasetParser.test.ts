@@ -10,7 +10,7 @@ describe('Should create labels from data that is grouped by alternatives', () =>
   })
 
   it('handles uneven datasets', () => {
-    const unevenData: DataSet = [
+    const unevenData: DataSet[] = [
       {
         label: 'A',
         data: [{ id: 'a1', isSelected: false, value: 6.042483 }],

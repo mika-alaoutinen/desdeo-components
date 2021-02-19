@@ -15,7 +15,7 @@ interface BarChartProps {
 }
 
 interface BarChartWrapperProps {
-  data: DataSet
+  data: DataSet[]
   grouping: Grouping
   onClick: OnClickHandler
   orientation: Orientation

@@ -7,7 +7,7 @@ import { createAttributeSets } from '../../data/inputTransformations'
 import { DataSet } from '../../types/dataTypes'
 
 export interface Props {
-  data: DataSet
+  data: DataSet[]
 }
 
 const ParallelAxesWrapper: React.FC<Props> = ({ data }) => {

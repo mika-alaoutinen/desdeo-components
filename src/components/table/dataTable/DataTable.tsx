@@ -8,7 +8,7 @@ import { DataSet } from '../../../types/dataTypes'
 import { OnClickHandler } from '../../../types/eventHandlerTypes'
 
 export interface Props {
-  data: DataSet
+  data: DataSet[]
   onClick: OnClickHandler
 }
 

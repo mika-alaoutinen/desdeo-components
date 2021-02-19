@@ -79,7 +79,7 @@ describe('Bars should be clickable', () => {
 })
 
 describe('Bars should display label on mouseover', () => {
-  const data: DataSet = [
+  const data: DataSet[] = [
     {
       label: 'A',
       data: [{ id: 'a1', isSelected: false, value: 1 }],
