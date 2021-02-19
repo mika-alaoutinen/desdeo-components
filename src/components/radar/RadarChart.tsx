@@ -30,7 +30,7 @@ const RadarChart: React.FC = () => {
             labelPlacement='perpendicular'
             axisValue={i + 1}
             label={key.label}
-            tickFormat={t => Math.ceil(t * maxima[i].value)}
+            tickFormat={tick => Math.ceil(tick * maxima[i].value)}
             tickValues={[0.25, 0.5, 0.75]}
           />
         )
