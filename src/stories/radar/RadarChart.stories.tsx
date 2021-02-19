@@ -1,14 +1,17 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import RadarChart from '../../components/radar/RadarChart'
+import RadarChartWrapper, { Props } from '../../components/radar/RadarChartWrapper'
+import { radarDataset } from '../../data/testdata'
 
-const Template: Story = args => <RadarChart {...args} />
+const Template: Story<Props> = args => <RadarChartWrapper {...args} />
 
 export const RadarChartTemplate = Template.bind({})
-RadarChartTemplate.args = {}
+RadarChartTemplate.args = {
+  data: radarDataset,
+}
 
 export default {
   title: 'DESDEO/RadarChart',
-  component: RadarChart,
+  component: RadarChartWrapper,
 } as Meta

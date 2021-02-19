@@ -1,4 +1,4 @@
-import { Coordinate, DataSet, ParallelAxesData } from '../types/dataTypes'
+import { Coordinate, DataSet, AttributeSet } from '../types/dataTypes'
 
 const coordinates: Coordinate[] = [
   { id: 'a', x: 6.042483, y: 3.17527 },
@@ -95,7 +95,7 @@ const dataset: DataSet = [
   },
 ]
 
-const parallelAxesData: ParallelAxesData[] = [
+const parallelAxesData: AttributeSet[] = [
   {
     label: 'Alternative 1',
     attributes: [
@@ -112,6 +112,49 @@ const parallelAxesData: ParallelAxesData[] = [
       { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
       { id: 'roi-2', x: 'roi', y: 6.887735 },
       { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
+    ],
+  },
+]
+
+export const radarDataset: DataSet = [
+  {
+    label: 'WQ Fishery',
+    data: [
+      { id: 'wq-fishery-0', isSelected: false, value: 6.042483 },
+      { id: 'wq-fishery-1', isSelected: false, value: 5.758127 },
+      { id: 'wq-fishery-2', isSelected: false, value: 6.287081 },
+    ],
+  },
+  {
+    label: 'WQ City',
+    data: [
+      { id: 'wq-city-0', isSelected: false, value: 3.17527 },
+      { id: 'wq-city-1', isSelected: false, value: 3.410843 },
+      { id: 'wq-city-2', isSelected: false, value: 3.207926 },
+    ],
+  },
+  {
+    label: 'ROI',
+    data: [
+      { id: 'roi-0', isSelected: false, value: 6.090291 },
+      { id: 'roi-1', isSelected: false, value: 6.887735 },
+      { id: 'roi-2', isSelected: false, value: 2.992514 },
+    ],
+  },
+  {
+    label: 'City Tax',
+    data: [
+      { id: 'city-tax-0', isSelected: false, value: 2.444406 },
+      { id: 'city-tax-1', isSelected: false, value: 8.989781 },
+      { id: 'city-tax-2', isSelected: false, value: 2.758216 },
+    ],
+  },
+  {
+    label: 'Plant Resources',
+    data: [
+      { id: 'plant-pesources-0', isSelected: false, value: 0.248895 },
+      { id: 'plant-pesources-1', isSelected: false, value: 0.346752 },
+      { id: 'plant-pesources-2', isSelected: false, value: 0.326688 },
     ],
   },
 ]

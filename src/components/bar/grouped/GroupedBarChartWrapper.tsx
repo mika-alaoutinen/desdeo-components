@@ -2,7 +2,7 @@ import React from 'react'
 
 import GroupedBarChart from './GroupedBarChart'
 import { swapOrientation } from '../layout'
-import { createDataLabels } from '../../../data/parser'
+import { createDataLabels } from '../../../data/datasetParser'
 import { createCoordinateSets } from '../../../data/inputTransformations'
 import { BarChartWrapperProps } from '../../../types/chartTypes'
 

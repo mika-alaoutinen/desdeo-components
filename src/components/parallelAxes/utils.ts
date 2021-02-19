@@ -1,6 +1,6 @@
 import { layout as defaultLayout } from './layout'
-import { Filter, ParallelAxesData } from '../../../types/dataTypes'
-import { Layout } from '../../../types/layoutTypes'
+import { Filter, AttributeSet } from '../../types/dataTypes'
+import { Layout } from '../../types/layoutTypes'
 
 const addNewFilters = (filters: Filter[], domain: [number, number], name: string): Filter[] => {
   const extent = domain && Math.abs(domain[1] - domain[0])
@@ -31,11 +31,11 @@ const calculateAxisOffset = (index: number, attributesLength: number, layout?: L
   return step * index + padding.left
 }
 
-const getActiveDatasets = (datasets: ParallelAxesData[], filters: Filter[]): string[] =>
+const getActiveDatasets = (datasets: AttributeSet[], filters: Filter[]): string[] =>
   datasets.map(dataset => (isDatasetActive(dataset, filters) ? dataset.label : '')).filter(Boolean)
 
 // Utility functions
-const isDatasetActive = (dataset: ParallelAxesData, filters: Filter[]): boolean =>
+const isDatasetActive = (dataset: AttributeSet, filters: Filter[]): boolean =>
   filters.every(({ attribute, range }) => {
     const y = dataset.attributes.find(({ x }) => x === attribute)?.y
     return y ? isNumberInRange(y, range) : false

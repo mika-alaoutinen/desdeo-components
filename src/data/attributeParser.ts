@@ -1,19 +1,25 @@
-import { Attribute, ParallelAxesData } from '../../../types/dataTypes'
+import { Attribute, AttributeSet } from '../types/dataTypes'
 
-const getAttributeNames = (data: ParallelAxesData[]): string[] => {
+const getAttributeNames = (data: AttributeSet[]): string[] => {
   const labels = data.flatMap(datum => datum.attributes).map(attribute => attribute.x)
 
   return [...new Set(labels)]
 }
 
-const getMaxAttributes = (data: ParallelAxesData[]): Attribute[] => {
+const getMaxAttributes = (data: AttributeSet[]): Attribute[] => {
   const attributes = data.flatMap(datum => datum.attributes)
   const grouped = groupByName(attributes)
   return grouped.map(findByMaxValue)
 }
 
-const getMaxValues = (data: ParallelAxesData[]): number[] =>
+const getMaxValues = (data: AttributeSet[]): number[] =>
   getMaxAttributes(data).map(attribute => attribute.y)
+
+const normalizeData = (data: AttributeSet[]): AttributeSet[] =>
+  data.map(({ label, attributes }) => ({
+    label,
+    attributes: normalizeAttributes(attributes, getMaxAttributes(data)),
+  }))
 
 // Utility functions
 const groupByName = (attributes: Attribute[]): Attribute[][] => {
@@ -36,4 +42,13 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
   return attributes.reduce((max, attribute) => (attribute.y > max.y ? attribute : max), initial)
 }
 
-export { getAttributeNames, getMaxAttributes, getMaxValues }
+const normalizeAttributes = (attributes: Attribute[], maxAttributes: Attribute[]): Attribute[] => {
+  const maxValues = maxAttributes.map(attribute => attribute.y)
+
+  return attributes.map((attribute, i) => ({
+    ...attribute,
+    y: attribute.y / maxValues[i],
+  }))
+}
+
+export { getAttributeNames, getMaxAttributes, getMaxValues, normalizeData }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
-import { ParallelAxesData } from '../../../types/dataTypes'
-import { DomainTuple } from '../../../types/victoryTypes'
+import { AttributeSet } from '../../types/dataTypes'
+import { DomainTuple } from '../../types/victoryTypes'
 
 type OnDomainChange = (domainTuple: DomainTuple, name?: string) => void
 
@@ -42,7 +42,7 @@ const drawBrushLine = (attribute: string, onDomainChange: OnDomainChange): JSX.E
   />
 )
 
-const drawLine = ({ attributes, label }: ParallelAxesData, opacity: number): JSX.Element => (
+const drawLine = ({ attributes, label }: AttributeSet, opacity: number): JSX.Element => (
   <VictoryLine
     key={label}
     name={label}

@@ -5,7 +5,7 @@ import {
   CoordinateSet,
   DataColumn,
   DataSet,
-  ParallelAxesData,
+  AttributeSet,
   Value,
 } from '../types/dataTypes'
 
@@ -28,7 +28,7 @@ const createDataTableData = (dataset: DataSet): Value[][] => {
   return !dataset.length ? [] : (transpose(dataset.map(column => column.data)) as Value[][])
 }
 
-const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
+const createAttributeSets = (dataset: DataSet): AttributeSet[] => {
   if (!dataset.length) {
     return []
   }
@@ -47,4 +47,4 @@ const createParallelAxesData = (dataset: DataSet): ParallelAxesData[] => {
   })
 }
 
-export { createBarData, createDataTableData, createParallelAxesData, createCoordinateSets }
+export { createAttributeSets, createBarData, createCoordinateSets, createDataTableData }

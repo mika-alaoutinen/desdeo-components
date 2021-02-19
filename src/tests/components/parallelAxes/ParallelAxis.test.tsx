@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import { renderComponent, renderVictoryContainer } from '../componentTests'
 
-import ParallelAxesWrapper from '../../../components/parallelAxes/wrapper/ParallelAxesWrapper'
+import ParallelAxesWrapper from '../../../components/parallelAxes/ParallelAxesWrapper'
 import { dataset } from '../../testdata'
 
 const component = <ParallelAxesWrapper data={dataset} />

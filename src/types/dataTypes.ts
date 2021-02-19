@@ -26,7 +26,7 @@ interface Coordinate {
   isSelected?: boolean
 }
 
-interface ParallelAxesData {
+interface AttributeSet {
   label: string
   attributes: Attribute[]
 }
@@ -50,6 +50,6 @@ export type {
   DataColumn,
   Filter,
   Grouping,
-  ParallelAxesData,
+  AttributeSet,
   Value,
 }
