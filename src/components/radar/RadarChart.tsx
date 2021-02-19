@@ -3,7 +3,7 @@
 import React from 'react'
 import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis } from 'victory'
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { characterData } from './radarData'
+import { characterData, radarData } from './radarData'
 
 const RadarChart: React.FC = () => {
   const getMaxima = (data: any[]) => {
@@ -11,10 +11,16 @@ const RadarChart: React.FC = () => {
       memo[key] = data.map((d: { [x: string]: any }) => d[key])
       return memo
     }, {})
-    return Object.keys(groupedData).reduce((memo, key) => {
+
+    console.log('grouped', groupedData)
+
+    const max = Object.keys(groupedData).reduce((memo, key) => {
       memo[key] = Math.max(...groupedData[key])
       return memo
     }, {})
+
+    console.log('max', max)
+    return max
   }
 
   const processData = (data: any[]) => {
@@ -24,7 +30,9 @@ const RadarChart: React.FC = () => {
         return { x: key, y: d[key] / maxByGroup[key] }
       })
     }
-    return data.map((datum: any) => makeDataArray(datum))
+    const processed = data.map((datum: any) => makeDataArray(datum))
+    console.log('processed', processed)
+    return processed
   }
 
   const data = processData(characterData)

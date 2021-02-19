@@ -1,3 +1,5 @@
+import { Attribute } from '../../types/dataTypes'
+
 export const characterData = [
   {
     wq_fishery: 6.042483,
@@ -20,4 +22,34 @@ export const characterData = [
     city_tax: 2.758216,
     plant_resources: 0.326688,
   },
+]
+
+export type RadarDataSet = RadarData[][]
+
+interface RadarData {
+  label: string
+  attribute: Attribute
+}
+
+export const radarData: RadarDataSet = [
+  [
+    {
+      label: 'WQ Fishery',
+      attribute: { id: 'wq-fishery-0', x: 'wq-fishery', y: 0.9610951409724163 },
+    },
+    {
+      label: 'WQ City',
+      attribute: { id: 'wq-city-0', x: 'wq-city', y: 0.9309340828645587 },
+    },
+  ],
+  [
+    {
+      label: 'WQ Fishery',
+      attribute: { id: 'wq-fishery-1', x: 'wq-fishery', y: 0.9158665205681301 },
+    },
+    {
+      label: 'WQ City',
+      attribute: { id: 'wq-city-1', x: 'wq-city', y: 1 },
+    },
+  ],
 ]
