@@ -4,13 +4,13 @@ import { VictoryChart } from 'victory'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
-import { Filter, ParallelAxesData } from '../../../types/dataTypes'
-import { DomainTuple } from '../../../types/victoryTypes'
+import { Filter, AttributeSet } from '../../types/dataTypes'
+import { DomainTuple } from '../../types/victoryTypes'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
   attributes: string[]
-  data: ParallelAxesData[]
+  data: AttributeSet[]
   maxTickValues: number[]
 }
 

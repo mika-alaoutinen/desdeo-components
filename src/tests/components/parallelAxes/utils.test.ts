@@ -6,7 +6,7 @@ import {
   addNewFilters,
   calculateAxisOffset,
   getActiveDatasets,
-} from '../../../components/parallelAxes/component/utils'
+} from '../../../components/parallelAxes/utils'
 
 describe('addNewFilters creates filters for datasets', () => {
   const domain: [number, number] = [0, 1]

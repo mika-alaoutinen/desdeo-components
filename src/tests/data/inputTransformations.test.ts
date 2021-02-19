@@ -1,10 +1,10 @@
 import { dataset } from '../testdata'
-import { CoordinateSet, DataColumn, ParallelAxesData, Value } from '../../types/dataTypes'
+import { CoordinateSet, DataColumn, AttributeSet, Value } from '../../types/dataTypes'
 
 import {
+  createAttributeSets,
   createBarData,
   createDataTableData,
-  createParallelAxesData,
 } from '../../data/inputTransformations'
 
 describe('createBarData procudes datasets for a regular bar chart', () => {
@@ -31,8 +31,8 @@ describe('createBarData procudes datasets for a regular bar chart', () => {
   })
 })
 
-describe('createParallelAxesData produces datasets for Parallel Axis component', () => {
-  const expected: ParallelAxesData[] = [
+describe('createAttributeSets produces datasets for Parallel Axis component', () => {
+  const expected: AttributeSet[] = [
     {
       label: 'Alternative 1',
       attributes: [
@@ -57,11 +57,11 @@ describe('createParallelAxesData produces datasets for Parallel Axis component',
   ]
 
   it('transforms parallel axes data as expected', () => {
-    expect(createParallelAxesData(dataset)).toEqual(expected)
+    expect(createAttributeSets(dataset)).toEqual(expected)
   })
 
   it('handles an empty input', () => {
-    expect(createParallelAxesData([])).toEqual([])
+    expect(createAttributeSets([])).toEqual([])
   })
 })
 

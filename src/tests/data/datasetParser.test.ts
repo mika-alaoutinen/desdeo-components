@@ -1,7 +1,8 @@
+import { MaxValue } from '../../components/radar/RadarChart'
 import { DataSet } from '../../types/dataTypes'
 import { dataset } from '../testdata'
 
-import { createDataLabels } from '../../data/parser'
+import { createDataLabels, findMaxValues } from '../../data/datasetParser'
 
 describe('Should create labels from data that is grouped by alternatives', () => {
   it('alternatives grouping produces Alternative 1 and Alternative 2', () => {
@@ -40,5 +41,15 @@ describe('Should create labels from data that is grouped by criteria', () => {
 
   it('handles an empty dataset', () => {
     expect(createDataLabels([], 'criteria')).toEqual([])
+  })
+})
+
+describe('Should find and map max values from a DataSet', () => {
+  it('findMaxValues creates a MaxValues array', () => {
+    const expected: MaxValue[] = [
+      { label: 'Label A', value: 3 },
+      { label: 'Label B', value: 6 },
+    ]
+    expect(findMaxValues(dataset)).toEqual(expected)
   })
 })

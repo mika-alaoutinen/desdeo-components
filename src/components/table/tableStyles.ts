@@ -5,7 +5,7 @@ const ROW_SELECTED_COLOR = '#ffdfda'
 const tableStyle: React.CSSProperties = {
   border: '1px solid lightgrey',
   borderCollapse: 'collapse',
-  width: '50%',
+  margin: '2em',
 }
 
 const padding: React.CSSProperties = {
