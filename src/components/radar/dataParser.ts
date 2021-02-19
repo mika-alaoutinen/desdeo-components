@@ -9,11 +9,11 @@ export interface MaxValue {
 
 export const findMaxValues = (dataset: DataSet): MaxValue[] =>
   dataset.map(({ data, label }) => {
-    const value = data
+    const maxValue = data
       .map(value => value.value)
-      .reduce((max, current) => (max >= current ? max : current), 0)
+      .reduce((max, current) => Math.max(max, current), 0)
 
-    return { label, value }
+    return { label, value: maxValue }
   })
 
 export const processData = (dataset: DataSet): ParallelAxesData[] => {

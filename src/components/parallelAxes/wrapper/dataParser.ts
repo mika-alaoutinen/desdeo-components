@@ -33,10 +33,7 @@ const findByMaxValue = (attributes: Attribute[]): Attribute => {
     y: -0.00001,
   }
 
-  return attributes.reduce(
-    (currentMax, attribute) => (attribute.y > currentMax.y ? attribute : currentMax),
-    initial
-  )
+  return attributes.reduce((max, attribute) => (attribute.y > max.y ? attribute : max), initial)
 }
 
 export { getAttributeNames, getMaxAttributes, getMaxValues }
