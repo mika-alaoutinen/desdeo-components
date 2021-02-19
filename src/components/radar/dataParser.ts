@@ -1,4 +1,6 @@
-import { DataSet } from '../../types/dataTypes'
+import { createParallelAxesData } from '../../data/inputTransformations'
+import { DataSet, ParallelAxesData } from '../../types/dataTypes'
+import { normalizeData } from '../parallelAxes/wrapper/dataProcessing'
 
 export interface MaxValue {
   label: string
@@ -13,3 +15,9 @@ export const findMaxValues = (dataset: DataSet): MaxValue[] =>
 
     return { label, value }
   })
+
+export const processData = (dataset: DataSet): ParallelAxesData[] => {
+  const datasets = createParallelAxesData(dataset)
+  const normalized = normalizeData(datasets)
+  return normalized
+}

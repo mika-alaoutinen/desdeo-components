@@ -1,52 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis } from 'victory'
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { characterData, radarData } from './radarData'
+import { findMaxValues, processData } from './dataParser'
+import { radarDataset } from './radarData'
 
 const RadarChart: React.FC = () => {
-  const getMaxima = (data: any[]) => {
-    const groupedData = Object.keys(data[0]).reduce((memo, key) => {
-      memo[key] = data.map((d: { [x: string]: any }) => d[key])
-      return memo
-    }, {})
-
-    console.log('grouped', groupedData)
-
-    const max = Object.keys(groupedData).reduce((memo, key) => {
-      memo[key] = Math.max(...groupedData[key])
-      return memo
-    }, {})
-
-    console.log('max', max)
-    return max
-  }
-
-  const processData = (data: any[]) => {
-    const maxByGroup = getMaxima(data)
-    const makeDataArray = (d: { [x: string]: number }) => {
-      return Object.keys(d).map(key => {
-        return { x: key, y: d[key] / maxByGroup[key] }
-      })
-    }
-    const processed = data.map((datum: any) => makeDataArray(datum))
-    console.log('processed', processed)
-    return processed
-  }
-
-  const data = processData(characterData)
-  const maxima = getMaxima(characterData)
+  const data = processData(radarDataset)
+  const maxima = findMaxValues(radarDataset)
 
   return (
     <VictoryChart polar theme={MATERIAL_THEME} domain={{ y: [0, 1] }}>
       <VictoryGroup style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}>
         {data.map((data, i) => (
-          <VictoryArea key={i} data={data} />
+          <VictoryArea key={i} data={data.attributes} />
         ))}
       </VictoryGroup>
 
-      {Object.keys(maxima).map((key, i) => {
+      {maxima.map((key, i) => {
         return (
           <VictoryPolarAxis
             key={i}
@@ -59,8 +29,8 @@ const RadarChart: React.FC = () => {
             tickLabelComponent={<VictoryLabel labelPlacement='vertical' />}
             labelPlacement='perpendicular'
             axisValue={i + 1}
-            label={key}
-            tickFormat={t => Math.ceil(t * maxima[key])}
+            label={key.label}
+            tickFormat={t => Math.ceil(t * maxima[i].value)}
             tickValues={[0.25, 0.5, 0.75]}
           />
         )

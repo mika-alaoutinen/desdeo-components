@@ -41,4 +41,20 @@ export const radarDataset: DataSet = [
       { id: 'wq-city-2', isSelected: false, value: 6.042483 },
     ],
   },
+  {
+    label: 'ROI',
+    data: [
+      { id: 'roi-0', isSelected: false, value: 6.090291 },
+      { id: 'roi-1', isSelected: false, value: 6.887735 },
+      { id: 'roi-2', isSelected: false, value: 2.992514 },
+    ],
+  },
+  {
+    label: 'City Tax',
+    data: [
+      { id: 'city-tax-0', isSelected: false, value: 2.444406 },
+      { id: 'city-tax-1', isSelected: false, value: 8.989781 },
+      { id: 'city-tax-2', isSelected: false, value: 2.758216 },
+    ],
+  },
 ]
