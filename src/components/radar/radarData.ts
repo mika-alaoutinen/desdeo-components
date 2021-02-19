@@ -1,4 +1,4 @@
-import { Attribute } from '../../types/dataTypes'
+import { DataSet } from '../../types/dataTypes'
 
 export const characterData = [
   {
@@ -24,32 +24,21 @@ export const characterData = [
   },
 ]
 
-export type RadarDataSet = RadarData[][]
-
-interface RadarData {
-  label: string
-  attribute: Attribute
-}
-
-export const radarData: RadarDataSet = [
-  [
-    {
-      label: 'WQ Fishery',
-      attribute: { id: 'wq-fishery-0', x: 'wq-fishery', y: 0.9610951409724163 },
-    },
-    {
-      label: 'WQ City',
-      attribute: { id: 'wq-city-0', x: 'wq-city', y: 0.9309340828645587 },
-    },
-  ],
-  [
-    {
-      label: 'WQ Fishery',
-      attribute: { id: 'wq-fishery-1', x: 'wq-fishery', y: 0.9158665205681301 },
-    },
-    {
-      label: 'WQ City',
-      attribute: { id: 'wq-city-1', x: 'wq-city', y: 1 },
-    },
-  ],
+export const radarDataset: DataSet = [
+  {
+    label: 'WQ Fishery',
+    data: [
+      { id: 'wq-fishery-0', isSelected: false, value: 6.134672 },
+      { id: 'wq-fishery-1', isSelected: false, value: 6.019503 },
+      { id: 'wq-fishery-2', isSelected: false, value: 5.231501 },
+    ],
+  },
+  {
+    label: 'WQ City',
+    data: [
+      { id: 'wq-city-0', isSelected: false, value: 3.17527 },
+      { id: 'wq-city-1', isSelected: false, value: 3.346416 },
+      { id: 'wq-city-2', isSelected: false, value: 6.042483 },
+    ],
+  },
 ]
