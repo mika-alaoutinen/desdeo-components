@@ -7,13 +7,14 @@ import RadarChart from './RadarChart'
 
 export interface Props {
   data: DataSet[]
+  showSpokeLines?: boolean
 }
 
-const RadarChartWrapper: React.FC<Props> = ({ data }) => {
+const RadarChartWrapper: React.FC<Props> = ({ data, showSpokeLines = true }) => {
   const dataset = normalizeData(createAttributeSets(data))
   const maxValues = findMaxValues(data)
 
-  return <RadarChart data={dataset} maxValues={maxValues} />
+  return <RadarChart data={dataset} maxValues={maxValues} showSpokeLines={showSpokeLines} />
 }
 
 export default RadarChartWrapper
