@@ -1,11 +1,11 @@
-import { MaxValue } from '../components/radar/RadarChart'
-import { DataSet, Grouping } from '../types/dataTypes'
+import { DataSet, MaxValue } from '../types/dataTypes'
+import { Grouping } from '../types/layoutTypes'
 import { range, replaceSpacesWithLineBreaks } from '../utils/utils'
 
-export const createDataLabels = (data: DataSet, grouping: Grouping): string[] =>
+export const createDataLabels = (data: DataSet[], grouping: Grouping): string[] =>
   grouping === 'alternatives' ? mapAlternativesLabels(data) : mapCriteriaNames(data)
 
-export const findMaxValues = (dataset: DataSet): MaxValue[] =>
+export const findMaxValues = (dataset: DataSet[]): MaxValue[] =>
   dataset.map(({ data, label }) => {
     const maxValue = data
       .map(value => value.value)
@@ -14,13 +14,13 @@ export const findMaxValues = (dataset: DataSet): MaxValue[] =>
     return { label, value: maxValue }
   })
 
-const mapAlternativesLabels = (data: DataSet): string[] =>
+const mapAlternativesLabels = (data: DataSet[]): string[] =>
   range(countAlternatives(data)).map(n => `Alternative\n${n}`)
 
-const mapCriteriaNames = (data: DataSet): string[] =>
+const mapCriteriaNames = (data: DataSet[]): string[] =>
   data.map(coordinate => coordinate.label).map(replaceSpacesWithLineBreaks)
 
-const countAlternatives = (data: DataSet): number => {
+const countAlternatives = (data: DataSet[]): number => {
   return data
     .map(column => column.data.length)
     .reduce((max, current) => (current > max ? current : max), 0)

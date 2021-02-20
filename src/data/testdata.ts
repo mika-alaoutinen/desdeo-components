@@ -13,7 +13,7 @@ const coordinates: Coordinate[] = [
   { id: 'j', x: 6.019503, y: 3.350959 },
 ]
 
-const dataset: DataSet = [
+const dataset: DataSet[] = [
   {
     label: 'WQ Fishery',
     data: [
@@ -116,7 +116,7 @@ const parallelAxesData: AttributeSet[] = [
   },
 ]
 
-export const radarDataset: DataSet = [
+export const radarDataset: DataSet[] = [
   {
     label: 'WQ Fishery',
     data: [

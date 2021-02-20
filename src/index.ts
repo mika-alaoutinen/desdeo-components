@@ -1,12 +1,18 @@
-// Export the components for publishing
-export { default as BarChartComponent } from './components/bar/basic/BarChartWrapper'
-export { default as GroupedBarChartComponent } from './components/bar/grouped/GroupedBarChartWrapper'
-export { default as StackedBarChartComponent } from './components/bar/stacked/StackedBarChartWrapper'
+// Bar charts
+export { default as Bar } from './components/bar/basic/BarChartWrapper'
+export { default as GroupedBar } from './components/bar/grouped/GroupedBarChartWrapper'
+export { default as StackedBar } from './components/bar/stacked/StackedBarChartWrapper'
 
-export { default as ParallelAxesComponent } from './components/parallelAxes/ParallelAxesWrapper'
+// Parallel Coordinates
+export { default as ParallelAxes } from './components/parallelAxes/ParallelAxesWrapper'
 
-export { default as ScatterChartComponent } from './components/scatter/ScatterChart'
-export { default as ScatterSelectionComponent } from './components/scatter/ScatterSelection'
+// Radar chart
+export { default as Radar } from './components/radar/RadarChartWrapper'
 
-export { default as CoordinateTableComponent } from './components/table/coordinateTable/CoordinateTable'
-export { default as DataTableComponent } from './components/table/dataTable/DataTable'
+// Scatter charts
+export { default as Scatter } from './components/scatter/ScatterChart'
+export { default as ScatterSelection } from './components/scatter/ScatterSelection'
+
+// Tables
+export { default as CoordinateTable } from './components/table/coordinateTable/CoordinateTable'
+export { default as DataTable } from './components/table/dataTable/DataTable'

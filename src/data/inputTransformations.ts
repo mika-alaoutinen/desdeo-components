@@ -1,15 +1,8 @@
+import { Attribute, AttributeSet, CoordinateSet, DataSet, Value } from '../types/dataTypes'
+import { Grouping } from '../types/layoutTypes'
 import { createAlternativeSets, createCriteriaSets, transpose } from './transformationUtils'
-import { Grouping } from '../types/dataTypes'
-import {
-  Attribute,
-  CoordinateSet,
-  DataColumn,
-  DataSet,
-  AttributeSet,
-  Value,
-} from '../types/dataTypes'
 
-const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
+const createBarData = ({ data, label }: DataSet): CoordinateSet => {
   const coordinates = data.map((value, x) => {
     const { id, isSelected, value: y } = value
     return { id, isSelected, x: x + 1, y }
@@ -21,14 +14,14 @@ const createBarData = ({ data, label }: DataColumn): CoordinateSet => {
   }
 }
 
-const createCoordinateSets = (data: DataSet, grouping: Grouping): CoordinateSet[] =>
+const createCoordinateSets = (data: DataSet[], grouping: Grouping): CoordinateSet[] =>
   grouping === 'alternatives' ? createAlternativeSets(data) : createCriteriaSets(data)
 
-const createDataTableData = (dataset: DataSet): Value[][] => {
+const createDataTableData = (dataset: DataSet[]): Value[][] => {
   return !dataset.length ? [] : (transpose(dataset.map(column => column.data)) as Value[][])
 }
 
-const createAttributeSets = (dataset: DataSet): AttributeSet[] => {
+const createAttributeSets = (dataset: DataSet[]): AttributeSet[] => {
   if (!dataset.length) {
     return []
   }

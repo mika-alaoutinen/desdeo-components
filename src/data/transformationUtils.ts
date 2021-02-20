@@ -1,6 +1,6 @@
 import { DataSet, CoordinateSet, Coordinate } from '../types/dataTypes'
 
-const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
+const createAlternativeSets = (dataset: DataSet[]): CoordinateSet[] =>
   dataset.map(({ data }) => {
     const coordinates: Coordinate[] = data.map(({ id, isSelected, value }, i) => ({
       id,
@@ -12,7 +12,7 @@ const createAlternativeSets = (dataset: DataSet): CoordinateSet[] =>
     return { data: coordinates }
   })
 
-const createCriteriaSets = (dataset: DataSet): CoordinateSet[] => {
+const createCriteriaSets = (dataset: DataSet[]): CoordinateSet[] => {
   if (!dataset.length) {
     return []
   }

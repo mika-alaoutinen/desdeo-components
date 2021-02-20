@@ -8,9 +8,8 @@ import {
   renderVictoryContainer,
 } from '../componentTests'
 import { dataset } from '../../testdata'
-import { Grouping } from '../../../types/dataTypes'
 import { DataSet } from '../../../types/dataTypes'
-import { Orientation } from '../../../types/layoutTypes'
+import { Grouping, Orientation } from '../../../types/layoutTypes'
 
 import StackedBarChartWrapper from '../../../components/bar/stacked/StackedBarChartWrapper'
 
@@ -79,7 +78,7 @@ describe('Bars should be clickable', () => {
 })
 
 describe('Bars should display label on mouseover', () => {
-  const data: DataSet = [
+  const data: DataSet[] = [
     {
       label: 'A',
       data: [{ id: 'a1', isSelected: false, value: 1 }],

@@ -1,55 +1,34 @@
 import React from 'react'
-import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis } from 'victory'
+import { VictoryChart, VictoryGroup } from 'victory'
+
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { AttributeSet } from '../../types/dataTypes'
+import { AttributeSet, MaxValue } from '../../types/dataTypes'
+import { drawArea, drawPolarAxix, drawSpokeLines } from './rendering'
 
-export interface MaxValue {
-  label: string
-  value: number
-}
-
-export interface Props {
+interface Props {
   data: AttributeSet[]
   maxValues: MaxValue[]
+  showSpokeLines: boolean
 }
 
-const RadarChart: React.FC<Props> = ({ data, maxValues }) => {
+const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
+  const drawAreas = (): JSX.Element[] => data.map(({ attributes }, i) => drawArea(attributes, i))
+
+  const drawPolarAxes = (): JSX.Element[] =>
+    maxValues.map(({ label }, i) => {
+      const maxValue = maxValues[i].value
+      const tickFormatter = (tick: number) => Math.ceil(tick * maxValue)
+      return drawPolarAxix(label, i, tickFormatter)
+    })
+
   return (
     <VictoryChart polar theme={MATERIAL_THEME} domain={{ y: [0, 1] }}>
       <VictoryGroup style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}>
-        {data.map((data, i) => (
-          <VictoryArea key={i} data={data.attributes} />
-        ))}
+        {drawAreas()}
       </VictoryGroup>
 
-      {maxValues.map((key, i) => {
-        return (
-          <VictoryPolarAxis
-            key={i}
-            dependentAxis
-            style={{
-              axisLabel: { padding: 10 },
-              axis: { stroke: 'none' },
-              grid: { stroke: 'grey', strokeWidth: 0.25, opacity: 0.5 },
-            }}
-            tickLabelComponent={<VictoryLabel labelPlacement='vertical' />}
-            labelPlacement='perpendicular'
-            axisValue={i + 1}
-            label={key.label}
-            tickFormat={tick => Math.ceil(tick * maxValues[i].value)}
-            tickValues={[0.25, 0.5, 0.75]}
-          />
-        )
-      })}
-
-      <VictoryPolarAxis
-        labelPlacement='parallel'
-        tickFormat={() => ''}
-        style={{
-          axis: { stroke: 'none' },
-          grid: { stroke: 'grey', opacity: 0.5 },
-        }}
-      />
+      {drawPolarAxes()}
+      {drawSpokeLines(showSpokeLines)}
     </VictoryChart>
   )
 }
