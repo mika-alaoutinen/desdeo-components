@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryArea, VictoryLabel, VictoryPolarAxis } from 'victory'
 import { Attribute } from '../../types/dataTypes'
-import { defaultPolarAxisStyle } from './radarStyles'
+import { defaultPolarAxisStyle, defaultSpokeStyle } from './radarStyles'
 
 type TickFormatter = (tick: number) => number
 
@@ -23,4 +23,9 @@ const drawPolarAxix = (label: string, n: number, tickFormatter: TickFormatter): 
   />
 )
 
-export { drawArea, drawPolarAxix }
+const drawSpokeLines = (showSpokes: boolean): JSX.Element | false =>
+  showSpokes && (
+    <VictoryPolarAxis labelPlacement='parallel' tickFormat={() => ''} style={defaultSpokeStyle} />
+  )
+
+export { drawArea, drawPolarAxix, drawSpokeLines }
