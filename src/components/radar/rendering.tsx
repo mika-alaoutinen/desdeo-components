@@ -25,7 +25,12 @@ const drawPolarAxix = (label: string, n: number, tickFormatter: TickFormatter): 
 
 const drawSpokeLines = (showSpokes: boolean): JSX.Element | false =>
   showSpokes && (
-    <VictoryPolarAxis labelPlacement='parallel' tickFormat={() => ''} style={defaultSpokeStyle} />
+    <VictoryPolarAxis
+      name='spokeLine'
+      labelPlacement='parallel'
+      tickFormat={() => ''}
+      style={defaultSpokeStyle}
+    />
   )
 
 export { drawArea, drawPolarAxix, drawSpokeLines }
