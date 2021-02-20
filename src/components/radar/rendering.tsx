@@ -1,8 +1,13 @@
 import React from 'react'
-import { VictoryPolarAxis, VictoryLabel } from 'victory'
+import { VictoryArea, VictoryLabel, VictoryPolarAxis } from 'victory'
+import { Attribute } from '../../types/dataTypes'
 import { defaultPolarAxisStyle } from './radarStyles'
 
 type TickFormatter = (tick: number) => number
+
+const drawArea = (attributes: Attribute[], key: number): JSX.Element => (
+  <VictoryArea key={key} data={attributes} />
+)
 
 const drawPolarAxix = (label: string, n: number, tickFormatter: TickFormatter): JSX.Element => (
   <VictoryPolarAxis
@@ -18,4 +23,4 @@ const drawPolarAxix = (label: string, n: number, tickFormatter: TickFormatter): 
   />
 )
 
-export { drawPolarAxix }
+export { drawArea, drawPolarAxix }

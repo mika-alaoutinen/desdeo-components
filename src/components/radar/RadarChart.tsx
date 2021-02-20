@@ -1,10 +1,10 @@
 import React from 'react'
-import { VictoryArea, VictoryChart, VictoryGroup, VictoryPolarAxis } from 'victory'
+import { VictoryChart, VictoryGroup, VictoryPolarAxis } from 'victory'
 
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
-import { Attribute, AttributeSet, MaxValue } from '../../types/dataTypes'
+import { AttributeSet, MaxValue } from '../../types/dataTypes'
 import { defaultSpokeStyle } from './radarStyles'
-import { drawPolarAxix } from './rendering'
+import { drawArea, drawPolarAxix } from './rendering'
 
 interface Props {
   data: AttributeSet[]
@@ -14,10 +14,6 @@ interface Props {
 
 const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
   const drawAreas = (): JSX.Element[] => data.map(({ attributes }, i) => drawArea(attributes, i))
-
-  const drawArea = (attributes: Attribute[], key: number): JSX.Element => (
-    <VictoryArea key={key} data={attributes} />
-  )
 
   const drawPolarAxes = (): JSX.Element[] =>
     maxValues.map(({ label }, i) => {
