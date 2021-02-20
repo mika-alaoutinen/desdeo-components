@@ -1,9 +1,10 @@
 import React from 'react'
-import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis } from 'victory'
+import { VictoryArea, VictoryChart, VictoryGroup, VictoryPolarAxis } from 'victory'
 
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
 import { Attribute, AttributeSet, MaxValue } from '../../types/dataTypes'
-import { defaultPolarAxisStyle, defaultSpokeStyle } from './radarStyles'
+import { defaultSpokeStyle } from './radarStyles'
+import { drawPolarAxix } from './rendering'
 
 interface Props {
   data: AttributeSet[]
@@ -19,21 +20,11 @@ const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
   )
 
   const drawPolarAxes = (): JSX.Element[] =>
-    maxValues.map(({ label }, i) => drawPolarAxix(label, i))
-
-  const drawPolarAxix = (label: string, n: number): JSX.Element => (
-    <VictoryPolarAxis
-      key={n}
-      axisValue={n + 1}
-      dependentAxis
-      label={label}
-      labelPlacement='perpendicular'
-      tickFormat={tick => Math.ceil(tick * maxValues[n].value)}
-      tickLabelComponent={<VictoryLabel labelPlacement='vertical' />}
-      tickValues={[0.25, 0.5, 0.75]}
-      style={defaultPolarAxisStyle}
-    />
-  )
+    maxValues.map(({ label }, i) => {
+      const maxValue = maxValues[i].value
+      const tickFormatter = (tick: number) => Math.ceil(tick * maxValue)
+      return drawPolarAxix(label, i, tickFormatter)
+    })
 
   const drawSpokeLines = (): JSX.Element => (
     <VictoryPolarAxis labelPlacement='parallel' tickFormat={() => ''} style={defaultSpokeStyle} />
