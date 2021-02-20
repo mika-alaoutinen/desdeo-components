@@ -1,7 +1,9 @@
 import React from 'react'
 import { VictoryArea, VictoryChart, VictoryGroup, VictoryLabel, VictoryPolarAxis } from 'victory'
+
 import { MATERIAL_THEME } from '../../styles/victoryStyles'
 import { Attribute, AttributeSet, MaxValue } from '../../types/dataTypes'
+import { defaultPolarAxisStyle, defaultSpokeStyle } from './radarStyles'
 
 interface Props {
   data: AttributeSet[]
@@ -23,11 +25,7 @@ const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
     <VictoryPolarAxis
       key={n}
       dependentAxis
-      style={{
-        axisLabel: { padding: 10 },
-        axis: { stroke: 'none' },
-        grid: { stroke: 'grey', strokeWidth: 0.25, opacity: 0.5 },
-      }}
+      style={defaultPolarAxisStyle}
       tickLabelComponent={<VictoryLabel labelPlacement='vertical' />}
       labelPlacement='perpendicular'
       axisValue={n + 1}
@@ -38,14 +36,7 @@ const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
   )
 
   const drawSpokeLines = (): JSX.Element => (
-    <VictoryPolarAxis
-      labelPlacement='parallel'
-      tickFormat={() => ''}
-      style={{
-        axis: { stroke: 'none' },
-        grid: { stroke: 'grey', opacity: 0.5 },
-      }}
-    />
+    <VictoryPolarAxis labelPlacement='parallel' tickFormat={() => ''} style={defaultSpokeStyle} />
   )
 
   return (
