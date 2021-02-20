@@ -1,44 +1,49 @@
 import {
-  BarChartComponent,
-  ParallelAxesComponent,
-  GroupedBarChartComponent,
-  StackedBarChartComponent,
-  ScatterChartComponent,
-  ScatterSelectionComponent,
-  CoordinateTableComponent,
-  DataTableComponent,
+  Bar,
+  GroupedBar,
+  StackedBar,
+  ParallelAxes,
+  Radar,
+  Scatter,
+  ScatterSelection,
+  CoordinateTable,
+  DataTable,
 } from '../index'
 
 describe('Chart components are exported', () => {
-  it('BarChartComponent is truthy', () => {
-    expect(BarChartComponent).toBeTruthy()
+  it('Bar chart is truthy', () => {
+    expect(Bar).toBeTruthy()
   })
 
-  it('ParallelAxesComponent is truthy', () => {
-    expect(ParallelAxesComponent).toBeTruthy()
+  it('grouped bar chart is truthy', () => {
+    expect(GroupedBar).toBeTruthy()
   })
 
-  it('GroupedBarChartComponent is truthy', () => {
-    expect(GroupedBarChartComponent).toBeTruthy()
+  it('stacked bar chart is truthy', () => {
+    expect(StackedBar).toBeTruthy()
   })
 
-  it('StackedBarChartComponent is truthy', () => {
-    expect(StackedBarChartComponent).toBeTruthy()
+  it('parallel axes is truthy', () => {
+    expect(ParallelAxes).toBeTruthy()
   })
 
-  it('ScatterChartComponent is truthy', () => {
-    expect(ScatterChartComponent).toBeTruthy()
+  it('radar chart is truthy', () => {
+    expect(Radar).toBeTruthy()
   })
 
-  it('ScatterSelectionComponent is truthy', () => {
-    expect(ScatterSelectionComponent).toBeTruthy()
+  it('clickable scatter chart is truthy', () => {
+    expect(Scatter).toBeTruthy()
   })
 
-  it('CoordinateTableComponent is truthy', () => {
-    expect(CoordinateTableComponent).toBeTruthy()
+  it('scatter selection is truthy', () => {
+    expect(ScatterSelection).toBeTruthy()
   })
 
-  it('DataTableComponent is truthy', () => {
-    expect(DataTableComponent).toBeTruthy()
+  it('coordinate table is truthy', () => {
+    expect(CoordinateTable).toBeTruthy()
+  })
+
+  it('data table is truthy', () => {
+    expect(DataTable).toBeTruthy()
   })
 })
