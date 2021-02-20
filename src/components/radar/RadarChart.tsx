@@ -24,14 +24,14 @@ const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
   const drawPolarAxix = (label: string, n: number): JSX.Element => (
     <VictoryPolarAxis
       key={n}
-      dependentAxis
-      style={defaultPolarAxisStyle}
-      tickLabelComponent={<VictoryLabel labelPlacement='vertical' />}
-      labelPlacement='perpendicular'
       axisValue={n + 1}
+      dependentAxis
       label={label}
+      labelPlacement='perpendicular'
       tickFormat={tick => Math.ceil(tick * maxValues[n].value)}
+      tickLabelComponent={<VictoryLabel labelPlacement='vertical' />}
       tickValues={[0.25, 0.5, 0.75]}
+      style={defaultPolarAxisStyle}
     />
   )
 
