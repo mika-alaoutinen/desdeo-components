@@ -1,16 +1,17 @@
 import React from 'react'
 
-import ParallelAxes from './ParallelAxes'
-import { normalizeData } from '../../data/attributeParser'
-import { getAttributeNames, getMaxValues } from '../../data/attributeParser'
+import { getAttributeNames, getMaxValues, normalizeData } from '../../data/attributeParser'
 import { createAttributeSets } from '../../data/inputTransformations'
 import { DataSet } from '../../types/dataTypes'
+import { OnChangeHandler } from '../../types/eventHandlerTypes'
+import ParallelAxes from './ParallelAxes'
 
 export interface Props {
   data: DataSet[]
+  onChange: OnChangeHandler
 }
 
-const ParallelAxesWrapper: React.FC<Props> = ({ data }) => {
+const ParallelAxesWrapper: React.FC<Props> = ({ data, onChange }) => {
   const datasets = createAttributeSets(data)
   const normalized = normalizeData(datasets)
 
@@ -19,6 +20,7 @@ const ParallelAxesWrapper: React.FC<Props> = ({ data }) => {
       attributes={getAttributeNames(normalized)}
       data={normalized}
       maxTickValues={getMaxValues(datasets)}
+      onChange={onChange}
     />
   )
 }

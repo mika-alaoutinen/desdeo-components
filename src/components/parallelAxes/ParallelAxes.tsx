@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { VictoryChart } from 'victory'
 
 import { AttributeSet, Filter } from '../../types/dataTypes'
+import { OnChangeHandler } from '../../types/eventHandlerTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
@@ -12,9 +13,10 @@ interface Props {
   attributes: string[]
   data: AttributeSet[]
   maxTickValues: number[]
+  onChange: OnChangeHandler
 }
 
-const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
+const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues, onChange }) => {
   const [activeDatasets, setActiveDataSets] = useState<string[]>([])
   const [filters, setFilters] = useState<Filter[]>([])
 
@@ -23,14 +25,18 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
     setActiveDataSets(data.map(dataset => dataset.label))
   }, [data])
 
-  // Event handler for vertical brush filters.
-  // Limit the number of callbacks by checking if active datasets have actually changed.
+  // Event handler for vertical brush filters
   const onDomainChange = (domain: DomainTuple, name: string): void => {
     setFilters(addNewFilters(filters, domain, name))
     const activeSets = getActiveDatasets(data, filters)
+    doCallback(activeSets)
+    setActiveDataSets(activeSets)
+  }
+
+  // Limit the number of callbacks by triggering them only when active datasets have changed
+  const doCallback = (activeSets: string[]): void => {
     if (activeSets.length !== activeDatasets.length) {
-      setActiveDataSets(activeSets)
-      // Emit callback function
+      onChange(activeSets)
     }
   }
 
