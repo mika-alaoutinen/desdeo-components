@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { VictoryChart } from 'victory'
 
+import { AttributeSet, Filter } from '../../types/dataTypes'
+import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
-import { Filter, AttributeSet } from '../../types/dataTypes'
-import { DomainTuple } from '../../types/victoryTypes'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
@@ -23,13 +23,15 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
     setActiveDataSets(data.map(dataset => dataset.label))
   }, [data])
 
-  // Event handler for vertical brush filters
-  const onDomainChange = (domain: DomainTuple, name?: string): void => {
-    if (!name || !domain) {
-      return
-    }
+  // Event handler for vertical brush filters.
+  // Limit the number of callbacks by checking if active datasets have actually changed.
+  const onDomainChange = (domain: DomainTuple, name: string): void => {
     setFilters(addNewFilters(filters, domain, name))
-    setActiveDataSets(getActiveDatasets(data, filters))
+    const activeSets = getActiveDatasets(data, filters)
+    if (activeSets.length !== activeDatasets.length) {
+      setActiveDataSets(activeSets)
+      // Emit callback function
+    }
   }
 
   const drawAxes = (): JSX.Element[] =>

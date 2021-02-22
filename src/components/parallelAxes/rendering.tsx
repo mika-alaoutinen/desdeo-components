@@ -4,7 +4,7 @@ import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 import { AttributeSet } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 
-type OnDomainChange = (domainTuple: DomainTuple, name?: string) => void
+type OnDomainChange = (domainTuple: DomainTuple, name: string) => void
 
 const drawAxis = (axisComponent: JSX.Element, offsetX: number, tickValue: number): JSX.Element => (
   <VictoryAxis
@@ -24,19 +24,21 @@ const drawAxis = (axisComponent: JSX.Element, offsetX: number, tickValue: number
   />
 )
 
+/*
+  About onBrushDomainChange:
+  The domain numbers receoved from the component are in the wrong order of [max, min].
+  Flip the numbers around so that they make sense as a range.
+  Props should always have a name, even though the type indicates that name may be undefined.
+  [0, 0] stops the application from crashing if the brush is clicked and not dragged
+*/
 const drawBrushLine = (attribute: string, onDomainChange: OnDomainChange): JSX.Element => (
   <VictoryBrushLine
     key={attribute}
     name={attribute}
-    // The domain numbers receoved from the component are in the wrong order of [max, min].
-    // Flip the numbers around so that they make sense as a range.
     onBrushDomainChange={(domain, props) => {
-      // Stops the application from crashing if the brush is clicked instead of clicked and dragged
-      if (!domain) {
-        return
-      }
-      const domainTuple: DomainTuple = [domain[1] as number, domain[0] as number]
-      return onDomainChange(domainTuple, props?.name)
+      const domainTuple: DomainTuple = domain ? [domain[1] as number, domain[0] as number] : [0, 0]
+      const name = props?.name ? props.name : 'default name'
+      return onDomainChange(domainTuple, name)
     }}
     width={20}
   />
