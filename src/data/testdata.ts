@@ -1,4 +1,4 @@
-import { Coordinate, DataSet, AttributeSet } from '../types/dataTypes'
+import { Coordinate, DataSet } from '../types/dataTypes'
 
 const coordinates: Coordinate[] = [
   { id: 'a', x: 6.042483, y: 3.17527 },
@@ -95,27 +95,6 @@ const dataset: DataSet[] = [
   },
 ]
 
-const parallelAxesData: AttributeSet[] = [
-  {
-    label: 'Alternative 1',
-    attributes: [
-      { id: 'wq-fishery-1', x: 'wq fishery', y: 5.758127 },
-      { id: 'wq-city-1', x: 'wq city', y: 3.17527 },
-      { id: 'roi-1', x: 'roi', y: 6.090291 },
-      { id: 'city-tax-1', x: 'city tax', y: 2.444406 },
-    ],
-  },
-  {
-    label: 'Alternative 2',
-    attributes: [
-      { id: 'wq-fishery-2', x: 'wq fishery', y: 6.042483 },
-      { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
-      { id: 'roi-2', x: 'roi', y: 6.887735 },
-      { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
-    ],
-  },
-]
-
 export const radarDataset: DataSet[] = [
   {
     label: 'WQ Fishery',
@@ -159,4 +138,4 @@ export const radarDataset: DataSet[] = [
   },
 ]
 
-export { coordinates, dataset, parallelAxesData }
+export { coordinates, dataset }

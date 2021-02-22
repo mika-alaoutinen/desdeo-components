@@ -1,4 +1,4 @@
-import { parallelAxesData } from '../../../data/testdata'
+import { attributeSet } from '../../testdata'
 import { Filter } from '../../../types/dataTypes'
 import { Layout } from '../../../types/layoutTypes'
 
@@ -63,7 +63,7 @@ describe('calculateAxisOffset calculates offset based on given layout', () => {
 
 describe('getActiveDatasets finds active datasets', () => {
   it('all datasets are active when filters are empty', () => {
-    const activeSets = getActiveDatasets(parallelAxesData, [])
+    const activeSets = getActiveDatasets(attributeSet, [])
     expect(activeSets).toEqual(['Alternative 1', 'Alternative 2'])
   })
 
@@ -74,7 +74,7 @@ describe('getActiveDatasets finds active datasets', () => {
         range: [0, 0.01],
       },
     ]
-    expect(getActiveDatasets(parallelAxesData, filters)).toEqual([])
+    expect(getActiveDatasets(attributeSet, filters)).toEqual([])
   })
 
   it('handles unknown filter type', () => {
@@ -84,6 +84,6 @@ describe('getActiveDatasets finds active datasets', () => {
         range: [0, 1],
       },
     ]
-    expect(getActiveDatasets(parallelAxesData, filters)).toEqual([])
+    expect(getActiveDatasets(attributeSet, filters)).toEqual([])
   })
 })
