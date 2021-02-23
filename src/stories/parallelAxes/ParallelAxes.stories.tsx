@@ -9,7 +9,7 @@ const Template: Story<Props> = args => <ParallelAxesWrapper {...args} />
 export const ParallelCoordinates = Template.bind({})
 ParallelCoordinates.args = {
   data: dataset,
-  onChange: ids => console.log('active IDs', ids),
+  onChange: attributeSets => console.log('active sets', attributeSets),
 }
 
 export default {
