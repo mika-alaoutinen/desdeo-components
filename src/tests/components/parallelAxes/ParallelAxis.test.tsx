@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { renderComponent, renderVictoryContainer } from '../componentTests'
@@ -7,7 +7,11 @@ import { renderComponent, renderVictoryContainer } from '../componentTests'
 import ParallelAxesWrapper from '../../../components/parallelAxes/ParallelAxesWrapper'
 import { dataset } from '../../testdata'
 
-const component = <ParallelAxesWrapper data={dataset} />
+const onChangeHandler = jest.fn()
+const onLineClickHandler = jest.fn()
+const component = (
+  <ParallelAxesWrapper data={dataset} onChange={onChangeHandler} onLineClick={onLineClickHandler} />
+)
 
 describe('Smoke tests for ParallelAxes rendering', () => {
   it('chart is rendered', () => {
@@ -41,5 +45,14 @@ describe('Data is displayed correctly', () => {
     render(component)
     expect(screen.getByText(/3/)).toBeInTheDocument()
     expect(screen.getByText(/6/)).toBeInTheDocument()
+  })
+})
+
+describe('Horizontal dataset lines can be clicked', () => {
+  it('lines are clickable', () => {
+    const { container } = render(component)
+    const lines = container.querySelectorAll('path[role="presentation"]')
+    fireEvent.click(lines[0])
+    expect(onLineClickHandler).toHaveBeenCalled()
   })
 })

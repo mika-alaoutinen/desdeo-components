@@ -31,8 +31,8 @@ const calculateAxisOffset = (index: number, attributesLength: number, layout?: L
   return step * index + padding.left
 }
 
-const getActiveDatasets = (datasets: AttributeSet[], filters: Filter[]): string[] =>
-  datasets.map(dataset => (isDatasetActive(dataset, filters) ? dataset.label : '')).filter(Boolean)
+const getActiveDatasets = (datasets: AttributeSet[], filters: Filter[]): AttributeSet[] =>
+  datasets.filter(dataset => isDatasetActive(dataset, filters))
 
 // Utility functions
 const isDatasetActive = (dataset: AttributeSet, filters: Filter[]): boolean =>

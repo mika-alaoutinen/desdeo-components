@@ -1,4 +1,4 @@
-import { parallelAxesData } from '../../data/testdata'
+import { attributeSet } from '../testdata'
 import { AttributeSet, Attribute } from '../../types/dataTypes'
 
 import {
@@ -48,14 +48,14 @@ describe('getMaxAttributes finds the attributes with largest values in a dataset
       { id: 'roi-2', x: 'roi', y: 6.887735 },
       { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
     ]
-    expect(getMaxAttributes(parallelAxesData)).toEqual(expected)
+    expect(getMaxAttributes(attributeSet)).toEqual(expected)
   })
 })
 
 describe('getMaxAttributeValues find the largest value for each kind of attribute', () => {
   it('maps values as an array of numbers', () => {
     const expected = [6.042483, 3.410843, 6.887735, 8.989781]
-    expect(getMaxValues(parallelAxesData)).toEqual(expected)
+    expect(getMaxValues(attributeSet)).toEqual(expected)
   })
 
   it('negative values are treated as non-viable', () => {
@@ -93,6 +93,6 @@ describe('Data is cleaned up by sanitizing inputs and normalizing values', () =>
   ]
 
   it('data should be normalized', () => {
-    expect(normalizeData(parallelAxesData)).toEqual(normalizedData)
+    expect(normalizeData(attributeSet)).toEqual(normalizedData)
   })
 })

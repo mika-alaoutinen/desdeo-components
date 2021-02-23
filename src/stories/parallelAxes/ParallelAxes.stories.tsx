@@ -9,6 +9,8 @@ const Template: Story<Props> = args => <ParallelAxesWrapper {...args} />
 export const ParallelCoordinates = Template.bind({})
 ParallelCoordinates.args = {
   data: dataset,
+  onChange: attributeSets => console.log('active sets', attributeSets),
+  onLineClick: attributes => console.log('clicked on line with data', attributes),
 }
 
 export default {

@@ -1,4 +1,4 @@
-import { Coordinate, DataSet } from '../types/dataTypes'
+import { AttributeSet, Coordinate, DataSet } from '../types/dataTypes'
 
 // Small datasets used in unit tests
 
@@ -25,6 +25,27 @@ export const dataset: DataSet[] = [
       { id: 'b1', isSelected: false, value: 4 },
       { id: 'b2', isSelected: false, value: 5 },
       { id: 'b3', isSelected: false, value: 6 },
+    ],
+  },
+]
+
+export const attributeSet: AttributeSet[] = [
+  {
+    label: 'Alternative 1',
+    attributes: [
+      { id: 'wq-fishery-1', x: 'wq fishery', y: 5.758127 },
+      { id: 'wq-city-1', x: 'wq city', y: 3.17527 },
+      { id: 'roi-1', x: 'roi', y: 6.090291 },
+      { id: 'city-tax-1', x: 'city tax', y: 2.444406 },
+    ],
+  },
+  {
+    label: 'Alternative 2',
+    attributes: [
+      { id: 'wq-fishery-2', x: 'wq fishery', y: 6.042483 },
+      { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
+      { id: 'roi-2', x: 'roi', y: 6.887735 },
+      { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
     ],
   },
 ]

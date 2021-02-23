@@ -1,35 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import { VictoryChart } from 'victory'
 
+import { AttributeSet, Filter } from '../../types/dataTypes'
+import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
-import { Filter, AttributeSet } from '../../types/dataTypes'
-import { DomainTuple } from '../../types/victoryTypes'
+import { OnChangeHandler, OnLineClickHandler } from './types'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
   attributes: string[]
   data: AttributeSet[]
   maxTickValues: number[]
+  onChange: OnChangeHandler
+  onLineClick: OnLineClickHandler
 }
 
-const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
-  const [activeDatasets, setActiveDataSets] = useState<string[]>([])
+const ParallelAxes: React.FC<Props> = ({
+  attributes,
+  data,
+  maxTickValues,
+  onChange,
+  onLineClick,
+}) => {
+  const [activeDatasets, setActiveDataSets] = useState<AttributeSet[]>([])
   const [filters, setFilters] = useState<Filter[]>([])
 
-  // All datasets are active on component load
   useEffect(() => {
-    setActiveDataSets(data.map(dataset => dataset.label))
+    setActiveDataSets(data)
   }, [data])
 
   // Event handler for vertical brush filters
-  const onDomainChange = (domain: DomainTuple, name?: string): void => {
-    if (!name || !domain) {
-      return
-    }
+  const onDomainChange = (domain: DomainTuple, name: string): void => {
     setFilters(addNewFilters(filters, domain, name))
-    setActiveDataSets(getActiveDatasets(data, filters))
+    const activeSets = getActiveDatasets(data, filters)
+    doCallback(activeSets)
+    setActiveDataSets(activeSets)
+  }
+
+  // Limit the number of callbacks by triggering them only when active datasets have changed
+  const doCallback = (activeSets: AttributeSet[]): void => {
+    if (activeSets.length !== activeDatasets.length) {
+      onChange(activeSets)
+    }
   }
 
   const drawAxes = (): JSX.Element[] =>
@@ -42,8 +56,8 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues }) => {
 
   const drawLines = (): JSX.Element[] =>
     data.map(dataset => {
-      const opacity = activeDatasets.includes(dataset.label) ? 1 : 0.2
-      return drawLine(dataset, opacity)
+      const opacity = activeDatasets.includes(dataset) ? 1 : 0.2
+      return drawLine(dataset, opacity, onLineClick)
     })
 
   return (
