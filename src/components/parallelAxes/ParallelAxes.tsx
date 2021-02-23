@@ -17,12 +17,11 @@ interface Props {
 }
 
 const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues, onChange }) => {
-  const [activeDatasets, setActiveDataSets] = useState<string[]>([])
+  const [activeDatasets, setActiveDataSets] = useState<AttributeSet[]>([])
   const [filters, setFilters] = useState<Filter[]>([])
 
-  // All datasets are active on component load
   useEffect(() => {
-    setActiveDataSets(data.map(dataset => dataset.label))
+    setActiveDataSets(data)
   }, [data])
 
   // Event handler for vertical brush filters
@@ -34,7 +33,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues, onChan
   }
 
   // Limit the number of callbacks by triggering them only when active datasets have changed
-  const doCallback = (activeSets: string[]): void => {
+  const doCallback = (activeSets: AttributeSet[]): void => {
     if (activeSets.length !== activeDatasets.length) {
       onChange(activeSets)
     }
@@ -50,7 +49,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues, onChan
 
   const drawLines = (): JSX.Element[] =>
     data.map(dataset => {
-      const opacity = activeDatasets.includes(dataset.label) ? 1 : 0.2
+      const opacity = activeDatasets.includes(dataset) ? 1 : 0.2
       return drawLine(dataset, opacity)
     })
 
