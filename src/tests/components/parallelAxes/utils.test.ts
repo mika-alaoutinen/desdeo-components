@@ -64,7 +64,8 @@ describe('calculateAxisOffset calculates offset based on given layout', () => {
 describe('getActiveDatasets finds active datasets', () => {
   it('all datasets are active when filters are empty', () => {
     const activeSets = getActiveDatasets(attributeSet, [])
-    expect(activeSets).toEqual(['Alternative 1', 'Alternative 2'])
+    const activeLabels = activeSets.map(set => set.label)
+    expect(activeLabels).toEqual(['Alternative 1', 'Alternative 2'])
   })
 
   it('filtered datasets are not active', () => {
