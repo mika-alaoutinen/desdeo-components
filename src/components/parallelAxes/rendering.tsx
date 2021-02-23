@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
-import { AttributeSet } from '../../types/dataTypes'
+import { Attribute, AttributeSet } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 import { OnLineClickHandler } from './types'
 
@@ -59,7 +59,7 @@ const drawLine = (
           onClick: () => [
             {
               eventKey: 'all',
-              mutation: ({ data }) => onClick(data),
+              mutation: ({ data }) => onClick(mapToAttributes(data)),
             },
           ],
         },
@@ -76,5 +76,10 @@ const drawLine = (
     }}
   />
 )
+
+// A hackerman solution for mapping any type data into Attributes. The purpose
+// is to get rid of extra fields that expose Victory's internal implementation details.
+const mapToAttributes = (data: Attribute[]): Attribute[] =>
+  data.map(({ id, x, y }) => ({ id, x, y }))
 
 export { drawAxis, drawBrushLine, drawLine }
