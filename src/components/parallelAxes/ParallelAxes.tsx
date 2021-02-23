@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { VictoryChart } from 'victory'
 
 import { AttributeSet, Filter } from '../../types/dataTypes'
-import { OnChangeHandler } from '../../types/eventHandlerTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
+import { OnChangeHandler, OnLineClickHandler } from './types'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
@@ -14,9 +14,16 @@ interface Props {
   data: AttributeSet[]
   maxTickValues: number[]
   onChange: OnChangeHandler
+  onLineClick: OnLineClickHandler
 }
 
-const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues, onChange }) => {
+const ParallelAxes: React.FC<Props> = ({
+  attributes,
+  data,
+  maxTickValues,
+  onChange,
+  onLineClick,
+}) => {
   const [activeDatasets, setActiveDataSets] = useState<AttributeSet[]>([])
   const [filters, setFilters] = useState<Filter[]>([])
 
@@ -50,7 +57,7 @@ const ParallelAxes: React.FC<Props> = ({ attributes, data, maxTickValues, onChan
   const drawLines = (): JSX.Element[] =>
     data.map(dataset => {
       const opacity = activeDatasets.includes(dataset) ? 1 : 0.2
-      return drawLine(dataset, opacity)
+      return drawLine(dataset, opacity, onLineClick)
     })
 
   return (

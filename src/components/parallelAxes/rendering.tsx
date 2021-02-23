@@ -3,6 +3,7 @@ import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
 import { AttributeSet } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
+import { OnLineClickHandler } from './types'
 
 type OnDomainChange = (domainTuple: DomainTuple, name: string) => void
 
@@ -44,9 +45,26 @@ const drawBrushLine = (attribute: string, onDomainChange: OnDomainChange): JSX.E
   />
 )
 
-const drawLine = ({ attributes, label }: AttributeSet, opacity: number): JSX.Element => (
+const drawLine = (
+  { attributes, label }: AttributeSet,
+  opacity: number,
+  onClick: OnLineClickHandler
+): JSX.Element => (
   <VictoryLine
     key={label}
+    events={[
+      {
+        target: 'data',
+        eventHandlers: {
+          onClick: () => [
+            {
+              eventKey: 'all',
+              mutation: ({ data }) => onClick(data),
+            },
+          ],
+        },
+      },
+    ]}
     name={label}
     data={attributes}
     groupComponent={<g />}
