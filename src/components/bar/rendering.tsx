@@ -3,12 +3,13 @@ import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
 import { mapCoordinateToValue } from '../../data/outputTransformations'
 import { mapFillStyle } from '../../styles/victoryStyles'
-import { Coordinate, CoordinateSet } from '../../types/dataTypes'
+import { Coordinate } from '../../types/dataTypes'
 import { OnClickHandler } from '../../types/eventHandlerTypes'
+import { drawTooltip } from '../victory/components'
 
 const createCoordinateLabel = ({ id, y }: Coordinate): string => `${id}:\n${y}`
 
-const drawBar = ({ data }: CoordinateSet, onClick: OnClickHandler, key: number): JSX.Element => (
+const drawBar = (data: Coordinate[], onClick: OnClickHandler, key: number): JSX.Element => (
   <VictoryBar
     key={key}
     data={data}
@@ -24,6 +25,7 @@ const drawBar = ({ data }: CoordinateSet, onClick: OnClickHandler, key: number):
         },
       },
     ]}
+    labelComponent={drawTooltip()}
     labels={({ datum }) => createCoordinateLabel(datum)}
     style={{
       data: {

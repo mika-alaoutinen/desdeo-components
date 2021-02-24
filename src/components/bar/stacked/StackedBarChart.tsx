@@ -9,7 +9,7 @@ import { MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 
 const StackedBarChart: React.FC<BarChartProps> = ({ data, labels, onClick, orientation }) => {
-  const drawBars = (): JSX.Element[] => data.map((dataset, i) => drawBar(dataset, onClick, i))
+  const drawBars = (): JSX.Element[] => data.map((dataset, i) => drawBar(dataset.data, onClick, i))
 
   return (
     <VictoryChart

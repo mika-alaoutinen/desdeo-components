@@ -1,10 +1,8 @@
 import React from 'react'
-import { VictoryAxis, VictoryBar, VictoryChart } from 'victory'
+import { VictoryAxis, VictoryChart } from 'victory'
 
-import { createCoordinateLabel } from '../rendering'
-import { drawTooltip } from '../../victory/components'
-import { mapCoordinateToValue } from '../../../data/outputTransformations'
-import { DOMAIN_PADDING, mapFillStyle, MATERIAL_THEME } from '../../../styles/victoryStyles'
+import { drawBar } from '../rendering'
+import { DOMAIN_PADDING, MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { ValueChart } from '../../../types/chartTypes'
 
 const BarChart: React.FC<ValueChart> = ({ data, onClick, xAxisLabel }) => (
@@ -18,29 +16,7 @@ const BarChart: React.FC<ValueChart> = ({ data, onClick, xAxisLabel }) => (
     />
 
     <VictoryAxis dependentAxis />
-
-    <VictoryBar
-      data={data}
-      events={[
-        {
-          target: 'data',
-          eventHandlers: {
-            onClick: () => [
-              {
-                mutation: ({ datum }) => onClick(mapCoordinateToValue(datum)),
-              },
-            ],
-          },
-        },
-      ]}
-      labelComponent={drawTooltip()}
-      labels={({ datum }) => createCoordinateLabel(datum)}
-      style={{
-        data: {
-          fill: ({ datum }) => mapFillStyle(datum),
-        },
-      }}
-    />
+    {drawBar(data, onClick, 1)}
   </VictoryChart>
 )
 
