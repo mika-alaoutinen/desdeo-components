@@ -2,6 +2,7 @@ import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryLabel } from 'victory'
 
 import { mapCoordinateToValue } from '../../data/outputTransformations'
+import { mapFillStyle } from '../../styles/victoryStyles'
 import { Coordinate, CoordinateSet } from '../../types/dataTypes'
 import { OnClickHandler } from '../../types/eventHandlerTypes'
 
@@ -24,6 +25,11 @@ const drawBar = ({ data }: CoordinateSet, onClick: OnClickHandler, key: number):
       },
     ]}
     labels={({ datum }) => createCoordinateLabel(datum)}
+    style={{
+      data: {
+        fill: ({ datum }) => mapFillStyle(datum),
+      },
+    }}
   />
 )
 

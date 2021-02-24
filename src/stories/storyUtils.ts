@@ -5,7 +5,7 @@ import { CoordinateChart, CoordinateSelectChart, ValueChart } from '../types/cha
 import { Coordinate, Value } from '../types/dataTypes'
 
 export const useOnClickHandler = (): ValueChart => {
-  const [data, setData] = useState(coordinates)
+  const [data, setData] = useState<Coordinate[]>(coordinates)
 
   const onClick = ({ id }: Value): void => {
     setData(editCoordinates(id, data))
@@ -15,7 +15,7 @@ export const useOnClickHandler = (): ValueChart => {
 }
 
 export const useCoordinateClickHandler = (): CoordinateChart => {
-  const [data, setData] = useState(coordinates)
+  const [data, setData] = useState<Coordinate[]>(coordinates)
 
   const onClick = ({ id }: Coordinate): void => {
     setData(editCoordinates(id, data))
@@ -25,7 +25,7 @@ export const useCoordinateClickHandler = (): CoordinateChart => {
 }
 
 export const useOnSelectHandler = (): CoordinateSelectChart => {
-  const [data, setData] = useState(coordinates)
+  const [data, setData] = useState<Coordinate[]>(coordinates)
 
   const onSelect = (selected: Coordinate[]): void => {
     const selectedIDs = selected.map(datum => datum.id)
