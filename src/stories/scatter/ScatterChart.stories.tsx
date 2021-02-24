@@ -6,7 +6,7 @@ import { useCoordinateClickHandler } from '../hooks/coordinateChartHooks'
 import { coordinates } from '../../data/testdata'
 import { CoordinateChart } from '../../types/chartTypes'
 
-export const ScatterChartComponent = (): JSX.Element => {
+export const ScatterChartWithHooks = (): JSX.Element => {
   const { data, onClick } = useCoordinateClickHandler()
 
   return (

@@ -6,7 +6,7 @@ import BarChartWrapper, { Props } from '../../components/bar/basic/BarChartWrapp
 import { useOnClickHandler } from '../hooks/coordinateChartHooks'
 import { dataset } from '../../data/testdata'
 
-export const BarChartComponent = (): JSX.Element => {
+export const BarChartWithHooks = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
 
   return <BarChart data={data} onClick={onClick} />

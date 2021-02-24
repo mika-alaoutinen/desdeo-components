@@ -6,7 +6,7 @@ import { useOnSelectHandler } from '../hooks/coordinateChartHooks'
 import { coordinates } from '../../data/testdata'
 import { CoordinateSelectChart } from '../../types/chartTypes'
 
-export const ScatterSeletionComponent = (): JSX.Element => {
+export const ScatterSeletionWithHooks = (): JSX.Element => {
   const { data, onSelect, onSelectionCleared } = useOnSelectHandler()
 
   return (

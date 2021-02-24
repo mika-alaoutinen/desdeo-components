@@ -6,7 +6,7 @@ import { useOnClickHandler } from '../hooks/barChartHooks'
 import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
-export const GroupedBar = (): JSX.Element => {
+export const GroupedBarWithHooks = (): JSX.Element => {
   const { data, grouping, onClick, orientation } = useOnClickHandler()
 
   return (
