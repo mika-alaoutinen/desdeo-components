@@ -1,15 +1,13 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import CoordinateTable from '../../components/table/coordinateTable/CoordinateTable'
 import DataTable, { Props } from '../../components/table/dataTable/DataTable'
-import { useCoordinateClickHandler } from '../hooks/coordinateChartHooks'
 import { dataset } from '../../data/testdata'
+import { useOnClickHandler } from '../hooks/barChartHooks'
 
-export const CoordinateTableWithHooks = (): JSX.Element => {
-  const { data, onClick } = useCoordinateClickHandler()
-
-  return <CoordinateTable data={data} onClick={onClick} />
+export const DataTableWithHooks = (): JSX.Element => {
+  const { data, onClick } = useOnClickHandler()
+  return <DataTable data={data} onClick={onClick} />
 }
 
 const Template: Story<Props> = args => <DataTable {...args} />
@@ -21,7 +19,7 @@ DataTableComponent.args = {
 }
 
 export default {
-  title: 'DESDEO/Table',
+  title: 'DESDEO/DataTable',
   component: DataTableComponent,
   argTypes: {
     data: {
