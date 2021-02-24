@@ -4,7 +4,7 @@ import { VictoryChart, VictoryGroup } from 'victory'
 import { calculatePadding } from '../layout'
 import { drawBar, drawMainAxis, drawDependentAxis } from '../rendering'
 import { calculateHeight, calculateWidth } from '../../victory/containerUtils'
-import { MATERIAL_THEME } from '../../../styles/victoryStyles'
+import { DEFAULT_COLOR_SCALE, MATERIAL_THEME } from '../../../styles/victoryStyles'
 import { BarChartProps } from '../../../types/chartTypes'
 
 const GroupedBarChart: React.FC<BarChartProps> = ({ data, labels, onClick, orientation }) => {
@@ -21,6 +21,7 @@ const GroupedBarChart: React.FC<BarChartProps> = ({ data, labels, onClick, orien
       {drawDependentAxis()}
 
       <VictoryGroup
+        colorScale={DEFAULT_COLOR_SCALE}
         horizontal={orientation === 'horizontal'}
         offset={8}
         style={{
