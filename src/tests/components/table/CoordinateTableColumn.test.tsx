@@ -35,7 +35,7 @@ describe('CoordinateTableColumn is rendered correctly', () => {
   })
 })
 
-describe('Background color of a row changes on mouse hover', () => {
+describe('Background color of a row changes', () => {
   it('background is white by default', () => {
     const component = createComponent(createCoordinate())
     defaultColorShouldBeWhite(component)
