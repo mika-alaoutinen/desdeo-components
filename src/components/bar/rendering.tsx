@@ -7,11 +7,7 @@ import { OnClickHandler } from '../../types/eventHandlerTypes'
 
 const createCoordinateLabel = ({ id, y }: Coordinate): string => `${id}:\n${y}`
 
-const drawBar = (
-  { data }: CoordinateSet,
-  onClick: OnClickHandler,
-  key: number | string
-): JSX.Element => (
+const drawBar = ({ data }: CoordinateSet, onClick: OnClickHandler, key: number): JSX.Element => (
   <VictoryBar
     key={key}
     data={data}
