@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react'
 
 import CoordinateTable from '../../components/table/coordinateTable/CoordinateTable'
 import DataTable, { Props } from '../../components/table/dataTable/DataTable'
-import { useCoordinateClickHandler } from '../storyUtils'
+import { useCoordinateClickHandler } from '../hooks/coordinateChartHooks'
 import { dataset } from '../../data/testdata'
 
 export const CoordinateTableComponent = (): JSX.Element => {

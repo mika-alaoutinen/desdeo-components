@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import ScatterChart from '../../components/scatter/ScatterChart'
-import { useCoordinateClickHandler } from '../storyUtils'
+import { useCoordinateClickHandler } from '../hooks/coordinateChartHooks'
 import { coordinates } from '../../data/testdata'
 import { CoordinateChart } from '../../types/chartTypes'
 

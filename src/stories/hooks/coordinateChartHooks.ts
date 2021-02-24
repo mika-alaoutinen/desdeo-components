@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import { coordinates } from '../data/testdata'
-import { CoordinateChart, CoordinateSelectChart, ValueChart } from '../types/chartTypes'
-import { Coordinate, Value } from '../types/dataTypes'
+import { coordinates } from '../../data/testdata'
+import { CoordinateChart, CoordinateSelectChart, ValueChart } from '../../types/chartTypes'
+import { Coordinate, Value } from '../../types/dataTypes'
 
 export const useOnClickHandler = (): ValueChart => {
   const [data, setData] = useState<Coordinate[]>(coordinates)

@@ -2,7 +2,7 @@ import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
 import { argTypes, props } from './storyConfig'
-import { useOnClickHandler } from './barChartHooks'
+import { useOnClickHandler } from '../hooks/barChartHooks'
 import GroupedBarChartWrapper from '../../components/bar/grouped/GroupedBarChartWrapper'
 import { BarChartWrapperProps } from '../../types/chartTypes'
 
