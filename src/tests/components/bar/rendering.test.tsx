@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 
-import { dataShouldBeClickable, getPaths } from '../componentTests'
+import { dataShouldBeClickable, getPaths, shouldDisplayLabelOnMouseOver } from '../componentTests'
 import { Coordinate, CoordinateSet } from '../../../types/dataTypes'
 
 import {
@@ -50,28 +50,29 @@ describe('Draws a main axis with labels', () => {
 })
 
 describe('Draws a set of bars with labels', () => {
-  const data: CoordinateSet = {
+  const coordinateSet: CoordinateSet = {
     data: [
       { id: 'A', x: 1, y: 1 },
       { id: 'B', x: 2, y: 2 },
     ],
   }
 
+  const data = coordinateSet.data
+  const key = 1
+
   it('two bars are drawn', () => {
-    const Bars = drawBar(data, clickHandler, 'key')
+    const Bars = drawBar(data, clickHandler, key)
     const paths = getPaths(Bars)
     expect(paths).toHaveLength(2)
   })
 
   it('bar can be clicked', () => {
-    const Bars = drawBar(data, clickHandler, 'key')
+    const Bars = drawBar(data, clickHandler, key)
     dataShouldBeClickable(Bars, clickHandler)
   })
 
-  it('bars have labels that are divided into two <tspan> elements', () => {
-    const expectedLabels = ['A:', 'B:', 1, 2]
-    const Bars = drawBar(data, clickHandler, 'key')
-    render(Bars)
-    expectedLabels.forEach(label => expect(screen.getByText(label)).toBeInTheDocument())
+  it('bars display labels on mouse hover', () => {
+    const Bars = drawBar(data, clickHandler, key)
+    shouldDisplayLabelOnMouseOver(Bars, 'A:')
   })
 })

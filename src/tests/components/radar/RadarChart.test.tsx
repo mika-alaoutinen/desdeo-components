@@ -58,13 +58,12 @@ describe('Chart has spoke lines that can be shown or hidden', () => {
 })
 
 describe('Areas are displayed correctly', () => {
-  // Without custom styling, the default color of an area is rgb(244, 81, 30), or #F4511E.
-  // Get all paths and find any that have a fill color of #F4511E. There should only be one.
-  it('chart has one red area', () => {
+  // Get all paths and find any that have a fill color of #002C61. There should only be one.
+  it('chart has one blue area', () => {
     const { container } = render(component)
     const paths = Array.from(container.querySelectorAll('path'))
       .map(path => path.style.fill)
-      .filter(fillColor => fillColor === '#F4511E')
+      .filter(fillColor => fillColor === '#002C61')
 
     expect(paths).toHaveLength(1)
   })
