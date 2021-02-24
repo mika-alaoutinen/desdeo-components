@@ -1,7 +1,7 @@
 import React from 'react'
 import { VictoryChart, VictoryGroup } from 'victory'
 
-import { MATERIAL_THEME } from '../../styles/victoryStyles'
+import { DEFAULT_COLOR_SCALE, MATERIAL_THEME } from '../../styles/victoryStyles'
 import { AttributeSet, MaxValue } from '../../types/dataTypes'
 import { drawArea, drawPolarAxix, drawSpokeLines } from './rendering'
 
@@ -23,7 +23,10 @@ const RadarChart: React.FC<Props> = ({ data, maxValues, showSpokeLines }) => {
 
   return (
     <VictoryChart polar theme={MATERIAL_THEME} domain={{ y: [0, 1] }}>
-      <VictoryGroup style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}>
+      <VictoryGroup
+        colorScale={DEFAULT_COLOR_SCALE}
+        style={{ data: { fillOpacity: 0.2, strokeWidth: 2 } }}
+      >
         {drawAreas()}
       </VictoryGroup>
 

@@ -12,7 +12,7 @@ interface Props {
 
 const DataTableColumn: React.FC<Props> = ({ data, onClick }) => {
   const renderRows = (): JSX.Element[] =>
-    data.map(value => <DataTableRow key={value.id} row={value} onClick={onClick} />)
+    data.map(value => <DataTableRow key={value.id} value={value} onClick={onClick} />)
 
   return <HoverableTableRow rows={renderRows()} />
 }

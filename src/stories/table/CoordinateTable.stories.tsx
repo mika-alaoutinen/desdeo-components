@@ -1,32 +1,28 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 
-import ScatterChart from '../../components/scatter/ScatterChart'
+import CoordinateTable from '../../components/table/coordinateTable/CoordinateTable'
 import { useCoordinateClickHandler } from '../hooks/coordinateChartHooks'
 import { coordinates } from '../../data/testdata'
 import { CoordinateChart } from '../../types/chartTypes'
 
-export const ScatterChartWithHooks = (): JSX.Element => {
+export const CoordinateTableWithHooks = (): JSX.Element => {
   const { data, onClick } = useCoordinateClickHandler()
 
-  return (
-    <ScatterChart data={data} onClick={onClick} xAxisLabel={'WQ Fishery'} yAxisLabel={'WQ City'} />
-  )
+  return <CoordinateTable data={data} onClick={onClick} />
 }
 
-const Template: Story<CoordinateChart> = args => <ScatterChart {...args} />
+const Template: Story<CoordinateChart> = args => <CoordinateTable {...args} />
 
-export const ScatterChartTemplate = Template.bind({})
-ScatterChartTemplate.args = {
+export const CoordinateChartTemplate = Template.bind({})
+CoordinateChartTemplate.args = {
   data: coordinates,
   onClick: coordinate => console.log('coordinate', coordinate),
-  xAxisLabel: 'WQ Fishery',
-  yAxisLabel: 'WQ City',
 }
 
 export default {
-  title: 'DESDEO/ScatterChart',
-  component: ScatterChart,
+  title: 'DESDEO/CoordinateTable',
+  component: CoordinateTable,
   argTypes: {
     onClick: {
       table: {

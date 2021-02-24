@@ -3,10 +3,10 @@ import { Meta, Story } from '@storybook/react'
 
 import BarChart from '../../components/bar/basic/BarChart'
 import BarChartWrapper, { Props } from '../../components/bar/basic/BarChartWrapper'
-import { useOnClickHandler } from '../storyUtils'
+import { useOnClickHandler } from '../hooks/coordinateChartHooks'
 import { dataset } from '../../data/testdata'
 
-export const BarChartComponent = (): JSX.Element => {
+export const BarChartWithHooks = (): JSX.Element => {
   const { data, onClick } = useOnClickHandler()
 
   return <BarChart data={data} onClick={onClick} />
