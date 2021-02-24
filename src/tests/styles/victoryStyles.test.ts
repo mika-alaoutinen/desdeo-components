@@ -3,9 +3,9 @@ import { Coordinate } from '../../types/dataTypes'
 import { mapFillStyle, mapOpacity } from '../../styles/victoryStyles'
 
 describe('Fill is based on if datum is selected or not', () => {
-  it('should be black when unselected', () => {
+  it('should be #5D8AA8 (lightish blue) when unselected', () => {
     const fillColor = mapFillStyle(createCoordinate(false))
-    expect(fillColor).toBe('black')
+    expect(fillColor).toBe('#5D8AA8')
   })
 
   it('should be tomato when selected', () => {
