@@ -13,6 +13,7 @@ interface Props {
   attributes: string[]
   data: AttributeSet[]
   maxTickValues: number[]
+  normalizedData: AttributeSet[]
   onChange: OnChangeHandler
   onLineClick: OnLineClickHandler
 }
@@ -21,6 +22,7 @@ const ParallelAxes: React.FC<Props> = ({
   attributes,
   data,
   maxTickValues,
+  normalizedData,
   onChange,
   onLineClick,
 }) => {
@@ -28,13 +30,13 @@ const ParallelAxes: React.FC<Props> = ({
   const [filters, setFilters] = useState<Filter[]>([])
 
   useEffect(() => {
-    setActiveDataSets(data)
-  }, [data])
+    setActiveDataSets(normalizedData)
+  }, [normalizedData])
 
   // Event handler for vertical brush filters
   const onDomainChange = (domain: DomainTuple, name: string): void => {
     setFilters(addNewFilters(filters, domain, name))
-    const activeSets = getActiveDatasets(data, filters)
+    const activeSets = getActiveDatasets(normalizedData, filters)
     doCallback(activeSets)
     setActiveDataSets(activeSets)
   }
@@ -42,7 +44,9 @@ const ParallelAxes: React.FC<Props> = ({
   // Limit the number of callbacks by triggering them only when active datasets have changed
   const doCallback = (activeSets: AttributeSet[]): void => {
     if (activeSets.length !== activeDatasets.length) {
-      onChange(activeSets)
+      const activeLabels = activeSets.map(attributeSet => attributeSet.label)
+      const unnormalizedActiveSets = data.filter(({ label }) => activeLabels.includes(label))
+      onChange(unnormalizedActiveSets)
     }
   }
 
@@ -55,7 +59,7 @@ const ParallelAxes: React.FC<Props> = ({
     })
 
   const drawLines = (): JSX.Element[] =>
-    data.map(dataset => {
+    normalizedData.map(dataset => {
       const opacity = activeDatasets.includes(dataset) ? 1 : 0.2
       return drawLine(dataset, opacity, onLineClick)
     })

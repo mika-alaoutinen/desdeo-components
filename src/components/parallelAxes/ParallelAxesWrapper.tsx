@@ -22,8 +22,9 @@ const ParallelAxesWrapper: React.FC<Props> = ({ data, onChange, onLineClick }) =
   return (
     <ParallelAxes
       attributes={getAttributeNames(normalized)}
-      data={normalized}
+      data={datasets}
       maxTickValues={getMaxValues(datasets)}
+      normalizedData={normalized}
       onChange={onChange ? onChange : dummyFunction}
       onLineClick={onLineClick ? onLineClick : dummyFunction}
     />
