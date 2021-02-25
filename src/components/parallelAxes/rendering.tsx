@@ -80,6 +80,6 @@ const drawLine = (
 // A hackerman solution for mapping any type data into Attributes. The purpose
 // is to get rid of extra fields that expose Victory's internal implementation details.
 const mapToAttributes = (data: Attribute[]): Attribute[] =>
-  data.map(({ id, x, y }) => ({ id, x, y }))
+  data.map(({ id, isSelected, x, y }) => ({ id, isSelected, x, y }))
 
 export { drawAxis, drawBrushLine, drawLine }

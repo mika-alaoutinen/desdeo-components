@@ -29,6 +29,7 @@ const createAttributeSets = (dataset: DataSet[]): AttributeSet[] => {
   return dataset[0].data.map((_, colIndex) => {
     const attributes: Attribute[] = dataset.map(({ data, label }) => ({
       id: data[colIndex].id,
+      isSelected: data[colIndex].isSelected,
       x: label.toLowerCase(),
       y: data[colIndex].value,
     }))
