@@ -33,19 +33,19 @@ export const attributeSet: AttributeSet[] = [
   {
     label: 'Alternative 1',
     attributes: [
-      { id: 'wq-fishery-1', x: 'wq fishery', y: 5.758127 },
-      { id: 'wq-city-1', x: 'wq city', y: 3.17527 },
-      { id: 'roi-1', x: 'roi', y: 6.090291 },
-      { id: 'city-tax-1', x: 'city tax', y: 2.444406 },
+      { id: 'wq-fishery-1', isSelected: false, x: 'wq fishery', y: 5.758127 },
+      { id: 'wq-city-1', isSelected: false, x: 'wq city', y: 3.17527 },
+      { id: 'roi-1', isSelected: false, x: 'roi', y: 6.090291 },
+      { id: 'city-tax-1', isSelected: false, x: 'city tax', y: 2.444406 },
     ],
   },
   {
     label: 'Alternative 2',
     attributes: [
-      { id: 'wq-fishery-2', x: 'wq fishery', y: 6.042483 },
-      { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
-      { id: 'roi-2', x: 'roi', y: 6.887735 },
-      { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
+      { id: 'wq-fishery-2', isSelected: false, x: 'wq fishery', y: 6.042483 },
+      { id: 'wq-city-2', isSelected: false, x: 'wq city', y: 3.410843 },
+      { id: 'roi-2', isSelected: false, x: 'roi', y: 6.887735 },
+      { id: 'city-tax-2', isSelected: false, x: 'city tax', y: 8.989781 },
     ],
   },
 ]

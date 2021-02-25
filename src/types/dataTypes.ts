@@ -7,6 +7,7 @@ interface Attribute {
   id: string
   x: string
   y: number
+  isSelected?: boolean
 }
 
 interface CoordinateSet {

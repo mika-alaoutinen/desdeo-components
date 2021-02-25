@@ -14,8 +14,8 @@ describe('getAttributeNames finds all distinct attributes', () => {
       {
         label: 'Alternative 1',
         attributes: [
-          { id: '1', x: 'wq fishery', y: 1 },
-          { id: '2', x: 'wq city', y: 2 },
+          { id: '1', isSelected: false, x: 'wq fishery', y: 1 },
+          { id: '2', isSelected: false, x: 'wq city', y: 2 },
         ],
       },
     ]
@@ -27,8 +27,8 @@ describe('getAttributeNames finds all distinct attributes', () => {
       {
         label: 'Alternative 1',
         attributes: [
-          { id: '1', x: 'wq fishery', y: 1 },
-          { id: '2', x: 'wq fishery', y: 2 },
+          { id: '1', isSelected: false, x: 'wq fishery', y: 1 },
+          { id: '2', isSelected: false, x: 'wq fishery', y: 2 },
         ],
       },
     ]
@@ -43,10 +43,10 @@ describe('getAttributeNames finds all distinct attributes', () => {
 describe('getMaxAttributes finds the attributes with largest values in a dataset', () => {
   it('maps attributes as an array with max values', () => {
     const expected: Attribute[] = [
-      { id: 'wq-fishery-2', x: 'wq fishery', y: 6.042483 },
-      { id: 'wq-city-2', x: 'wq city', y: 3.410843 },
-      { id: 'roi-2', x: 'roi', y: 6.887735 },
-      { id: 'city-tax-2', x: 'city tax', y: 8.989781 },
+      { id: 'wq-fishery-2', isSelected: false, x: 'wq fishery', y: 6.042483 },
+      { id: 'wq-city-2', isSelected: false, x: 'wq city', y: 3.410843 },
+      { id: 'roi-2', isSelected: false, x: 'roi', y: 6.887735 },
+      { id: 'city-tax-2', isSelected: false, x: 'city tax', y: 8.989781 },
     ]
     expect(getMaxAttributes(attributeSet)).toEqual(expected)
   })
@@ -62,7 +62,7 @@ describe('getMaxAttributeValues find the largest value for each kind of attribut
     const data: AttributeSet[] = [
       {
         label: 'Alternative 1',
-        attributes: [{ id: '1', x: 'wq fishery', y: -1 }],
+        attributes: [{ id: '1', isSelected: false, x: 'wq fishery', y: -1 }],
       },
     ]
     const defaultReturnValue = -0.00001
@@ -75,19 +75,19 @@ describe('Data is cleaned up by sanitizing inputs and normalizing values', () =>
     {
       label: 'Alternative 1',
       attributes: [
-        { id: 'wq-fishery-1', x: 'wq fishery', y: 0.9529405378550507 },
-        { id: 'wq-city-1', x: 'wq city', y: 0.9309340828645587 },
-        { id: 'roi-1', x: 'roi', y: 0.8842226072867204 },
-        { id: 'city-tax-1', x: 'city tax', y: 0.27190940468961367 },
+        { id: 'wq-fishery-1', isSelected: false, x: 'wq fishery', y: 0.9529405378550507 },
+        { id: 'wq-city-1', isSelected: false, x: 'wq city', y: 0.9309340828645587 },
+        { id: 'roi-1', isSelected: false, x: 'roi', y: 0.8842226072867204 },
+        { id: 'city-tax-1', isSelected: false, x: 'city tax', y: 0.27190940468961367 },
       ],
     },
     {
       label: 'Alternative 2',
       attributes: [
-        { id: 'wq-fishery-2', x: 'wq fishery', y: 1 },
-        { id: 'wq-city-2', x: 'wq city', y: 1 },
-        { id: 'roi-2', x: 'roi', y: 1 },
-        { id: 'city-tax-2', x: 'city tax', y: 1 },
+        { id: 'wq-fishery-2', isSelected: false, x: 'wq fishery', y: 1 },
+        { id: 'wq-city-2', isSelected: false, x: 'wq city', y: 1 },
+        { id: 'roi-2', isSelected: false, x: 'roi', y: 1 },
+        { id: 'city-tax-2', isSelected: false, x: 'city tax', y: 1 },
       ],
     },
   ]

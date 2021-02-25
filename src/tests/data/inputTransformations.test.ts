@@ -36,22 +36,22 @@ describe('createAttributeSets produces datasets for Parallel Axis component', ()
     {
       label: 'Alternative 1',
       attributes: [
-        { id: 'a1', x: 'label a', y: 1 },
-        { id: 'b1', x: 'label b', y: 4 },
+        { id: 'a1', isSelected: false, x: 'label a', y: 1 },
+        { id: 'b1', isSelected: false, x: 'label b', y: 4 },
       ],
     },
     {
       label: 'Alternative 2',
       attributes: [
-        { id: 'a2', x: 'label a', y: 2 },
-        { id: 'b2', x: 'label b', y: 5 },
+        { id: 'a2', isSelected: false, x: 'label a', y: 2 },
+        { id: 'b2', isSelected: false, x: 'label b', y: 5 },
       ],
     },
     {
       label: 'Alternative 3',
       attributes: [
-        { id: 'a3', x: 'label a', y: 3 },
-        { id: 'b3', x: 'label b', y: 6 },
+        { id: 'a3', isSelected: false, x: 'label a', y: 3 },
+        { id: 'b3', isSelected: false, x: 'label b', y: 6 },
       ],
     },
   ]
