@@ -60,7 +60,6 @@ const drawLine = (
             {
               eventKey: 'all',
               mutation: ({ data }) => {
-                console.log(data)
                 onClick(mapToAttributes(data))
               },
             },

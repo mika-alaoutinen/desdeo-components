@@ -83,7 +83,6 @@ const ParallelAxes: React.FC<Props> = ({
           disable={disableCursor}
           events={{
             onClick: () => {
-              console.log(selectedAttribute)
               onClicking(selectedAttribute)
             },
           }}
