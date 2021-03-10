@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
+import { VictoryAxis, VictoryBrushLine, VictoryLine, VictoryCursorContainer } from 'victory'
 
 import { Attribute, AttributeSet } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
@@ -21,7 +21,7 @@ const drawAxis = (axisComponent: JSX.Element, offsetX: number, tickValue: number
       },
     }}
     tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-    tickFormat={tick => Math.round(tick * tickValue)}
+    tickFormat={tick => (tick * tickValue).toPrecision(2)}
   />
 )
 
@@ -59,7 +59,10 @@ const drawLine = (
           onClick: () => [
             {
               eventKey: 'all',
-              mutation: ({ data }) => onClick(mapToAttributes(data)),
+              mutation: ({ data }) => {
+                console.log(data)
+                onClick(mapToAttributes(data))
+              },
             },
           ],
         },

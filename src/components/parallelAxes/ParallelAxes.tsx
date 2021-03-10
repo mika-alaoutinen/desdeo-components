@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { VictoryChart } from 'victory'
+import { VictoryChart, VictoryCursorContainer } from 'victory'
 
 import { AttributeSet, Filter } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
-import { OnChangeHandler, OnLineClickHandler } from './types'
+import { OnChangeHandler, OnLineClickHandler, OnClickHandler, ToggleCursorHandler } from './types'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
@@ -16,6 +16,8 @@ interface Props {
   normalizedData: AttributeSet[]
   onChange: OnChangeHandler
   onLineClick: OnLineClickHandler
+  onClicking: OnClickHandler
+  toggleCursor: ToggleCursorHandler
 }
 
 const ParallelAxes: React.FC<Props> = ({
@@ -25,9 +27,15 @@ const ParallelAxes: React.FC<Props> = ({
   normalizedData,
   onChange,
   onLineClick,
+  onClicking,
+  toggleCursor,
 }) => {
   const [activeDatasets, setActiveDataSets] = useState<AttributeSet[]>([])
   const [filters, setFilters] = useState<Filter[]>([])
+  const [disableCursor, setDisableCursor] = useState<boolean>(false)
+  const [selectedAttribute, setSelectedAttribute] = useState<[number, number]>([-1, -1])
+
+  toggleCursor(setDisableCursor)
 
   useEffect(() => {
     setActiveDataSets(normalizedData)
@@ -70,6 +78,25 @@ const ParallelAxes: React.FC<Props> = ({
       height={layout.height}
       width={layout.width}
       padding={layout.padding}
+      containerComponent={
+        <VictoryCursorContainer
+          disable={disableCursor}
+          events={{
+            onClick: () => {
+              console.log(selectedAttribute)
+              onClicking(selectedAttribute)
+            },
+          }}
+          onCursorChange={(value, props) => {
+            const attribute_index: number = value ? Math.round(value.x) : -1
+            const y_value: number = value
+              ? (value.y / 1.0) * maxTickValues[Math.round(value.x) - 1]
+              : -1
+
+            setSelectedAttribute([attribute_index, y_value])
+          }}
+        />
+      }
     >
       <AttributeLabels paddingTop={layout.padding.top - 40} />
       {/* Lines MUST be drawn before axes, or the brush functionality breaks! */}

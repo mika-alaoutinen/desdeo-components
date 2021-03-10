@@ -11,6 +11,8 @@ ParallelCoordinates.args = {
   data: dataset,
   onChange: attributeSets => console.log('active sets', attributeSets),
   onLineClick: attributes => console.log('clicked on line with data', attributes),
+  onClicking: tuple => console.log('selected attribute with value', tuple),
+  toggleCursor: foo => console.log('toggled cursor!'),
 }
 
 export default {
