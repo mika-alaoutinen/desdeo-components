@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryAxis, VictoryBrushLine, VictoryLine, VictoryCursorContainer } from 'victory'
+import { VictoryAxis, VictoryBrushLine, VictoryLine } from 'victory'
 
 import { Attribute, AttributeSet } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'

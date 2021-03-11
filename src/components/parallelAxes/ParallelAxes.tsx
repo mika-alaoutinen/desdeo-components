@@ -81,7 +81,7 @@ const ParallelAxes: React.FC<Props> = ({
           // Making the cursorComponent a div allows for use of brushing and selecting lines at the same time
           cursorComponent={<div />}
           cursorLabel={() =>
-            `${attributes[selectedAttribute[0]]}: ${selectedAttribute[1].toPrecision(2)}`
+            `${attributes[selectedAttribute[0] - 1]}: ${selectedAttribute[1].toPrecision(2)}`
           }
           cursorLabelComponent={<VictoryTooltip />}
           cursorLabelOffset={{ x: 0, y: -5 }}
@@ -90,7 +90,7 @@ const ParallelAxes: React.FC<Props> = ({
               onClicking(selectedAttribute)
             },
           }}
-          onCursorChange={(value, props) => {
+          onCursorChange={value => {
             const attribute_index: number = value ? Math.round(value.x) : -1
             const y_value: number = value
               ? (value.y / 1.0) * maxTickValues[Math.round(value.x) - 1]
