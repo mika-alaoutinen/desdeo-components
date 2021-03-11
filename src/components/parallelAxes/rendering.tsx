@@ -61,7 +61,20 @@ const drawLine = (
               eventKey: 'all',
               mutation: ({ data }) => {
                 onClick(mapToAttributes(data))
+                return { style: { stroke: 'gold', strokeWidth: 2.5 } }
               },
+            },
+          ],
+          onMouseOver: () => [
+            {
+              eventKey: 'all',
+              mutation: () => ({ style: { stroke: 'green', strokeWidth: 2.5 } }),
+            },
+          ],
+          onMouseOut: () => [
+            {
+              eventKey: 'all',
+              mutation: () => ({}),
             },
           ],
         },

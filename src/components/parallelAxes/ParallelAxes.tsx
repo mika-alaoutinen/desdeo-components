@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { VictoryChart, VictoryCursorContainer } from 'victory'
+import { VictoryChart, VictoryCursorContainer, VictoryTooltip } from 'victory'
 
 import { AttributeSet, Filter } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
-import { OnChangeHandler, OnLineClickHandler, OnClickHandler, ToggleCursorHandler } from './types'
+import { OnChangeHandler, OnLineClickHandler, OnClickHandler } from './types'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   onChange: OnChangeHandler
   onLineClick: OnLineClickHandler
   onClicking: OnClickHandler
-  toggleCursor: ToggleCursorHandler
+  disableCursor?: boolean
 }
 
 const ParallelAxes: React.FC<Props> = ({
@@ -28,14 +28,11 @@ const ParallelAxes: React.FC<Props> = ({
   onChange,
   onLineClick,
   onClicking,
-  toggleCursor,
+  disableCursor = false,
 }) => {
   const [activeDatasets, setActiveDataSets] = useState<AttributeSet[]>([])
   const [filters, setFilters] = useState<Filter[]>([])
-  const [disableCursor, setDisableCursor] = useState<boolean>(false)
   const [selectedAttribute, setSelectedAttribute] = useState<[number, number]>([-1, -1])
-
-  toggleCursor(setDisableCursor)
 
   useEffect(() => {
     setActiveDataSets(normalizedData)
@@ -81,6 +78,13 @@ const ParallelAxes: React.FC<Props> = ({
       containerComponent={
         <VictoryCursorContainer
           disable={disableCursor}
+          // Making the cursorComponent a div allows for use of brushing and selecting lines at the same time
+          cursorComponent={<div />}
+          cursorLabel={() =>
+            `${attributes[selectedAttribute[0]]}: ${selectedAttribute[1].toPrecision(2)}`
+          }
+          cursorLabelComponent={<VictoryTooltip />}
+          cursorLabelOffset={{ x: 0, y: -5 }}
           events={{
             onClick: () => {
               onClicking(selectedAttribute)

@@ -4,18 +4,17 @@ import { getAttributeNames, getMaxValues, normalizeData } from '../../data/attri
 import { createAttributeSets } from '../../data/inputTransformations'
 import { DataSet } from '../../types/dataTypes'
 import ParallelAxes from './ParallelAxes'
-import { OnChangeHandler, OnLineClickHandler, OnClickHandler, ToggleCursorHandler } from './types'
+import { OnChangeHandler, OnLineClickHandler, OnClickHandler } from './types'
 
 // If an event handler is not given, pass a dummy function that does nothing to component
 const dummyFunction = () => void 0
-const dummyFunction2 = (toggle: React.Dispatch<React.SetStateAction<boolean>>) => toggle(true)
 
 export interface Props {
   data: DataSet[]
   onChange?: OnChangeHandler
   onLineClick?: OnLineClickHandler
   onClicking?: OnClickHandler
-  toggleCursor?: ToggleCursorHandler
+  disableCursor?: boolean
 }
 
 const ParallelAxesWrapper: React.FC<Props> = ({
@@ -23,7 +22,7 @@ const ParallelAxesWrapper: React.FC<Props> = ({
   onChange,
   onLineClick,
   onClicking,
-  toggleCursor,
+  disableCursor,
 }) => {
   const datasets = createAttributeSets(data)
   const normalized = normalizeData(datasets)
@@ -37,7 +36,7 @@ const ParallelAxesWrapper: React.FC<Props> = ({
       onChange={onChange ? onChange : dummyFunction}
       onLineClick={onLineClick ? onLineClick : dummyFunction}
       onClicking={onClicking ? onClicking : dummyFunction}
-      toggleCursor={toggleCursor ? toggleCursor : dummyFunction2}
+      disableCursor={disableCursor ? disableCursor : false}
     />
   )
 }
