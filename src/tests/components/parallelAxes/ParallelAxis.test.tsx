@@ -50,10 +50,10 @@ describe('Data is displayed correctly', () => {
     expect(lines).toHaveLength(3)
   })
 
-  it('vertical brush bars have max values of 3 and 6', () => {
+  it('vertical brush bars have max values of 3.0 and 6.0', () => {
     render(component)
-    expect(screen.getByText(/3/)).toBeInTheDocument()
-    expect(screen.getByText(/6/)).toBeInTheDocument()
+    expect(screen.getByText(/3.0/)).toBeInTheDocument()
+    expect(screen.getByText(/6.0/)).toBeInTheDocument()
   })
 })
 
