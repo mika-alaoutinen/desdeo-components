@@ -9,8 +9,17 @@ import { dataset } from '../../testdata'
 
 const onChangeHandler = jest.fn()
 const onLineClickHandler = jest.fn()
+const onClickingHandler = jest.fn()
+const ToggleCursorHandler = jest.fn()
+
 const component = (
-  <ParallelAxesWrapper data={dataset} onChange={onChangeHandler} onLineClick={onLineClickHandler} />
+  <ParallelAxesWrapper
+    data={dataset}
+    onChange={onChangeHandler}
+    onLineClick={onLineClickHandler}
+    onClicking={onClickingHandler}
+    disableCursor={false}
+  />
 )
 
 describe('Smoke tests for ParallelAxes rendering', () => {

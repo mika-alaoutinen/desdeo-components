@@ -21,7 +21,7 @@ const drawAxis = (axisComponent: JSX.Element, offsetX: number, tickValue: number
       },
     }}
     tickValues={[0.2, 0.4, 0.6, 0.8, 1]}
-    tickFormat={tick => Math.round(tick * tickValue)}
+    tickFormat={tick => (tick * tickValue).toPrecision(2)}
   />
 )
 
@@ -59,7 +59,22 @@ const drawLine = (
           onClick: () => [
             {
               eventKey: 'all',
-              mutation: ({ data }) => onClick(mapToAttributes(data)),
+              mutation: ({ data }) => {
+                onClick(mapToAttributes(data))
+                return { style: { stroke: 'gold', strokeWidth: 2.5 } }
+              },
+            },
+          ],
+          onMouseOver: () => [
+            {
+              eventKey: 'all',
+              mutation: () => ({ style: { stroke: 'green', strokeWidth: 2.5 } }),
+            },
+          ],
+          onMouseOut: () => [
+            {
+              eventKey: 'all',
+              mutation: () => ({}),
             },
           ],
         },
