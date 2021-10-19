@@ -16,6 +16,8 @@ env:
   jest: true
 
 rules:
+  # Victory is not really compatitible with TypeScript, so let's go Wild Wild West style.
+  "@typescript-eslint/no-unsafe-argument": off
   "@typescript-eslint/explicit-function-return-type": 0
   react/prop-types: 0
   prettier/prettier: 2
