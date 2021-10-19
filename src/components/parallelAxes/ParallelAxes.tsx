@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { VictoryChart, VictoryCursorContainer, VictoryTooltip } from 'victory'
-
-import { AttributeSet, Filter } from '../../types/dataTypes'
+import { AttributeSet, Coordinate, Filter } from '../../types/dataTypes'
 import { DomainTuple } from '../../types/victoryTypes'
 import AttributeLabels from './AttributeLabels'
 import { layout } from './layout'
 import { drawAxis, drawBrushLine, drawLine } from './rendering'
-import { OnChangeHandler, OnLineClickHandler, OnClickHandler } from './types'
+import { OnChangeHandler, OnClickHandler, OnLineClickHandler } from './types'
 import { addNewFilters, calculateAxisOffset, getActiveDatasets } from './utils'
 
 interface Props {
@@ -69,6 +68,20 @@ const ParallelAxes: React.FC<Props> = ({
       return drawLine(dataset, opacity, onLineClick)
     })
 
+  // The type signature of value (CursorCoordinatesPropType) is wrong.
+  // value actually has fields x and y and nothing else.
+  const findSelectedAttribute = (value: unknown): [number, number] => {
+    if (!value) {
+      return [-1, -1]
+    }
+
+    const { x, y } = value as Coordinate
+    const attributeIndex = Math.round(x)
+    const yValue = (y / 1.0) * maxTickValues[Math.round(x) - 1]
+
+    return [attributeIndex, yValue]
+  }
+
   return (
     <VictoryChart
       domain={{ y: [0, 1.1] }}
@@ -91,12 +104,7 @@ const ParallelAxes: React.FC<Props> = ({
             },
           }}
           onCursorChange={value => {
-            const attribute_index: number = value ? Math.round(value.x) : -1
-            const y_value: number = value
-              ? (value.y / 1.0) * maxTickValues[Math.round(value.x) - 1]
-              : -1
-
-            setSelectedAttribute([attribute_index, y_value])
+            setSelectedAttribute(findSelectedAttribute(value))
           }}
         />
       }
